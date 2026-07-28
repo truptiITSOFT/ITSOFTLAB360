@@ -1,0 +1,16 @@
+{
+    "scripts": {
+        "backend": "./server.bat",
+        "frontend": "cd frontend && bun dev",
+        "build": "cd frontend && bun run build",
+        "migration": "cd backend && python manage.py makemigrations && python manage.py migrate",
+        "docker-build": "cd backend && docker build -t backend .",
+        "docker-image": "cd backend && docker images backend",
+        "venv-create": "cd backend && python -m venv venv",
+        "requirments": "pip install -r requirements.txt"
+    },
+    "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264",
+    "dependencies": {
+        "peer": "^1"
+    }
+}
