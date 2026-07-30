@@ -6,7 +6,7 @@ import ChatWidget from "@/components/ChatWidget";
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative flex flex-col">
+    <main className="min-h-screen relative flex flex-col bg-[#020617]">
       <Header />
       <div className="flex-grow">
         <Hero />

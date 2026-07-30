@@ -1,40 +1,67 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
+
+const navLinks = [
+  { name: "HOME", href: "/home" },
+  { name: "SOLUTIONS", href: "/solutions", hasDropdown: true },
+  { name: "PRODUCTS", href: "/products" },
+  { name: "INDUSTRIES", href: "/industries" },
+  { name: "CONTACT US", href: "/contact" },
+];
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-[#020617]/80 backdrop-blur-md border-b border-[rgba(59,130,246,0.1)]">
+    <header className="fixed top-0 w-full z-50 bg-white/90 dark:bg-[#020617]/80 backdrop-blur-md border-b border-gray-200 dark:border-[rgba(59,130,246,0.1)] transition-colors duration-300">
       <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-        {/* Logo Area */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative flex items-center justify-center w-10 h-10 bg-blue-600 rounded-lg overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-700 opacity-80 group-hover:scale-110 transition-transform duration-300"></div>
-             {/* A stylized 3D cube-like icon can go here, using simple CSS shapes for now */}
-             <div className="w-5 h-5 border-2 border-white transform rotate-45 group-hover:rotate-90 transition-all duration-500 z-10"></div>
+        {/* Image Logo */}
+        <Link href="/home" className="flex flex-col group mt-1">
+          <div className="relative">
+            <img 
+              src="/logo.png" 
+              alt="IT SOFTLAB 360 Logo" 
+              className="h-7 w-auto object-contain dark:invert-0 invert transition-all" 
+            />
           </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-bold tracking-wider text-white">IT SOFTLAB <span className="text-blue-400">360</span></span>
-            <span className="text-[0.6rem] text-gray-400 tracking-widest uppercase">Solutions Beyond Limits</span>
-          </div>
+          {/* Tagline */}
+          <span className="text-[0.6rem] text-slate-500 dark:text-gray-400 tracking-widest uppercase ml-1 mt-1 transition-colors">Solutions Beyond Limits</span>
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
-          <Link href="/" className="text-white relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-blue-500">HOME</Link>
-          <div className="flex items-center gap-1 cursor-pointer hover:text-white transition-colors group">
-            SOLUTIONS <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
-          </div>
-          <Link href="#products" className="hover:text-white transition-colors">PRODUCTS</Link>
-          <Link href="#industries" className="hover:text-white transition-colors">INDUSTRIES</Link>
-          <Link href="#about" className="hover:text-white transition-colors">ABOUT US</Link>
-          <Link href="#careers" className="hover:text-white transition-colors">CAREERS</Link>
-          <Link href="#contact" className="hover:text-white transition-colors">CONTACT US</Link>
+        <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-gray-300">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`${
+                  isActive
+                    ? "text-blue-600 dark:text-white relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-blue-500"
+                    : "hover:text-blue-600 dark:hover:text-white transition-colors"
+                } ${link.hasDropdown ? "flex items-center gap-1 group" : ""}`}
+              >
+                {link.name}
+                {link.hasDropdown && (
+                  <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
-        {/* CTA Button */}
-        <button className="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
-          REQUEST DEMO <ArrowRight size={16} />
-        </button>
+        {/* Actions */}
+        <div className="flex items-center gap-4">
+          <ThemeToggle />
+          <Link href="/demo" className="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-md shadow-blue-500/20 dark:shadow-[0_0_15px_rgba(37,99,235,0.5)] dark:hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
+            REQUEST DEMO <ArrowRight size={16} />
+          </Link>
+        </div>
       </div>
     </header>
   );
