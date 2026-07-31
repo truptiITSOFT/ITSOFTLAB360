@@ -42,17 +42,17 @@ export default function Hero() {
             {/* Badge */}
             <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-500/30 rounded-full w-fit mb-8 shadow-[0_0_15px_rgba(59,130,246,0.1)] dark:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-colors">
               <Star size={14} className="text-cyan-500 dark:text-cyan-400 fill-cyan-500 dark:fill-cyan-400" />
-              <span className="text-xs text-blue-700 dark:text-blue-100 font-bold tracking-wider transition-colors">WORLD'S #1 COMPANY</span>
+              <span className="text-xs text-blue-700 dark:text-blue-100 font-bold tracking-wider transition-colors">WORLD&apos;S #1 COMPANY</span>
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-[4rem] font-bold leading-[1.15] mb-6 text-slate-900 dark:text-white transition-colors">
-              The World's <span className="text-blue-500">1st</span> Company <br />
+              The World&apos;s <span className="text-blue-500">1st</span> Company <br />
               to Provide <br />
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-glow">All Solutions</span> in 1
             </h1>
 
             <p className="text-slate-600 dark:text-gray-300 text-lg mb-10 max-w-xl leading-relaxed transition-colors">
-              IT Softlab 360 is the World's 1st Integrated Solution Provider <br className="hidden md:block" />
+              IT Softlab 360 is the World&apos;s 1st Integrated Solution Provider <br className="hidden md:block" />
               offering <span className="text-purple-400 font-semibold">12+</span> Powerful Solutions in One Unified Platform.
             </p>
 
