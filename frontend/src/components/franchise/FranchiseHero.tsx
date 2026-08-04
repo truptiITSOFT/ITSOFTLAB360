@@ -31,12 +31,12 @@ export default function FranchiseHero() {
               <span className="text-xs text-blue-700 dark:text-blue-300 font-bold tracking-wider uppercase transition-colors">Franchise Model Solution</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-slate-900 dark:text-white transition-colors">
-              World's First Franchise Model Solution Provider <br />
-              <span className="text-blue-600 dark:text-blue-500">All in 1 Place</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-[#111A4A] dark:text-white transition-colors">
+              The World’s First IT Company to Offer 12 IT Solutions <br />
+              <span className="text-[#EB3158] dark:text-blue-500">on One Platform Through a Franchise Model</span>
             </h1>
 
-            <p className="text-slate-600 dark:text-gray-300 text-lg mb-10 max-w-xl leading-relaxed transition-colors">
+            <p className="text-[#15172B]/80 dark:text-gray-300 text-lg mb-10 max-w-xl leading-relaxed transition-colors">
               Expand your business with a unified franchise platform that connects people, processes, and data. Launch, manage, and grow your franchise network smarter, faster, and more profitably.
             </p>
 
@@ -44,7 +44,7 @@ export default function FranchiseHero() {
               <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 text-white px-8 py-4 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(139,92,246,0.4)]">
                 Explore Franchise Model <ArrowRight size={18} />
               </button>
-              <button className="flex items-center gap-2 bg-transparent border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-300 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-800 dark:text-white px-8 py-4 rounded-full font-medium transition-all">
+              <button className="flex items-center gap-2 bg-transparent border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-300 hover:bg-slate-100 dark:hover:bg-white/5 text-[#15172B] dark:text-white px-8 py-4 rounded-full font-medium transition-all">
                 Request Demo <ArrowRight size={18} />
               </button>
             </div>
@@ -77,7 +77,7 @@ export default function FranchiseHero() {
                 transition={{ duration: 0.5, delay: node.delay + 0.5 }}
                 className={`absolute ${node.position} z-20 flex flex-col items-center gap-2`}
               >
-                <div className="w-12 h-12 rounded-full border border-gray-200 dark:border-blue-500/50 bg-white dark:bg-[#020617]/90 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)] dark:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:scale-110 hover:border-blue-400 dark:hover:border-blue-400 hover:text-blue-700 dark:hover:text-white transition-all cursor-pointer">
+                <div className="w-12 h-12 rounded-full border border-[#111A4A]/10 dark:border-blue-500/50 bg-white dark:bg-[#020617]/90 flex items-center justify-center text-[#EB3158] dark:text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)] dark:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:scale-110 hover:border-blue-400 dark:hover:border-blue-400 hover:text-blue-700 dark:hover:text-white transition-all cursor-pointer">
                   {node.icon}
                 </div>
                 <span className="text-xs text-slate-700 dark:text-gray-300 font-medium transition-colors">{node.label}</span>

@@ -8,7 +8,7 @@ const industries = [
   { id: "ind-02", name: "Retail & E-commerce", desc: "Omnichannel retail, inventory management, and personalized shopping.", icon: <ShoppingCart size={32} />, color: "text-orange-500", bg: "bg-orange-500/10", border: "border-orange-500/20" },
   { id: "ind-03", name: "Finance & Banking", desc: "Secure fintech apps, core banking solutions, and automated workflows.", icon: <Landmark size={32} />, color: "text-emerald-500", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
   { id: "ind-04", name: "Manufacturing", desc: "Industry 4.0, supply chain automation, and production monitoring.", icon: <Factory size={32} />, color: "text-amber-500", bg: "bg-amber-500/10", border: "border-amber-500/20" },
-  { id: "ind-05", name: "Logistics", desc: "Fleet tracking, warehouse management, and delivery route optimization.", icon: <Truck size={32} />, color: "text-blue-500", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+  { id: "ind-05", name: "Logistics", desc: "Fleet tracking, warehouse management, and delivery route optimization.", icon: <Truck size={32} />, color: "text-[#EB3158]", bg: "bg-[#EB3158]/10", border: "border-blue-500/20" },
   { id: "ind-06", name: "Education", desc: "LMS, virtual classrooms, and campus management systems.", icon: <GraduationCap size={32} />, color: "text-indigo-500", bg: "bg-indigo-500/10", border: "border-indigo-500/20" },
 ];
 
@@ -27,12 +27,12 @@ export default function Industries() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h2 className="text-blue-600 dark:text-blue-500 font-semibold tracking-wider text-sm uppercase mb-4 transition-colors">Industries We Empower</h2>
-            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors">
+            <h2 className="text-[#EB3158] dark:text-blue-500 font-semibold tracking-wider text-sm uppercase mb-4 transition-colors">Industries We Empower</h2>
+            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-[#111A4A] dark:text-white transition-colors">
               Tailored Solutions for <br />
-              <span className="text-blue-600 dark:text-blue-500 text-glow">Every Sector</span>
+              <span className="text-[#EB3158] dark:text-blue-500 text-glow">Every Sector</span>
             </h3>
-            <p className="text-slate-600 dark:text-gray-400 text-lg transition-colors">
+            <p className="text-[#15172B]/80 dark:text-gray-400 text-lg transition-colors">
               We understand that every industry has unique challenges. Our technology is custom-built to address the specific needs of your market, ensuring maximum impact and ROI.
             </p>
           </motion.div>
@@ -46,15 +46,15 @@ export default function Industries() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={`p-8 rounded-2xl bg-white dark:bg-[#0f172a]/80 backdrop-blur-md border border-gray-200 dark:${ind.border} hover:-translate-y-1 shadow-sm hover:shadow-lg dark:shadow-none dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 group cursor-pointer`}
+              className={`p-8 rounded-2xl bg-white dark:bg-[#0f172a]/80 backdrop-blur-md border border-[#111A4A]/10 dark:${ind.border} hover:-translate-y-1 shadow-sm hover:shadow-lg dark:shadow-none dark:hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] transition-all duration-300 group cursor-pointer`}
             >
               <div className={`w-16 h-16 rounded-xl ${ind.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
                 <div className={`${ind.color}`}>
                   {ind.icon}
                 </div>
               </div>
-              <h4 className="text-xl font-bold text-slate-800 dark:text-white mb-3 transition-colors">{ind.name}</h4>
-              <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed transition-colors">
+              <h4 className="text-xl font-bold text-[#15172B] dark:text-white mb-3 transition-colors">{ind.name}</h4>
+              <p className="text-[#15172B]/80 dark:text-gray-400 text-sm leading-relaxed transition-colors">
                 {ind.desc}
               </p>
             </motion.div>

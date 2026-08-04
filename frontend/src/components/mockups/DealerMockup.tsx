@@ -25,13 +25,13 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
              { title: "Order Management", desc: "Track orders from booking to delivery.", icon: <ShoppingCart size={16}/>, color: "text-orange-500", bg: "bg-orange-500/20" },
              { title: "Inventory Control", desc: "Real-time stock visibility across dealers.", icon: <Package size={16}/>, color: "text-yellow-500", bg: "bg-yellow-500/20" },
              { title: "Performance Analytics", desc: "Monitor dealer & distributor performance.", icon: <BarChart3 size={16}/>, color: "text-green-500", bg: "bg-green-500/20" },
-             { title: "Incentives & Schemes", desc: "Manage targets, schemes & rewards.", icon: <Award size={16}/>, color: "text-blue-500", bg: "bg-blue-500/20" },
+             { title: "Incentives & Schemes", desc: "Manage targets, schemes & rewards.", icon: <Award size={16}/>, color: "text-[#EB3158]", bg: "bg-blue-500/20" },
            ].map((item, i) => (
              <div key={i} className="flex gap-3 items-start p-2 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-white/5 cursor-pointer">
                <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200 leading-tight">{item.title}</div>
-                 <div className="text-[9px] text-slate-500 mt-0.5">{item.desc}</div>
+                 <div className="text-[9px] text-[#15172B]/60 mt-0.5">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -51,12 +51,12 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
            </div>
            {/* Truck */}
            <div className="absolute left-2 bottom-4 flex items-end z-20">
-             <div className="w-12 h-10 bg-blue-600 rounded-l-md border border-blue-400 flex items-center justify-center relative shadow-[0_5px_15px_rgba(37,99,235,0.5)]">
+             <div className="w-12 h-10 bg-[#EB3158] rounded-l-md border border-blue-400 flex items-center justify-center relative shadow-[0_5px_15px_rgba(37,99,235,0.5)]">
                 <Truck size={16} className="text-white opacity-50" />
                 <div className="absolute bottom-[-4px] left-2 w-3 h-3 bg-slate-800 rounded-full border border-slate-600"></div>
                 <div className="absolute bottom-[-4px] right-2 w-3 h-3 bg-slate-800 rounded-full border border-slate-600"></div>
              </div>
-             <div className="w-6 h-7 bg-blue-500 rounded-r-md border border-blue-400 mb-1 relative">
+             <div className="w-6 h-7 bg-[#EB3158] rounded-r-md border border-blue-400 mb-1 relative">
                 <div className="absolute top-1 right-1 w-3 h-3 bg-cyan-300/40 rounded-sm"></div>
                 <div className="absolute bottom-[-4px] right-1 w-3 h-3 bg-slate-800 rounded-full border border-slate-600"></div>
              </div>
@@ -90,7 +90,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-xs font-bold shadow-md">RS</div>
                <div className="text-left text-[10px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Rahul Sharma</div>
-                 <div className="text-slate-500">National Sales Head</div>
+                 <div className="text-[#15172B]/60">National Sales Head</div>
                </div>
              </div>
            </div>
@@ -99,7 +99,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
         {/* Top KPIs Row */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
-            { label: "Total Dealers", val: "1,248", trend: "+12.6%", up: true, icon: <Users size={16}/>, color: "text-blue-400", bg: "bg-blue-500/10" },
+            { label: "Total Dealers", val: "1,248", trend: "+12.6%", up: true, icon: <Users size={16}/>, color: "text-[#EB3158]", bg: "bg-[#EB3158]/10" },
             { label: "Active Dealers", val: "1,056", trend: "+10.3%", up: true, icon: <Users2 size={16}/>, color: "text-green-400", bg: "bg-green-500/10" },
             { label: "Total Orders", val: "4,320", trend: "+15.8%", up: true, icon: <FileText size={16}/>, color: "text-purple-400", bg: "bg-purple-500/10" },
             { label: "Total Sales", val: "$2,45,680", trend: "+13.4%", up: true, icon: <ShoppingCart size={16}/>, color: "text-orange-400", bg: "bg-orange-500/10" },
@@ -115,7 +115,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                </div>
                <div className="text-lg font-bold">{kpi.val}</div>
                <div className={`text-[9px] mt-1 font-medium flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
-                  {kpi.up ? <TrendingUp size={10}/> : <TrendingDown size={10}/>} {kpi.trend} <span className="text-slate-500 font-normal">vs Apr 2025</span>
+                  {kpi.up ? <TrendingUp size={10}/> : <TrendingDown size={10}/>} {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
           ))}
@@ -140,7 +140,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                    { label: "Communications", active: false },
                    { label: "Settings", active: false },
                  ].map((item, i) => (
-                   <div key={i} className={`px-4 py-2 cursor-pointer transition-colors ${item.active ? 'bg-blue-600 border-l-2 border-blue-400 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'}`}>
+                   <div key={i} className={`px-4 py-2 cursor-pointer transition-colors ${item.active ? 'bg-[#EB3158] border-l-2 border-blue-400 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'}`}>
                      {item.label}
                    </div>
                  ))}
@@ -181,7 +181,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                    </div>
                    
                    {/* Map Pins */}
-                   <MapPin size={12} className="absolute top-10 left-16 text-blue-400" />
+                   <MapPin size={12} className="absolute top-10 left-16 text-[#EB3158]" />
                    <MapPin size={12} className="absolute top-20 right-20 text-purple-400" />
                    <MapPin size={12} className="absolute bottom-24 left-24 text-green-400" />
                    <MapPin size={12} className="absolute bottom-30 right-24 text-orange-400" />
@@ -215,7 +215,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                       </div>
                       <div className="flex flex-col gap-1 text-[8px] flex-grow pl-2">
                          <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> Delivered</span> <span>2,150 (49.8%)</span></div>
-                         <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div> In Transit</span> <span>1,320 (30.6%)</span></div>
+                         <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-[#EB3158]"></div> In Transit</span> <span>1,320 (30.6%)</span></div>
                          <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> Pending</span> <span>650 (15.0%)</span></div>
                          <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-red-500"></div> Cancelled</span> <span>200 (4.6%)</span></div>
                       </div>
@@ -226,11 +226,11 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                  <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex flex-col h-1/2">
                     <div className="flex justify-between items-center mb-2">
                       <h3 className="text-xs font-semibold">Top Dealers</h3>
-                      <span className="text-[8px] text-blue-400 cursor-pointer">View All</span>
+                      <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
                     </div>
                     <div className="flex flex-col gap-1.5 text-[9px]">
                        {[
-                         { id: "1", n: "Sharma Distributors", v: "$28,450", trend: "+16.3%", bg: "bg-blue-600" },
+                         { id: "1", n: "Sharma Distributors", v: "$28,450", trend: "+16.3%", bg: "bg-[#EB3158]" },
                          { id: "2", n: "Gupta Agencies", v: "$22,180", trend: "+12.3%", bg: "bg-purple-600" },
                          { id: "3", n: "Om Sai Traders", v: "$18,750", trend: "+10.8%", bg: "bg-purple-800" },
                          { id: "4", n: "Royal Marketing", v: "$15,920", trend: "+8.9%", bg: "bg-[#0d162f]" },
@@ -270,7 +270,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                          <div className="font-bold text-slate-200">$2,45,680</div>
                          <div className="text-slate-400 text-[6px]">Total Sales</div>
                       </div>
-                      <div className="absolute bottom-0 left-4 right-0 flex justify-between text-[6px] text-slate-500">
+                      <div className="absolute bottom-0 left-4 right-0 flex justify-between text-[6px] text-[#15172B]/60">
                         <span>May 01</span><span>May 08</span><span>May 15</span><span>May 22</span><span>May 29</span>
                       </div>
                     </div>
@@ -285,7 +285,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                     <div className="flex flex-col gap-2 text-[8px]">
                        {[
                          { n: "Sharma Distributors", pct: "92%", color: "bg-green-500" },
-                         { n: "Gupta Agencies", pct: "87%", color: "bg-blue-500" },
+                         { n: "Gupta Agencies", pct: "87%", color: "bg-[#EB3158]" },
                          { n: "Om Sai Traders", pct: "78%", color: "bg-indigo-500" },
                          { n: "Royal Marketing", pct: "71%", color: "bg-purple-500" },
                          { n: "Sai Enterprises", pct: "65%", color: "bg-orange-500" },
@@ -309,7 +309,7 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
         {/* Quick Action Buttons Row */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-auto">
            {[
-             { label: "Add New Dealer", desc: "Onboard a new dealer to the network", icon: <Users2 size={16}/>, color: "text-blue-400 bg-blue-500/10" },
+             { label: "Add New Dealer", desc: "Onboard a new dealer to the network", icon: <Users2 size={16}/>, color: "text-[#EB3158] bg-[#EB3158]/10" },
              { label: "Create Order", desc: "Create new order for a dealer", icon: <FileText size={16}/>, color: "text-green-400 bg-green-500/10" },
              { label: "Stock Transfer", desc: "Transfer stock to dealer", icon: <Truck size={16}/>, color: "text-orange-400 bg-orange-500/10" },
              { label: "Scheme Management", desc: "Create & manage schemes", icon: <Gift size={16}/>, color: "text-purple-400 bg-purple-500/10" },
@@ -322,10 +322,10 @@ export default function DealerMockup({ solution }: { solution: { id: string, tit
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs font-semibold text-slate-200">{action.label}</span>
-                      <span className="text-[9px] text-slate-500 leading-tight w-24 hidden lg:block">{action.desc}</span>
+                      <span className="text-[9px] text-[#15172B]/60 leading-tight w-24 hidden lg:block">{action.desc}</span>
                     </div>
                  </div>
-                 <ChevronRight size={14} className="text-slate-600 group-hover:text-slate-300" />
+                 <ChevronRight size={14} className="text-[#15172B]/80 group-hover:text-slate-300" />
               </div>
            ))}
         </div>

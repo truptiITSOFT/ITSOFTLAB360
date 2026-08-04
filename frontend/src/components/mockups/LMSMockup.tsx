@@ -11,7 +11,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
     <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col gap-4 relative overflow-hidden">
       
       {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#EB3158]/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
 
       {/* Main Content Area */}
       <div className="flex-grow flex flex-col gap-4 z-10 bg-[#0a1125]/80 backdrop-blur-md border border-blue-500/20 rounded-3xl p-5 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
@@ -19,7 +19,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
         {/* Header */}
         <div className="flex justify-between items-center bg-[#060d20] p-4 rounded-2xl border border-white/5">
            <div className="flex items-center gap-4">
-             <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-[0_0_15px_rgba(37,99,235,0.6)]">
+             <div className="w-12 h-12 rounded-xl bg-[#EB3158] flex items-center justify-center text-white shadow-[0_0_15px_rgba(37,99,235,0.6)]">
                <GraduationCap size={24} />
              </div>
              <div>
@@ -47,7 +47,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
         {/* Top KPIs Row */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {[
-            { label: "Active Learners", val: "2,846", trend: "↑ 18.4% vs last month", icon: <Users2 size={18}/>, color: "text-blue-400", bg: "bg-blue-500/10" },
+            { label: "Active Learners", val: "2,846", trend: "↑ 18.4% vs last month", icon: <Users2 size={18}/>, color: "text-[#EB3158]", bg: "bg-[#EB3158]/10" },
             { label: "Average Quiz Score", val: "84.7%", trend: "↑ 5.3% vs last month", icon: <CheckCircle2 size={18}/>, color: "text-green-400", bg: "bg-green-500/10" },
             { label: "Learning Hours", val: "1,256 hrs", trend: "↑ 21.7% vs last month", icon: <Clock size={18}/>, color: "text-indigo-400", bg: "bg-indigo-500/10" },
             { label: "Certificates Issued", val: "412", trend: "↑ 15.8% vs last month", icon: <Award size={18}/>, color: "text-yellow-400", bg: "bg-yellow-500/10" },
@@ -91,7 +91,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
                  
                  {[
                    { n: "Enrolled", sub: "Course Access\nGranted", icon: <User size={14}/>, c: "text-green-400 bg-[#0d162f] border-green-500" },
-                   { n: "In Progress", sub: "Lessons &\nActivities", icon: <BookOpen size={14}/>, c: "text-blue-400 bg-[#0d162f] border-blue-500" },
+                   { n: "In Progress", sub: "Lessons &\nActivities", icon: <BookOpen size={14}/>, c: "text-[#EB3158] bg-[#0d162f] border-[#EB3158]/50" },
                    { n: "Assessment", sub: "Quiz / Exam\nIn Review", icon: <ClipboardCheck size={14}/>, c: "text-purple-400 bg-[#0d162f] border-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.8)]" },
                    { n: "Certified", sub: "Certificate\nEarned", icon: <Award size={14}/>, c: "text-yellow-500 bg-[#0a1125] border-yellow-700 opacity-50" },
                  ].map((step, i) => (
@@ -99,7 +99,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
                       <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center mb-2 ${step.c}`}>
                          {step.icon}
                       </div>
-                      <div className={`text-[9px] font-bold ${i < 3 ? step.c.split(' ')[0] : 'text-slate-500'}`}>{step.n}</div>
+                      <div className={`text-[9px] font-bold ${i < 3 ? step.c.split(' ')[0] : 'text-[#15172B]/60'}`}>{step.n}</div>
                       <div className="text-[7px] text-slate-400 whitespace-pre-line leading-tight mt-1">{step.sub}</div>
                    </div>
                  ))}
@@ -124,7 +124,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
                 </div>
                 <div className="flex flex-col gap-2 text-[10px] flex-grow pl-6">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-green-500"></div> Completed</span> <span>72%</span></div>
-                   <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-blue-500"></div> In Progress</span> <span>18%</span></div>
+                   <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#EB3158]"></div> In Progress</span> <span>18%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-slate-700"></div> Not Started</span> <span>10%</span></div>
                 </div>
               </div>
@@ -134,14 +134,14 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Skill Progress</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2 text-[10px]">
                  {[
-                   { n: "Leadership", pct: "85%", color: "bg-blue-500" },
+                   { n: "Leadership", pct: "85%", color: "bg-[#EB3158]" },
                    { n: "Communication", pct: "78%", color: "bg-green-500" },
                    { n: "Project Mgmt.", pct: "72%", color: "bg-teal-500" },
-                   { n: "Data Analysis", pct: "68%", color: "bg-blue-600" },
+                   { n: "Data Analysis", pct: "68%", color: "bg-[#EB3158]" },
                    { n: "Compliance", pct: "90%", color: "bg-purple-500" },
                    { n: "Digital Skills", pct: "63%", color: "bg-indigo-500" },
                  ].map((skill, i) => (
@@ -164,11 +164,11 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Top Courses</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2.5 text-[10px]">
                  {[
-                   { n: "Leadership Essentials", pct: "92%", color: "bg-blue-500" },
+                   { n: "Leadership Essentials", pct: "92%", color: "bg-[#EB3158]" },
                    { n: "Project Management Fundamentals", pct: "75%", color: "bg-green-500" },
                    { n: "Cybersecurity Awareness", pct: "68%", color: "bg-purple-500" },
                    { n: "Effective Communication", pct: "64%", color: "bg-orange-500" },
@@ -208,10 +208,10 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
                    <div className="text-slate-400">May 16</div>
                    <div className="font-bold text-slate-200">Score: 88%</div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-slate-500 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
                   <span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span>
                 </div>
-                <div className="absolute bottom-4 left-6 right-0 flex justify-between text-[7px] text-slate-500">
+                <div className="absolute bottom-4 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
                   <span>May 1</span><span>May 8</span><span>May 16</span><span>May 23</span><span>May 30</span>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Compliance Training Status</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex items-center justify-between mt-2">
                 <div className="relative w-20 h-20">
@@ -267,21 +267,21 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Certificates Earned</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex-grow flex flex-col justify-center">
                  <div className="bg-gradient-to-br from-[#0d162f] to-[#0a1125] border border-yellow-500/30 rounded-xl p-3 flex items-center gap-3 relative shadow-[0_5px_15px_rgba(0,0,0,0.5)] cursor-pointer hover:border-yellow-500/50 transition">
                     <div className="w-14 h-10 bg-[#e2e8f0] rounded border-2 border-yellow-500 flex flex-col items-center justify-center p-1 relative overflow-hidden">
-                       <div className="text-[4px] font-bold text-slate-800 tracking-widest border-b border-slate-300 pb-0.5 mb-0.5 w-full text-center">CERTIFICATE</div>
+                       <div className="text-[4px] font-bold text-[#15172B] tracking-widest border-b border-slate-300 pb-0.5 mb-0.5 w-full text-center">CERTIFICATE</div>
                        <div className="w-3 h-3 rounded-full bg-yellow-500 absolute bottom-1 right-1 flex items-center justify-center border border-yellow-600 shadow-sm"><span className="text-[4px] text-white">★</span></div>
                        <div className="w-8 h-[1px] bg-slate-400 absolute bottom-2 left-1"></div>
                        <div className="w-6 h-[1px] bg-slate-400 absolute bottom-1 left-1"></div>
                     </div>
                     <div className="flex flex-col">
                        <span className="text-[10px] font-bold text-slate-200 leading-tight pr-4">Project Management Professional (PMP)</span>
-                       <span className="text-[8px] text-slate-500 mt-1">May 18, 2025</span>
+                       <span className="text-[8px] text-[#15172B]/60 mt-1">May 18, 2025</span>
                     </div>
-                    <ChevronRight size={14} className="text-slate-500 absolute right-2 top-1/2 -translate-y-1/2" />
+                    <ChevronRight size={14} className="text-[#15172B]/60 absolute right-2 top-1/2 -translate-y-1/2" />
                  </div>
                  <div className="text-center mt-3">
                     <span className="text-[10px] text-slate-400">You have earned <span className="font-bold text-yellow-400">12</span> certificates</span>
@@ -311,13 +311,13 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
                              <PlayCircle size={16} className="text-white opacity-80" />
                           </div>
                           <div className="absolute bottom-0 left-0 right-0 h-1 bg-slate-800">
-                             <div className="h-full bg-blue-500" style={{width: `${c.pct}%`}}></div>
+                             <div className="h-full bg-[#EB3158]" style={{width: `${c.pct}%`}}></div>
                           </div>
                        </div>
                        <div className="flex justify-between items-start">
                           <div className="flex flex-col">
                              <span className="text-[10px] font-semibold text-slate-200 leading-tight line-clamp-1">{c.n}</span>
-                             <span className="text-[8px] text-slate-500">{c.sub}</span>
+                             <span className="text-[8px] text-[#15172B]/60">{c.sub}</span>
                           </div>
                           <span className="text-[8px] font-bold text-slate-300">{c.pct}%</span>
                        </div>
@@ -330,11 +330,11 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
            <div className="lg:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Upcoming Sessions</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2">
                  {[
-                   { n: "Live Class: Agile Methodologies", d: "May 24, 2025 | 10:00 AM", icon: <Video size={14}/>, c: "text-blue-400 bg-blue-500/10" },
+                   { n: "Live Class: Agile Methodologies", d: "May 24, 2025 | 10:00 AM", icon: <Video size={14}/>, c: "text-[#EB3158] bg-[#EB3158]/10" },
                    { n: "Webinar: Cybersecurity Best Practices", d: "May 27, 2025 | 02:00 PM", icon: <ShieldAlert size={14}/>, c: "text-purple-400 bg-purple-500/10" },
                    { n: "Workshop: Data Visualization with Power BI", d: "May 29, 2025 | 11:00 AM", icon: <BarChart3 size={14}/>, c: "text-green-400 bg-green-500/10" },
                  ].map((sess, i) => (
@@ -343,10 +343,10 @@ export default function LMSMockup({ solution }: { solution: { id: string, title:
                           <div className={`p-2 rounded-lg ${sess.c}`}>{sess.icon}</div>
                           <div className="flex flex-col">
                              <span className="text-[10px] font-semibold text-slate-200 leading-tight w-40 truncate">{sess.n}</span>
-                             <span className="text-[8px] text-slate-500">{sess.d}</span>
+                             <span className="text-[8px] text-[#15172B]/60">{sess.d}</span>
                           </div>
                        </div>
-                       <button className="bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white px-3 py-1 rounded border border-blue-500/30 transition text-[9px] font-bold">
+                       <button className="bg-[#EB3158]/20 hover:bg-[#EB3158] text-[#EB3158] hover:text-white px-3 py-1 rounded border border-blue-500/30 transition text-[9px] font-bold">
                           Join
                        </button>
                     </div>

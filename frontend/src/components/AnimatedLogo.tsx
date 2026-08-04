@@ -5,7 +5,7 @@ export default function AnimatedLogo({ className = "w-10 h-10" }: { className?: 
   return (
     <div className={`relative flex items-center justify-center ${className} group`}>
       {/* Background ambient glow */}
-      <div className="absolute inset-0 bg-blue-500 rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+      <div className="absolute inset-0 bg-[#EB3158] rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
       
       <motion.svg 
         viewBox="0 0 100 100" 

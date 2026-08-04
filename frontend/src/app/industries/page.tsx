@@ -1,12 +1,10 @@
-import Header from "@/components/Header";
 import Industries from "@/components/Industries";
 import ChatWidget from "@/components/ChatWidget";
 
 export default function IndustriesPage() {
   return (
     <main className="min-h-screen relative flex flex-col pt-20">
-      <Header />
-      <div className="flex-grow">
+            <div className="flex-grow">
         <Industries />
       </div>
       <ChatWidget />

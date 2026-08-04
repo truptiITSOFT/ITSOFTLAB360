@@ -2,7 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
 require('dotenv').config();
+
+const JWT_SECRET = process.env.JWT_SECRET || 'itsoftlab360_secret_key_123';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -48,6 +53,28 @@ const db = new sqlite3.Database(dbPath, (err) => {
       phone TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
+
+    // Create users table for auth
+    db.run(`CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT UNIQUE NOT NULL,
+      password_hash TEXT NOT NULL,
+      reset_token TEXT,
+      reset_token_expiry DATETIME,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )`, (err) => {
+      if (!err) {
+        // Seed default admin
+        db.get(`SELECT * FROM users WHERE email = ?`, ['admin@itsoftlab360.com'], async (err, row) => {
+          if (!err && !row) {
+            const salt = await bcrypt.genSalt(10);
+            const hash = await bcrypt.hash('password123', salt);
+            db.run(`INSERT INTO users (email, password_hash) VALUES (?, ?)`, ['admin@itsoftlab360.com', hash]);
+            console.log('Default admin user seeded: admin@itsoftlab360.com / password123');
+          }
+        });
+      }
+    });
   }
 });
 
@@ -132,6 +159,72 @@ app.post('/api/demo', (req, res) => {
       return res.status(500).json({ error: 'Failed to save demo request.' });
     }
     res.status(201).json({ success: true, id: this.lastID, message: 'Demo request received!' });
+  });
+});
+
+// --- AUTHENTICATION ROUTES ---
+
+// Login
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) return res.status(400).json({ error: 'Email and password are required' });
+
+  db.get(`SELECT * FROM users WHERE email = ?`, [email.toLowerCase()], async (err, user) => {
+    if (err) return res.status(500).json({ error: 'Database error' });
+    if (!user) return res.status(401).json({ error: 'Invalid email or password' });
+
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+    if (!isMatch) return res.status(401).json({ error: 'Invalid email or password' });
+
+    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+    res.json({ success: true, token, email: user.email });
+  });
+});
+
+// Forgot Password
+app.post('/api/auth/forgot-password', (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ error: 'Email is required' });
+
+  db.get(`SELECT * FROM users WHERE email = ?`, [email.toLowerCase()], (err, user) => {
+    if (err) return res.status(500).json({ error: 'Database error' });
+    if (!user) {
+      // Simulate success even if email not found for security
+      return res.json({ success: true, message: 'If the email exists, a reset link has been sent.' });
+    }
+
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const expiry = new Date(Date.now() + 3600000).toISOString(); // 1 hour from now
+
+    db.run(`UPDATE users SET reset_token = ?, reset_token_expiry = ? WHERE id = ?`, [resetToken, expiry, user.id], (err) => {
+      if (err) return res.status(500).json({ error: 'Failed to generate reset token' });
+      
+      // In a real app, send email here. For now, return token in response for simulation.
+      res.json({ 
+        success: true, 
+        message: 'Reset token generated (simulation).',
+        _simulatedToken: resetToken // Only doing this so the user can test the flow!
+      });
+    });
+  });
+});
+
+// Reset Password
+app.post('/api/auth/reset-password', (req, res) => {
+  const { token, newPassword } = req.body;
+  if (!token || !newPassword) return res.status(400).json({ error: 'Token and new password are required' });
+
+  db.get(`SELECT * FROM users WHERE reset_token = ? AND reset_token_expiry > ?`, [token, new Date().toISOString()], async (err, user) => {
+    if (err) return res.status(500).json({ error: 'Database error' });
+    if (!user) return res.status(400).json({ error: 'Invalid or expired reset token' });
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(newPassword, salt);
+
+    db.run(`UPDATE users SET password_hash = ?, reset_token = NULL, reset_token_expiry = NULL WHERE id = ?`, [hash, user.id], (err) => {
+      if (err) return res.status(500).json({ error: 'Failed to reset password' });
+      res.json({ success: true, message: 'Password reset successful' });
+    });
   });
 });
 
