@@ -1,5 +1,6 @@
-import DarkModeHome from "./DarkModeHome";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  return <DarkModeHome />;
+  const router = useRouter();
+  return router.push("/home")
 }
