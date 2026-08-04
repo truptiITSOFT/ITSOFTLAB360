@@ -130,15 +130,15 @@ const products = [
   },
   { 
     id: "07", name: "Supply Chain & Logistics", desc: "Track inventory, warehouses, shipments, and logistics operations.", 
-    color: "bg-blue-500",
+    color: "bg-[#EB3158]",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
          <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/50 rounded-full shadow-inner border border-blue-200 dark:border-blue-800 flex items-center justify-center z-10 relative overflow-hidden">
             <div className="absolute w-20 h-20 border border-blue-300 dark:border-blue-700 rounded-full transform rotate-45 scale-y-50"></div>
             <div className="absolute w-20 h-20 border border-blue-300 dark:border-blue-700 rounded-full transform -rotate-45 scale-y-50"></div>
-            <div className="w-4 h-4 bg-blue-500 rounded-full z-20 absolute top-2 right-3 flex items-center justify-center shadow-lg"><div className="w-1.5 h-1.5 bg-white rounded-full"></div></div>
+            <div className="w-4 h-4 bg-[#EB3158] rounded-full z-20 absolute top-2 right-3 flex items-center justify-center shadow-lg"><div className="w-1.5 h-1.5 bg-white rounded-full"></div></div>
          </div>
-         <div className="absolute bottom-2 -right-3 w-12 h-8 bg-blue-600 rounded shadow-lg border border-white/20 flex flex-col z-20 rounded-tr-lg">
+         <div className="absolute bottom-2 -right-3 w-12 h-8 bg-[#EB3158] rounded shadow-lg border border-white/20 flex flex-col z-20 rounded-tr-lg">
             <div className="h-2 w-full bg-blue-700 rounded-t"></div>
             <div className="absolute -bottom-1.5 left-1 w-3 h-3 bg-slate-800 rounded-full border border-white"></div>
             <div className="absolute -bottom-1.5 right-1 w-3 h-3 bg-slate-800 rounded-full border border-white"></div>
@@ -211,21 +211,21 @@ const products = [
   },
   { 
     id: "11", name: "Queue Management System", desc: "Manage audits, compliance, quality control, and inspections.", 
-    color: "bg-blue-600",
+    color: "bg-[#EB3158]",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
          <div className="absolute top-0 w-10 h-12 bg-white dark:bg-slate-800 rounded shadow-lg border border-blue-100 dark:border-blue-900 flex flex-col items-center z-0 pt-2">
-            <div className="w-6 h-4 bg-blue-600 rounded-sm text-[6px] font-bold text-white flex flex-col items-center justify-center leading-none">
+            <div className="w-6 h-4 bg-[#EB3158] rounded-sm text-[6px] font-bold text-white flex flex-col items-center justify-center leading-none">
                <span>A</span><span>001</span>
             </div>
             <div className="w-4 h-0.5 bg-slate-300 mt-2"></div>
             <div className="w-6 h-0.5 bg-slate-300 mt-1"></div>
          </div>
          <div className="flex gap-1 absolute bottom-0 z-10">
-            <div className="w-5 h-6 bg-blue-500 rounded-t-md relative flex justify-center">
+            <div className="w-5 h-6 bg-[#EB3158] rounded-t-md relative flex justify-center">
                <div className="w-3 h-3 bg-orange-200 rounded-full absolute -top-2 border border-white"></div>
             </div>
-            <div className="w-5 h-6 bg-blue-600 rounded-t-md relative flex justify-center transform scale-110 z-20 -translate-y-1">
+            <div className="w-5 h-6 bg-[#EB3158] rounded-t-md relative flex justify-center transform scale-110 z-20 -translate-y-1">
                <div className="w-3.5 h-3.5 bg-orange-300 rounded-full absolute -top-2.5 border border-white"></div>
             </div>
             <div className="w-5 h-6 bg-blue-400 rounded-t-md relative flex justify-center">
@@ -259,7 +259,7 @@ const products = [
 
 const features = [
   { name: "Secure", desc: "Enterprise-grade security", icon: ShieldCheck, color: "text-indigo-500", bgColor: "bg-indigo-50 dark:bg-indigo-500/10" },
-  { name: "Cloud Based", desc: "Access anytime, anywhere", icon: Cloud, color: "text-blue-500", bgColor: "bg-blue-50 dark:bg-blue-500/10" },
+  { name: "Cloud Based", desc: "Access anytime, anywhere", icon: Cloud, color: "text-[#EB3158]", bgColor: "bg-blue-50 dark:bg-blue-500/10" },
   { name: "Responsive", desc: "Works on desktop, tablet & mobile", icon: Smartphone, color: "text-emerald-500", bgColor: "bg-emerald-50 dark:bg-emerald-500/10" },
   { name: "Scalable", desc: "Built to grow with your business", icon: PieChart, color: "text-amber-500", bgColor: "bg-amber-50 dark:bg-amber-500/10" },
   { name: "Support", desc: "Dedicated support when you need it", icon: Headphones, color: "text-pink-500", bgColor: "bg-pink-50 dark:bg-pink-500/10" },
@@ -284,7 +284,7 @@ export default function Products() {
             <div className="flex items-center justify-center gap-3">
               <div className="h-[1px] w-8 sm:w-16 bg-blue-200 dark:bg-blue-800"></div>
               <div className="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-blue-600"></div>
-              <p className="text-slate-500 dark:text-slate-400 font-semibold tracking-wide text-sm sm:text-base uppercase">
+              <p className="text-[#15172B]/60 dark:text-slate-400 font-semibold tracking-wide text-sm sm:text-base uppercase">
                 One Suite. Endless Possibilities.
               </p>
               <div className="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-blue-600"></div>
@@ -318,11 +318,11 @@ export default function Products() {
                  {product.graphic}
               </div>
               
-              <h4 className="font-bold text-slate-800 dark:text-slate-100 text-lg mb-2 leading-tight transition-colors z-10 relative">
+              <h4 className="font-bold text-[#15172B] dark:text-slate-100 text-lg mb-2 leading-tight transition-colors z-10 relative">
                 {product.name}
               </h4>
               
-              <p className="text-slate-500 dark:text-slate-400 text-[13px] leading-relaxed transition-colors z-10 relative">
+              <p className="text-[#15172B]/60 dark:text-slate-400 text-[13px] leading-relaxed transition-colors z-10 relative">
                 {product.desc}
               </p>
             </motion.div>
@@ -335,7 +335,7 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-slate-200 dark:border-white/10 flex flex-wrap justify-center gap-6 md:gap-10 lg:gap-14 transition-colors"
+          className="mt-16 pt-8 border-t border-[#111A4A]/10 dark:border-white/10 flex flex-wrap justify-center gap-6 md:gap-10 lg:gap-14 transition-colors"
         >
           {features.map((feature, idx) => (
             <div key={idx} className="flex items-center gap-3 min-w-[180px] group cursor-default">
@@ -343,10 +343,10 @@ export default function Products() {
                 <feature.icon className={`w-4 h-4 ${feature.color}`} strokeWidth={2.5} />
               </div>
               <div className="text-left">
-                <h5 className="font-bold text-slate-800 dark:text-slate-200 text-sm leading-tight transition-colors">
+                <h5 className="font-bold text-[#15172B] dark:text-slate-200 text-sm leading-tight transition-colors">
                   {feature.name}
                 </h5>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 transition-colors">
+                <p className="text-[11px] text-[#15172B]/60 dark:text-slate-400 transition-colors">
                   {feature.desc}
                 </p>
               </div>

@@ -52,17 +52,17 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-blue-600 dark:text-blue-500 font-semibold tracking-wider text-sm uppercase mb-4 transition-colors">Get In Touch</h2>
-            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors">
-              Let's Discuss Your <span className="text-blue-600 dark:text-blue-500 text-glow">Next Project</span>
+            <h2 className="text-[#EB3158] dark:text-blue-500 font-semibold tracking-wider text-sm uppercase mb-4 transition-colors">Get In Touch</h2>
+            <h3 className="text-4xl md:text-5xl font-bold mb-6 text-[#111A4A] dark:text-white transition-colors">
+              Let's Discuss Your <span className="text-[#EB3158] dark:text-blue-500 text-glow">Next Project</span>
             </h3>
-            <p className="text-slate-600 dark:text-gray-400 max-w-2xl mx-auto text-lg transition-colors">
+            <p className="text-[#15172B]/80 dark:text-gray-400 max-w-2xl mx-auto text-lg transition-colors">
               Whether you need a custom enterprise solution or want to learn more about our products, our experts are here to help.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12 bg-white/80 dark:bg-[#0f172a]/40 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-none p-4 md:p-8 backdrop-blur-sm transition-colors">
+        <div className="grid lg:grid-cols-5 gap-12 bg-white/80 dark:bg-[#0f172a]/40 rounded-3xl border border-[#111A4A]/10 dark:border-gray-800 shadow-sm dark:shadow-none p-4 md:p-8 backdrop-blur-sm transition-colors">
           
           {/* Contact Info (Left Side - spans 2 cols) */}
           <motion.div
@@ -75,38 +75,38 @@ export default function Contact() {
              {/* Decorative glow */}
              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/30 blur-[80px] rounded-full"></div>
              
-             <h4 className="text-2xl font-bold text-slate-800 dark:text-white mb-8 transition-colors">Contact Information</h4>
+             <h4 className="text-2xl font-bold text-[#15172B] dark:text-white mb-8 transition-colors">Contact Information</h4>
              
              <div className="space-y-8 relative z-10">
                <div className="flex items-start gap-4">
-                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 transition-colors">
+                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-[#EB3158] dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 transition-colors">
                    <Mail size={20} />
                  </div>
                  <div>
-                   <h5 className="text-sm text-slate-500 dark:text-gray-400 mb-1 transition-colors">Email Us</h5>
-                   <p className="text-slate-800 dark:text-white font-medium transition-colors">contact@itsoftlab.com</p>
-                   <p className="text-slate-800 dark:text-white font-medium transition-colors">support@itsoftlab.com</p>
+                   <h5 className="text-sm text-[#15172B]/60 dark:text-gray-400 mb-1 transition-colors">Email Us</h5>
+                   <p className="text-[#15172B] dark:text-white font-medium transition-colors">contact@itsoftlab.com</p>
+                   <p className="text-[#15172B] dark:text-white font-medium transition-colors">support@itsoftlab.com</p>
                  </div>
                </div>
 
                <div className="flex items-start gap-4">
-                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 transition-colors">
+                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-[#EB3158] dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 transition-colors">
                    <Phone size={20} />
                  </div>
                  <div>
-                   <h5 className="text-sm text-slate-500 dark:text-gray-400 mb-1 transition-colors">Call Us</h5>
-                   <p className="text-slate-800 dark:text-white font-medium transition-colors">+1 (555) 123-4567</p>
-                   <p className="text-slate-800 dark:text-white font-medium transition-colors">+1 (555) 987-6543</p>
+                   <h5 className="text-sm text-[#15172B]/60 dark:text-gray-400 mb-1 transition-colors">Call Us</h5>
+                   <p className="text-[#15172B] dark:text-white font-medium transition-colors">+1 (555) 123-4567</p>
+                   <p className="text-[#15172B] dark:text-white font-medium transition-colors">+1 (555) 987-6543</p>
                  </div>
                </div>
 
                <div className="flex items-start gap-4">
-                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 transition-colors">
+                 <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-600/20 text-[#EB3158] dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-200 dark:border-blue-500/30 transition-colors">
                    <MapPin size={20} />
                  </div>
                  <div>
-                   <h5 className="text-sm text-slate-500 dark:text-gray-400 mb-1 transition-colors">Visit Us</h5>
-                   <p className="text-slate-800 dark:text-white font-medium leading-relaxed transition-colors">
+                   <h5 className="text-sm text-[#15172B]/60 dark:text-gray-400 mb-1 transition-colors">Visit Us</h5>
+                   <p className="text-[#15172B] dark:text-white font-medium leading-relaxed transition-colors">
                      123 Innovation Drive,<br />
                      Tech District, Silicon Valley,<br />
                      CA 94043, USA
@@ -133,7 +133,7 @@ export default function Contact() {
                  <p className="text-gray-400 mb-6">We've received your message and will get back to you shortly.</p>
                  <button 
                    onClick={() => setIsSubmitted(false)}
-                   className="text-blue-400 hover:text-blue-300 font-medium"
+                   className="text-[#EB3158] hover:text-blue-300 font-medium"
                  >
                    Send another message
                  </button>
@@ -148,34 +148,34 @@ export default function Contact() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-2 transition-colors">First Name</label>
-                    <input required name="firstName" type="text" placeholder="John" className="w-full bg-gray-50 dark:bg-[#020617] border border-gray-200 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-500 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none transition-colors" />
+                    <label className="block text-sm font-medium text-[#15172B]/80 dark:text-gray-400 mb-2 transition-colors">First Name</label>
+                    <input required name="firstName" type="text" placeholder="John" className="w-full bg-gray-50 dark:bg-[#020617] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-xl px-4 py-3 text-[#111A4A] dark:text-white outline-none transition-colors" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-2 transition-colors">Last Name</label>
-                    <input required name="lastName" type="text" placeholder="Doe" className="w-full bg-gray-50 dark:bg-[#020617] border border-gray-200 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-500 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none transition-colors" />
+                    <label className="block text-sm font-medium text-[#15172B]/80 dark:text-gray-400 mb-2 transition-colors">Last Name</label>
+                    <input required name="lastName" type="text" placeholder="Doe" className="w-full bg-gray-50 dark:bg-[#020617] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-xl px-4 py-3 text-[#111A4A] dark:text-white outline-none transition-colors" />
                   </div>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-2 transition-colors">Email Address</label>
-                  <input required name="email" type="email" placeholder="john@company.com" className="w-full bg-gray-50 dark:bg-[#020617] border border-gray-200 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-500 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none transition-colors" />
+                  <label className="block text-sm font-medium text-[#15172B]/80 dark:text-gray-400 mb-2 transition-colors">Email Address</label>
+                  <input required name="email" type="email" placeholder="john@company.com" className="w-full bg-gray-50 dark:bg-[#020617] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-xl px-4 py-3 text-[#111A4A] dark:text-white outline-none transition-colors" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-2 transition-colors">Subject</label>
-                  <input name="subject" type="text" placeholder="How can we help you?" className="w-full bg-gray-50 dark:bg-[#020617] border border-gray-200 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-500 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none transition-colors" />
+                  <label className="block text-sm font-medium text-[#15172B]/80 dark:text-gray-400 mb-2 transition-colors">Subject</label>
+                  <input name="subject" type="text" placeholder="How can we help you?" className="w-full bg-gray-50 dark:bg-[#020617] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-xl px-4 py-3 text-[#111A4A] dark:text-white outline-none transition-colors" />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-600 dark:text-gray-400 mb-2 transition-colors">Message</label>
-                  <textarea required name="message" rows={4} placeholder="Tell us about your project..." className="w-full bg-gray-50 dark:bg-[#020617] border border-gray-200 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-500 rounded-xl px-4 py-3 text-slate-900 dark:text-white outline-none transition-colors resize-none"></textarea>
+                  <label className="block text-sm font-medium text-[#15172B]/80 dark:text-gray-400 mb-2 transition-colors">Message</label>
+                  <textarea required name="message" rows={4} placeholder="Tell us about your project..." className="w-full bg-gray-50 dark:bg-[#020617] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-xl px-4 py-3 text-[#111A4A] dark:text-white outline-none transition-colors resize-none"></textarea>
                 </div>
 
                 <button 
                   type="submit" 
                   disabled={isLoading}
-                  className={`w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  className={`w-full flex items-center justify-center gap-2 bg-[#EB3158] hover:bg-[#EB3158] text-white px-8 py-4 rounded-xl font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
                   {isLoading ? (
                     <span className="flex items-center gap-2">Sending <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div></span>

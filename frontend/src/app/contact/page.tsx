@@ -1,12 +1,10 @@
-import Header from "@/components/Header";
 import Contact from "@/components/Contact";
 import ChatWidget from "@/components/ChatWidget";
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen relative flex flex-col pt-20">
-      <Header />
-      <div className="flex-grow">
+            <div className="flex-grow">
         <Contact />
       </div>
       <ChatWidget />

@@ -23,7 +23,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
         <div className="flex flex-col gap-3 z-10">
            {[
              { title: "Vendor Onboarding", desc: "Easy registration and verification process.", icon: <UserPlus size={16}/>, color: "text-purple-500", bg: "bg-purple-500/20" },
-             { title: "Procurement Control", desc: "Create POs, track orders & manage deliveries.", icon: <ShoppingCart size={16}/>, color: "text-blue-500", bg: "bg-blue-500/20" },
+             { title: "Procurement Control", desc: "Create POs, track orders & manage deliveries.", icon: <ShoppingCart size={16}/>, color: "text-[#EB3158]", bg: "bg-blue-500/20" },
              { title: "Contract Management", desc: "Manage contracts, terms, renewals & compliance.", icon: <FileText size={16}/>, color: "text-green-500", bg: "bg-green-500/20" },
              { title: "Payment Automation", desc: "Process payments and track vendor dues.", icon: <CreditCard size={16}/>, color: "text-yellow-500", bg: "bg-yellow-500/20" },
              { title: "Performance Insights", desc: "Evaluate vendor performance with real-time analytics.", icon: <BarChart3 size={16}/>, color: "text-orange-500", bg: "bg-orange-500/20" },
@@ -32,7 +32,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200 leading-tight">{item.title}</div>
-                 <div className="text-[9px] text-slate-500 mt-0.5">{item.desc}</div>
+                 <div className="text-[9px] text-[#15172B]/60 mt-0.5">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -43,7 +43,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
            {/* Glow */}
            <div className="absolute w-32 h-32 bg-teal-500/20 rounded-full blur-2xl bottom-[-20px]"></div>
            <div className="relative bg-[#0d162f] p-3 rounded-xl border border-teal-500/50 flex items-center justify-center">
-              <div className="w-16 h-12 bg-blue-600 rounded-md border border-blue-400 flex items-center justify-center relative shadow-[0_5px_15px_rgba(37,99,235,0.5)] z-20">
+              <div className="w-16 h-12 bg-[#EB3158] rounded-md border border-blue-400 flex items-center justify-center relative shadow-[0_5px_15px_rgba(37,99,235,0.5)] z-20">
                 <Truck size={24} className="text-white" />
                 <div className="absolute bottom-[-6px] left-2 w-4 h-4 bg-slate-800 rounded-full border border-slate-600"></div>
                 <div className="absolute bottom-[-6px] right-2 w-4 h-4 bg-slate-800 rounded-full border border-slate-600"></div>
@@ -76,10 +76,10 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-red-500"></span>
              </button>
              <div className="flex items-center gap-2 pl-2">
-               <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold shadow-md">RV</div>
+               <div className="w-8 h-8 rounded-full bg-[#EB3158] flex items-center justify-center text-xs font-bold shadow-md">RV</div>
                <div className="text-left text-[10px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Rohit Verma</div>
-                 <div className="text-slate-500">Procurement Manager</div>
+                 <div className="text-[#15172B]/60">Procurement Manager</div>
                </div>
              </div>
            </div>
@@ -88,7 +88,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
         {/* Top KPIs Row */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
           {[
-            { label: "Total Vendors", val: "1,248", trend: "+12.4%", up: true, icon: <Users size={16}/>, color: "text-blue-400", bg: "bg-blue-500/10" },
+            { label: "Total Vendors", val: "1,248", trend: "+12.4%", up: true, icon: <Users size={16}/>, color: "text-[#EB3158]", bg: "bg-[#EB3158]/10" },
             { label: "Active Vendors", val: "980", trend: "+10.7%", up: true, icon: <UserPlus size={16}/>, color: "text-green-400", bg: "bg-green-500/10" },
             { label: "Total POs", val: "2,356", trend: "+15.3%", up: true, icon: <ShoppingCart size={16}/>, color: "text-yellow-400", bg: "bg-yellow-500/10" },
             { label: "PO Value", val: "$2,85,430", trend: "+14.6%", up: true, icon: <DollarSign size={16}/>, color: "text-purple-400", bg: "bg-purple-500/10" },
@@ -104,7 +104,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                </div>
                <div className="text-lg font-bold">{kpi.val}</div>
                <div className={`text-[9px] mt-1 font-medium flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
-                  {kpi.up ? <TrendingUp size={10}/> : <TrendingDown size={10}/>} {kpi.trend} <span className="text-slate-500 font-normal">vs Apr 2025</span>
+                  {kpi.up ? <TrendingUp size={10}/> : <TrendingDown size={10}/>} {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
           ))}
@@ -121,7 +121,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                  <div className="absolute top-1/2 left-12 right-12 h-0 border-b-2 border-dashed border-slate-700 -translate-y-1/2 z-0"></div>
 
                  {[
-                   { n: "Requisition", val: "245", desc: "Requests", icon: <ClipboardList size={20}/>, c: "text-blue-400", b: "border-blue-500", bg: "bg-[#0d162f]" },
+                   { n: "Requisition", val: "245", desc: "Requests", icon: <ClipboardList size={20}/>, c: "text-[#EB3158]", b: "border-[#EB3158]/50", bg: "bg-[#0d162f]" },
                    { n: "PO Created", val: "198", desc: "Orders", icon: <ShoppingCart size={20}/>, c: "text-teal-400", b: "border-teal-500", bg: "bg-[#0d162f]" },
                    { n: "In Transit", val: "156", desc: "Orders", icon: <Truck size={20}/>, c: "text-purple-400", b: "border-purple-500", bg: "bg-[#0d162f]" },
                    { n: "Delivered", val: "134", desc: "Orders", icon: <PackageCheck size={20}/>, c: "text-indigo-400", b: "border-indigo-500", bg: "bg-[#0d162f]" },
@@ -133,7 +133,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                        </div>
                        <div className="text-[10px] text-slate-400 mb-0.5">{node.n}</div>
                        <div className="text-sm font-bold text-slate-200">{node.val}</div>
-                       <div className="text-[8px] text-slate-500">{node.desc}</div>
+                       <div className="text-[8px] text-[#15172B]/60">{node.desc}</div>
                     </div>
                  ))}
               </div>
@@ -158,10 +158,10 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                    <div className="font-bold text-slate-200">$2,85,430</div>
                    <div className="text-slate-400 text-[6px]">Total PO Value</div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-slate-500 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
                   <span>250k</span><span>200k</span><span>150k</span><span>100k</span><span>50k</span><span>0</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-slate-500">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
                   <span>May 01</span><span>May 08</span><span>May 15</span><span>May 22</span><span>May 29</span>
                 </div>
               </div>
@@ -174,11 +174,11 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Top Vendors</h3>
-                <span className="text-[8px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-1.5 text-[9px]">
                  {[
-                   { id: "1", n: "Tech Solutions Pvt. Ltd.", v: "$68,450", trend: "+16.3%", bg: "bg-blue-600" },
+                   { id: "1", n: "Tech Solutions Pvt. Ltd.", v: "$68,450", trend: "+16.3%", bg: "bg-[#EB3158]" },
                    { id: "2", n: "Global Industries", v: "$54,280", trend: "+12.7%", bg: "bg-purple-600" },
                    { id: "3", n: "Express Supplies Co.", v: "$42,750", trend: "+10.9%", bg: "bg-orange-500" },
                    { id: "4", n: "Prime Components", v: "$38,620", trend: "+8.2%", bg: "bg-green-500" },
@@ -244,11 +244,11 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                 <div className="flex flex-col gap-3 text-[9px] flex-grow pl-4">
                    <div>
                      <div className="flex items-center gap-1.5 mb-1 text-slate-300"><div className="w-2 h-2 rounded bg-green-500"></div> Paid</div>
-                     <div className="font-bold pl-3.5">$1,98,760 <span className="text-slate-500 font-normal">(69.6%)</span></div>
+                     <div className="font-bold pl-3.5">$1,98,760 <span className="text-[#15172B]/60 font-normal">(69.6%)</span></div>
                    </div>
                    <div>
                      <div className="flex items-center gap-1.5 mb-1 text-slate-300"><div className="w-2 h-2 rounded bg-red-500"></div> Pending</div>
-                     <div className="font-bold pl-3.5">$86,670 <span className="text-slate-500 font-normal">(30.4%)</span></div>
+                     <div className="font-bold pl-3.5">$86,670 <span className="text-[#15172B]/60 font-normal">(30.4%)</span></div>
                    </div>
                 </div>
               </div>
@@ -258,7 +258,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
         {/* Small Bottom Status Cards */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-auto">
            {[
-             { label: "Contracts", val: "342", sub: "Active Contracts", icon: <FileText size={18}/>, c: "text-blue-400 bg-blue-500/10" },
+             { label: "Contracts", val: "342", sub: "Active Contracts", icon: <FileText size={18}/>, c: "text-[#EB3158] bg-[#EB3158]/10" },
              { label: "Expiring Contracts", val: "28", sub: "Next 30 Days", icon: <Calendar size={18}/>, c: "text-orange-400 bg-orange-500/10" },
              { label: "Vendor Compliance", val: "92%", sub: "Compliant Vendors", icon: <Shield size={18}/>, c: "text-green-400 bg-green-500/10" },
              { label: "Avg. Lead Time", val: "8.6", sub: "Days", icon: <Clock size={18}/>, c: "text-indigo-400 bg-indigo-500/10" },
@@ -271,7 +271,7 @@ export default function VendorMockup({ solution }: { solution: { id: string, tit
                  <div className="flex flex-col">
                    <span className="text-[10px] text-slate-400 leading-tight">{card.label}</span>
                    <span className="text-sm font-bold text-slate-200 leading-tight">{card.val}</span>
-                   <span className="text-[8px] text-slate-500">{card.sub}</span>
+                   <span className="text-[8px] text-[#15172B]/60">{card.sub}</span>
                  </div>
               </div>
            ))}

@@ -34,7 +34,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
              { label: "Alerts", icon: <Bell size={12}/>, active: false },
              { label: "Settings", icon: <Settings size={12}/>, active: false },
            ].map((item, i) => (
-             <div key={i} className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors ${item.active ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>
+             <div key={i} className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer transition-colors ${item.active ? 'bg-[#EB3158] text-white' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}>
                {item.icon}
                <span className="font-medium">{item.label}</span>
              </div>
@@ -46,7 +46,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* Abstract Glow */}
            <div className="absolute w-32 h-32 bg-cyan-600/20 rounded-full blur-2xl bottom-[-20px]"></div>
            <div className="relative w-full h-full flex items-center justify-center z-20">
-              <div className="w-16 h-20 bg-blue-900 border border-blue-500 rounded flex flex-col p-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] relative overflow-hidden">
+              <div className="w-16 h-20 bg-blue-900 border border-[#EB3158]/50 rounded flex flex-col p-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] relative overflow-hidden">
                  <div className="absolute top-0 right-0 w-8 h-8 bg-blue-500/20 rounded-bl-full"></div>
                  <div className="w-full h-1 bg-blue-400/50 mb-2 mt-2"></div>
                  <div className="w-3/4 h-1 bg-blue-400/50 mb-1"></div>
@@ -89,7 +89,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                </div>
                <div className="text-left text-[10px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Admin User</div>
-                 <div className="text-slate-500">System Administrator</div>
+                 <div className="text-[#15172B]/60">System Administrator</div>
                </div>
              </div>
            </div>
@@ -98,11 +98,11 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
         {/* Top KPIs Row */}
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
           {[
-            { label: "Total Audits", val: "245", trend: "↑ 18.6%", c: "text-blue-400", icon: <ClipboardCheck size={16}/>, up: true },
+            { label: "Total Audits", val: "245", trend: "↑ 18.6%", c: "text-[#EB3158]", icon: <ClipboardCheck size={16}/>, up: true },
             { label: "Compliance Rate", val: "92.6%", trend: "↑ 8.8%", c: "text-green-400", icon: <ShieldCheck size={16}/>, up: true },
             { label: "Open Issues", val: "38", trend: "↓ 12.4%", c: "text-red-400", icon: <XCircle size={16}/>, up: false },
             { label: "Closed Issues", val: "207", trend: "↑ 24.7%", c: "text-green-400", icon: <CheckCircle2 size={16}/>, up: true },
-            { label: "CAPA Actions", val: "156", trend: "↑ 16.2%", c: "text-blue-400", icon: <FileSearch size={16}/>, up: true },
+            { label: "CAPA Actions", val: "156", trend: "↑ 16.2%", c: "text-[#EB3158]", icon: <FileSearch size={16}/>, up: true },
             { label: "Overdue Actions", val: "12", trend: "↓ 8.3%", c: "text-red-400", icon: <Clock size={16}/>, up: false },
           ].map((kpi, i) => (
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-xl p-3 flex flex-col justify-center">
@@ -112,7 +112,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                <div className="text-[9px] text-slate-400 mb-0.5">{kpi.label}</div>
                <div className="text-lg font-bold text-slate-200 leading-tight">{kpi.val}</div>
                <div className={`text-[8px] font-semibold mt-1 flex items-center gap-1 ${kpi.up ? 'text-green-400' : 'text-red-400'}`}>
-                  {kpi.trend} <span className="text-slate-500 font-normal">vs Apr 2025</span>
+                  {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
           ))}
@@ -165,10 +165,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                    <div className="font-bold text-slate-200">92.6%</div>
                    <div className="text-green-400 text-[6px]">↑ 8.8%</div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-slate-500 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
                   <span>100%</span><span>80%</span><span>60%</span><span>40%</span><span>20%</span><span>0%</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-slate-500">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
                   <span>May 01</span><span>May 06</span><span>May 11</span><span>May 16</span><span>May 21</span><span>May 26</span><span>May 31</span>
                 </div>
               </div>
@@ -212,7 +212,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               <div className="flex flex-col gap-2.5 text-[9px]">
                  {[
                    { n: "Production", pct: "95.6%", icon: <Package size={10}/>, color: "bg-green-500", txtColor: "text-green-400" },
-                   { n: "Quality Assurance", pct: "92.1%", icon: <ShieldCheck size={10}/>, color: "bg-blue-500", txtColor: "text-blue-400" },
+                   { n: "Quality Assurance", pct: "92.1%", icon: <ShieldCheck size={10}/>, color: "bg-[#EB3158]", txtColor: "text-[#EB3158]" },
                    { n: "Supply Chain", pct: "89.4%", icon: <Truck size={10}/>, color: "bg-yellow-500", txtColor: "text-yellow-400" },
                    { n: "HR & Training", pct: "88.0%", icon: <Users size={10}/>, color: "bg-orange-500", txtColor: "text-orange-400" },
                    { n: "Maintenance", pct: "84.3%", icon: <Wrench size={10}/>, color: "bg-red-500", txtColor: "text-red-400" },
@@ -260,7 +260,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-[11px] font-semibold">Issue Aging</h3>
-                <span className="text-[8px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex items-end justify-between px-2 h-24">
                  {[
@@ -313,7 +313,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex-grow flex flex-col">
                  <div className="flex justify-between items-center mb-2">
                    <h3 className="text-[10px] font-semibold">Upcoming Audits</h3>
-                   <span className="text-[8px] text-blue-400 cursor-pointer">View All</span>
+                   <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
                  </div>
                  <div className="flex flex-col gap-2 text-[8px]">
                     {[
@@ -323,10 +323,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                     ].map((audit, i) => (
                        <div key={i} className="flex justify-between items-center">
                           <div className="flex items-center gap-2">
-                             <div className="w-5 h-5 rounded bg-[#0d162f] flex items-center justify-center text-blue-400 border border-white/5"><Calendar size={10}/></div>
+                             <div className="w-5 h-5 rounded bg-[#0d162f] flex items-center justify-center text-[#EB3158] border border-white/5"><Calendar size={10}/></div>
                              <div className="flex flex-col">
                                 <span className="font-semibold text-slate-200">{audit.n}</span>
-                                <span className="text-[7px] text-slate-500">{audit.d}</span>
+                                <span className="text-[7px] text-[#15172B]/60">{audit.d}</span>
                              </div>
                           </div>
                           <span className={`${audit.c} font-medium`}>{audit.time}</span>
@@ -338,7 +338,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex-grow flex flex-col">
                  <div className="flex justify-between items-center mb-2">
                    <h3 className="text-[10px] font-semibold">Recent Alerts</h3>
-                   <span className="text-[8px] text-blue-400 cursor-pointer">View All</span>
+                   <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
                  </div>
                  <div className="flex flex-col gap-2 text-[8px]">
                     {[
@@ -350,7 +350,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                           <div className={`w-5 h-5 rounded bg-[#0d162f] flex items-center justify-center border border-white/5 ${alert.c}`}><AlertTriangle size={10}/></div>
                           <div className="flex flex-col">
                              <span className="font-semibold text-slate-200 truncate w-36">{alert.n}</span>
-                             <span className="text-[7px] text-slate-500">{alert.sub}</span>
+                             <span className="text-[7px] text-[#15172B]/60">{alert.sub}</span>
                           </div>
                        </div>
                     ))}
@@ -364,7 +364,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* Quality Control Overview */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col justify-center relative overflow-hidden">
               <div className="flex items-center gap-3 mb-2 relative z-10">
-                 <div className="p-1.5 rounded-lg bg-blue-600/20 text-blue-400"><CheckCircle2 size={14}/></div>
+                 <div className="p-1.5 rounded-lg bg-[#EB3158]/20 text-[#EB3158]"><CheckCircle2 size={14}/></div>
                  <h3 className="text-[11px] font-semibold">Quality Control Overview</h3>
               </div>
               <div className="flex justify-between text-[10px] relative z-10">
@@ -391,8 +391,8 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               </div>
               {/* Graphic element */}
               <div className="absolute right-0 top-0 bottom-0 w-32 opacity-20 pointer-events-none">
-                 <div className="w-32 h-32 absolute -right-10 -top-10 bg-blue-500 rounded-full blur-3xl"></div>
-                 <ShieldCheck size={100} className="text-blue-500 absolute -right-4 -bottom-4 transform rotate-12" strokeWidth={1} />
+                 <div className="w-32 h-32 absolute -right-10 -top-10 bg-[#EB3158] rounded-full blur-3xl"></div>
+                 <ShieldCheck size={100} className="text-[#EB3158] absolute -right-4 -bottom-4 transform rotate-12" strokeWidth={1} />
               </div>
            </div>
 
@@ -403,7 +403,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                     <div className="p-1.5 rounded-lg bg-indigo-600/20 text-indigo-400"><FolderOpen size={14}/></div>
                     <h3 className="text-[11px] font-semibold">Document Control</h3>
                  </div>
-                 <span className="text-[8px] text-blue-400 cursor-pointer">View All</span>
+                 <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex justify-between text-[10px]">
                  <div>
@@ -416,9 +416,9 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                     <div className="text-[8px] text-green-400 mt-1">81.5%</div>
                  </div>
                  <div>
-                    <div className="text-slate-400 mb-0.5 text-blue-400">Under Review</div>
+                    <div className="text-slate-400 mb-0.5 text-[#EB3158]">Under Review</div>
                     <div className="text-xl font-bold">156</div>
-                    <div className="text-[8px] text-blue-400 mt-1">12.4%</div>
+                    <div className="text-[8px] text-[#EB3158] mt-1">12.4%</div>
                  </div>
                  <div>
                     <div className="text-slate-400 mb-0.5 text-red-400">Expired</div>
@@ -432,7 +432,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
         {/* Bottom Action Cards */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-auto pb-1">
            {[
-             { label: "Schedule Audit", sub: "Plan a new audit", icon: <Calendar size={16}/>, c: "text-blue-400 bg-blue-500/10 border-blue-500/20" },
+             { label: "Schedule Audit", sub: "Plan a new audit", icon: <Calendar size={16}/>, c: "text-[#EB3158] bg-[#EB3158]/10 border-blue-500/20" },
              { label: "Report Issue", sub: "Log a new issue", icon: <AlertTriangle size={16}/>, c: "text-red-400 bg-red-500/10 border-red-500/20" },
              { label: "Create CAPA", sub: "Start corrective action", icon: <FileSearch size={16}/>, c: "text-indigo-400 bg-indigo-500/10 border-indigo-500/20" },
              { label: "Document Upload", sub: "Upload new document", icon: <Upload size={16}/>, c: "text-green-400 bg-green-500/10 border-green-500/20" },
@@ -445,10 +445,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                     </div>
                     <div className="flex flex-col">
                       <span className="text-[9px] font-bold text-slate-200 leading-tight">{card.label}</span>
-                      <span className="text-[7px] text-slate-500">{card.sub}</span>
+                      <span className="text-[7px] text-[#15172B]/60">{card.sub}</span>
                     </div>
                  </div>
-                 <div className="text-slate-600 group-hover:text-blue-400 transition">&gt;</div>
+                 <div className="text-[#15172B]/80 group-hover:text-[#EB3158] transition">&gt;</div>
               </div>
            ))}
         </div>

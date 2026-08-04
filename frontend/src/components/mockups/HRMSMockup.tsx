@@ -10,7 +10,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
       {/* Header */}
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-500 border border-blue-500/30">
+          <div className="w-14 h-14 rounded-2xl bg-blue-500/20 flex items-center justify-center text-[#EB3158] border border-blue-500/30">
             <Users size={28} />
           </div>
           <div>
@@ -25,7 +25,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
           <button className="w-8 h-8 rounded-lg bg-[#0f172a] flex items-center justify-center border border-white/10">
             <Calendar size={14} className="text-slate-300" />
           </button>
-          <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold border border-white/10">
+          <div className="w-8 h-8 rounded-full bg-[#EB3158] flex items-center justify-center text-xs font-bold border border-white/10">
             JD
           </div>
         </div>
@@ -34,7 +34,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
       {/* Top KPIs */}
       <div className="grid grid-cols-4 gap-4">
         {[
-          { label: "Total Employees", val: "1,248", trend: "+12.5%", up: true, icon: <Users size={16}/>, color: "text-blue-400" },
+          { label: "Total Employees", val: "1,248", trend: "+12.5%", up: true, icon: <Users size={16}/>, color: "text-[#EB3158]" },
           { label: "Present Today", val: "1,056", trend: "84.6%", up: true, icon: <UserCheck size={16}/>, color: "text-green-400" },
           { label: "Payroll Processed", val: "$583,420", trend: "+16.3%", up: true, icon: <DollarSign size={16}/>, color: "text-purple-400" },
           { label: "Leave Requests", val: "32", trend: "Pending", up: false, icon: <FileText size={16}/>, color: "text-orange-400" },
@@ -61,14 +61,14 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
         <div className="lg:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-sm font-semibold">Employee Directory</h3>
-            <span className="text-[10px] text-blue-400 cursor-pointer">View all employees</span>
+            <span className="text-[10px] text-[#EB3158] cursor-pointer">View all employees</span>
           </div>
           
           <div className="flex flex-col gap-3 flex-grow">
             {[
               { name: "Rohan Mehta", role: "Product Manager", status: "Active", bg: "bg-purple-500" },
               { name: "Neha Sharma", role: "HR Executive", status: "Active", bg: "bg-pink-500" },
-              { name: "Arjun Nair", role: "UI/UX Designer", status: "Active", bg: "bg-blue-500" },
+              { name: "Arjun Nair", role: "UI/UX Designer", status: "Active", bg: "bg-[#EB3158]" },
               { name: "Pooja Verma", role: "Marketing Specialist", status: "Active", bg: "bg-green-500" },
             ].map((emp, i) => (
               <div key={i} className="flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
@@ -88,7 +88,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             ))}
           </div>
 
-          <button className="w-full mt-4 py-2 flex items-center justify-center gap-2 text-xs text-blue-400 hover:bg-blue-500/10 rounded-lg transition border border-dashed border-blue-500/30">
+          <button className="w-full mt-4 py-2 flex items-center justify-center gap-2 text-xs text-[#EB3158] hover:bg-[#d6274d]/10 rounded-lg transition border border-dashed border-blue-500/30">
             <Plus size={14} /> Add New Employee
           </button>
         </div>
@@ -128,7 +128,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative overflow-hidden">
                {/* Decorative background element */}
                <div className="absolute right-[-20px] top-10 opacity-20">
-                 <DollarSign size={120} className="text-blue-500" />
+                 <DollarSign size={120} className="text-[#EB3158]" />
                </div>
                
                <div className="flex justify-between items-center mb-2 z-10">
@@ -140,13 +140,13 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                  <div className="text-[10px] text-slate-400 mb-1">Total Payroll</div>
                  <div className="flex items-end gap-2">
                    <div className="text-3xl font-bold">$583,420</div>
-                   <div className="text-[10px] text-green-500 mb-1 flex items-center">↑ 16.3% <span className="text-slate-500 ml-1">vs Apr 2025</span></div>
+                   <div className="text-[10px] text-green-500 mb-1 flex items-center">↑ 16.3% <span className="text-[#15172B]/60 ml-1">vs Apr 2025</span></div>
                  </div>
                </div>
                
                <div className="grid grid-cols-4 gap-2 mt-auto z-10 pt-4 border-t border-white/5">
                  {[
-                   { l: "Net Pay", v: "$456,230", c: "text-blue-400" },
+                   { l: "Net Pay", v: "$456,230", c: "text-[#EB3158]" },
                    { l: "Deductions", v: "$68,420", c: "text-red-400" },
                    { l: "Bonuses", v: "$32,770", c: "text-green-400" },
                    { l: "Taxes", v: "$26,000", c: "text-orange-400" },
@@ -166,7 +166,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xs font-semibold">Leave Requests</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View all</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View all</span>
               </div>
               <div className="flex flex-col gap-3">
                  {[
@@ -194,11 +194,11 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xs font-semibold">Leave Balance</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View all</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View all</span>
               </div>
               <div className="flex flex-col gap-4">
                  {[
-                   { l: "Annual Leave", v: 12, max: 20, c: "bg-blue-500" },
+                   { l: "Annual Leave", v: 12, max: 20, c: "bg-[#EB3158]" },
                    { l: "Sick Leave", v: 8, max: 12, c: "bg-green-500" },
                    { l: "Casual Leave", v: 6, max: 10, c: "bg-purple-500" },
                  ].map((lb, i) => (

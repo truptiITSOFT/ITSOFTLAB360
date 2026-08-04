@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 import { ThemeProvider } from "@/components/ThemeProvider";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "IT SOFTLAB 360",
@@ -32,6 +33,22 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {/* Abstract Background Elements (Light Mode Only) */}
+          <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10 dark:hidden">
+            {/* Large abstract coral semicircle */}
+            <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#EB3158]/5 blur-[120px]" />
+            
+            {/* Large yellow curved line ring */}
+            <div className="absolute top-[10%] right-[-5%] w-[800px] h-[800px] rounded-full border-[2px] border-[#F5C842]/20 blur-[2px]" />
+            
+            {/* Soft emerald rounded rectangle */}
+            <div className="absolute top-[30%] right-[10%] w-[600px] h-[500px] rounded-[100px] bg-[#20B486]/5 blur-[80px] rotate-12" />
+            
+            {/* Subtle grid texture */}
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />
+          </div>
+
+          <Header />
           {children}
         </ThemeProvider>
       </body>

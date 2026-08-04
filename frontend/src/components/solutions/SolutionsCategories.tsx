@@ -13,7 +13,7 @@ const categories = [
       {
         name: "CRM Solution",
         desc: "Build meaningful customer relationships with complete visibility into leads, opportunities, and customer interactions.",
-        icon: <Users2 size={24} className="text-blue-400" />,
+        icon: <Users2 size={24} className="text-[#EB3158]" />,
         bestFor: ["Sales Teams", "Marketing Teams", "Customer Success Teams"]
       },
       {
@@ -45,7 +45,7 @@ const categories = [
       {
         name: "Supply Chain & Logistics Solution",
         desc: "Optimize purchasing, warehouses, transportation, inventory, and delivery operations.",
-        icon: <Truck size={24} className="text-blue-400" />,
+        icon: <Truck size={24} className="text-[#EB3158]" />,
         bestFor: ["Manufacturing", "Distribution", "Logistics Companies"]
       },
       {
@@ -71,7 +71,7 @@ const categories = [
       {
         name: "HRMS Solution",
         desc: "Manage employees, payroll, attendance, recruitment, and performance from one platform.",
-        icon: <UserPlus size={24} className="text-blue-400" />,
+        icon: <UserPlus size={24} className="text-[#EB3158]" />,
         bestFor: ["All Organizations"]
       },
       {
@@ -129,10 +129,10 @@ export default function SolutionsCategories() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white transition-colors">
-              Solutions Built For <span className="text-blue-600 dark:text-blue-500 text-glow">Every Business Function</span>
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6 text-[#111A4A] dark:text-white transition-colors">
+              Solutions Built For <span className="text-[#EB3158] dark:text-blue-500 text-glow">Every Business Function</span>
             </h2>
-            <p className="text-slate-600 dark:text-gray-400 text-lg max-w-2xl mx-auto transition-colors">
+            <p className="text-[#15172B]/80 dark:text-gray-400 text-lg max-w-2xl mx-auto transition-colors">
               Power every department with integrated solutions that drive growth, efficiency, and operational excellence.
             </p>
           </motion.div>
@@ -149,11 +149,11 @@ export default function SolutionsCategories() {
               className="bg-white/90 dark:bg-[#0f172a]/60 backdrop-blur-xl border border-blue-200 dark:border-blue-500/10 rounded-3xl p-6 md:p-8 hover:border-blue-400 dark:hover:border-blue-500/30 transition-colors shadow-sm dark:shadow-[0_0_20px_rgba(0,0,0,0.3)]"
             >
               {/* Category Header */}
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8 border-b border-gray-200 dark:border-gray-800 pb-4 transition-colors">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8 border-b border-[#111A4A]/10 dark:border-gray-800 pb-4 transition-colors">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold shrink-0 shadow-[0_0_15px_rgba(59,130,246,0.5)] ${
-                  category.color === 'blue' ? 'bg-blue-600' :
+                  category.color === 'blue' ? 'bg-[#EB3158]' :
                   category.color === 'indigo' ? 'bg-indigo-600' :
-                  category.color === 'purple' ? 'bg-purple-600' : 'bg-blue-600'
+                  category.color === 'purple' ? 'bg-purple-600' : 'bg-[#EB3158]'
                 }`}>
                   {category.id}
                 </div>
@@ -163,7 +163,7 @@ export default function SolutionsCategories() {
                     category.color === 'indigo' ? 'text-indigo-700 dark:text-indigo-400' :
                     category.color === 'purple' ? 'text-purple-700 dark:text-purple-400' : 'text-blue-700 dark:text-blue-400'
                   }`}>{category.title}</h3>
-                  <p className="text-slate-500 dark:text-gray-400 text-sm transition-colors">{category.subtitle}</p>
+                  <p className="text-[#15172B]/60 dark:text-gray-400 text-sm transition-colors">{category.subtitle}</p>
                 </div>
               </div>
 
@@ -172,25 +172,25 @@ export default function SolutionsCategories() {
                 {category.solutions.map((solution, solIndex) => (
                   <div 
                     key={solIndex}
-                    className="bg-gray-50/80 dark:bg-[#020617]/50 rounded-2xl p-6 border border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-gray-600 transition-colors group relative overflow-hidden flex flex-col h-full"
+                    className="bg-gray-50/80 dark:bg-[#020617]/50 rounded-2xl p-6 border border-[#111A4A]/10 dark:border-gray-800 hover:border-blue-300 dark:hover:border-gray-600 transition-colors group relative overflow-hidden flex flex-col h-full"
                   >
                     {/* Hover Glow */}
                     <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
                     
                     <div className="flex items-start gap-4 mb-4 relative z-10 flex-grow">
-                      <div className="w-12 h-12 rounded-xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-700 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 rounded-xl bg-white dark:bg-[#0f172a] border border-[#111A4A]/10 dark:border-gray-700 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         {solution.icon}
                       </div>
                       <div>
-                        <h4 className="text-slate-800 dark:text-white text-lg font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{solution.name}</h4>
-                        <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed mb-4 transition-colors">
+                        <h4 className="text-[#15172B] dark:text-white text-lg font-bold mb-2 group-hover:text-[#EB3158] dark:group-hover:text-[#EB3158] transition-colors">{solution.name}</h4>
+                        <p className="text-[#15172B]/80 dark:text-gray-400 text-sm leading-relaxed mb-4 transition-colors">
                           {solution.desc}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="pt-4 border-t border-gray-200 dark:border-gray-800/50 relative z-10 transition-colors">
-                      <span className="text-xs text-slate-500 dark:text-gray-500 font-semibold mb-2 block transition-colors">Best For:</span>
+                    <div className="pt-4 border-t border-[#111A4A]/10 dark:border-gray-800/50 relative z-10 transition-colors">
+                      <span className="text-xs text-[#15172B]/60 dark:text-gray-500 font-semibold mb-2 block transition-colors">Best For:</span>
                       <div className="flex flex-wrap gap-2">
                         {solution.bestFor.map((item, idx) => (
                           <span key={idx} className="text-xs px-2 py-1 rounded bg-gray-200 dark:bg-gray-800/50 text-slate-700 dark:text-gray-300 transition-colors">

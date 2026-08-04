@@ -23,14 +23,14 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
            {[
              { title: "Unified Operations", desc: "Connect all departments in one platform.", icon: <Share2 size={16}/>, color: "text-purple-500", bg: "bg-purple-500/20" },
              { title: "Real-time Insights", desc: "Live dashboards and smarter decision making.", icon: <BarChart3 size={16}/>, color: "text-green-500", bg: "bg-green-500/20" },
-             { title: "Process Automation", desc: "Automate workflows and reduce manual work.", icon: <Zap size={16}/>, color: "text-blue-500", bg: "bg-blue-500/20" },
+             { title: "Process Automation", desc: "Automate workflows and reduce manual work.", icon: <Zap size={16}/>, color: "text-[#EB3158]", bg: "bg-blue-500/20" },
              { title: "Cost Efficiency", desc: "Control cost, improve productivity & ROI.", icon: <DollarSign size={16}/>, color: "text-yellow-500", bg: "bg-yellow-500/20" },
            ].map((item, i) => (
              <div key={i} className="flex gap-3 items-start p-2 rounded-xl hover:bg-white/5 transition border border-transparent hover:border-white/5 cursor-pointer">
                <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200">{item.title}</div>
-                 <div className="text-[10px] text-slate-500">{item.desc}</div>
+                 <div className="text-[10px] text-[#15172B]/60">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -40,7 +40,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
         <div className="mt-auto h-32 relative bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-xl border border-white/5 overflow-hidden flex items-center justify-center">
            <div className="absolute w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
            <div className="flex items-center gap-2 relative z-10">
-              <div className="w-10 h-10 bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.6)] transform rotate-45 rounded flex items-center justify-center text-xs font-bold -mr-4 z-20">FIN</div>
+              <div className="w-10 h-10 bg-[#EB3158] shadow-[0_0_15px_rgba(59,130,246,0.6)] transform rotate-45 rounded flex items-center justify-center text-xs font-bold -mr-4 z-20">FIN</div>
               <div className="w-12 h-12 bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.6)] transform rotate-45 rounded flex items-center justify-center text-sm font-bold z-30">ERP</div>
               <div className="w-10 h-10 bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.6)] transform rotate-45 rounded flex items-center justify-center text-xs font-bold -ml-4 z-20">OPS</div>
            </div>
@@ -53,7 +53,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
         {/* Header */}
         <div className="flex justify-between items-center bg-[#0a1125] p-4 rounded-2xl border border-white/5">
            <div className="flex items-center gap-3">
-             <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-500">
+             <div className="w-10 h-10 rounded-xl bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-[#EB3158]">
                <Briefcase size={20} />
              </div>
              <div>
@@ -72,7 +72,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
              <div className="flex items-center gap-2 pl-2">
                <div className="text-right text-[10px] hidden md:block">
                  <div className="font-semibold text-slate-200">Alex Kumar</div>
-                 <div className="text-slate-500">Operations Head</div>
+                 <div className="text-[#15172B]/60">Operations Head</div>
                </div>
                <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold">AK</div>
              </div>
@@ -82,7 +82,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
         {/* Top KPIs Row */}
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
           {[
-            { label: "Total Revenue", val: "$2,45,680", trend: "+12.6%", up: true, icon: <BarChart3 size={16}/>, color: "text-blue-400", bg: "bg-blue-500" },
+            { label: "Total Revenue", val: "$2,45,680", trend: "+12.6%", up: true, icon: <BarChart3 size={16}/>, color: "text-[#EB3158]", bg: "bg-[#EB3158]" },
             { label: "Total Expenses", val: "$1,62,430", trend: "+8.3%", up: true, icon: <DollarSign size={16}/>, color: "text-purple-400", bg: "bg-purple-500" },
             { label: "Net Profit", val: "$83,250", trend: "+15.7%", up: true, icon: <TrendingUp size={16}/>, color: "text-green-400", bg: "bg-green-500" },
             { label: "Total Orders", val: "1,256", trend: "+9.8%", up: true, icon: <ShoppingCart size={16}/>, color: "text-cyan-400", bg: "bg-cyan-500" },
@@ -113,14 +113,14 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                  
                  {/* Connection Lines */}
                  <div className="absolute top-1/2 left-10 right-10 h-0.5 bg-slate-800 -translate-y-1/2 z-0 flex justify-between">
-                    <div className="w-full h-full bg-blue-500"></div>
+                    <div className="w-full h-full bg-[#EB3158]"></div>
                     <div className="w-full h-full bg-green-500"></div>
                     <div className="w-full h-full bg-purple-500"></div>
                  </div>
 
                  {/* Nodes */}
                  {[
-                   { n: "Finance", desc: "Manage accounts, cash flow & financials.", icon: <DollarSign size={20}/>, c: "text-blue-400", b: "border-blue-500", bg: "bg-blue-900/20" },
+                   { n: "Finance", desc: "Manage accounts, cash flow & financials.", icon: <DollarSign size={20}/>, c: "text-[#EB3158]", b: "border-[#EB3158]/50", bg: "bg-blue-900/20" },
                    { n: "Inventory", desc: "Track stock, items, warehouses & movements.", icon: <Package size={20}/>, c: "text-green-400", b: "border-green-500", bg: "bg-green-900/20" },
                    { n: "Procurement", desc: "Manage suppliers, purchase orders & contracts.", icon: <ShoppingCart size={20}/>, c: "text-purple-400", b: "border-purple-500", bg: "bg-purple-900/20" },
                    { n: "Operations", desc: "Streamline workflows and business processes.", icon: <Settings2 size={20}/>, c: "text-yellow-400", b: "border-yellow-500", bg: "bg-yellow-900/20" },
@@ -130,7 +130,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                          {node.icon}
                        </div>
                        <div className="text-[11px] font-bold text-slate-200 mb-1">{node.n}</div>
-                       <div className="text-[8px] text-slate-500 leading-tight">{node.desc}</div>
+                       <div className="text-[8px] text-[#15172B]/60 leading-tight">{node.desc}</div>
                     </div>
                  ))}
               </div>
@@ -149,7 +149,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                  </div>
                  <div className="text-right">
                    <div className="text-slate-400">Cash Outflow</div>
-                   <div className="font-bold text-blue-400">$1,25,430</div>
+                   <div className="font-bold text-[#EB3158]">$1,25,430</div>
                  </div>
               </div>
               <div className="flex-grow relative mt-2">
@@ -166,10 +166,10 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                   </svg>
                 </div>
                 {/* Labels */}
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-slate-500 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
                   <span>150k</span><span>100k</span><span>50k</span><span>0</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-slate-500">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
                   <span>May 01</span><span>May 08</span><span>May 15</span><span>May 22</span><span>May 29</span>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-green-500"></div> In Stock</span> <span>$78,450</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-yellow-500"></div> Low Stock</span> <span>$18,650</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-red-500"></div> Out of Stock</span> <span>$6,230</span></div>
-                   <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-blue-500"></div> On Order</span> <span>$21,250</span></div>
+                   <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-[#EB3158]"></div> On Order</span> <span>$21,250</span></div>
                 </div>
               </div>
            </div>
@@ -215,7 +215,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
               </div>
               <div className="flex flex-col gap-3 text-[10px]">
                  {[
-                   { n: "Laptop", val: "312 Units", pct: "85%", icon: <Settings2 size={12}/>, color: "bg-blue-500" },
+                   { n: "Laptop", val: "312 Units", pct: "85%", icon: <Settings2 size={12}/>, color: "bg-[#EB3158]" },
                    { n: "Smartphone", val: "287 Units", pct: "75%", icon: <Settings size={12}/>, color: "bg-green-500" },
                    { n: "Headphones", val: "198 Units", pct: "55%", icon: <Package size={12}/>, color: "bg-purple-500" },
                    { n: "Smartwatch", val: "156 Units", pct: "40%", icon: <Activity size={12}/>, color: "bg-orange-500" },
