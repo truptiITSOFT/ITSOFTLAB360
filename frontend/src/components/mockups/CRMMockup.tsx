@@ -29,7 +29,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                <div className="mt-1 text-purple-500">{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200">{item.title}</div>
-                 <div className="text-[10px] text-slate-500">{item.desc}</div>
+                 <div className="text-[10px] text-[#15172B]/60">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -39,7 +39,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
         <div className="mt-auto relative h-32 bg-purple-500/5 rounded-xl border border-purple-500/10 flex items-end justify-center overflow-hidden">
            {/* Abstract shapes to represent the illustration */}
            <div className="absolute w-20 h-20 bg-purple-500/20 rounded-full blur-xl bottom-[-10px]"></div>
-           <div className="absolute right-2 top-2 text-blue-400"><Target size={16}/></div>
+           <div className="absolute right-2 top-2 text-[#EB3158]"><Target size={16}/></div>
            <div className="absolute left-2 top-6 text-green-400"><Phone size={14}/></div>
            <div className="absolute right-6 top-8 text-pink-400"><Mail size={16}/></div>
            <div className="z-10 px-4 py-1.5 bg-[#0a1125] border border-white/10 rounded-t-lg font-bold text-sm">CRM</div>
@@ -67,7 +67,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-[10px] font-bold">JD</div>
                <div className="text-[10px] hidden sm:block pr-2">
                  <div className="font-semibold">John Doe</div>
-                 <div className="text-slate-500 text-[8px]">Sales Manager</div>
+                 <div className="text-[#15172B]/60 text-[8px]">Sales Manager</div>
                </div>
              </div>
            </div>
@@ -76,7 +76,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
         {/* Top KPIs Row */}
         <div className="grid grid-cols-4 gap-4">
           {[
-            { label: "Total Leads", val: "1,250", trend: "+12.5%", up: true, icon: <Users size={18}/>, color: "text-blue-400" },
+            { label: "Total Leads", val: "1,250", trend: "+12.5%", up: true, icon: <Users size={18}/>, color: "text-[#EB3158]" },
             { label: "Opportunities", val: "320", trend: "+8.3%", up: true, icon: <Target size={18}/>, color: "text-purple-400" },
             { label: "Conversions", val: "24.6%", trend: "+4.7%", up: true, icon: <TrendingUp size={18}/>, color: "text-green-400" },
             { label: "Revenue", val: "$68,420", trend: "+15.3%", up: true, icon: <DollarSign size={18}/>, color: "text-orange-400" },
@@ -103,7 +103,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
               <h3 className="text-xs font-semibold mb-4">Sales Pipeline</h3>
               <div className="flex-grow flex items-center justify-between">
                  {[
-                   { label: "New Lead", val: "320", rev: "$12,500", c: "bg-blue-500" },
+                   { label: "New Lead", val: "320", rev: "$12,500", c: "bg-[#EB3158]" },
                    { label: "Contacted", val: "220", rev: "$18,400", c: "bg-indigo-500" },
                    { label: "Qualified", val: "150", rev: "$24,400", c: "bg-purple-500" },
                    { label: "Proposal", val: "80", rev: "$32,000", c: "bg-pink-500" },
@@ -141,7 +141,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                   </div>
                 </div>
                 <div className="flex flex-col gap-1 text-[9px] flex-grow pl-4">
-                   <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-blue-500"></div> Website</span> <span>42%</span></div>
+                   <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#EB3158]"></div> Website</span> <span>42%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-purple-500"></div> Referral</span> <span>26%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-green-500"></div> Social</span> <span>20%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-orange-500"></div> Email</span> <span>8%</span></div>
@@ -184,11 +184,11 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
            <div className="col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Top Deals</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2.5">
                  {[
-                   { n: "Acme Corporation", v: "$24,000", s: "Proposal", bg: "bg-blue-500" },
+                   { n: "Acme Corporation", v: "$24,000", s: "Proposal", bg: "bg-[#EB3158]" },
                    { n: "Globex Corporation", v: "$18,500", s: "Qualified", bg: "bg-green-500" },
                    { n: "Innotech Solutions", v: "$15,200", s: "Contacted", bg: "bg-purple-500" },
                    { n: "TechNova Inc.", v: "$12,800", s: "New Lead", bg: "bg-orange-500" },
@@ -209,11 +209,11 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
            <div className="col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Recent Activities</h3>
-                <span className="text-[9px] text-blue-400 cursor-pointer">View All</span>
+                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2.5">
                  {[
-                   { t: "New lead from Website", time: "2 min ago", icon: <User size={10}/>, c: "text-blue-400 bg-blue-500/20" },
+                   { t: "New lead from Website", time: "2 min ago", icon: <User size={10}/>, c: "text-[#EB3158] bg-blue-500/20" },
                    { t: "Email sent to John Doe", time: "15 min ago", icon: <Mail size={10}/>, c: "text-indigo-400 bg-indigo-500/20" },
                    { t: "Follow-up call with Acme", time: "30 min ago", icon: <Phone size={10}/>, c: "text-purple-400 bg-purple-500/20" },
                    { t: "Deal won with TechNova", time: "2 hours ago", icon: <CheckCircle size={10}/>, c: "text-green-400 bg-green-500/20" },
@@ -223,7 +223,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                         <div className={`p-1 rounded ${act.c}`}>{act.icon}</div>
                         <span className="text-slate-200 truncate w-32">{act.t}</span>
                       </div>
-                      <span className="text-slate-500">{act.time}</span>
+                      <span className="text-[#15172B]/60">{act.time}</span>
                    </div>
                  ))}
               </div>
@@ -233,7 +233,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
         {/* Bottom Footer KPIs */}
         <div className="grid grid-cols-5 gap-4 mt-auto">
            {[
-             { label: "Active Leads", val: "850", trend: "+11.4%", icon: <Users size={14}/>, color: "text-blue-400" },
+             { label: "Active Leads", val: "850", trend: "+11.4%", icon: <Users size={14}/>, color: "text-[#EB3158]" },
              { label: "Open Deals", val: "120", trend: "+7.8%", icon: <DollarSign size={14}/>, color: "text-yellow-400" },
              { label: "Tasks Due", val: "18", sub: "Due Today", icon: <CheckCircle size={14}/>, color: "text-orange-400" },
              { label: "Meetings", val: "5", sub: "Today", icon: <Calendar size={14}/>, color: "text-purple-400" },
@@ -247,7 +247,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                      {item.val}
                      {item.trend && <span className="text-[8px] text-green-500 font-normal">↑ {item.trend}</span>}
                    </div>
-                   {item.sub && <div className="text-[8px] text-slate-500">{item.sub}</div>}
+                   {item.sub && <div className="text-[8px] text-[#15172B]/60">{item.sub}</div>}
                 </div>
              </div>
            ))}

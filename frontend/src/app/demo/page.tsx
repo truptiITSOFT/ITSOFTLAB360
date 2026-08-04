@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, CheckCircle2, User, Building, Mail, Phone, MessageSquare } from "lucide-react";
-import Header from "@/components/Header";
 import ChatWidget from "@/components/ChatWidget";
 
 export default function DemoPage() {
@@ -49,8 +48,7 @@ export default function DemoPage() {
 
   return (
     <main className="min-h-screen relative flex flex-col pt-20">
-      <Header />
-      
+            
       <div className="flex-grow flex items-center justify-center py-20 px-6">
         <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-16 items-center">
           
@@ -61,14 +59,14 @@ export default function DemoPage() {
             transition={{ duration: 0.6 }}
             className="text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EB3158]/10 border border-blue-500/20 text-[#EB3158] text-sm font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#EB3158] animate-pulse"></span>
               Live Demonstration
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              See <span className="text-blue-500 text-glow">IT Softlab 360</span> in Action
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-[#111A4A] dark:text-white">
+              See <span className="text-[#EB3158] text-glow">IT Softlab 360</span> in Action
             </h1>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+            <p className="text-[#15172B]/80 dark:text-gray-400 text-lg mb-8 leading-relaxed">
               Schedule a personalized walkthrough with our experts. Discover how our integrated platform can streamline your operations, boost revenue, and scale with your franchise.
             </p>
             
@@ -86,10 +84,10 @@ export default function DemoPage() {
                   transition={{ duration: 0.4, delay: 0.3 + (index * 0.1) }}
                   className="flex items-center gap-4"
                 >
-                  <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-[#EB3158]/10 dark:bg-[#EB3158]/20 flex items-center justify-center text-[#EB3158] shrink-0">
                     <CheckCircle2 size={16} />
                   </div>
-                  <span className="text-gray-300 font-medium">{benefit}</span>
+                  <span className="text-[#15172B] dark:text-gray-300 font-medium">{benefit}</span>
                 </motion.div>
               ))}
             </div>
@@ -103,7 +101,7 @@ export default function DemoPage() {
             className="relative"
           >
             {/* Glow behind form */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#EB3158]/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
             <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-gray-700/50 p-8 md:p-10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
               {isSubmitted ? (
@@ -121,7 +119,7 @@ export default function DemoPage() {
                   </p>
                   <button 
                     onClick={() => setIsSubmitted(false)}
-                    className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+                    className="text-[#EB3158] hover:text-blue-300 font-medium transition-colors"
                   >
                     Submit another request
                   </button>
@@ -138,52 +136,52 @@ export default function DemoPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 group-focus-within:text-blue-400 transition-colors">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#15172B]/60 group-focus-within:text-[#EB3158] transition-colors">
                         <User size={18} />
                       </div>
-                      <input required type="text" name="firstName" placeholder="First Name" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-blue-500 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
+                      <input required type="text" name="firstName" placeholder="First Name" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-[#EB3158]/50 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
                     </div>
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 group-focus-within:text-blue-400 transition-colors">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#15172B]/60 group-focus-within:text-[#EB3158] transition-colors">
                         <User size={18} />
                       </div>
-                      <input required type="text" name="lastName" placeholder="Last Name" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-blue-500 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
+                      <input required type="text" name="lastName" placeholder="Last Name" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-[#EB3158]/50 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
                     </div>
                   </div>
 
                   <div className="relative group">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 group-focus-within:text-blue-400 transition-colors">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#15172B]/60 group-focus-within:text-[#EB3158] transition-colors">
                       <Mail size={18} />
                     </div>
-                    <input required type="email" name="email" placeholder="Work Email Address" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-blue-500 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
+                    <input required type="email" name="email" placeholder="Work Email Address" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-[#EB3158]/50 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 group-focus-within:text-blue-400 transition-colors">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#15172B]/60 group-focus-within:text-[#EB3158] transition-colors">
                         <Building size={18} />
                       </div>
-                      <input required type="text" name="company" placeholder="Company Name" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-blue-500 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
+                      <input required type="text" name="company" placeholder="Company Name" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-[#EB3158]/50 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
                     </div>
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500 group-focus-within:text-blue-400 transition-colors">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-[#15172B]/60 group-focus-within:text-[#EB3158] transition-colors">
                         <Phone size={18} />
                       </div>
-                      <input type="tel" name="phone" placeholder="Phone Number" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-blue-500 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
+                      <input type="tel" name="phone" placeholder="Phone Number" className="w-full bg-[#020617]/50 border border-gray-700 focus:border-[#EB3158]/50 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)]" />
                     </div>
                   </div>
 
                   <div className="relative group">
-                    <div className="absolute top-3 left-0 pl-4 flex items-start pointer-events-none text-gray-500 group-focus-within:text-blue-400 transition-colors">
+                    <div className="absolute top-3 left-0 pl-4 flex items-start pointer-events-none text-[#15172B]/60 group-focus-within:text-[#EB3158] transition-colors">
                       <MessageSquare size={18} />
                     </div>
-                    <textarea name="goals" placeholder="What are your main goals?" rows={3} className="w-full bg-[#020617]/50 border border-gray-700 focus:border-blue-500 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)] resize-none"></textarea>
+                    <textarea name="goals" placeholder="What are your main goals?" rows={3} className="w-full bg-[#020617]/50 border border-gray-700 focus:border-[#EB3158]/50 rounded-xl py-3 pl-11 pr-4 text-white outline-none transition-all focus:bg-[#020617] focus:shadow-[0_0_15px_rgba(59,130,246,0.15)] resize-none"></textarea>
                   </div>
 
                   <button 
                     type="submit" 
                     disabled={isLoading}
-                    className={`w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] mt-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    className={`w-full flex items-center justify-center gap-2 bg-[#EB3158] hover:bg-[#EB3158] text-white px-8 py-4 rounded-xl font-medium transition-all shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] mt-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
                     {isLoading ? (
                       <span className="flex items-center gap-2">Processing <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div></span>
@@ -191,7 +189,7 @@ export default function DemoPage() {
                       <>SCHEDULE DEMO <Send size={18} /></>
                     )}
                   </button>
-                  <p className="text-xs text-gray-500 text-center mt-4">
+                  <p className="text-xs text-[#15172B]/60 text-center mt-4">
                     By submitting this form, you agree to our Terms of Service and Privacy Policy.
                   </p>
                 </form>

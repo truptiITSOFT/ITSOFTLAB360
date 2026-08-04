@@ -18,7 +18,7 @@ export default function Hero() {
     { icon: <Calculator size={20} />, label: "ACCOUNTING", delay: 0.8, position: "top-1/2 -left-12 -translate-y-1/2", color: "text-green-300 border-green-400/30" },
     { icon: <Package size={20} />, label: "INVENTORY\nMANAGEMENT", delay: 2.2, position: "bottom-8 left-0", color: "text-orange-400 border-orange-500/30" },
     { icon: <BarChart size={20} />, label: "BI & ANALYTICS", delay: 1.2, position: "-bottom-6 left-1/4 -translate-x-1/2", color: "text-indigo-400 border-indigo-500/30" },
-    { icon: <HeadphonesIcon size={20} />, label: "HELP DESK", delay: 2.5, position: "-bottom-6 left-3/4 -translate-x-1/2", color: "text-blue-400 border-blue-500/30" },
+    { icon: <HeadphonesIcon size={20} />, label: "HELP DESK", delay: 2.5, position: "-bottom-6 left-3/4 -translate-x-1/2", color: "text-[#EB3158] border-blue-500/30" },
     { icon: <Globe size={20} />, label: "WEBSITE &\nAPP BUILDER", delay: 1.5, position: "bottom-2 right-12", color: "text-teal-400 border-teal-500/30" },
     { icon: <Banknote size={20} />, label: "PAYROLL", delay: 0.5, position: "bottom-16 -right-4", color: "text-green-400 border-green-500/30" },
     { icon: <CreditCard size={20} />, label: "POS", delay: 2, position: "top-1/2 -right-12 -translate-y-1/2", color: "text-yellow-400 border-yellow-500/30" },
@@ -60,76 +60,34 @@ export default function Hero() {
               <Link href="/franchise" className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 text-white px-8 py-4 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)]">
                 For Franchise <ArrowRight size={18} />
               </Link>
-              <button className="flex items-center gap-2 bg-transparent border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-300 hover:bg-slate-50 dark:hover:bg-white/5 text-slate-800 dark:text-white px-8 py-4 rounded-full font-medium transition-all">
+              <button className="flex items-center gap-2 bg-transparent border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-300 hover:bg-slate-50 dark:hover:bg-white/5 text-[#15172B] dark:text-white px-8 py-4 rounded-full font-medium transition-all">
                 Watch Video <PlayCircle size={18} />
               </button>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Content - 3D Globe Area */}
-        <div className="relative z-10 flex justify-center items-center h-[600px] mt-10 lg:mt-0">
+        {/* Right Content - Video Area */}
+        <div className="relative z-10 flex justify-center items-center h-[600px] mt-10 lg:mt-0 w-full max-w-lg mx-auto">
           {/* Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px]"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#EB3158]/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-          {/* Main Globe Area */}
-          <div className="relative w-[380px] h-[380px] flex items-center justify-center">
+          {/* Video Container */}
+          <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-[#020617]/50 backdrop-blur-sm z-20 flex items-center justify-center group">
+            
+            {/* Corner Accents */}
+            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-cyan-400 rounded-tl-[3rem] opacity-50 z-30 pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#EB3158]/50 rounded-br-[3rem] opacity-50 z-30 pointer-events-none"></div>
 
-            {/* Glowing Base Platforms (Rings) */}
-            <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-[100%] border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.2)] pointer-events-none" style={{ transform: 'rotateX(75deg)' }}>
-              <div className="absolute inset-4 rounded-[100%] border border-blue-400/30"></div>
-              <div className="absolute inset-10 rounded-[100%] border-[3px] border-blue-500/40 shadow-[0_0_30px_rgba(59,130,246,0.5)]"></div>
-              <div className="absolute inset-16 rounded-[100%] border border-blue-300/50 bg-blue-600/10 blur-sm"></div>
-            </div>
-
-            {/* Orbit Rings (3D perspective) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] rounded-full border border-blue-500/20 border-dashed pointer-events-none" style={{ transform: 'rotateX(60deg)' }}></div>
-
-            {/* Globe Sphere Background */}
-            <div className="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/80 via-[#020617]/90 to-[#020617] border border-blue-500/40 shadow-[inset_0_0_80px_rgba(59,130,246,0.6),_0_0_60px_rgba(59,130,246,0.4)] overflow-hidden">
-              {/* Globe Grid lines (CSS approximation) */}
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-screen"></div>
-              <div className="absolute w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1px] border-blue-500/20 rounded-full" style={{ transform: 'rotateX(70deg)' }}></div>
-              <div className="absolute w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1px] border-blue-500/20 rounded-full" style={{ transform: 'rotateX(70deg) rotateY(45deg)' }}></div>
-              <div className="absolute w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1px] border-blue-500/20 rounded-full" style={{ transform: 'rotateX(70deg) rotateY(90deg)' }}></div>
-              <div className="absolute w-[200%] h-[200%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-[1px] border-blue-500/20 rounded-full" style={{ transform: 'rotateX(70deg) rotateY(135deg)' }}></div>
-
-              <div className="absolute w-full h-[200%] top-1/2 left-0 -translate-y-1/2 border-[1px] border-blue-500/20 rounded-full" style={{ transform: 'rotateX(0deg)' }}></div>
-              <div className="absolute w-full h-[200%] top-1/2 left-0 -translate-y-1/2 border-[1px] border-blue-500/20 rounded-full" style={{ transform: 'rotateX(45deg)' }}></div>
-            </div>
-
-            {/* Center Text inside Globe */}
-            <div className="relative z-20 flex flex-col items-center justify-center text-center">
-              <h2 className="text-7xl font-bold text-white mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)] tracking-tight">12+</h2>
-              <p className="text-sm text-gray-200 font-bold tracking-widest mb-4">POWERFUL SOLUTIONS</p>
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-[11px] font-bold px-4 py-1.5 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                ONE UNIFIED PLATFORM
-              </div>
-            </div>
-
-            {/* Orbiting Icons */}
-            {floatingIcons.map((item, index) => (
-              <motion.div
-                key={index}
-                className={`absolute flex flex-col items-center justify-center gap-2 ${item.position} z-30`}
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  delay: item.delay,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <div className={`w-12 h-12 rounded-full border bg-[#020617]/80 backdrop-blur-md flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.3)] ${item.color}`}>
-                  {item.icon}
-                </div>
-                <span className="text-[10px] text-gray-300 font-bold tracking-wider text-center leading-tight whitespace-pre-line" dangerouslySetInnerHTML={{ __html: item.label.replace('\n', '<br/>') }}></span>
-              </motion.div>
-            ))}
+            <video
+              src="/videos/ITSOFTLAB360_cube.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover mix-blend-lighten opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+            />
           </div>
-
         </div>
 
       </div>

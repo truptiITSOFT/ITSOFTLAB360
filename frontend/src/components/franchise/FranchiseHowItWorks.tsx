@@ -32,10 +32,10 @@ const steps = [
 
 export default function FranchiseHowItWorks() {
   return (
-    <section className="py-20 relative bg-white dark:bg-[#020617] border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <section className="py-20 relative bg-white dark:bg-[#020617] border-t border-[#111A4A]/10 dark:border-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 transition-colors">How It Works</h2>
+          <h2 className="text-2xl font-bold text-[#111A4A] dark:text-white mb-2 transition-colors">How It Works</h2>
         </div>
 
         <div className="relative">
@@ -53,14 +53,14 @@ export default function FranchiseHowItWorks() {
                 className="relative flex flex-col items-center text-center z-10"
               >
                 <div className="w-24 h-24 rounded-full border border-blue-200 dark:border-blue-500/30 bg-slate-50 dark:bg-[#0f172a] flex flex-col items-center justify-center mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)] dark:shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:shadow-[0_0_25px_rgba(59,130,246,0.25)] dark:hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all cursor-pointer group">
-                  <span className="text-sm font-bold text-slate-400 dark:text-gray-400 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">{step.num}</span>
+                  <span className="text-sm font-bold text-slate-400 dark:text-gray-400 group-hover:text-[#EB3158] dark:group-hover:text-[#EB3158] transition-colors">{step.num}</span>
                   <div className="text-slate-700 dark:text-white mt-1 transition-colors">
                     {step.icon}
                   </div>
                 </div>
                 
-                <h3 className="text-slate-800 dark:text-white text-sm font-semibold mb-3 transition-colors">{step.title}</h3>
-                <p className="text-xs text-slate-500 dark:text-gray-400 leading-relaxed max-w-[200px] transition-colors">{step.description}</p>
+                <h3 className="text-[#15172B] dark:text-white text-sm font-semibold mb-3 transition-colors">{step.title}</h3>
+                <p className="text-xs text-[#15172B]/60 dark:text-gray-400 leading-relaxed max-w-[200px] transition-colors">{step.description}</p>
               </motion.div>
             ))}
           </div>

@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import SolutionsHero from "@/components/solutions/SolutionsHero";
 import SolutionsCategories from "@/components/solutions/SolutionsCategories";
 import Industries from "@/components/Industries";
@@ -9,8 +8,7 @@ import ChatWidget from "@/components/ChatWidget";
 export default function SolutionsPage() {
   return (
     <main className="min-h-screen relative flex flex-col pt-20">
-      <Header />
-      <div className="flex-grow">
+            <div className="flex-grow">
         <SolutionsHero />
         <SolutionsCategories />
         <Industries />

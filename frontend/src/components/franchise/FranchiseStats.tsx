@@ -4,7 +4,7 @@ import { Puzzle, Users, Globe, ShieldCheck, HeadphonesIcon } from "lucide-react"
 import { motion } from "framer-motion";
 
 const stats = [
-  { icon: <Puzzle size={28} className="text-blue-400" />, value: "12+", label: "Solutions\nIn One Platform" },
+  { icon: <Puzzle size={28} className="text-[#EB3158]" />, value: "12+", label: "Solutions\nIn One Platform" },
   { icon: <Users size={28} className="text-purple-400" />, value: "5000+", label: "Happy Clients\nWorldwide" },
   { icon: <Globe size={28} className="text-cyan-400" />, value: "50+", label: "Countries\nGlobal Reach" },
   { icon: <ShieldCheck size={28} className="text-emerald-400" />, value: "99.9%", label: "Uptime\nEnterprise Grade" },
@@ -15,7 +15,7 @@ export default function FranchiseStats() {
   return (
     <section className="pb-16 pt-8 bg-white dark:bg-[#020617] transition-colors duration-300">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="border border-gray-200 dark:border-gray-800 bg-slate-50 dark:bg-[#0f172a]/50 rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row flex-wrap justify-between items-center gap-8 shadow-sm dark:shadow-lg transition-colors">
+        <div className="border border-[#111A4A]/10 dark:border-gray-800 bg-slate-50 dark:bg-[#0f172a]/50 rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row flex-wrap justify-between items-center gap-8 shadow-sm dark:shadow-lg transition-colors">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -29,8 +29,8 @@ export default function FranchiseStats() {
                 {stat.icon}
               </div>
               <div>
-                <h4 className="text-slate-800 dark:text-white text-xl font-bold transition-colors">{stat.value}</h4>
-                <p className="text-[10px] text-slate-500 dark:text-gray-400 uppercase tracking-wider whitespace-pre-line leading-tight mt-1 transition-colors">{stat.label}</p>
+                <h4 className="text-[#15172B] dark:text-white text-xl font-bold transition-colors">{stat.value}</h4>
+                <p className="text-[10px] text-[#15172B]/60 dark:text-gray-400 uppercase tracking-wider whitespace-pre-line leading-tight mt-1 transition-colors">{stat.label}</p>
               </div>
               
               {/* Divider for desktop */}

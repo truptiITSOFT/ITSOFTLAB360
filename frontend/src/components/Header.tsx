@@ -1,68 +1,127 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
-
-const navLinks = [
-  { name: "HOME", href: "/home" },
-  { name: "SOLUTIONS", href: "/solutions", hasDropdown: true },
-  { name: "PRODUCTS", href: "/products" },
-  { name: "INDUSTRIES", href: "/industries" },
-  { name: "CONTACT US", href: "/contact" },
-];
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Header() {
-  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "HOME", href: "/home" },
+    { name: "SOLUTIONS", href: "/solutions" },
+    { name: "PRODUCTS", href: "/products" },
+    { name: "FRANCHISE", href: "/franchise" },
+    { name: "CONTACT US", href: "/contact" },
+  ];
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/90 dark:bg-[#020617]/80 backdrop-blur-md border-b border-gray-200 dark:border-[rgba(59,130,246,0.1)] transition-colors duration-300">
-      <div className="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-        {/* Image Logo */}
-        <Link href="/home" className="flex flex-col group mt-1">
-          <div className="relative">
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled 
+            ? "bg-white/80 dark:bg-[#030816]/80 backdrop-blur-md border-b border-[#111A4A]/10 dark:border-white/10 py-4 shadow-sm" 
+            : "bg-transparent py-6"
+        }`}
+      >
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between">
+          
+          {/* Logo */}
+          <Link href="/" className="flex items-center group">
             <img 
               src="/logo.png" 
-              alt="IT SOFTLAB 360 Logo" 
-              className="h-7 w-auto object-contain dark:invert-0 invert transition-all" 
+              alt="ITSoftLab360 Logo" 
+              className="h-8 md:h-10 w-auto object-contain transition-all"
             />
-          </div>
-          {/* Tagline */}
-          <span className="text-[0.6rem] text-slate-500 dark:text-gray-400 tracking-widest uppercase ml-1 mt-1 transition-colors">Solutions Beyond Limits</span>
-        </Link>
+          </Link>
 
-        {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-gray-300">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.name}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
                 href={link.href}
-                className={`${
-                  isActive
-                    ? "text-blue-600 dark:text-white relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-blue-500"
-                    : "hover:text-blue-600 dark:hover:text-white transition-colors"
-                } ${link.hasDropdown ? "flex items-center gap-1 group" : ""}`}
+                className="text-[15px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
               >
                 {link.name}
-                {link.hasDropdown && (
-                  <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
-                )}
               </Link>
-            );
-          })}
-        </nav>
+            ))}
+          </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
-          <Link href="/demo" className="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-md shadow-blue-500/20 dark:shadow-[0_0_15px_rgba(37,99,235,0.5)] dark:hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
-            REQUEST DEMO <ArrowRight size={16} />
-          </Link>
+          {/* Desktop Actions */}
+          <div className="hidden lg:flex items-center gap-6">
+            <ThemeToggle />
+            <Link href="/login" className="text-sm font-semibold text-[#111A4A] dark:text-white hover:text-[#EB3158] transition-colors">
+              Sign In
+            </Link>
+            <Link 
+              href="/demo" 
+              className="group flex items-center gap-2 bg-[#EB3158] text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-[0_4px_14px_0_rgba(235,49,88,0.39)] hover:shadow-[0_6px_20px_rgba(235,49,88,0.23)] hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Book a Demo
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button 
+            className="lg:hidden text-[#111A4A] dark:text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-white dark:bg-[#030816] pt-24 px-6 pb-6 flex flex-col lg:hidden"
+          >
+            <nav className="flex flex-col gap-6 text-lg font-semibold text-[#111A4A] dark:text-white">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.name} 
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="border-b border-gray-100 dark:border-white/10 pb-4"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+            <div className="mt-auto flex flex-col gap-4">
+              <Link 
+                href="/login" 
+                className="w-full text-center py-4 rounded-xl border border-[#111A4A]/10 dark:border-white/10 text-[#111A4A] dark:text-white font-semibold"
+              >
+                Sign In
+              </Link>
+              <Link 
+                href="/demo" 
+                className="w-full flex justify-center items-center gap-2 bg-[#EB3158] text-white py-4 rounded-xl font-bold shadow-lg shadow-red-500/30"
+              >
+                Book a Demo <ArrowRight size={18} />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

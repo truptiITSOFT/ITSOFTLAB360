@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import SolutionsGrid from "@/components/SolutionsGrid";
 import Products from "@/components/Products";
 import ChatWidget from "@/components/ChatWidget";
@@ -6,8 +5,7 @@ import ChatWidget from "@/components/ChatWidget";
 export default function ProductsPage() {
   return (
     <main className="min-h-screen relative flex flex-col pt-20">
-      <Header />
-      <div className="flex-grow">
+            <div className="flex-grow">
         <SolutionsGrid />
         <Products />
       </div>

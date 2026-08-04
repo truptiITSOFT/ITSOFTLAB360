@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import ChatWidget from "@/components/ChatWidget";
 import FranchiseHero from "@/components/franchise/FranchiseHero";
 import FranchiseFeatures from "@/components/franchise/FranchiseFeatures";
@@ -9,9 +8,8 @@ import FranchiseCTA from "@/components/franchise/FranchiseCTA";
 
 export default function FranchisePage() {
   return (
-    <main className="min-h-screen relative flex flex-col bg-white dark:bg-[#020617] text-slate-900 dark:text-white selection:bg-blue-500/30 transition-colors duration-300">
-      <Header />
-      
+    <main className="min-h-screen relative flex flex-col selection:bg-blue-500/30 transition-colors duration-300">
+            
       {/* Page Content */}
       <div className="flex-grow">
         <FranchiseHero />
