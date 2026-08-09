@@ -73,19 +73,19 @@ export default function Hero() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#EB3158]/20 rounded-full blur-[120px] pointer-events-none"></div>
 
           {/* Video Container */}
-          <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-[#020617]/50 backdrop-blur-sm z-20 flex items-center justify-center group">
+          <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-white dark:bg-[#020617]/50 backdrop-blur-sm z-20 flex items-center justify-center group">
             
             {/* Corner Accents */}
             <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-cyan-400 rounded-tl-[3rem] opacity-50 z-30 pointer-events-none"></div>
             <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#EB3158]/50 rounded-br-[3rem] opacity-50 z-30 pointer-events-none"></div>
 
             <video
-              src="/videos/ITSOFTLAB360_cube.mp4"
+              src="/videos/mascot.mp4"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover mix-blend-lighten opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+              className="w-full h-full object-cover invert hue-rotate-180 dark:invert-0 dark:hue-rotate-0 dark:mix-blend-lighten opacity-90 group-hover:opacity-100 transition-opacity duration-500"
             />
           </div>
         </div>

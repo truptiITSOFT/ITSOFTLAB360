@@ -1,18 +1,20 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import SolutionsGrid from "@/components/SolutionsGrid";
 import StatsBar from "@/components/StatsBar";
 import ChatWidget from "@/components/ChatWidget";
 import FeaturesCarousel from "@/components/FeaturesCarousel";
+import EcosystemSection from "@/components/EcosystemSection";
+import CityLandscapeSection from "@/components/CityLandscapeSection";
 
 export default function DarkModeHome() {
   return (
     <main className="min-h-screen relative flex flex-col transition-opacity duration-300">
             <div className="flex-grow">
         <Hero />
+        <EcosystemSection />
+        <CityLandscapeSection />
         <FeaturesCarousel />
-        <SolutionsGrid />
         <StatsBar />
       </div>
       <ChatWidget />

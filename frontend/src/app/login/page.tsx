@@ -19,21 +19,20 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        localStorage.setItem("token", data.token);
-        router.push("/products");
-      } else {
-        setError(data.error || "Invalid email or password.");
-        setLoading(false);
+      // const res = await fetch("http://localhost:5000/api/auth/login", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({ email, password }),
+      // });
+      if (email && password) {
+        if (email === "harsh@gmail.com" && password === "harsh@gmail.com") {
+          localStorage.setItem("token", "itsoftlab360-user-token");
+          router.push("/products");
+        }
       }
+
+      // const data = await res.json();
+
     } catch (err) {
       setError("Unable to connect to the server. Please try again.");
       setLoading(false);
@@ -42,13 +41,13 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen relative flex flex-col transition-colors">
-            
+
       <div className="flex-grow flex items-center justify-center p-4 pt-24 relative overflow-hidden">
         {/* Background Effects */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#EB3158]/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#F5C842]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -116,7 +115,7 @@ export default function LoginPage() {
               </button>
             </form>
           </div>
-          
+
           <div className="bg-slate-50 dark:bg-white/5 py-4 text-center border-t border-slate-100 dark:border-white/5">
             <p className="text-sm text-[#15172B]/80 dark:text-gray-400">
               Don&apos;t have an account? <Link href="/contact" className="text-[#EB3158] dark:text-blue-400 font-bold hover:underline">Contact Us</Link>

@@ -1,101 +1,168 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Settings, GraduationCap, Megaphone, DollarSign, HeadphonesIcon, Package, BarChart } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, PlayCircle, Users, Box, BarChart, Settings, Database, Server, Smartphone, Laptop, Cloud, Shield, Zap, Target } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRef } from "react";
+
+const PRODUCTS = [
+  { name: "HRMS", icon: Users, angle: 0 },
+  { name: "CRM", icon: Target, angle: 30 },
+  { name: "ERP", icon: Database, angle: 60 },
+  { name: "Dealer Mgt", icon: Box, angle: 90 },
+  { name: "Vendor Mgt", icon: Server, angle: 120 },
+  { name: "Marketing", icon: BarChart, angle: 150 },
+  { name: "Logistics", icon: Zap, angle: 180 },
+  { name: "Sales Force", icon: Smartphone, angle: 210 },
+  { name: "LMS", icon: Laptop, angle: 240 },
+  { name: "POS", icon: Settings, angle: 270 },
+  { name: "Queue Mgt", icon: Shield, angle: 300 },
+  { name: "Docs Mgt", icon: Cloud, angle: 330 },
+];
 
 export default function FranchiseHero() {
-  const nodes = [
-    { label: "Operations", icon: <Settings size={18} />, position: "top-4 left-1/4", delay: 0.1 },
-    { label: "Training", icon: <GraduationCap size={18} />, position: "-top-6 left-1/2 -translate-x-1/2", delay: 0.2 },
-    { label: "Marketing", icon: <Megaphone size={18} />, position: "top-4 right-1/4", delay: 0.3 },
-    { label: "Finance", icon: <DollarSign size={18} />, position: "top-1/3 -right-6", delay: 0.4 },
-    { label: "Support", icon: <HeadphonesIcon size={18} />, position: "bottom-1/3 -right-6", delay: 0.5 },
-    { label: "Inventory", icon: <Package size={18} />, position: "top-1/3 -left-6", delay: 0.6 },
-    { label: "Analytics", icon: <BarChart size={18} />, position: "bottom-1/3 -left-6", delay: 0.7 },
-  ];
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-slate-50 dark:bg-[#020617] transition-colors duration-300">
-      {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <section 
+      ref={containerRef}
+      className="relative min-h-[100vh] pt-32 pb-20 flex flex-col justify-center overflow-hidden bg-white dark:bg-[#030816] transition-colors duration-300"
+    >
+      {/* Background Gradients & Grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/20 dark:bg-blue-600/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-[#EB3158]/20 dark:bg-[#EB3158]/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
+      </div>
 
-      <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 w-full z-10 grid lg:grid-cols-2 gap-16 items-center flex-grow">
+        
         {/* Left Content */}
-        <div className="z-10 relative">
+        <motion.div 
+          style={{ y, opacity }}
+          className="flex flex-col gap-6 max-w-xl"
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800/50 text-blue-600 dark:text-blue-400 text-sm font-medium w-fit shadow-sm"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-500/30 rounded-full w-fit mb-6 shadow-[0_0_15px_rgba(59,130,246,0.1)] dark:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
-              <span className="text-xs text-blue-700 dark:text-blue-300 font-bold tracking-wider uppercase transition-colors">Franchise Model Solution</span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-[#111A4A] dark:text-white transition-colors">
-              The World’s First IT Company to Offer 12 IT Solutions <br />
-              <span className="text-[#EB3158] dark:text-blue-500">on One Platform Through a Franchise Model</span>
-            </h1>
-
-            <p className="text-[#15172B]/80 dark:text-gray-300 text-lg mb-10 max-w-xl leading-relaxed transition-colors">
-              Expand your business with a unified franchise platform that connects people, processes, and data. Launch, manage, and grow your franchise network smarter, faster, and more profitably.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-5">
-              <button className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 text-white px-8 py-4 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(139,92,246,0.4)]">
-                Explore Franchise Model <ArrowRight size={18} />
-              </button>
-              <button className="flex items-center gap-2 bg-transparent border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-300 hover:bg-slate-100 dark:hover:bg-white/5 text-[#15172B] dark:text-white px-8 py-4 rounded-full font-medium transition-all">
-                Request Demo <ArrowRight size={18} />
-              </button>
-            </div>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Premium Franchise Opportunity
           </motion.div>
-        </div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#111A4A] dark:text-white leading-[1.1]"
+          >
+            Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#EB3158] dark:from-blue-400 dark:to-[#EB3158]">IT Business</span> with 12 Integrated Products.
+          </motion.h1>
 
-        {/* Right Content - Central Hub Graphic */}
-        <div className="relative z-10 flex justify-center items-center h-[500px] mt-10 lg:mt-0">
-          <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-            
-            {/* Center Hub */}
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="absolute z-30 w-48 h-48 rounded-full border-2 border-blue-200 dark:border-blue-400/50 bg-white/90 dark:bg-[#0f172a]/80 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:shadow-[0_0_50px_rgba(59,130,246,0.4)] transition-colors"
-            >
-              {/* Inner rings */}
-              <div className="absolute inset-2 rounded-full border border-blue-500/30 border-dashed animate-[spin_20s_linear_infinite]"></div>
-              <div className="absolute inset-6 rounded-full border border-purple-500/30 border-dashed animate-[spin_15s_linear_infinite_reverse]"></div>
-              <div className="text-white font-bold text-xl z-10 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Your Brand</div>
-            </motion.div>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            className="text-lg md:text-xl text-[#15172B]/70 dark:text-gray-400 leading-relaxed max-w-lg"
+          >
+            One Platform. 12 Products. One Scalable Franchise Opportunity. Empower your region with world-class SaaS solutions.
+          </motion.p>
 
-            {/* Orbiting Nodes */}
-            {nodes.map((node, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: node.delay + 0.5 }}
-                className={`absolute ${node.position} z-20 flex flex-col items-center gap-2`}
-              >
-                <div className="w-12 h-12 rounded-full border border-[#111A4A]/10 dark:border-blue-500/50 bg-white dark:bg-[#020617]/90 flex items-center justify-center text-[#EB3158] dark:text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)] dark:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:scale-110 hover:border-blue-400 dark:hover:border-blue-400 hover:text-blue-700 dark:hover:text-white transition-all cursor-pointer">
-                  {node.icon}
-                </div>
-                <span className="text-xs text-slate-700 dark:text-gray-300 font-medium transition-colors">{node.label}</span>
-              </motion.div>
-            ))}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            className="flex flex-wrap gap-4 mt-4"
+          >
+            <Link href="#apply" className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A] dark:bg-white dark:text-[#111A4A] rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)] dark:hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]">
+              <span className="relative z-10 flex items-center gap-2">
+                Become a Partner <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/20 to-transparent dark:via-black/10 transition-transform duration-500 ease-in-out skew-x-12"></div>
+            </Link>
+            <Link href="#explore" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-[#111A4A] dark:text-white bg-transparent border-2 border-[#111A4A]/20 dark:border-white/20 rounded-full transition-all hover:border-[#111A4A] dark:hover:border-white hover:bg-[#111A4A]/5 dark:hover:bg-white/5">
+              <PlayCircle size={18} /> Explore Model
+            </Link>
+          </motion.div>
+        </motion.div>
 
-            {/* Connecting lines (SVG) */}
-            <svg className="absolute inset-0 w-full h-full -z-10 pointer-events-none" viewBox="0 0 100 100">
-              <motion.path d="M50,50 L25,10" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.1 }} />
-              <motion.path d="M50,50 L50,5" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.2 }} />
-              <motion.path d="M50,50 L75,10" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.3 }} />
-              <motion.path d="M50,50 L90,33" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.4 }} />
-              <motion.path d="M50,50 L90,66" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.5 }} />
-              <motion.path d="M50,50 L10,33" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.6 }} />
-              <motion.path d="M50,50 L10,66" stroke="rgba(59,130,246,0.2)" strokeWidth="0.5" fill="none" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.7 }} />
-            </svg>
+        {/* Right Animated Visual */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="relative w-full aspect-square max-w-[600px] mx-auto hidden lg:flex items-center justify-center"
+        >
+          {/* Orbital Rings */}
+          <div className="absolute inset-0 rounded-full border border-[#111A4A]/10 dark:border-white/10 [mask-image:radial-gradient(transparent_40%,black_100%)]"></div>
+          <div className="absolute inset-[15%] rounded-full border border-dashed border-[#111A4A]/20 dark:border-white/20 animate-[spin_60s_linear_infinite]"></div>
+          <div className="absolute inset-[30%] rounded-full border border-[#EB3158]/20 dark:border-[#EB3158]/30 animate-[spin_40s_linear_infinite_reverse]"></div>
+
+          {/* Center Platform Node */}
+          <div className="relative z-20 w-40 h-40 rounded-full bg-white dark:bg-[#0f172a] shadow-2xl dark:shadow-[0_0_50px_rgba(59,130,246,0.3)] border border-gray-100 dark:border-gray-800 flex items-center justify-center overflow-hidden">
+             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-[#EB3158]/10 animate-pulse"></div>
+             <Image 
+                src="/logo.png" 
+                alt="ITSoftLab360" 
+                width={120} 
+                height={40} 
+                className="object-contain dark:invert relative z-10"
+             />
           </div>
-        </div>
+
+          {/* Orbiting Product Nodes */}
+          {PRODUCTS.map((product, i) => {
+            const radius = 240; // distance from center
+            const rad = (product.angle * Math.PI) / 180;
+            const x = Math.cos(rad) * radius;
+            const y = Math.sin(rad) * radius;
+
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: 0, y: 0 }}
+                animate={{ opacity: 1, x, y }}
+                transition={{ duration: 1, delay: 0.5 + (i * 0.05), ease: "easeOut" }}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 group"
+              >
+                {/* Connection Line */}
+                <svg className="absolute left-1/2 top-1/2 w-0 h-0 overflow-visible pointer-events-none z-0">
+                  <motion.line 
+                    x1="0" y1="0" x2={-x} y2={-y}
+                    stroke="currentColor" 
+                    className="text-[#111A4A]/10 dark:text-white/10 group-hover:text-blue-500/50 transition-colors duration-300" 
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                  />
+                </svg>
+
+                <div className="relative flex flex-col items-center justify-center gap-2 cursor-pointer transition-transform hover:scale-110 z-10">
+                  <div className="w-12 h-12 rounded-xl bg-white/80 dark:bg-[#0f172a]/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800 flex items-center justify-center shadow-lg group-hover:border-blue-500 dark:group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
+                    <product.icon size={20} className="text-[#15172B] dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                  </div>
+                  <span className="absolute top-[110%] w-max text-xs font-semibold text-[#15172B] dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-sm">
+                    {product.name}
+                  </span>
+                </div>
+              </motion.div>
+            );
+          })}
+
+        </motion.div>
+
       </div>
     </section>
   );

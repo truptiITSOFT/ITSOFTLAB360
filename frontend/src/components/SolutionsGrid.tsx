@@ -161,11 +161,11 @@ export default function SolutionsGrid() {
           </div>
 
           {/* Nav Arrows */}
-          <button onClick={prevSlide} className="absolute left-4 lg:left-[260px] xl:left-[300px] z-30 p-2 rounded-full bg-white/80 dark:bg-slate-800/80 border border-[#111A4A]/10 dark:border-white/10 text-[#15172B] dark:text-white hover:bg-white dark:hover:bg-slate-700 transition shadow-lg">
-            <ChevronLeft size={24} />
+          <button onClick={prevSlide} className="absolute left-4 z-40 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 border border-[#111A4A]/20 dark:border-white/20 text-[#15172B] dark:text-white hover:bg-white dark:hover:bg-slate-700 transition shadow-xl">
+            <ChevronLeft size={28} />
           </button>
-          <button onClick={nextSlide} className="absolute right-4 lg:right-[260px] xl:right-[300px] z-30 p-2 rounded-full bg-white/80 dark:bg-slate-800/80 border border-[#111A4A]/10 dark:border-white/10 text-[#15172B] dark:text-white hover:bg-white dark:hover:bg-slate-700 transition shadow-lg">
-            <ChevronRight size={24} />
+          <button onClick={nextSlide} className="absolute right-4 z-40 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 border border-[#111A4A]/20 dark:border-white/20 text-[#15172B] dark:text-white hover:bg-white dark:hover:bg-slate-700 transition shadow-xl">
+            <ChevronRight size={28} />
           </button>
         </div>
 
@@ -181,9 +181,9 @@ export default function SolutionsGrid() {
                     setActiveIndex(idx);
                     setIsAutoSliding(false);
                   }}
-                  className={`flex flex-col items-center justify-center p-3 rounded-xl border transition-all duration-300 ${
+                  className={`flex flex-col items-center justify-center p-2 rounded-xl border transition-all duration-300 ${
                     isActive 
-                      ? `bg-blue-50 dark:bg-blue-900/40 border-[#EB3158]/50 shadow-[0_0_15px_rgba(59,130,246,0.3)] scale-105` 
+                      ? `bg-blue-50 dark:bg-blue-900/40 border-[#EB3158]/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]` 
                       : 'bg-white/50 dark:bg-[#0a1128]/50 border-[#111A4A]/10 dark:border-white/5 hover:bg-white dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-white/10'
                   }`}
                   style={{

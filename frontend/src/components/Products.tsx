@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   ShieldCheck, Cloud, Smartphone, PieChart, Headphones,
   Users, UserCheck, Settings, Briefcase, ShoppingCart,
   Megaphone, Truck, TrendingUp, GraduationCap, CreditCard,
-  Users2, FileText, Lock, BarChart3, Calculator, Box, Check, Star, Play
+  Users2, FileText, Lock, BarChart3, Calculator, Box, Check, Star, Play,
+  LayoutGrid, Package
 } from "lucide-react";
 
-const products = [
+export const products = [
   { 
     id: "01", name: "HRMS", desc: "Manage HR, payroll, attendance, leave, and employee records.", 
     color: "bg-indigo-500",
@@ -265,69 +266,128 @@ const features = [
   { name: "Support", desc: "Dedicated support when you need it", icon: Headphones, color: "text-pink-500", bgColor: "bg-pink-50 dark:bg-pink-500/10" },
 ];
 
+const filterCategories = [
+  { name: "All Solutions", icon: LayoutGrid },
+  { name: "People", icon: Users },
+  { name: "Sales", icon: BarChart3 },
+  { name: "Operations", icon: Settings },
+  { name: "Supply Chain", icon: Package },
+  { name: "Marketing", icon: Megaphone },
+  { name: "Learning", icon: GraduationCap },
+  { name: "Documents", icon: FileText }
+];
+
+const getCategoryForProduct = (id: string) => {
+  switch (id) {
+    case "01": return "People"; // HRMS
+    case "02": return "Sales"; // CRM
+    case "03": return "Operations"; // ERP
+    case "04": return "Sales"; // Dealer
+    case "05": return "Operations"; // Vendor
+    case "06": return "Marketing"; // Marketing
+    case "07": return "Supply Chain"; // Supply Chain
+    case "08": return "Sales"; // Sales Force
+    case "09": return "Learning"; // LMS
+    case "10": return "Operations"; // POS
+    case "11": return "Operations"; // Queue
+    case "12": return "Documents"; // Document
+    default: return "Operations";
+  }
+};
+
 export default function Products() {
+  const [activeFilter, setActiveFilter] = React.useState("All Solutions");
+
+  const filteredProducts = activeFilter === "All Solutions"
+    ? products
+    : products.filter(p => getCategoryForProduct(p.id) === activeFilter);
+
   return (
-    <section className="py-24 relative z-10 bg-white dark:bg-[#030816] transition-colors" id="products">
+    <section className="pt-8 pb-24 relative z-10 bg-[#f8fafc] dark:bg-[#030816] transition-colors" id="products">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1400px]">
         
-        <div className="text-center mb-16">
+        {/* Intro */}
+        <div className="max-w-4xl mb-8 mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1e293b] dark:text-white mb-4 transition-colors tracking-tight">
-              12 Powerful Products for Your Business
+            <span className="text-xs font-bold tracking-widest text-[#EB3158] uppercase mb-4 block">
+              One Connected Business Ecosystem
+            </span>
+            <h2 className="text-[2.25rem] md:text-5xl font-extrabold text-[#111A4A] dark:text-white tracking-tight mb-6 leading-[1.15]">
+              Explore powerful IT solutions for<br className="hidden sm:block" /> every business team.
             </h2>
-            
-            <div className="flex items-center justify-center gap-3">
-              <div className="h-[1px] w-8 sm:w-16 bg-blue-200 dark:bg-blue-800"></div>
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-blue-600"></div>
-              <p className="text-[#15172B]/60 dark:text-slate-400 font-semibold tracking-wide text-sm sm:text-base uppercase">
-                One Suite. Endless Possibilities.
-              </p>
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-400 dark:bg-blue-600"></div>
-              <div className="h-[1px] w-8 sm:w-16 bg-blue-200 dark:bg-blue-800"></div>
-            </div>
+            <p className="text-sm md:text-[15px] text-[#15172B]/70 dark:text-gray-100/70 leading-relaxed max-w-3xl mx-auto">
+              Connect people, customers, operations, inventory, logistics, documents, sales,<br className="hidden sm:block" /> learning, marketing, vendors, dealers, and retail activities through one centralized platform.
+            </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.05, type: "spring", stiffness: 100 }}
-              className="bg-slate-50 dark:bg-[#0a1125] rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-slate-100 dark:border-white/5 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] hover:border-blue-100 dark:hover:border-blue-500/30 flex flex-col items-center text-center overflow-hidden cursor-pointer"
-            >
-              {/* Highlight Glow in Dark Mode */}
-              <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent dark:from-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Number Badge */}
-              <div className={`absolute top-4 left-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold ${product.color} shadow-md z-20 group-hover:scale-110 transition-transform`}>
-                {product.id}
-              </div>
-              
-              {/* Custom Graphic */}
-              <div className="w-24 h-24 mt-4 mb-6 relative z-10 flex items-center justify-center">
-                 {/* Soft background glow behind graphic */}
-                 <div className={`absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30 dark:group-hover:opacity-20 transition-opacity duration-500 ${product.color}`}></div>
-                 {product.graphic}
-              </div>
-              
-              <h4 className="font-bold text-[#15172B] dark:text-slate-100 text-lg mb-2 leading-tight transition-colors z-10 relative">
-                {product.name}
-              </h4>
-              
-              <p className="text-[#15172B]/60 dark:text-slate-400 text-[13px] leading-relaxed transition-colors z-10 relative">
-                {product.desc}
-              </p>
-            </motion.div>
-          ))}
+        {/* Filters */}
+        <div className="mb-8 w-full max-w-[1400px] mx-auto">
+          <div className="flex items-center justify-between w-full gap-2 lg:gap-4">
+            {filterCategories.map(category => {
+              const Icon = category.icon;
+              const isActive = activeFilter === category.name;
+              return (
+                <button
+                  key={category.name}
+                  onClick={() => setActiveFilter(category.name)}
+                  className={`px-3 lg:px-5 py-2.5 rounded-xl text-[13px] lg:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 whitespace-nowrap flex-1 ${
+                    isActive
+                      ? "bg-[#111A4A] text-white shadow-lg shadow-[#111A4A]/20 border border-[#111A4A]"
+                      : "bg-white dark:bg-[#0A1125] text-[#15172B] dark:text-gray-100/70 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 hover:shadow-sm"
+                  }`}
+                >
+                  <Icon size={16} strokeWidth={2.5} className={isActive ? "text-white" : "text-[#15172B]/50 dark:text-gray-400"} />
+                  <span className="hidden sm:inline">{category.name}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <AnimatePresence>
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                layout
+                key={product.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="bg-slate-50 dark:bg-[#0a1125] rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-slate-100 dark:border-white/5 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] hover:border-blue-100 dark:hover:border-blue-500/30 flex flex-col items-center text-center overflow-hidden cursor-pointer"
+              >
+                {/* Highlight Glow in Dark Mode */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent dark:from-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Number Badge */}
+                <div className={`absolute top-4 left-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold ${product.color} shadow-md z-20 group-hover:scale-110 transition-transform`}>
+                  {product.id}
+                </div>
+                
+                {/* Custom Graphic */}
+                <div className="w-24 h-24 mt-4 mb-6 relative z-10 flex items-center justify-center">
+                   {/* Soft background glow behind graphic */}
+                   <div className={`absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30 dark:group-hover:opacity-20 transition-opacity duration-500 ${product.color}`}></div>
+                   {product.graphic}
+                </div>
+                
+                <h4 className="font-bold text-[#15172B] dark:text-slate-100 text-lg mb-2 leading-tight transition-colors z-10 relative">
+                  {product.name}
+                </h4>
+                
+                <p className="text-[#15172B]/60 dark:text-slate-400 text-[13px] leading-relaxed transition-colors z-10 relative">
+                  {product.desc}
+                </p>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Bottom Features Row */}
         <motion.div 

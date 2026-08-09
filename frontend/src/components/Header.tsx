@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Header() {
@@ -19,7 +19,7 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "HOME", href: "/home" },
+    { name: "HOME", href: "/" },
     { name: "SOLUTIONS", href: "/solutions" },
     { name: "PRODUCTS", href: "/products" },
     { name: "FRANCHISE", href: "/franchise" },
@@ -48,15 +48,71 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                href={link.href}
-                className="text-[15px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              if (link.name === "SOLUTIONS") {
+                const solutionsList = [
+                  { name: "Digital Transformation", id: "01" },
+                  { name: "Process Automation", id: "02" },
+                  { name: "Business Intelligence & Analytics", id: "03" },
+                  { name: "Workflow Optimization", id: "04" },
+                  { name: "System Integration", id: "05" },
+                  { name: "Franchise Enablement", id: "06" },
+                  { name: "Retail & Customer Experience Solutions", id: "07" },
+                  { name: "Workforce & Employee Solutions", id: "08" },
+                  { name: "Business Operations Solutions", id: "09" },
+                  { name: "Customer Growth Solutions", id: "10" },
+                  { name: "Supply Chain & Distribution Solutions", id: "11" },
+                  { name: "Learning & Knowledge Solutions", id: "12" }
+                ];
+                
+                return (
+                  <div key={link.name} className="relative group">
+                    <Link 
+                      href={link.href}
+                      className="flex items-center gap-1 text-[15px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] group-hover:after:w-full after:transition-all after:duration-300"
+                    >
+                      {link.name} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
+                    </Link>
+                    
+                    {/* Mega Menu Dropdown */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[700px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                      <div className="bg-white dark:bg-[#030816] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 p-6 flex flex-col gap-2 relative">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                          {solutionsList.map((sol) => (
+                            <Link 
+                              key={sol.id} 
+                              href={`/solutions?id=${sol.id}`}
+                              className="group/link flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                            >
+                              <span className="text-[14px] font-semibold text-[#15172B]/80 dark:text-gray-300 group-hover/link:text-[#EB3158] transition-colors">
+                                {sol.name}
+                              </span>
+                              <ArrowRight size={14} className="text-[#EB3158] opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
+                            </Link>
+                          ))}
+                        </div>
+                        
+                        <div className="pt-4 mt-2 border-t border-gray-100 dark:border-white/10 flex justify-center">
+                          <Link href="/solutions" className="text-sm font-bold text-[#EB3158] hover:text-[#d6274d] hover:underline flex items-center gap-1 justify-center transition-colors">
+                            View All Solutions <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link 
+                  key={link.name} 
+                  href={link.href}
+                  className="text-[15px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Desktop Actions */}

@@ -22,7 +22,7 @@
   }
 
   body {
-    @apply bg-[#FBFAF5] bg-gradient-to-b from-[#EEF0FF]/60 to-[#FBFAF5] text-[#15172B] dark:from-[#020617] dark:to-[#020617] dark:bg-[#020617] dark:text-white overflow-x-hidden antialiased transition-colors duration-300;
+    @apply bg-[#FBFAF5] bg-gradient-to-b from-[#EEF0FF]/60 to-[#FBFAF5] text-[#15172B] dark:from-[#020617] dark:to-[#020617] dark:bg-[#020617] dark:text-white overflow-x-clip antialiased transition-colors duration-300;
   }
   
   body.dark {
