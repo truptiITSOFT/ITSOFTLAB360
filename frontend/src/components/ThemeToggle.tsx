@@ -6,11 +6,14 @@ import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(true);
 
   // Avoid hydration mismatch by waiting for mount
   useEffect(() => {
-    setMounted(true);
+    if (mounted) {
+      setMounted(true);
+
+    }
   }, []);
 
   if (!mounted) {
