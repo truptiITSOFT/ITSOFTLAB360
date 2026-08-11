@@ -10,94 +10,127 @@ const INDUSTRIES = [
   { id: "healthcare", name: "Healthcare", icon: Stethoscope, color: "from-blue-500 to-cyan-500", bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", products: ["Patient Queue Mgt", "Healthcare CRM", "Secure Docs Mgt", "Clinic HRMS"] },
   { id: "education", name: "Education", icon: GraduationCap, color: "from-amber-500 to-orange-500", bg: "bg-amber-100", text: "text-amber-600", border: "border-amber-200", products: ["Learning Management (LMS)", "Faculty HRMS", "Student CRM", "Digital Docs Mgt"] },
   { id: "logistics", name: "Logistics & Transport", icon: Truck, color: "from-emerald-500 to-teal-500", bg: "bg-emerald-100", text: "text-emerald-600", border: "border-emerald-200", products: ["Fleet Logistics Tracking", "Operations ERP", "Sales Force App", "Vendor Mgt"] },
-  { id: "hospitality", name: "Hospitality", icon: Hotel, color: "from-violet-500 to-purple-500", bg: "bg-violet-100", text: "text-violet-600", border: "border-violet-200", products: ["Restaurant/Hotel POS", "Guest CRM", "Queue Management", "Staff HRMS"] },
   { id: "corporate", name: "Corporate Enterprise", icon: Building2, color: "from-indigo-500 to-blue-700", bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", products: ["Enterprise ERP", "Corporate HRMS", "Secure Docs Mgt", "Sales Force"] },
   { id: "service", name: "Service Businesses", icon: Briefcase, color: "from-rose-400 to-red-500", bg: "bg-rose-100", text: "text-rose-600", border: "border-rose-200", products: ["Service CRM", "Marketing Automation", "Billing POS", "Booking/Queue Mgt"] }
 ];
 
-// --- Mini Animations for Each Industry ---
+// --- Enhanced Animations for Each Industry ---
 
 const RetailVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center">
-        <div className="w-32 h-24 border-2 border-pink-300 rounded-md bg-white flex flex-col justify-end p-2.5 relative overflow-hidden shadow-sm">
-            <motion.div animate={{ top: ["0%", "100%", "0%"] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute left-0 w-full h-[2px] bg-red-400 shadow-[0_0_10px_red] z-10"/>
-            <div className="flex gap-1.5 items-end w-full h-16">
-                {[1, 2, 3, 4, 5].map(i => <div key={i} className="flex-1 bg-slate-200 rounded-sm" style={{ height: `${Math.random() * 60 + 20}%` }}></div>)}
-            </div>
-        </div>
+    <div className="w-full h-full relative flex items-center justify-center bg-transparent overflow-hidden">
+        <video 
+            src="/videos/retail360video.mp4" 
+            className="w-full h-full object-cover"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        />
     </div>
 );
 
 const ManufacturingVisual = () => (
-    <div className="w-full h-full relative flex flex-col items-center justify-center gap-6">
-        <div className="flex gap-3">
-            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} className="w-14 h-14 border-[6px] border-dashed border-slate-400 rounded-full" />
-            <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 4, ease: "linear" }} className="w-14 h-14 border-[6px] border-dashed border-slate-500 rounded-full" />
-        </div>
-        <div className="w-40 h-3 bg-slate-300 rounded-full relative overflow-hidden">
-            <motion.div animate={{ x: [-30, 180] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="absolute top-0 w-8 h-full bg-slate-500 rounded-full shadow-[0_0_8px_rgba(100,116,139,0.5)]" />
-        </div>
+    <div className="w-full h-full relative flex items-center justify-center bg-transparent overflow-hidden">
+        <video 
+            src="/videos/manufacturing360video.mp4" 
+            className="w-full h-full object-cover"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        />
     </div>
 );
 
 const HealthcareVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center">
-        <svg viewBox="0 0 100 40" className="w-48 h-24 drop-shadow-lg">
-            <motion.path 
-                d="M 0 20 L 20 20 L 30 5 L 45 35 L 60 15 L 70 20 L 100 20" 
-                fill="none" stroke="#0ea5e9" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"
-                initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.5, repeat: Infinity }}
-            />
-        </svg>
+    <div className="w-full h-full relative flex items-center justify-center bg-transparent overflow-hidden">
+        <video 
+            src="/videos/healthcare360video.mp4" 
+            className="w-full h-full object-cover"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        />
     </div>
 );
 
 const EducationVisual = () => (
-    <div className="w-full h-full relative flex flex-col items-center justify-center gap-3">
-        {[1,2,3].map(i => (
-            <motion.div key={i} initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: i*0.2, repeat: Infinity, repeatDelay: 2, duration: 0.5 }} className={`w-${32 - i*4} h-5 rounded-sm bg-amber-400 shadow-sm border border-amber-500`} />
-        ))}
-        <motion.div animate={{ y: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="w-16 h-8 bg-amber-600 rounded-t-full mt-3 flex justify-center shadow-md"><div className="w-3 h-5 bg-amber-800 rounded-b-sm"></div></motion.div>
-    </div>
-);
-
-const LogisticsVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center">
-        <svg viewBox="0 0 100 50" className="w-48 h-24 absolute">
-            <path d="M 10 25 Q 30 5 50 25 T 90 25" fill="none" stroke="#cbd5e1" strokeWidth="3" strokeDasharray="6 6" />
-        </svg>
-        <motion.div animate={{ x: [-60, 60], y: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }} className="w-12 h-8 bg-emerald-500 rounded-md border-[3px] border-white shadow-lg relative z-10 flex items-center justify-center">
-            <Truck size={16} className="text-white" />
+    <div className="w-full h-full relative flex flex-col items-center justify-center gap-6 bg-amber-50/30 rounded-xl overflow-hidden">
+        {/* Floating Cap */}
+        <motion.div 
+            animate={{ y: [-5, 5, -5], rotate: [-2, 2, -2] }} 
+            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            className="relative z-20"
+        >
+            <div className="w-24 h-8 bg-amber-600 rounded-t-full shadow-lg border-b-4 border-amber-700 flex justify-center relative">
+                <div className="absolute -bottom-4 w-6 h-4 bg-amber-800 rounded-b-md"></div>
+                {/* Tassel */}
+                <motion.div 
+                    animate={{ rotate: [0, 15, 0, -15, 0] }} 
+                    transition={{ repeat: Infinity, duration: 3 }}
+                    className="absolute right-4 top-2 w-1 h-12 bg-amber-300 origin-top rounded-full"
+                />
+            </div>
         </motion.div>
-    </div>
-);
-
-const HospitalityVisual = () => (
-    <div className="w-full h-full relative flex flex-col items-center justify-center gap-2">
-        <div className="w-32 h-24 bg-white border-2 border-violet-200 rounded-xl shadow-md grid grid-cols-4 grid-rows-3 gap-1.5 p-3">
-            {[...Array(12)].map((_, i) => (
-                <motion.div key={i} animate={{ opacity: [0.2, 1, 0.2] }} transition={{ repeat: Infinity, duration: 2, delay: i * 0.1 }} className={`rounded-sm ${i % 3 === 0 ? 'bg-violet-400' : 'bg-slate-200'}`} />
+        
+        {/* Animated Book */}
+        <div className="relative w-32 h-20 bg-amber-100 rounded-lg shadow-xl border border-amber-200 flex items-center justify-center p-2 perspective-[800px] z-10">
+            <div className="absolute w-1 h-full bg-amber-300 left-1/2 -translate-x-1/2 rounded-full"></div>
+            {/* Pages flipping */}
+            {[0, 1, 2].map(i => (
+                <motion.div 
+                    key={i}
+                    initial={{ rotateY: 0 }}
+                    animate={{ rotateY: -180, opacity: [1, 1, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, delay: i * 1, ease: "easeInOut" }}
+                    className="absolute right-1/2 w-[45%] h-[85%] bg-white rounded-sm shadow-sm origin-right border border-slate-100 flex flex-col gap-1 p-1"
+                >
+                    <div className="w-full h-1 bg-slate-200 rounded-full" />
+                    <div className="w-3/4 h-1 bg-slate-200 rounded-full" />
+                    <div className="w-full h-1 bg-slate-200 rounded-full" />
+                </motion.div>
             ))}
         </div>
     </div>
 );
 
+const LogisticsVisual = () => (
+    <div className="w-full h-full relative flex items-center justify-center bg-transparent overflow-hidden">
+        <video 
+            src="/videos/supply360video.mp4" 
+            className="w-full h-full object-cover"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        />
+    </div>
+);
+
 const CorporateVisual = () => (
-    <div className="w-full h-full relative flex items-end justify-center gap-3 pb-8">
-        {[40, 60, 45, 80, 100].map((h, i) => (
-            <motion.div key={i} initial={{ height: 0 }} animate={{ height: `${h}%` }} transition={{ duration: 1, delay: i * 0.1 }} className="w-8 bg-indigo-500 rounded-t-md shadow-md" />
-        ))}
+    <div className="w-full h-full relative flex items-center justify-center bg-transparent overflow-hidden">
+        <video 
+            src="/videos/Corporate Enterprise360.mp4" 
+            className="w-full h-full object-cover"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        />
     </div>
 );
 
 const ServiceVisual = () => (
-    <div className="w-full h-full relative flex items-center justify-center gap-6">
-        <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 2 }} className="w-16 h-16 bg-white rounded-full shadow-lg border-2 border-rose-200 flex items-center justify-center z-10"><Users size={28} className="text-rose-500" /></motion.div>
-        <div className="flex flex-col gap-3">
-            <motion.div animate={{ width: ["0%", "100%"] }} transition={{ repeat: Infinity, duration: 2 }} className="h-3 w-24 bg-rose-300 rounded-full origin-left" />
-            <motion.div animate={{ width: ["0%", "100%"] }} transition={{ repeat: Infinity, duration: 2, delay: 0.2 }} className="h-3 w-16 bg-rose-200 rounded-full origin-left" />
-            <motion.div animate={{ width: ["0%", "100%"] }} transition={{ repeat: Infinity, duration: 2, delay: 0.4 }} className="h-3 w-32 bg-rose-300 rounded-full origin-left" />
-        </div>
+    <div className="w-full h-full relative flex items-center justify-center bg-transparent overflow-hidden">
+        <video 
+            src="/videos/Service Businesses360.mp4" 
+            className="w-full h-full object-cover"
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+        />
     </div>
 );
 
@@ -108,7 +141,7 @@ export default function IndustriesNetwork() {
 
   return (
     <section className="relative py-24 bg-[#FAFAFA] dark:bg-[#030816] transition-colors duration-300 overflow-hidden">
-      <div className="max-w-[1300px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[1040px] mx-auto px-6 md:px-10 relative z-10">
         
         <div className="text-center mb-16">
           <motion.h2 
@@ -154,7 +187,7 @@ export default function IndustriesNetwork() {
             </div>
 
             {/* Right side: Dynamic Showcase Window */}
-            <div className="w-full lg:w-[65%] h-[550px] bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-slate-100 relative flex flex-col z-10 overflow-hidden">
+            <div className="w-full lg:w-[65%] h-[440px] bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-slate-100 relative flex flex-col z-10 overflow-hidden">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeIndustry.id}
@@ -167,8 +200,8 @@ export default function IndustriesNetwork() {
                         {/* Header Area */}
                         <div className={`w-full h-44 bg-gradient-to-br ${activeIndustry.color} p-8 flex items-end relative overflow-hidden shrink-0`}>
                             {/* Decorative Background Patterns */}
-                            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="absolute -right-20 -top-20 w-80 h-80 border-[40px] border-white/10 rounded-full" />
-                            <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 35, ease: "linear" }} className="absolute -left-10 -bottom-20 w-48 h-48 border-[20px] border-white/10 rounded-full" />
+                            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 40, ease: "linear" }} className="absolute -right-20 -top-20 w-80 h-80 border-[32px] border-white/10 rounded-full" />
+                            <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 35, ease: "linear" }} className="absolute -left-10 -bottom-20 w-48 h-48 border-[16px] border-white/10 rounded-full" />
                             
                             <div className="relative z-10 flex items-center gap-5">
                                 <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 text-white shadow-lg">
@@ -217,13 +250,13 @@ export default function IndustriesNetwork() {
                                  </div>
                                  
                                  {/* Central Animation Area */}
-                                 <div className="flex-1 p-6 relative">
+                                 <div className={`flex-1 relative ${['retail', 'manufacturing', 'healthcare', 'logistics', 'corporate', 'service'].includes(activeIndustry.id) ? 'p-0' : 'p-6'}`}>
                                      {activeIndustry.id === 'retail' && <RetailVisual />}
                                      {activeIndustry.id === 'manufacturing' && <ManufacturingVisual />}
                                      {activeIndustry.id === 'healthcare' && <HealthcareVisual />}
                                      {activeIndustry.id === 'education' && <EducationVisual />}
                                      {activeIndustry.id === 'logistics' && <LogisticsVisual />}
-                                     {activeIndustry.id === 'hospitality' && <HospitalityVisual />}
+
                                      {activeIndustry.id === 'corporate' && <CorporateVisual />}
                                      {activeIndustry.id === 'service' && <ServiceVisual />}
                                  </div>

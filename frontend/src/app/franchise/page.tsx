@@ -3,7 +3,7 @@ import FranchiseHero from "@/components/franchise/FranchiseHero";
 import FranchiseModelVisual from "@/components/franchise/FranchiseModelVisual";
 import ProductOrbit from "@/components/franchise/ProductOrbit";
 import BusinessEngine from "@/components/franchise/BusinessEngine";
-import IndustriesNetwork from "@/components/franchise/IndustriesNetwork";
+
 import IndiaNetwork from "@/components/franchise/IndiaNetwork";
 import FranchiseJourney from "@/components/franchise/FranchiseJourney";
 import PartnerBenefits from "@/components/franchise/PartnerBenefits";
@@ -26,7 +26,7 @@ export default function FranchisePage() {
         <FranchiseModelVisual />
         <ProductOrbit />
         <BusinessEngine />
-        <IndustriesNetwork />
+
         <PlatformShowcase />
         <IndiaNetwork />
         <GrowthVisualization />

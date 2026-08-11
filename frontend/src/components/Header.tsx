@@ -35,7 +35,7 @@ export default function Header() {
             : "bg-transparent py-6"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between">
+        <div className="max-w-[1120px] mx-auto px-6 md:px-10 flex items-center justify-between">
           
           {/* Logo */}
           <Link href="/" className="flex items-center group">
@@ -69,13 +69,13 @@ export default function Header() {
                   <div key={link.name} className="relative group">
                     <Link 
                       href={link.href}
-                      className="flex items-center gap-1 text-[15px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] group-hover:after:w-full after:transition-all after:duration-300"
+                      className="flex items-center gap-1 text-[12px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.6px] after:bg-[#EB3158] group-hover:after:w-full after:transition-all after:duration-300"
                     >
                       {link.name} <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-300" />
                     </Link>
                     
                     {/* Mega Menu Dropdown */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[700px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 w-[560px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                       <div className="bg-white dark:bg-[#030816] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-gray-100 dark:border-white/10 p-6 flex flex-col gap-2 relative">
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                           {solutionsList.map((sol) => (
@@ -84,7 +84,7 @@ export default function Header() {
                               href={`/solutions?id=${sol.id}`}
                               className="group/link flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
                             >
-                              <span className="text-[14px] font-semibold text-[#15172B]/80 dark:text-gray-300 group-hover/link:text-[#EB3158] transition-colors">
+                              <span className="text-[11.2px] font-semibold text-[#15172B]/80 dark:text-gray-300 group-hover/link:text-[#EB3158] transition-colors">
                                 {sol.name}
                               </span>
                               <ArrowRight size={14} className="text-[#EB3158] opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
@@ -107,7 +107,7 @@ export default function Header() {
                 <Link 
                   key={link.name} 
                   href={link.href}
-                  className="text-[15px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
+                  className="text-[12px] font-bold text-[#15172B]/80 dark:text-gray-300 hover:text-[#111A4A] dark:hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.6px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
                 >
                   {link.name}
                 </Link>

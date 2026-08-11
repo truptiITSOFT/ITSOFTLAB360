@@ -87,16 +87,16 @@ export default function PartnerBenefits() {
         <motion.div 
           animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px]"
+          className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[80px]"
         />
         <motion.div 
           animate={{ x: [0, -40, 0], y: [0, -50, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[100px]"
+          className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[80px]"
         />
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[960px] mx-auto px-6 md:px-10 relative z-10">
         
         <div className="text-center mb-20">
           <motion.div
@@ -118,7 +118,7 @@ export default function PartnerBenefits() {
         </div>
 
         {/* Dynamic Visual Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[220px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[160px] md:auto-rows-[176px]">
           {BENEFITS.map((benefit, i) => {
             const isHovered = hoveredId === benefit.id;
             const isLarge = benefit.colSpan.includes("row-span-2");
@@ -141,7 +141,7 @@ export default function PartnerBenefits() {
                 <motion.div 
                   animate={isHovered ? { scale: 1.5, opacity: 0.4 } : { scale: 1, opacity: 0 }}
                   transition={{ duration: 0.8 }}
-                  className={`absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br ${benefit.color} blur-[40px]`}
+                  className={`absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br ${benefit.color} blur-[32px]`}
                 />
 
                 <div className="relative h-full flex flex-col p-6 lg:p-8 z-10 justify-between">
@@ -159,7 +159,7 @@ export default function PartnerBenefits() {
                         {[1, 2, 3, 4].map(bar => (
                           <motion.div 
                             key={bar}
-                            animate={isHovered ? { height: ["10px", "30px", "10px"] } : { height: "10px" }}
+                            animate={isHovered ? { height: ["8px", "24px", "8px"] } : { height: "8px" }}
                             transition={{ duration: 1.5, repeat: Infinity, delay: bar * 0.1 }}
                             className={`w-1.5 rounded-full bg-gradient-to-t ${benefit.color} opacity-80`}
                           />

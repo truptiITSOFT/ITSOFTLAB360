@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 
 export default function Home() {
   return redirect("/home");
-    // <>
-    //   <DarkModeHome />
-    //   <IntroAnimation onDone={() => { }} />
-    // </>
+  // <>
+  //   <DarkModeHome />
+  //   <IntroAnimation onDone={() => { }} />
+  // </>
 }

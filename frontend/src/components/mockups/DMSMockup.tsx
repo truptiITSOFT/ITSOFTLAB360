@@ -9,7 +9,7 @@ import {
 
 export default function DMSMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5 relative overflow-hidden">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5 relative overflow-hidden">
       
       {/* Left Sidebar */}
       <div className="w-64 bg-[#0a1125] border border-white/5 p-5 flex flex-col gap-4 rounded-2xl relative overflow-hidden z-10 shrink-0">
@@ -19,10 +19,10 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
           </div>
           <h2 className="text-xl font-bold mt-2 leading-tight">DOCUMENT<br/><span className="text-indigo-400">MANAGEMENT<br/>SYSTEM</span></h2>
         </div>
-        <p className="text-[11px] text-slate-400 mb-2 z-10">Store, organize, share, and secure documents.</p>
+        <p className="text-[8.8px] text-slate-400 mb-2 z-10">Store, organize, share, and secure documents.</p>
         
         {/* Navigation Menu */}
-        <div className="flex flex-col gap-1 z-10 text-[10px]">
+        <div className="flex flex-col gap-1 z-10 text-[8px]">
            {[
              { label: "Dashboard", icon: <Network size={12}/>, active: true },
              { label: "Documents", icon: <FileText size={12}/>, active: false },
@@ -44,8 +44,8 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
 
         {/* Smart Folder Structure */}
         <div className="mt-4 pt-4 border-t border-white/10 z-10 flex-grow">
-           <h3 className="text-[10px] font-semibold mb-3">Smart Folder Structure</h3>
-           <div className="flex flex-col gap-1.5 text-[9px] text-slate-400 pl-2">
+           <h3 className="text-[8px] font-semibold mb-3">Smart Folder Structure</h3>
+           <div className="flex flex-col gap-1.5 text-[7.2px] text-slate-400 pl-2">
               <div className="flex justify-between hover:text-indigo-400 cursor-pointer transition"><span className="flex items-center gap-1"><FolderOpen size={10} className="text-[#EB3158]"/> Company Documents</span> <span>2,145</span></div>
               <div className="flex justify-between hover:text-indigo-400 cursor-pointer transition ml-4"><span className="flex items-center gap-1"><FolderOpen size={10} className="text-cyan-500"/> Finance</span> <span>356</span></div>
               <div className="flex justify-between hover:text-indigo-400 cursor-pointer transition ml-4"><span className="flex items-center gap-1"><FolderOpen size={10} className="text-orange-500"/> HR</span> <span>542</span></div>
@@ -60,7 +60,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
         {/* Bottom Graphic */}
         <div className="mt-auto h-24 relative flex items-end justify-center z-10 pt-4">
            {/* Abstract Glow */}
-           <div className="absolute w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl bottom-[-20px] left-0"></div>
+           <div className="absolute w-32 h-32 bg-indigo-600/20 rounded-full blur-2xl bottom-[-16px] left-0"></div>
            <div className="relative w-full h-full flex items-end z-20">
               <div className="relative">
                  <div className="w-16 h-12 bg-blue-800 rounded-t-lg rounded-br-lg absolute bottom-0 left-0 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.3)] transform -skew-x-12"></div>
@@ -84,7 +84,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
              </div>
              <div>
                <h2 className="text-lg font-bold">Document Management System</h2>
-               <p className="text-[11px] text-slate-400">Store, organize, share, and secure documents.</p>
+               <p className="text-[8.8px] text-slate-400">Store, organize, share, and secure documents.</p>
              </div>
            </div>
            <div className="flex items-center gap-3">
@@ -99,7 +99,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border border-white/10">
                   <img src="https://ui-avatars.com/api/?name=Admin+User&background=4f46e5&color=fff" alt="User" />
                </div>
-               <div className="text-left text-[10px] hidden md:block pr-2">
+               <div className="text-left text-[8px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Admin User</div>
                  <div className="text-[#15172B]/60">System Administrator</div>
                </div>
@@ -120,11 +120,11 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-xl p-3 flex flex-col justify-center">
                <div className="flex items-center gap-3 mb-1">
                  <div className={`p-1.5 rounded-lg bg-[#0d162f] border border-white/5 ${kpi.c}`}>{kpi.icon}</div>
-                 <div className="text-[9px] text-slate-400">{kpi.label}</div>
+                 <div className="text-[7.2px] text-slate-400">{kpi.label}</div>
                </div>
                <div className="flex items-end justify-between px-1">
                   <div className="text-lg font-bold text-slate-200 leading-tight">{kpi.val}</div>
-                  <div className={`text-[8px] font-semibold flex items-center gap-1 ${kpi.up ? 'text-green-400' : 'text-red-400'}`}>
+                  <div className={`text-[6.4px] font-semibold flex items-center gap-1 ${kpi.up ? 'text-green-400' : 'text-red-400'}`}>
                      {kpi.trend} <span className="text-[#15172B]/60 font-normal hidden xl:inline">vs Apr 2025</span>
                   </div>
                </div>
@@ -133,10 +133,10 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
         </div>
 
         {/* Row 1: Document Lifecycle & Storage Usage */}
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 h-[180px]">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 h-[144px]">
            {/* Document Lifecycle */}
            <div className="xl:col-span-2 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative overflow-hidden">
-              <h3 className="text-[11px] font-semibold mb-6">Document Lifecycle</h3>
+              <h3 className="text-[8.8px] font-semibold mb-6">Document Lifecycle</h3>
               <div className="flex justify-between items-center relative px-4 flex-grow">
                  {/* Connecting Line */}
                  <div className="absolute top-[35%] left-10 right-10 h-0.5 bg-slate-700 -translate-y-1/2 z-0">
@@ -155,8 +155,8 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                       <div className={`w-12 h-12 rounded-xl border-2 flex items-center justify-center mb-2 ${step.c}`}>
                          {step.icon}
                       </div>
-                      <div className={`text-[9px] font-bold ${i < 5 ? 'text-white' : 'text-slate-400'}`}>{step.n}</div>
-                      <div className="text-[7px] text-slate-400 whitespace-pre-line leading-tight mt-1">{step.sub}</div>
+                      <div className={`text-[7.2px] font-bold ${i < 5 ? 'text-white' : 'text-slate-400'}`}>{step.n}</div>
+                      <div className="text-[5.6px] text-slate-400 whitespace-pre-line leading-tight mt-1">{step.sub}</div>
                    </div>
                  ))}
               </div>
@@ -164,7 +164,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
 
            {/* Storage Usage */}
            <div className="xl:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
-              <h3 className="text-[11px] font-semibold mb-1">Storage Usage</h3>
+              <h3 className="text-[8.8px] font-semibold mb-1">Storage Usage</h3>
               <div className="flex-grow flex flex-col justify-center">
                 <div className="flex items-center justify-between">
                    <div className="relative w-24 h-24">
@@ -176,11 +176,11 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#ec4899" strokeWidth="12" strokeDasharray="251" strokeDashoffset="240" />
                      </svg>
                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                       <span className="text-sm font-bold">685.4 <span className="text-[10px]">GB</span></span>
-                       <span className="text-[7px] text-slate-400">of 1 TB</span>
+                       <span className="text-sm font-bold">685.4 <span className="text-[8px]">GB</span></span>
+                       <span className="text-[5.6px] text-slate-400">of 1 TB</span>
                      </div>
                    </div>
-                   <div className="flex flex-col gap-1.5 text-[8px] flex-grow pl-3">
+                   <div className="flex flex-col gap-1.5 text-[6.4px] flex-grow pl-3">
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-[#EB3158]"></div> Documents</span> <span className="text-right">312.6 GB (45.6%)</span></div>
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-green-500"></div> Archives</span> <span className="text-right">182.3 GB (26.6%)</span></div>
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-yellow-500"></div> Shared Files</span> <span className="text-right">98.7 GB (14.4%)</span></div>
@@ -188,7 +188,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-purple-500"></div> Others</span> <span className="text-right">30.6 GB (4.5%)</span></div>
                    </div>
                 </div>
-                <div className="flex justify-between items-center text-[8px] mt-3 pt-2 border-t border-white/5">
+                <div className="flex justify-between items-center text-[6.4px] mt-3 pt-2 border-t border-white/5">
                    <span className="text-green-400 font-bold">68.5% Used</span>
                    <span className="text-slate-400">314.6 GB Free</span>
                 </div>
@@ -197,14 +197,14 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
 
            {/* Secure Sharing Card */}
            <div className="xl:col-span-1 bg-gradient-to-b from-[#0d162f] to-[#0a1125] border border-indigo-500/30 rounded-2xl p-4 flex flex-col relative overflow-hidden">
-              <h3 className="text-[11px] font-semibold mb-2 text-indigo-100">Secure Sharing<br/>& Compliance</h3>
+              <h3 className="text-[8.8px] font-semibold mb-2 text-indigo-100">Secure Sharing<br/>& Compliance</h3>
               
               <div className="absolute top-2 right-2 w-16 h-16 opacity-30 pointer-events-none">
                  <Cloud size={64} className="text-indigo-400 absolute top-0 right-0" />
                  <Lock size={20} className="text-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
               </div>
               
-              <div className="flex-grow flex flex-col gap-2.5 text-[8px] text-indigo-200/80 mt-8 relative z-10">
+              <div className="flex-grow flex flex-col gap-2.5 text-[6.4px] text-indigo-200/80 mt-8 relative z-10">
                  <div className="flex items-start gap-1.5">
                     <CheckCircle2 size={10} className="text-indigo-400 flex-shrink-0 mt-0.5" />
                     <span>Share files securely with role-based access</span>
@@ -222,19 +222,19 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                     <span>Compliance with global regulations</span>
                  </div>
               </div>
-              <button className="w-full mt-3 py-1.5 rounded bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/50 text-indigo-300 text-[8px] transition flex justify-center items-center gap-1">
+              <button className="w-full mt-3 py-1.5 rounded bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/50 text-indigo-300 text-[6.4px] transition flex justify-center items-center gap-1">
                  Explore Security Center →
               </button>
            </div>
         </div>
 
         {/* Row 2: Document Activity, Document Types, Permissions Matrix */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 h-[180px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 h-[144px]">
            {/* Document Activity Line Chart */}
            <div className="xl:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="text-[11px] font-semibold">Document Activity</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <h3 className="text-[8.8px] font-semibold">Document Activity</h3>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow relative mt-2">
                 <div className="absolute inset-0 z-10">
@@ -247,16 +247,16 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                     <circle cx="50" cy="15" r="2" fill="#fff" stroke="#3b82f6" strokeWidth="1" />
                   </svg>
                 </div>
-                <div className="absolute top-[20%] left-[50%] bg-[#0d162f]/90 p-1 rounded text-[7px] border border-blue-500/30 z-20 shadow-lg backdrop-blur">
+                <div className="absolute top-[20%] left-[50%] bg-[#0d162f]/90 p-1 rounded text-[5.6px] border border-blue-500/30 z-20 shadow-lg backdrop-blur">
                    <div className="font-bold text-slate-200 border-b border-white/10 pb-0.5 mb-0.5">May 16, 2025</div>
                    <div className="flex justify-between gap-3 text-[#EB3158]"><span>• Uploaded:</span> <span>842</span></div>
                    <div className="flex justify-between gap-3 text-sky-400"><span>• Downloaded:</span> <span>532</span></div>
                    <div className="flex justify-between gap-3 text-purple-400"><span>• Shared:</span> <span>214</span></div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-4 w-5 flex flex-col justify-between text-[6px] text-[#15172B]/60 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-5 flex flex-col justify-between text-[4.8px] text-[#15172B]/60 items-end pr-1">
                   <span>1K</span><span>750</span><span>500</span><span>250</span><span>0</span>
                 </div>
-                <div className="absolute bottom-0 left-5 right-0 flex justify-between text-[6px] text-[#15172B]/60">
+                <div className="absolute bottom-0 left-5 right-0 flex justify-between text-[4.8px] text-[#15172B]/60">
                   <span>May 01</span><span>May 06</span><span>May 11</span><span>May 16</span><span>May 21</span><span>May 26</span><span>May 31</span>
                 </div>
               </div>
@@ -265,7 +265,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
            {/* Document Types Donut */}
            <div className="xl:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-1">
-                <h3 className="text-[11px] font-semibold">Document Types</h3>
+                <h3 className="text-[8.8px] font-semibold">Document Types</h3>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -277,10 +277,10 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">24,589</span>
-                    <span className="text-[7px] text-slate-400">Total Files</span>
+                    <span className="text-[5.6px] text-slate-400">Total Files</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[8px] flex-grow pl-3">
+                <div className="flex flex-col gap-1.5 text-[6.4px] flex-grow pl-3">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-red-500"></div> PDF</span> <span>9,856 (40.1%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-[#EB3158]"></div> DOC/DOCX</span> <span>5,214 (21.2%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-green-500"></div> XLS/XLSX</span> <span>3,256 (13.2%)</span></div>
@@ -293,9 +293,9 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
 
            {/* Permissions Matrix */}
            <div className="xl:col-span-2 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col overflow-hidden">
-              <h3 className="text-[11px] font-semibold mb-3">Permissions Matrix</h3>
+              <h3 className="text-[8.8px] font-semibold mb-3">Permissions Matrix</h3>
               <div className="flex-grow overflow-x-auto custom-scrollbar">
-                 <table className="w-full text-left text-[9px]">
+                 <table className="w-full text-left text-[7.2px]">
                     <thead>
                        <tr className="text-slate-400 border-b border-white/10">
                           <th className="pb-2 font-medium w-1/4">Role</th>
@@ -339,17 +339,17 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
         </div>
 
         {/* Row 3: Lists & Compliance Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 h-[200px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 h-[160px]">
            
            {/* Recent Documents & Approval Workflow */}
            <div className="xl:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Recent Documents */}
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-[11px] font-semibold">Recent Documents</h3>
-                   <span className="text-[8px] text-indigo-400 cursor-pointer">View All</span>
+                   <h3 className="text-[8.8px] font-semibold">Recent Documents</h3>
+                   <span className="text-[6.4px] text-indigo-400 cursor-pointer">View All</span>
                  </div>
-                 <div className="flex flex-col gap-2 text-[8px]">
+                 <div className="flex flex-col gap-2 text-[6.4px]">
                     <div className="flex text-[#15172B]/60 border-b border-white/10 pb-1 mb-1">
                        <div className="w-2/5">Document Name</div>
                        <div className="w-1/5">Owner</div>
@@ -370,7 +370,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                           </div>
                           <div className="w-1/5 truncate pr-2">{doc.o}</div>
                           <div className="w-1/5 flex justify-center">
-                             <span className={`px-1.5 py-0.5 rounded-full border text-[7px] ${doc.sc}`}>{doc.s}</span>
+                             <span className={`px-1.5 py-0.5 rounded-full border text-[5.6px] ${doc.sc}`}>{doc.s}</span>
                           </div>
                           <div className="w-1/5 text-right text-[#15172B]/60">{doc.d}</div>
                        </div>
@@ -381,8 +381,8 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
               {/* Approval Workflow */}
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-[11px] font-semibold">Approval Workflow</h3>
-                   <span className="text-[8px] text-indigo-400 cursor-pointer">View All</span>
+                   <h3 className="text-[8.8px] font-semibold">Approval Workflow</h3>
+                   <span className="text-[6.4px] text-indigo-400 cursor-pointer">View All</span>
                  </div>
                  <div className="flex flex-col gap-2.5 flex-grow justify-center">
                     {[
@@ -393,8 +393,8 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                     ].map((wf, i) => (
                        <div key={i} className="flex justify-between items-center bg-[#0d162f]/50 p-2 rounded-xl border border-white/5 hover:border-indigo-500/30 transition cursor-pointer">
                           <div className="flex flex-col w-[50%]">
-                             <span className="text-[9px] font-semibold text-slate-200 truncate">{wf.n}</span>
-                             <span className="text-[7px] text-[#15172B]/60 truncate">{wf.req}</span>
+                             <span className="text-[7.2px] font-semibold text-slate-200 truncate">{wf.n}</span>
+                             <span className="text-[5.6px] text-[#15172B]/60 truncate">{wf.req}</span>
                           </div>
                           <div className="flex -space-x-2">
                              {[...Array(wf.avatars)].map((_, j) => (
@@ -403,7 +403,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                                 </div>
                              ))}
                           </div>
-                          <div className={`px-2 py-1 rounded text-[7px] border font-semibold ${wf.btn}`}>
+                          <div className={`px-2 py-1 rounded text-[5.6px] border font-semibold ${wf.btn}`}>
                              {wf.status}
                           </div>
                        </div>
@@ -417,10 +417,10 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
               {/* Security & Compliance */}
               <div className="md:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-[11px] font-semibold">Security & Compliance</h3>
-                   <span className="text-[8px] text-indigo-400 cursor-pointer">View All</span>
+                   <h3 className="text-[8.8px] font-semibold">Security & Compliance</h3>
+                   <span className="text-[6.4px] text-indigo-400 cursor-pointer">View All</span>
                  </div>
-                 <div className="flex flex-col gap-2.5 text-[8px]">
+                 <div className="flex flex-col gap-2.5 text-[6.4px]">
                     {[
                       { t: "Encryption", sub: "All files encrypted at rest & in transit", icon: <Lock size={12}/>, c: "text-indigo-400 bg-indigo-500/10", s: "Active", sc: "text-green-400" },
                       { t: "Access Control", sub: "Role-based access enabled", icon: <Users size={12}/>, c: "text-[#EB3158] bg-[#EB3158]/10", s: "Active", sc: "text-green-400" },
@@ -433,7 +433,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                              <div className={`p-1.5 rounded-lg border border-white/5 ${sec.c}`}>{sec.icon}</div>
                              <div className="flex flex-col w-32">
                                 <span className="font-semibold text-slate-200 truncate">{sec.t}</span>
-                                <span className="text-[6.5px] text-[#15172B]/60 truncate">{sec.sub}</span>
+                                <span className="text-[5.2px] text-[#15172B]/60 truncate">{sec.sub}</span>
                              </div>
                           </div>
                           <span className={`font-semibold ${sec.sc}`}>{sec.s}</span>
@@ -445,10 +445,10 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
               {/* Audit Trail (Recent Activity) */}
               <div className="md:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-[11px] font-semibold">Audit Trail (Recent Activity)</h3>
-                   <span className="text-[8px] text-indigo-400 cursor-pointer">View All</span>
+                   <h3 className="text-[8.8px] font-semibold">Audit Trail (Recent Activity)</h3>
+                   <span className="text-[6.4px] text-indigo-400 cursor-pointer">View All</span>
                  </div>
-                 <div className="flex flex-col gap-3 relative pl-3 text-[8px]">
+                 <div className="flex flex-col gap-3 relative pl-3 text-[6.4px]">
                     <div className="absolute left-1.5 top-2 bottom-2 w-0.5 bg-slate-800"></div>
                     {[
                       { msg: "Jane Cooper uploaded Q2 Report.pdf", time: "May 31, 2025 10:45 AM", icon: <Upload size={8}/>, c: "text-[#EB3158] bg-[#0d162f] border-[#EB3158]/50" },
@@ -462,7 +462,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                             {log.icon}
                           </div>
                           <span className="text-slate-200 font-medium leading-tight">{log.msg}</span>
-                          <span className="text-[#15172B]/60 text-[7px]">{log.time}</span>
+                          <span className="text-[#15172B]/60 text-[5.6px]">{log.time}</span>
                        </div>
                     ))}
                  </div>
@@ -472,7 +472,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
               <div className="md:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex items-center gap-2 mb-4">
                     <ShieldCheck size={16} className="text-indigo-400" />
-                    <h3 className="text-[11px] font-semibold">Compliance Overview</h3>
+                    <h3 className="text-[8.8px] font-semibold">Compliance Overview</h3>
                  </div>
                  <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 rounded-full border-4 border-indigo-500 flex items-center justify-center text-indigo-400 bg-indigo-500/10">
@@ -480,10 +480,10 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                     </div>
                     <div className="flex flex-col">
                        <span className="text-2xl font-bold text-white leading-tight">98.6%</span>
-                       <span className="text-[9px] text-slate-400">Compliant Score</span>
+                       <span className="text-[7.2px] text-slate-400">Compliant Score</span>
                     </div>
                  </div>
-                 <div className="flex flex-col gap-2.5 flex-grow justify-center text-[9px]">
+                 <div className="flex flex-col gap-2.5 flex-grow justify-center text-[7.2px]">
                     <div className="flex justify-between items-center pb-2 border-b border-white/5">
                        <span className="flex items-center gap-2 text-slate-300"><div className="w-2 h-2 rounded-full bg-green-500"></div> GDPR Compliance</span>
                        <span className="text-green-400 font-semibold">Compliant</span>
@@ -501,7 +501,7 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                        <span className="text-green-400 font-semibold">Compliant</span>
                     </div>
                  </div>
-                 <button className="w-full mt-4 py-1.5 rounded bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/50 text-indigo-300 text-[9px] transition">
+                 <button className="w-full mt-4 py-1.5 rounded bg-indigo-600/20 hover:bg-indigo-600/40 border border-indigo-500/50 text-indigo-300 text-[7.2px] transition">
                     View Compliance Center
                  </button>
               </div>
@@ -523,8 +523,8 @@ export default function DMSMockup({ solution }: { solution: { id: string, title:
                       {card.icon}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-slate-200 leading-tight">{card.label}</span>
-                      <span className="text-[7px] text-[#15172B]/60">{card.sub}</span>
+                      <span className="text-[7.2px] font-bold text-slate-200 leading-tight">{card.label}</span>
+                      <span className="text-[5.6px] text-[#15172B]/60">{card.sub}</span>
                     </div>
                  </div>
               </div>

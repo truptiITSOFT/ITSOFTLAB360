@@ -116,11 +116,11 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl border border-blue-200 dark:border-blue-500/30 rounded-2xl shadow-[0_0_40px_rgba(37,99,235,0.1)] dark:shadow-[0_0_40px_rgba(37,99,235,0.2)] mb-4 w-[350px] sm:w-[400px] h-[600px] max-h-[80vh] flex flex-col overflow-hidden relative transition-colors"
+            className="bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl border border-blue-200 dark:border-blue-500/30 rounded-2xl shadow-[0_0_40px_rgba(37,99,235,0.1)] dark:shadow-[0_0_40px_rgba(37,99,235,0.2)] mb-4 w-[280px] sm:w-[320px] h-[480px] max-h-[80vh] flex flex-col overflow-hidden relative transition-colors"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-900 to-indigo-900 p-4 flex items-center justify-between border-b border-blue-500/30 relative">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-[30px] rounded-full pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-[24px] rounded-full pointer-events-none"></div>
               <div className="flex items-center gap-3 relative z-10">
                 <div className="w-10 h-10 bg-[#020617] rounded-full flex items-center justify-center border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
                   <div className="w-6 h-6 bg-[#EB3158] rounded-sm rotate-45 flex items-center justify-center">

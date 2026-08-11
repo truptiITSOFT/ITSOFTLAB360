@@ -611,7 +611,7 @@ export default function SolutionsFactory3D() {
 
       <article
         className="solutions-factory__readout"
-        style={{ boxShadow: `0 24px 90px ${activeSolution.color}2b` }}
+        style={{ boxShadow: `0 19.2px 72px ${activeSolution.color}2b` }}
       >
         <div className="solutions-factory__number">
           {String(activeIndex + 1).padStart(2, "0")}

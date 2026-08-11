@@ -35,15 +35,15 @@ function CountUp({ end, suffix = "", duration = 2 }: { end: number, suffix?: str
 
 export default function EcosystemShowcase() {
   return (
-    <section className="py-24 bg-white dark:bg-[#0A1125] relative overflow-hidden">
+    <section className="py-24 bg-white dark:bg-[#030816] transition-colors duration-300 relative overflow-hidden">
       
       {/* Background Soft Pastel Shapes */}
       <div className="absolute inset-0 pointer-events-none -z-10">
-        <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[#EEF0FF]/40 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#FFE9DF]/30 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2" />
+        <div className="absolute top-1/4 left-1/4 w-[640px] h-[640px] bg-[#EEF0FF]/40 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-1/4 right-1/4 w-[480px] h-[480px] bg-[#FFE9DF]/30 rounded-full blur-[80px] translate-x-1/2 translate-y-1/2" />
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 text-center">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-10 text-center">
         
         {/* Header Content */}
         <div className="max-w-3xl mx-auto mb-20">
@@ -59,7 +59,7 @@ export default function EcosystemShowcase() {
         </div>
 
         {/* Visual Showcase - Desktop (Circular) */}
-        <div className="hidden md:flex relative w-full h-[600px] justify-center items-center mb-24">
+        <div className="hidden md:flex relative w-full h-[480px] justify-center items-center mb-24">
           
           {/* Core Platform Node */}
           <div className="relative z-20 flex items-center justify-center">
@@ -67,7 +67,7 @@ export default function EcosystemShowcase() {
             <motion.div
               animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-64 h-64 bg-[#EB3158]/20 dark:bg-[#EB3158]/30 rounded-full blur-[50px] -z-10 pointer-events-none"
+              className="absolute w-64 h-64 bg-[#EB3158]/20 dark:bg-[#EB3158]/30 rounded-full blur-[40px] -z-10 pointer-events-none"
             />
             
             {/* Spinning Rings */}
@@ -116,7 +116,7 @@ export default function EcosystemShowcase() {
               >
                 {/* Connecting Line from Center (Approximate using CSS rotated lines based on position) */}
                 <div 
-                  className="absolute top-1/2 left-1/2 -z-20 h-[1.5px] bg-gradient-to-r from-transparent via-[#111A4A]/20 to-transparent dark:via-white/20 origin-left"
+                  className="absolute top-1/2 left-1/2 -z-20 h-[1.2px] bg-gradient-to-r from-transparent via-[#111A4A]/20 to-transparent dark:via-white/20 origin-left"
                   style={{
                     width: `${radius}px`,
                     transform: `translateY(-50%) rotate(${angle + 180}deg)`,
@@ -153,7 +153,7 @@ export default function EcosystemShowcase() {
              <motion.div
               animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-40 h-40 bg-[#EB3158]/20 rounded-full blur-[30px] -z-10 pointer-events-none"
+              className="absolute w-40 h-40 bg-[#EB3158]/20 rounded-full blur-[24px] -z-10 pointer-events-none"
             />
             <div className="w-36 h-36 bg-white/80 dark:bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-slate-200 dark:border-white/50 flex flex-col items-center justify-center p-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
               <div className="w-full h-full bg-white dark:bg-white group-hover:bg-slate-50 dark:group-hover:bg-slate-100 transition-all duration-700 rounded-full flex items-center justify-center shadow-lg border border-slate-100 dark:border-slate-300 overflow-hidden">

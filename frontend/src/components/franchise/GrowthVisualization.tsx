@@ -14,7 +14,7 @@ const STAGES = [
 export default function GrowthVisualization() {
   return (
     <section className="relative py-24 bg-white dark:bg-[#030816] overflow-hidden transition-colors duration-300">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10 text-center">
+      <div className="max-w-[960px] mx-auto px-6 md:px-10 relative z-10 text-center">
         
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -25,14 +25,14 @@ export default function GrowthVisualization() {
           Start Local. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#EB3158]">Scale Boundlessly.</span>
         </motion.h2>
 
-        <div className="mt-20 relative flex flex-col md:flex-row items-center justify-between w-full max-w-[1000px] mx-auto">
+        <div className="mt-20 relative flex flex-col md:flex-row items-center justify-between w-full max-w-[800px] mx-auto">
           
           {/* Animated Connecting Line */}
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-gray-800 -translate-y-1/2 hidden md:block z-0">
              <motion.div 
                initial={{ width: "0%" }}
                whileInView={{ width: "100%" }}
-               viewport={{ once: true, margin: "-100px" }}
+               viewport={{ once: true, margin: "-80px" }}
                transition={{ duration: 2, ease: "easeInOut" }}
                className="h-full bg-blue-500"
              />
@@ -43,7 +43,7 @@ export default function GrowthVisualization() {
              <motion.div 
                initial={{ height: "0%" }}
                whileInView={{ height: "100%" }}
-               viewport={{ once: true, margin: "-100px" }}
+               viewport={{ once: true, margin: "-80px" }}
                transition={{ duration: 2, ease: "easeInOut" }}
                className="w-full bg-blue-500"
              />
@@ -79,7 +79,7 @@ export default function GrowthVisualization() {
               </div>
 
               {/* Node Text */}
-              <div className={`font-bold text-center max-w-[120px] transition-colors ${i === STAGES.length - 1 ? 'text-[#111A4A] dark:text-white text-lg' : 'text-[#15172B]/70 dark:text-gray-400 text-sm'}`}>
+              <div className={`font-bold text-center max-w-[96px] transition-colors ${i === STAGES.length - 1 ? 'text-[#111A4A] dark:text-white text-lg' : 'text-[#15172B]/70 dark:text-gray-400 text-sm'}`}>
                 {stage.title}
               </div>
             </motion.div>

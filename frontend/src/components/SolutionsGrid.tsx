@@ -73,15 +73,15 @@ export default function SolutionsGrid() {
   return (
     <section className="py-10 relative z-10 w-full overflow-hidden dark:bg-[#030816] bg-slate-50 transition-colors duration-500 font-sans" id="solutions">
       {/* Glowing background blob */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#EB3158]/10 dark:bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[480px] bg-[#EB3158]/10 dark:bg-blue-600/20 blur-[96px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-4 lg:px-8 max-w-[1600px]">
+      <div className="container mx-auto px-4 lg:px-8 max-w-[1280px]">
         {/* Main Carousel Area */}
-        <div className="relative flex items-center justify-center min-h-[700px] mb-12">
+        <div className="relative flex items-center justify-center min-h-[560px] mb-12">
           
           {/* Left Card (Previous) */}
           <div 
-            className="hidden lg:flex absolute left-0 w-[240px] xl:w-[280px] h-[500px] bg-white/40 dark:bg-[#0a1128]/80 backdrop-blur-md rounded-2xl border border-[#111A4A]/10 dark:border-blue-900/50 p-6 flex-col shadow-xl cursor-pointer hover:scale-105 transition-transform opacity-60 hover:opacity-100 z-10"
+            className="hidden lg:flex absolute left-0 w-[192px] xl:w-[224px] h-[400px] bg-white/40 dark:bg-[#0a1128]/80 backdrop-blur-md rounded-2xl border border-[#111A4A]/10 dark:border-blue-900/50 p-6 flex-col shadow-xl cursor-pointer hover:scale-105 transition-transform opacity-60 hover:opacity-100 z-10"
             onClick={prevSlide}
           >
             <div className="flex flex-col items-center gap-3 mb-6">
@@ -105,7 +105,7 @@ export default function SolutionsGrid() {
           </div>
 
           {/* Center Card (Active) */}
-          <div className="w-full lg:w-[1000px] xl:w-[1200px] z-20">
+          <div className="w-full lg:w-[800px] xl:w-[960px] z-20">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -113,7 +113,7 @@ export default function SolutionsGrid() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 1.05, y: -10 }}
                 transition={{ duration: 0.4 }}
-                className="w-full h-[640px] bg-white/60 dark:bg-[#060d20]/90 backdrop-blur-xl rounded-3xl border border-[#111A4A]/10 dark:border-blue-500/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_0_40px_rgba(30,64,255,0.15)] overflow-hidden flex flex-col"
+                className="w-full h-[512px] bg-white/60 dark:bg-[#060d20]/90 backdrop-blur-xl rounded-3xl border border-[#111A4A]/10 dark:border-blue-500/30 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_0_40px_rgba(30,64,255,0.15)] overflow-hidden flex flex-col"
               >
                 <div className="w-full h-full overflow-y-auto overflow-x-hidden custom-scrollbar [&>div]:min-h-full">
                   {activeSolution.id === "01" ? <HRMSMockup solution={activeSolution} /> :
@@ -137,7 +137,7 @@ export default function SolutionsGrid() {
 
           {/* Right Card (Next) */}
           <div 
-            className="hidden lg:flex absolute right-0 w-[240px] xl:w-[280px] h-[500px] bg-white/40 dark:bg-[#0a1128]/80 backdrop-blur-md rounded-2xl border border-[#111A4A]/10 dark:border-blue-900/50 p-6 flex-col shadow-xl cursor-pointer hover:scale-105 transition-transform opacity-60 hover:opacity-100 z-10"
+            className="hidden lg:flex absolute right-0 w-[192px] xl:w-[224px] h-[400px] bg-white/40 dark:bg-[#0a1128]/80 backdrop-blur-md rounded-2xl border border-[#111A4A]/10 dark:border-blue-900/50 p-6 flex-col shadow-xl cursor-pointer hover:scale-105 transition-transform opacity-60 hover:opacity-100 z-10"
             onClick={nextSlide}
           >
             <div className="flex flex-col items-center gap-3 mb-6">
@@ -188,7 +188,7 @@ export default function SolutionsGrid() {
                   }`}
                   style={{
                     borderColor: isActive && sol.bg.includes('pink') ? '#ec4899' : undefined,
-                    boxShadow: isActive && sol.bg.includes('pink') ? '0 0 15px rgba(236, 72, 153, 0.3)' : undefined
+                    boxShadow: isActive && sol.bg.includes('pink') ? '0 0 12px rgba(236, 72, 153, 0.3)' : undefined
                   }}
                 >
                   <div className={`mb-2 ${isActive ? `${sol.color} drop-shadow-[0_0_8px_currentColor]` : 'text-[#15172B]/60 dark:text-slate-400'}`}>
@@ -196,11 +196,11 @@ export default function SolutionsGrid() {
                       <span className="scale-75">{sol.icon}</span>
                     </div>
                   </div>
-                  <span className={`text-[10px] sm:text-[11px] text-center font-medium leading-tight ${isActive ? sol.color : 'text-[#15172B]/80 dark:text-slate-400'}`}>
+                  <span className={`text-[8px] sm:text-[8.8px] text-center font-medium leading-tight ${isActive ? sol.color : 'text-[#15172B]/80 dark:text-slate-400'}`}>
                     {sol.short}
                   </span>
                   {/* Small index number */}
-                  <span className="absolute top-1 left-1.5 text-[8px] text-slate-400 dark:text-slate-500 font-mono">{sol.id}</span>
+                  <span className="absolute top-1 left-1.5 text-[6.4px] text-slate-400 dark:text-slate-500 font-mono">{sol.id}</span>
                 </button>
               );
             })}
@@ -229,7 +229,7 @@ export default function SolutionsGrid() {
                 key={activeIndex + (isAutoSliding ? '-on' : '-off')}
               />
             </div>
-            <div className="text-sm font-medium text-[#15172B]/60 dark:text-slate-400 whitespace-nowrap min-w-[40px] text-right">
+            <div className="text-sm font-medium text-[#15172B]/60 dark:text-slate-400 whitespace-nowrap min-w-[32px] text-right">
               {activeIndex + 1} / {solutions.length}
             </div>
           </div>
@@ -244,7 +244,7 @@ export default function SolutionsGrid() {
 // --- POS Specific Dashboard Mockup ---
 function POSDashboardMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white">
+    <div className="flex h-full min-h-[512px] text-white">
       {/* Left Sidebar */}
       <div className="w-56 bg-[#040813] border-r border-white/5 p-4 flex flex-col gap-1 rounded-l-3xl">
         <div className="flex items-center gap-2 mb-6 px-2">
@@ -291,9 +291,9 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
            
            <div className="flex items-center gap-4">
              <div className="relative w-48 h-20 rounded-xl overflow-hidden bg-slate-900 border border-white/10 hidden md:block group">
-                <div className="absolute top-2 left-2 text-[10px] text-slate-400">Total: <span className="text-white text-sm font-bold">$128.50</span></div>
-                <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-[#EB3158] text-[8px] rounded text-white font-bold cursor-pointer">PAY</div>
-                <div className="absolute right-[-10px] top-[-10px] w-16 h-16 bg-pink-500/20 blur-xl group-hover:bg-pink-500/40 transition"></div>
+                <div className="absolute top-2 left-2 text-[8px] text-slate-400">Total: <span className="text-white text-sm font-bold">$128.50</span></div>
+                <div className="absolute bottom-2 right-2 px-2 py-0.5 bg-[#EB3158] text-[6.4px] rounded text-white font-bold cursor-pointer">PAY</div>
+                <div className="absolute right-[-8px] top-[-8px] w-16 h-16 bg-pink-500/20 blur-xl group-hover:bg-pink-500/40 transition"></div>
                 <ReceiptText className="absolute bottom-2 left-2 text-[#15172B]/60" size={16} />
              </div>
              
@@ -322,10 +322,10 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                  <div className={`p-1.5 rounded-lg bg-white/5 ${kpi.color}`}>
                    {kpi.icon}
                  </div>
-                 <span className="text-[10px] text-slate-400">{kpi.label}</span>
+                 <span className="text-[8px] text-slate-400">{kpi.label}</span>
                </div>
                <div className="text-lg font-bold ml-1">{kpi.val}</div>
-               <div className={`text-[9px] ml-1 mt-1 font-medium ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
+               <div className={`text-[7.2px] ml-1 mt-1 font-medium ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
                   {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
@@ -338,7 +338,7 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
           <div className="lg:col-span-1 bg-[#0d162f] border border-white/5 rounded-2xl p-4 flex flex-col relative overflow-hidden">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Sales Overview</h3>
-               <select className="bg-transparent text-[10px] text-slate-400 outline-none"><option>This Month</option></select>
+               <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
              </div>
              
              {/* Mock Line Chart */}
@@ -349,10 +349,10 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                   <div className="border-b border-white/5 w-full h-0"></div>
                   <div className="border-b border-white/5 w-full h-0"></div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-6 w-6 flex flex-col justify-between text-[8px] text-[#15172B]/60 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-6 w-6 flex flex-col justify-between text-[6.4px] text-[#15172B]/60 items-end pr-1">
                   <span>150k</span><span>120k</span><span>90k</span><span>60k</span><span>30k</span><span>0</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[8px] text-[#15172B]/60">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[6.4px] text-[#15172B]/60">
                   <span>May 01</span><span>May 11</span><span>May 21</span><span>May 31</span>
                 </div>
                 <div className="absolute inset-0 left-6 bottom-6 z-10">
@@ -365,7 +365,7 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                   </svg>
                 </div>
                 {/* Custom Tooltip */}
-                <div className="absolute right-4 top-4 bg-[#1e293b]/90 border border-white/10 rounded-lg p-2 z-20 shadow-lg text-[9px]">
+                <div className="absolute right-4 top-4 bg-[#1e293b]/90 border border-white/10 rounded-lg p-2 z-20 shadow-lg text-[7.2px]">
                    <div className="text-slate-400 mb-1">May 29, 2025</div>
                    <div className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div> Sales: $128,450</div>
                    <div className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-[#EB3158]"></div> Profit: $40,230</div>
@@ -377,7 +377,7 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
           <div className="bg-[#0d162f] border border-white/5 rounded-2xl p-4 flex flex-col">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Sales by Channel</h3>
-               <select className="bg-transparent text-[10px] text-slate-400 outline-none"><option>This Month</option></select>
+               <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
              </div>
              <div className="flex-grow flex items-center justify-between px-2">
                 <div className="relative w-28 h-28">
@@ -389,10 +389,10 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">$128,450</span>
-                    <span className="text-[8px] text-slate-400">Total</span>
+                    <span className="text-[6.4px] text-slate-400">Total</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 text-[9px]">
+                <div className="flex flex-col gap-2 text-[7.2px]">
                    <div className="flex justify-between w-20"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-purple-500"></div> In-Store</span> <span>55%</span></div>
                    <div className="flex justify-between w-20"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#EB3158]"></div> Online</span> <span>25%</span></div>
                    <div className="flex justify-between w-20"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-yellow-500"></div> Takeaway</span> <span>12%</span></div>
@@ -405,7 +405,7 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
           <div className="bg-[#0d162f] border border-white/5 rounded-2xl p-4 flex flex-col">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Payment Methods</h3>
-               <select className="bg-transparent text-[10px] text-slate-400 outline-none"><option>This Month</option></select>
+               <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
              </div>
              <div className="flex-grow flex items-center justify-between px-2">
                 <div className="relative w-28 h-28">
@@ -417,10 +417,10 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">3,245</span>
-                    <span className="text-[8px] text-slate-400">Transactions</span>
+                    <span className="text-[6.4px] text-slate-400">Transactions</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 text-[9px]">
+                <div className="flex flex-col gap-2 text-[7.2px]">
                    <div className="flex justify-between w-16"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-green-500"></div> Cash</span> <span>40%</span></div>
                    <div className="flex justify-between w-16"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-[#EB3158]"></div> Card</span> <span>35%</span></div>
                    <div className="flex justify-between w-16"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-purple-500"></div> UPI</span> <span>20%</span></div>
@@ -432,14 +432,14 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
         </div>
 
         {/* Third Row (Tables/Lists) */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 flex-grow min-h-[140px]">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 flex-grow min-h-[112px]">
            {/* Top Selling Categories */}
            <div className="bg-[#0d162f] border border-white/5 rounded-2xl p-3 flex flex-col lg:col-span-1">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Top Selling Categories</h3>
-               <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+               <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
              </div>
-             <div className="flex flex-col gap-2 text-[9px] mt-2">
+             <div className="flex flex-col gap-2 text-[7.2px] mt-2">
                 {[
                   { name: "Beverages", val: "$28,450", pct: "22.1%", icon: "🥤", w: "90%", color: "bg-orange-500" },
                   { name: "Snacks", val: "$21,680", pct: "16.8%", icon: "🍿", w: "70%", color: "bg-[#EB3158]" },
@@ -466,9 +466,9 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
            <div className="bg-[#0d162f] border border-white/5 rounded-2xl p-3 flex flex-col lg:col-span-1">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Low Stock Alert</h3>
-               <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+               <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
              </div>
-             <div className="flex flex-col gap-2.5 mt-1 overflow-y-auto pr-1 text-[9px]">
+             <div className="flex flex-col gap-2.5 mt-1 overflow-y-auto pr-1 text-[7.2px]">
                 {[
                   { name: "Mineral Water 200ml", sku: "Stock: 12", count: 12, icon: "💧" },
                   { name: "Tomato Ketchup 500g", sku: "Stock: 8", count: 8, icon: "🍅" },
@@ -477,10 +477,10 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                 ].map((item, i) => (
                   <div key={i} className="flex justify-between items-center border-b border-white/5 pb-1 last:border-0">
                     <div className="flex gap-2 items-center">
-                       <div className="w-6 h-6 rounded bg-slate-800 flex items-center justify-center text-[10px]">{item.icon}</div>
+                       <div className="w-6 h-6 rounded bg-slate-800 flex items-center justify-center text-[8px]">{item.icon}</div>
                        <div className="flex flex-col">
                          <span className="truncate w-24 text-slate-200">{item.name}</span>
-                         <span className="text-[#15172B]/60 text-[8px]">{item.sku}</span>
+                         <span className="text-[#15172B]/60 text-[6.4px]">{item.sku}</span>
                        </div>
                     </div>
                     <span className="text-red-500 font-medium bg-red-500/10 px-1.5 py-0.5 rounded">Stock: {item.count}</span>
@@ -493,9 +493,9 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
            <div className="bg-[#0d162f] border border-white/5 rounded-2xl p-3 flex flex-col lg:col-span-1">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Recent Transactions</h3>
-               <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+               <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
              </div>
-             <div className="flex flex-col gap-2 mt-1 text-[9px]">
+             <div className="flex flex-col gap-2 mt-1 text-[7.2px]">
                 {[
                   { time: "11:42 AM", name: "Coffee", price: "$4.20", status: "Completed" },
                   { time: "11:38 AM", name: "Sandwich", price: "$6.80", status: "Completed" },
@@ -517,7 +517,7 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
            <div className="bg-[#0d162f] border border-white/5 rounded-2xl p-3 flex flex-col lg:col-span-1">
              <div className="flex justify-between items-center mb-2">
                <h3 className="text-xs font-semibold">Inventory Status</h3>
-               <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+               <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
              </div>
              <div className="flex-grow flex items-center justify-center gap-3 mt-2">
                 <div className="relative w-16 h-16">
@@ -527,11 +527,11 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                     <circle cx="50" cy="50" r="40" fill="transparent" stroke="#22c55e" strokeWidth="14" strokeDasharray="180 251" strokeDashoffset="-30" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[10px] font-bold">78%</span>
-                    <span className="text-[6px] text-slate-400">In Stock</span>
+                    <span className="text-[8px] font-bold">78%</span>
+                    <span className="text-[4.8px] text-slate-400">In Stock</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[8px]">
+                <div className="flex flex-col gap-1.5 text-[6.4px]">
                    <div className="flex justify-between w-20"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> In Stock</span> <span>1,245 (78%)</span></div>
                    <div className="flex justify-between w-20"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500"></div> Low Stock</span> <span>245 (15%)</span></div>
                    <div className="flex justify-between w-20"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-red-500"></div> Out of Stock</span> <span>105 (7%)</span></div>
@@ -556,8 +556,8 @@ function POSDashboardMockup({ solution }: { solution: { id: string, title: strin
                      {action.icon}
                    </div>
                    <div className="flex flex-col">
-                     <span className="text-[10px] font-semibold text-slate-200">{action.label}</span>
-                     <span className="text-[8px] text-[#15172B]/60">{action.desc}</span>
+                     <span className="text-[8px] font-semibold text-slate-200">{action.label}</span>
+                     <span className="text-[6.4px] text-[#15172B]/60">{action.desc}</span>
                    </div>
                 </div>
                 <ChevronRight size={12} className="text-[#15172B]/80" />
@@ -578,7 +578,7 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
   const v2 = 20 + (seed * 11) % 60;
   
   return (
-    <div className="p-6 h-full flex flex-col min-h-[640px]">
+    <div className="p-6 h-full flex flex-col min-h-[512px]">
       {/* Header */}
       <div className="flex justify-between items-start mb-6">
         <div className="flex items-center gap-4">
@@ -607,14 +607,14 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
         <div className="lg:col-span-2 flex flex-col gap-4">
           
           {/* Map/Tracker Widget */}
-          <div className="bg-slate-50 dark:bg-[#0a1125] rounded-2xl border border-[#111A4A]/10 dark:border-white/5 p-5 relative overflow-hidden flex-grow min-h-[240px]">
+          <div className="bg-slate-50 dark:bg-[#0a1125] rounded-2xl border border-[#111A4A]/10 dark:border-white/5 p-5 relative overflow-hidden flex-grow min-h-[192px]">
             {/* Mock Map Background */}
             <div className="absolute inset-0 opacity-10 dark:opacity-20 flex items-center justify-center">
               <Globe size={300} className="text-[#EB3158] animate-[spin_60s_linear_infinite]" />
             </div>
             
             {/* Path visualization */}
-            <div className="absolute top-1/2 left-[20%] right-[20%] h-[2px] bg-gradient-to-r from-blue-500/0 via-blue-500 to-blue-500/0 -translate-y-1/2">
+            <div className="absolute top-1/2 left-[20%] right-[20%] h-[1.6px] bg-gradient-to-r from-blue-500/0 via-blue-500 to-blue-500/0 -translate-y-1/2">
               <div className="absolute top-1/2 left-[20%] w-3 h-3 bg-[#EB3158] rounded-full -translate-y-1/2 shadow-[0_0_10px_#3b82f6]"></div>
               <div className="absolute top-1/2 right-[20%] w-3 h-3 bg-indigo-500 rounded-full -translate-y-1/2 shadow-[0_0_10px_#6366f1]"></div>
               <motion.div 
@@ -632,11 +632,11 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
               
               <div className="mt-4 flex gap-4">
                 <div>
-                  <div className="text-[10px] text-[#15172B]/60 dark:text-slate-400">ETA</div>
+                  <div className="text-[8px] text-[#15172B]/60 dark:text-slate-400">ETA</div>
                   <div className="text-sm font-medium text-green-600 dark:text-green-400">2h 45m</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#15172B]/60 dark:text-slate-400">Status</div>
+                  <div className="text-[8px] text-[#15172B]/60 dark:text-slate-400">Status</div>
                   <div className="text-sm font-medium text-[#EB3158] dark:text-blue-400">In Progress</div>
                 </div>
               </div>
@@ -660,7 +660,7 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
                   }`}>
                     {step.icon}
                   </div>
-                  <span className="text-[10px] font-medium text-[#15172B]/80 dark:text-slate-300">{step.label}</span>
+                  <span className="text-[8px] font-medium text-[#15172B]/80 dark:text-slate-300">{step.label}</span>
                 </div>
                 {i < 3 && (
                   <div className={`w-8 sm:w-16 h-0.5 mx-2 ${step.active ? 'bg-[#EB3158]' : 'bg-slate-200 dark:bg-slate-700'}`}></div>
@@ -675,7 +675,7 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
         <div className="flex flex-col gap-4">
           
           {/* Donut Chart Widget */}
-          <div className="bg-slate-50 dark:bg-[#0a1125] rounded-2xl border border-[#111A4A]/10 dark:border-white/5 p-4 flex flex-col items-center justify-center relative min-h-[160px]">
+          <div className="bg-slate-50 dark:bg-[#0a1125] rounded-2xl border border-[#111A4A]/10 dark:border-white/5 p-4 flex flex-col items-center justify-center relative min-h-[128px]">
             <h3 className="absolute top-4 left-4 text-xs font-semibold text-slate-700 dark:text-slate-300">Status Overview</h3>
             
             <div className="relative w-24 h-24 mt-4">
@@ -686,18 +686,18 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-lg font-bold text-[#15172B] dark:text-white">{v1 + v2}%</span>
-                <span className="text-[8px] text-[#15172B]/60">Active</span>
+                <span className="text-[6.4px] text-[#15172B]/60">Active</span>
               </div>
             </div>
             
-            <div className="w-full flex justify-between mt-4 text-[10px]">
+            <div className="w-full flex justify-between mt-4 text-[8px]">
                <div className="flex items-center gap-1"><div className="w-2 h-2 bg-[#EB3158] rounded-full"></div> Main ({v1}%)</div>
                <div className="flex items-center gap-1"><div className="w-2 h-2 bg-green-500 rounded-full"></div> Sub ({v2}%)</div>
             </div>
           </div>
 
           {/* Line Chart Widget */}
-          <div className="bg-slate-50 dark:bg-[#0a1125] rounded-2xl border border-[#111A4A]/10 dark:border-white/5 p-4 flex-grow flex flex-col min-h-[140px]">
+          <div className="bg-slate-50 dark:bg-[#0a1125] rounded-2xl border border-[#111A4A]/10 dark:border-white/5 p-4 flex-grow flex flex-col min-h-[112px]">
             <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">Efficiency Trend</h3>
             <div className="flex-grow relative flex items-end pt-4 pb-2">
               {/* Grid lines */}
@@ -732,7 +732,7 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
               </div>
               
               {/* X Axis */}
-              <div className="w-full flex justify-between text-[8px] text-slate-400 mt-auto pt-2 z-20">
+              <div className="w-full flex justify-between text-[6.4px] text-slate-400 mt-auto pt-2 z-20">
                 <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
               </div>
             </div>
@@ -753,10 +753,10 @@ function DashboardMockup({ solution }: { solution: { id: string, title: string, 
            <div key={i} className={`bg-slate-50 dark:bg-[#0a1125] p-3 rounded-xl border border-[#111A4A]/10 dark:border-white/5 ${i === 4 ? 'hidden lg:block' : ''}`}>
              <div className="flex items-center gap-2 text-[#15172B]/60 dark:text-slate-400 mb-2">
                {kpi.icon}
-               <span className="text-[10px] uppercase font-semibold">{kpi.label}</span>
+               <span className="text-[8px] uppercase font-semibold">{kpi.label}</span>
              </div>
              <div className="text-xl font-bold text-[#15172B] dark:text-white">{kpi.val}</div>
-             <div className={`text-[10px] font-medium mt-1 flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
+             <div className={`text-[8px] font-medium mt-1 flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
                {kpi.up ? <TrendingUp size={10} /> : <TrendingUp size={10} className="rotate-180" />}
                {kpi.trend}
              </div>

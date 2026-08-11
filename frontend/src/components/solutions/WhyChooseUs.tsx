@@ -35,7 +35,7 @@ export default function WhyChooseUs() {
   return (
     <section className="py-24 relative z-10 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full bg-blue-900/5 rounded-[100%] blur-[80px] -z-10"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-full bg-blue-900/5 rounded-[100%] blur-[64px] -z-10"></div>
       
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">

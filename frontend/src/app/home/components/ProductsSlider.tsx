@@ -24,9 +24,9 @@ export default function ProductsSlider() {
           {[...products, ...products].map((product, i) => (
             <div
               key={i}
-              className="w-[280px] sm:w-[320px] shrink-0 bg-white dark:bg-[#0A1125] rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-[0_4px_20px_rgba(17,26,74,0.05)] dark:shadow-none border border-slate-100 dark:border-white/5 hover:shadow-[0_15px_30px_rgba(17,26,74,0.1)] dark:hover:shadow-none hover:border-blue-100 dark:hover:border-blue-500/30 flex flex-col cursor-pointer"
+              className="w-[224px] sm:w-[256px] shrink-0 bg-white dark:bg-[#0A1125] rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-[0_4px_20px_rgba(17,26,74,0.05)] dark:shadow-none border border-slate-100 dark:border-white/5 hover:shadow-[0_15px_30px_rgba(17,26,74,0.1)] dark:hover:shadow-none hover:border-blue-100 dark:hover:border-blue-500/30 flex flex-col cursor-pointer"
             >
-              <div className={`absolute top-4 left-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-[11px] font-bold ${product.color} shadow-md z-20`}>
+              <div className={`absolute top-4 left-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-[8.8px] font-bold ${product.color} shadow-md z-20`}>
                 {product.id}
               </div>
               
@@ -39,7 +39,7 @@ export default function ProductsSlider() {
                 {product.name}
               </h4>
               
-              <p className="text-[#15172B]/60 dark:text-slate-400 text-[13px] leading-relaxed transition-colors z-10 text-center">
+              <p className="text-[#15172B]/60 dark:text-slate-400 text-[10.4px] leading-relaxed transition-colors z-10 text-center">
                 {product.desc}
               </p>
             </div>

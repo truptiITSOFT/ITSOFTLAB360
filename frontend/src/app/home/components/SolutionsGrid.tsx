@@ -15,7 +15,7 @@ export default function SolutionsGrid() {
 
   return (
     <section id="solutions" className="py-24 bg-[#FBFAF5] dark:bg-[#030816] relative">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-10">
         
         {/* Intro */}
         <div className="max-w-3xl mb-16">
@@ -61,10 +61,10 @@ export default function SolutionsGrid() {
               >
                 <Link 
                   href={`#`}
-                  className={`group relative flex flex-col h-full min-h-[320px] bg-white dark:bg-[#0A1125] rounded-[28px] border border-[#111A4A] dark:border-white/10 dark:border-white/10 p-8 shadow-sm dark:shadow-none hover:shadow-[0_20px_40px_rgba(17,26,74,0.08)] transition-all duration-500 hover:-translate-y-2 overflow-hidden ${solution.accent}`}
+                  className={`group relative flex flex-col h-full min-h-[256px] bg-white dark:bg-[#0A1125] rounded-[22.4px] border border-[#111A4A] dark:border-white/10 dark:border-white/10 p-8 shadow-sm dark:shadow-none hover:shadow-[0_20px_40px_rgba(17,26,74,0.08)] transition-all duration-500 hover:-translate-y-2 overflow-hidden ${solution.accent}`}
                 >
                   {/* Decorative Background Circle */}
-                  <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full border-[1.5px] border-current opacity-[0.03] group-hover:opacity-[0.08] group-hover:scale-125 transition-all duration-700 ease-out" />
+                  <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full border-[1.2px] border-current opacity-[0.03] group-hover:opacity-[0.08] group-hover:scale-125 transition-all duration-700 ease-out" />
                   
                   {/* Header Row */}
                   <div className="flex items-start justify-between mb-8 relative z-10">

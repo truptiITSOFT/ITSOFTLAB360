@@ -12,7 +12,7 @@ export default function PlatformShowcase() {
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#030816] to-transparent"></div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10 text-center mb-16 md:mb-24">
+      <div className="max-w-[960px] mx-auto px-6 md:px-10 relative z-10 text-center mb-16 md:mb-24">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ export default function PlatformShowcase() {
       </div>
 
       {/* 3D Dashboard Mockup Area */}
-      <div className="relative w-full max-w-[1000px] mx-auto aspect-video md:aspect-[21/9] flex items-center justify-center transform-style-3d px-4">
+      <div className="relative w-full max-w-[800px] mx-auto aspect-video md:aspect-[21/9] flex items-center justify-center transform-style-3d px-4">
         
         {/* Main Central Dashboard */}
         <motion.div
@@ -42,14 +42,14 @@ export default function PlatformShowcase() {
           viewport={{ once: true }}
           transition={{ duration: 1, type: "spring", bounce: 0.3 }}
           className="absolute z-30 w-[80%] md:w-[60%] h-[70%] bg-[#0f172a] rounded-xl border border-gray-700 shadow-[0_30px_60px_rgba(0,0,0,0.5)] overflow-hidden hover:scale-105 hover:-translate-y-4 hover:rotate-x-0 transition-all duration-500"
-          style={{ transform: "translateZ(50px)" }}
+          style={{ transform: "translateZ(40px)" }}
         >
           {/* Mock Header */}
           <div className="h-6 md:h-8 border-b border-gray-700 flex items-center px-3 gap-1.5 bg-[#1e293b]">
             <div className="w-2 h-2 rounded-full bg-red-500"></div>
             <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
-            <div className="mx-auto text-[8px] md:text-[10px] text-gray-400 font-medium tracking-widest uppercase">ITSoftLab360 Master Dashboard</div>
+            <div className="mx-auto text-[6.4px] md:text-[8px] text-gray-400 font-medium tracking-widest uppercase">ITSoftLab360 Master Dashboard</div>
           </div>
           {/* Mock Body */}
           <div className="p-4 flex gap-4 h-[calc(100%-2rem)]">
@@ -84,11 +84,11 @@ export default function PlatformShowcase() {
           whileInView={{ opacity: 0.6, x: -120, rotateY: 15 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, delay: 0.2 }}
-          className="absolute z-20 w-[40%] md:w-[30%] h-[50%] bg-[#1e293b] rounded-lg border border-gray-700 shadow-2xl overflow-hidden hidden md:block hover:opacity-100 hover:z-40 hover:scale-110 hover:-translate-x-[140px] hover:rotate-y-0 transition-all duration-500"
-          style={{ transform: "translateZ(-20px)" }}
+          className="absolute z-20 w-[40%] md:w-[30%] h-[50%] bg-[#1e293b] rounded-lg border border-gray-700 shadow-2xl overflow-hidden hidden md:block hover:opacity-100 hover:z-40 hover:scale-110 hover:-translate-x-[112px] hover:rotate-y-0 transition-all duration-500"
+          style={{ transform: "translateZ(-16px)" }}
         >
           <div className="h-6 border-b border-gray-700 bg-gray-800 flex items-center px-3 justify-between">
-            <div className="text-[8px] text-gray-400 font-bold">CRM Module</div>
+            <div className="text-[6.4px] text-gray-400 font-bold">CRM Module</div>
           </div>
           <div className="p-3 grid grid-cols-2 gap-2 h-full">
             <div className="col-span-2 h-6 bg-gray-800 rounded"></div>
@@ -103,11 +103,11 @@ export default function PlatformShowcase() {
           whileInView={{ opacity: 0.6, x: 120, rotateY: -15 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, delay: 0.4 }}
-          className="absolute z-20 w-[40%] md:w-[30%] h-[60%] bg-[#1e293b] rounded-lg border border-gray-700 shadow-2xl overflow-hidden hidden md:block hover:opacity-100 hover:z-40 hover:scale-110 hover:translate-x-[140px] hover:rotate-y-0 transition-all duration-500"
-          style={{ transform: "translateZ(20px)" }}
+          className="absolute z-20 w-[40%] md:w-[30%] h-[60%] bg-[#1e293b] rounded-lg border border-gray-700 shadow-2xl overflow-hidden hidden md:block hover:opacity-100 hover:z-40 hover:scale-110 hover:translate-x-[112px] hover:rotate-y-0 transition-all duration-500"
+          style={{ transform: "translateZ(16px)" }}
         >
           <div className="h-6 border-b border-gray-700 bg-gray-800 flex items-center px-3 justify-between">
-            <div className="text-[8px] text-gray-400 font-bold">POS Terminal</div>
+            <div className="text-[6.4px] text-gray-400 font-bold">POS Terminal</div>
           </div>
           <div className="p-3 flex gap-2 h-[calc(100%-1.5rem)]">
             <div className="flex-1 bg-gray-800 rounded"></div>

@@ -9,7 +9,7 @@ import {
 
 export default function AIAutomationMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
       
       {/* Left Sidebar */}
       <div className="w-64 bg-[#0a1125] border border-white/5 p-5 flex flex-col gap-4 rounded-2xl relative overflow-hidden">
@@ -19,7 +19,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
           </div>
           <h2 className="text-xl font-bold mt-2">AI<br/><span className="text-purple-400">AUTOMATION</span></h2>
         </div>
-        <p className="text-[11px] text-slate-400 mb-2 z-10">Automate campaigns, email marketing, lead nurturing, customer journeys, and analytics.</p>
+        <p className="text-[8.8px] text-slate-400 mb-2 z-10">Automate campaigns, email marketing, lead nurturing, customer journeys, and analytics.</p>
         
         <div className="flex flex-col gap-3 z-10">
            {[
@@ -33,7 +33,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200 leading-tight">{item.title}</div>
-                 <div className="text-[9px] text-[#15172B]/60 mt-0.5">{item.desc}</div>
+                 <div className="text-[7.2px] text-[#15172B]/60 mt-0.5">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -42,7 +42,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
         {/* AI Robot Graphic Area */}
         <div className="mt-auto h-32 relative flex items-end justify-center z-10 pt-4">
            {/* Abstract AI Background */}
-           <div className="absolute w-32 h-32 bg-purple-600/20 rounded-full blur-2xl bottom-[-20px]"></div>
+           <div className="absolute w-32 h-32 bg-purple-600/20 rounded-full blur-2xl bottom-[-16px]"></div>
            <div className="absolute inset-0 flex justify-center items-center opacity-30 mt-4 pointer-events-none">
              <svg viewBox="0 0 100 100" className="w-full h-full">
                 <circle cx="50" cy="50" r="30" fill="none" stroke="#a855f7" strokeWidth="1" strokeDasharray="4 4" />
@@ -73,7 +73,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
              </div>
              <div>
                <h2 className="text-lg font-bold">AI Automation Dashboard</h2>
-               <p className="text-[11px] text-slate-400">Automate. Personalize. Engage. Convert.</p>
+               <p className="text-[8.8px] text-slate-400">Automate. Personalize. Engage. Convert.</p>
              </div>
            </div>
            <div className="flex items-center gap-3">
@@ -86,7 +86,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
              </button>
              <div className="flex items-center gap-2 pl-2">
                <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-xs font-bold shadow-md">PS</div>
-               <div className="text-left text-[10px] hidden md:block pr-2">
+               <div className="text-left text-[8px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Priya Sharma</div>
                  <div className="text-[#15172B]/60">Marketing Head</div>
                </div>
@@ -106,13 +106,13 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
           ].map((kpi, i) => (
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex flex-col justify-center">
                <div className="flex items-center justify-between mb-2">
-                 <span className="text-[10px] text-slate-400 leading-tight w-20">{kpi.label}</span>
+                 <span className="text-[8px] text-slate-400 leading-tight w-20">{kpi.label}</span>
                  <div className={`p-1.5 rounded-lg ${kpi.bg} ${kpi.color}`}>
                    {kpi.icon}
                  </div>
                </div>
                <div className="text-lg font-bold">{kpi.val}</div>
-               <div className={`text-[9px] mt-1 font-medium flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
+               <div className={`text-[7.2px] mt-1 font-medium flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
                   {kpi.up ? <TrendingUp size={10}/> : <TrendingDown size={10}/>} {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
@@ -120,13 +120,13 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
         </div>
 
         {/* Middle Area: Line Chart, Funnel, List */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[200px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[160px]">
            
            {/* Campaign Performance Line Chart */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Campaign Performance</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow relative mt-2">
                 <div className="absolute inset-0 z-10">
@@ -138,16 +138,16 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                     <circle cx="90" cy="5" r="2" fill="#fff" stroke="#a855f7" strokeWidth="1" />
                   </svg>
                 </div>
-                <div className="absolute right-0 top-0 bg-[#0d162f]/80 p-1.5 rounded text-[8px] border border-white/10 z-20 text-center backdrop-blur-sm">
-                   <div className="text-slate-400 text-[6px]">May 31, 2025</div>
-                   <div className="text-slate-400 text-[6px] mt-0.5">Conversions</div>
+                <div className="absolute right-0 top-0 bg-[#0d162f]/80 p-1.5 rounded text-[6.4px] border border-white/10 z-20 text-center backdrop-blur-sm">
+                   <div className="text-slate-400 text-[4.8px]">May 31, 2025</div>
+                   <div className="text-slate-400 text-[4.8px] mt-0.5">Conversions</div>
                    <div className="font-bold text-slate-200">2,450</div>
-                   <div className="text-green-400 text-[6px]">↑ 16.3%</div>
+                   <div className="text-green-400 text-[4.8px]">↑ 16.3%</div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[5.6px] text-[#15172B]/60 items-end pr-1">
                   <span>250k</span><span>200k</span><span>150k</span><span>100k</span><span>50k</span><span>0</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[5.6px] text-[#15172B]/60">
                   <span>May 01</span><span>May 06</span><span>May 11</span><span>May 16</span><span>May 21</span><span>May 26</span><span>May 31</span>
                 </div>
               </div>
@@ -157,7 +157,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xs font-semibold">Campaign Funnel</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                  <div className="w-1/3 flex flex-col justify-center gap-0.5">
@@ -168,7 +168,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                    <div className="h-8 bg-orange-500 rounded-sm w-3/6 mx-auto shadow-[0_0_10px_rgba(249,115,22,0.3)]"></div>
                    <div className="h-8 bg-red-500 rounded-sm w-2/6 mx-auto shadow-[0_0_10px_rgba(239,68,68,0.3)]"></div>
                  </div>
-                 <div className="w-2/3 flex flex-col justify-between h-full py-1 text-[9px] pl-4">
+                 <div className="w-2/3 flex flex-col justify-between h-full py-1 text-[7.2px] pl-4">
                     <div className="flex justify-between">
                        <span className="text-slate-400">Impressions</span> <span className="font-bold">356,280</span>
                     </div>
@@ -192,9 +192,9 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Top Performing Campaigns</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
-              <div className="flex flex-col gap-2.5 text-[9px]">
+              <div className="flex flex-col gap-2.5 text-[7.2px]">
                  {[
                    { n: "Summer Sale Campaign", sent: "85,420", open: "32.4%", icon: <Mail size={12}/>, bg: "bg-[#EB3158]" },
                    { n: "Product Launch - Pro", sent: "62,310", open: "29.8%", icon: <Megaphone size={12}/>, bg: "bg-teal-600" },
@@ -207,11 +207,11 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                         <div className={`w-6 h-6 rounded flex items-center justify-center font-bold ${camp.bg}`}>{camp.icon}</div>
                         <div>
                            <div className="text-slate-200 font-semibold">{camp.n}</div>
-                           <div className="text-[8px] text-[#15172B]/60">Sent: {camp.sent}</div>
+                           <div className="text-[6.4px] text-[#15172B]/60">Sent: {camp.sent}</div>
                         </div>
                       </div>
                       <div className="text-right">
-                         <div className="text-slate-400 text-[8px]">Open Rate</div>
+                         <div className="text-slate-400 text-[6.4px]">Open Rate</div>
                          <div className="font-bold">{camp.open}</div>
                       </div>
                    </div>
@@ -221,12 +221,12 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
         </div>
 
         {/* Row 3: Audience, Automation Workflow, Channel Perf */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[160px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[128px]">
            {/* Audience Overview Donut */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-1">
                 <h3 className="text-xs font-semibold">Audience Overview</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>All Audiences</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>All Audiences</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -237,11 +237,11 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                     <circle cx="50" cy="50" r="40" fill="transparent" stroke="#3b82f6" strokeWidth="12" strokeDasharray="80 251" strokeDashoffset="-100" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[11px] font-bold">45,680</span>
-                    <span className="text-[7px] text-slate-400">Total</span>
+                    <span className="text-[8.8px] font-bold">45,680</span>
+                    <span className="text-[5.6px] text-slate-400">Total</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[9px] flex-grow pl-4">
+                <div className="flex flex-col gap-1.5 text-[7.2px] flex-grow pl-4">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-[#EB3158]"></div> New Leads</span> <span>15,620 (34.2%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> Active Leads</span> <span>12,850 (28.1%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div> Nurturing</span> <span>9,450 (20.7%)</span></div>
@@ -254,7 +254,7 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Automation Workflows</h3>
-                <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex-grow flex items-center justify-between relative px-2 pt-2">
                  {/* Connection Lines */}
@@ -274,27 +274,27 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                        <div className={`w-8 h-8 rounded-lg ${node.bg} border ${node.b} flex items-center justify-center ${node.c} mb-1 shadow-md bg-[#0a1125]`}>
                          {node.icon}
                        </div>
-                       <div className="text-[8px] font-bold text-slate-200">{node.n}</div>
-                       <div className="text-[7px] text-[#15172B]/60">{node.sub}</div>
+                       <div className="text-[6.4px] font-bold text-slate-200">{node.n}</div>
+                       <div className="text-[5.6px] text-[#15172B]/60">{node.sub}</div>
                     </div>
                  ))}
                  
                  {/* Branch Nodes */}
                  <div className="absolute bottom-1 right-8 flex flex-col items-center text-center z-10 w-16">
-                    <div className="text-[7px] text-green-500 font-bold mb-1 absolute -top-4 -left-4">Yes</div>
+                    <div className="text-[5.6px] text-green-500 font-bold mb-1 absolute -top-4 -left-4">Yes</div>
                     <div className="w-8 h-8 rounded-lg bg-[#0d162f] border border-red-500 flex items-center justify-center text-red-400 mb-1 shadow-md">
                       <Users2 size={14} />
                     </div>
-                    <div className="text-[8px] font-bold text-slate-200">Add to List</div>
-                    <div className="text-[7px] text-[#15172B]/60">Hot Leads</div>
+                    <div className="text-[6.4px] font-bold text-slate-200">Add to List</div>
+                    <div className="text-[5.6px] text-[#15172B]/60">Hot Leads</div>
                  </div>
                  <div className="absolute bottom-1 left-[45%] flex flex-col items-center text-center z-10 w-16">
-                    <div className="text-[7px] text-red-500 font-bold mb-1 absolute -top-4 -right-4">No</div>
+                    <div className="text-[5.6px] text-red-500 font-bold mb-1 absolute -top-4 -right-4">No</div>
                     <div className="w-8 h-8 rounded-lg bg-[#0d162f] border border-cyan-500 flex items-center justify-center text-cyan-400 mb-1 shadow-md border-dashed">
                       <Filter size={14} />
                     </div>
-                    <div className="text-[8px] font-bold text-slate-200">Condition</div>
-                    <div className="text-[7px] text-[#15172B]/60">Interested?</div>
+                    <div className="text-[6.4px] font-bold text-slate-200">Condition</div>
+                    <div className="text-[5.6px] text-[#15172B]/60">Interested?</div>
                  </div>
               </div>
            </div>
@@ -303,9 +303,9 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Channel Performance</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
-              <div className="flex flex-col gap-2.5 text-[9px]">
+              <div className="flex flex-col gap-2.5 text-[7.2px]">
                  {[
                    { n: "Email", pct: "28.6%", color: "bg-[#EB3158]" },
                    { n: "SMS", pct: "18.3%", color: "bg-green-500" },
@@ -339,9 +339,9 @@ export default function AIAutomationMockup({ solution }: { solution: { id: strin
                    {card.icon}
                  </div>
                  <div className="flex flex-col">
-                   <span className="text-[9px] text-slate-400 leading-tight">{card.label}</span>
+                   <span className="text-[7.2px] text-slate-400 leading-tight">{card.label}</span>
                    <span className="text-sm font-bold text-slate-200 leading-tight my-0.5">{card.val}</span>
-                   <span className={`text-[8px] ${card.sub.includes('↑') || card.sub.includes('↓') ? 'text-green-400' : 'text-[#15172B]/60'}`}>{card.sub}</span>
+                   <span className={`text-[6.4px] ${card.sub.includes('↑') || card.sub.includes('↓') ? 'text-green-400' : 'text-[#15172B]/60'}`}>{card.sub}</span>
                  </div>
               </div>
            ))}

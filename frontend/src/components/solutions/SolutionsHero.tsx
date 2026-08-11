@@ -44,7 +44,7 @@ export default function SolutionsHero() {
         </div>
 
         {/* Right Content - Abstract Dashboard Representation */}
-        <div className="z-10 relative h-[400px] lg:h-[500px] flex items-center justify-center">
+        <div className="z-10 relative h-[320px] lg:h-[400px] flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -120,7 +120,7 @@ export default function SolutionsHero() {
             </svg>
 
             {/* Large Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[#EB3158]/10 rounded-full blur-[100px] -z-20 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[#EB3158]/10 rounded-full blur-[80px] -z-20 pointer-events-none"></div>
           </motion.div>
         </div>
 

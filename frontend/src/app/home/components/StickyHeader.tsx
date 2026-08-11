@@ -34,7 +34,7 @@ export default function StickyHeader() {
           : "bg-transparent py-6"
           }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between">
+        <div className="max-w-[1120px] mx-auto px-6 md:px-10 flex items-center justify-between">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
@@ -56,7 +56,7 @@ export default function StickyHeader() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-[15px] font-bold text-[#15172B]/80 hover:text-[#111A4A] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
+                className="text-[12px] font-bold text-[#15172B]/80 hover:text-[#111A4A] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1.6px] after:bg-[#EB3158] hover:after:w-full after:transition-all after:duration-300"
               >
                 {link.name}
               </Link>

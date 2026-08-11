@@ -6,7 +6,7 @@ import {
 
 export default function HRMSMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col gap-4">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col gap-4">
       {/* Header */}
       <div className="flex justify-between items-start">
         <div className="flex items-center gap-4">
@@ -44,9 +44,9 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
               {kpi.icon}
             </div>
             <div>
-              <div className="text-[10px] text-slate-400">{kpi.label}</div>
+              <div className="text-[8px] text-slate-400">{kpi.label}</div>
               <div className="text-lg font-bold leading-tight">{kpi.val}</div>
-              <div className={`text-[9px] ${kpi.up ? 'text-green-500' : 'text-orange-500'}`}>
+              <div className={`text-[7.2px] ${kpi.up ? 'text-green-500' : 'text-orange-500'}`}>
                 {kpi.up ? '↑ ' : ''}{kpi.trend}
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
         <div className="lg:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-sm font-semibold">Employee Directory</h3>
-            <span className="text-[10px] text-[#EB3158] cursor-pointer">View all employees</span>
+            <span className="text-[8px] text-[#EB3158] cursor-pointer">View all employees</span>
           </div>
           
           <div className="flex flex-col gap-3 flex-grow">
@@ -78,10 +78,10 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                   </div>
                   <div>
                     <div className="text-sm font-semibold">{emp.name}</div>
-                    <div className="text-[10px] text-slate-400">{emp.role}</div>
+                    <div className="text-[8px] text-slate-400">{emp.role}</div>
                   </div>
                 </div>
-                <div className="text-[9px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
+                <div className="text-[7.2px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
                   {emp.status}
                 </div>
               </div>
@@ -97,12 +97,12 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
         <div className="lg:col-span-2 flex flex-col gap-4">
           
           {/* Top Row: Attendance & Payroll */}
-          <div className="grid grid-cols-2 gap-4 h-[180px]">
+          <div className="grid grid-cols-2 gap-4 h-[144px]">
             {/* Attendance Overview Donut */}
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-sm font-semibold">Attendance Overview</h3>
-                <select className="bg-transparent text-[10px] text-slate-400 outline-none"><option>Today</option></select>
+                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>Today</option></select>
               </div>
               <div className="flex items-center gap-4 mt-2">
                 <div className="relative w-28 h-28 ml-2">
@@ -113,7 +113,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-lg font-bold">1,056</span>
-                    <span className="text-[9px] text-slate-400">Present</span>
+                    <span className="text-[7.2px] text-slate-400">Present</span>
                   </div>
                 </div>
                 <div className="flex flex-col gap-3 text-xs flex-grow ml-2">
@@ -127,20 +127,20 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             {/* Payroll Summary */}
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative overflow-hidden">
                {/* Decorative background element */}
-               <div className="absolute right-[-20px] top-10 opacity-20">
+               <div className="absolute right-[-16px] top-10 opacity-20">
                  <DollarSign size={120} className="text-[#EB3158]" />
                </div>
                
                <div className="flex justify-between items-center mb-2 z-10">
                  <h3 className="text-sm font-semibold">Payroll Summary</h3>
-                 <select className="bg-transparent text-[10px] text-slate-400 outline-none"><option>May 2025</option></select>
+                 <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>May 2025</option></select>
                </div>
                
                <div className="z-10 mt-2">
-                 <div className="text-[10px] text-slate-400 mb-1">Total Payroll</div>
+                 <div className="text-[8px] text-slate-400 mb-1">Total Payroll</div>
                  <div className="flex items-end gap-2">
                    <div className="text-3xl font-bold">$583,420</div>
-                   <div className="text-[10px] text-green-500 mb-1 flex items-center">↑ 16.3% <span className="text-[#15172B]/60 ml-1">vs Apr 2025</span></div>
+                   <div className="text-[8px] text-green-500 mb-1 flex items-center">↑ 16.3% <span className="text-[#15172B]/60 ml-1">vs Apr 2025</span></div>
                  </div>
                </div>
                
@@ -152,7 +152,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                    { l: "Taxes", v: "$26,000", c: "text-orange-400" },
                  ].map((item, i) => (
                    <div key={i}>
-                     <div className="text-[9px] text-slate-400">{item.l}</div>
+                     <div className="text-[7.2px] text-slate-400">{item.l}</div>
                      <div className={`text-xs font-semibold ${item.c}`}>{item.v}</div>
                    </div>
                  ))}
@@ -161,12 +161,12 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
           </div>
 
           {/* Bottom Row: Leaves & Analytics */}
-          <div className="grid grid-cols-3 gap-4 flex-grow min-h-[180px]">
+          <div className="grid grid-cols-3 gap-4 flex-grow min-h-[144px]">
             {/* Leave Requests */}
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xs font-semibold">Leave Requests</h3>
-                <span className="text-[9px] text-[#EB3158] cursor-pointer">View all</span>
+                <span className="text-[7.2px] text-[#EB3158] cursor-pointer">View all</span>
               </div>
               <div className="flex flex-col gap-3">
                  {[
@@ -176,15 +176,15 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                  ].map((lr, i) => (
                    <div key={i} className="flex justify-between items-center">
                      <div className="flex items-center gap-2">
-                       <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold ${lr.a}`}>
+                       <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[8px] font-bold ${lr.a}`}>
                          {lr.n.split(' ').map(n => n[0]).join('')}
                        </div>
                        <div>
-                         <div className="text-[11px] font-semibold">{lr.n}</div>
-                         <div className="text-[8px] text-slate-400">{lr.t} • {lr.d}</div>
+                         <div className="text-[8.8px] font-semibold">{lr.n}</div>
+                         <div className="text-[6.4px] text-slate-400">{lr.t} • {lr.d}</div>
                        </div>
                      </div>
-                     <div className={`text-[8px] px-1.5 py-0.5 rounded ${lr.sc}`}>{lr.s}</div>
+                     <div className={`text-[6.4px] px-1.5 py-0.5 rounded ${lr.sc}`}>{lr.s}</div>
                    </div>
                  ))}
               </div>
@@ -194,7 +194,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xs font-semibold">Leave Balance</h3>
-                <span className="text-[9px] text-[#EB3158] cursor-pointer">View all</span>
+                <span className="text-[7.2px] text-[#EB3158] cursor-pointer">View all</span>
               </div>
               <div className="flex flex-col gap-4">
                  {[
@@ -203,7 +203,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                    { l: "Casual Leave", v: 6, max: 10, c: "bg-purple-500" },
                  ].map((lb, i) => (
                    <div key={i}>
-                     <div className="flex justify-between items-center mb-1 text-[10px]">
+                     <div className="flex justify-between items-center mb-1 text-[8px]">
                        <div className="flex items-center gap-1.5">
                          <Calendar size={12} className={lb.c.replace('bg-', 'text-')} />
                          <span>{lb.l}</span>
@@ -222,7 +222,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
             <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">HR Analytics</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               
               <div className="flex-grow relative mt-2">
@@ -241,7 +241,7 @@ export default function HRMSMockup({ solution }: { solution: { id: string, title
                 </div>
               </div>
               
-              <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-white/5 text-[9px]">
+              <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-white/5 text-[7.2px]">
                 <div>
                   <div className="text-slate-400">New Joinees</div>
                   <div className="font-bold text-sm">28</div>

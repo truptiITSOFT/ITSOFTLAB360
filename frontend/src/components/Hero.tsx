@@ -28,7 +28,7 @@ export default function Hero() {
   return (
     <section className="relative pt-24 pb-20 lg:pt-28 lg:pb-28 overflow-hidden bg-white dark:bg-[#020617] transition-colors duration-300">
       {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-blue-900/20 rounded-full blur-[96px] pointer-events-none"></div>
 
       <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
 
@@ -68,9 +68,9 @@ export default function Hero() {
         </div>
 
         {/* Right Content - Video Area */}
-        <div className="relative z-10 flex justify-center items-center h-[600px] mt-10 lg:mt-0 w-full max-w-lg mx-auto">
+        <div className="relative z-10 flex justify-center items-center h-[480px] mt-10 lg:mt-0 w-full max-w-lg mx-auto">
           {/* Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#EB3158]/20 rounded-full blur-[120px] pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#EB3158]/20 rounded-full blur-[96px] pointer-events-none"></div>
 
           {/* Video Container */}
           <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-white dark:bg-[#020617]/50 backdrop-blur-sm z-20 flex items-center justify-center group">

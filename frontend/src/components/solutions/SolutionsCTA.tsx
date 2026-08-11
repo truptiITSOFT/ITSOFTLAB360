@@ -17,7 +17,7 @@ export default function SolutionsCTA() {
           className="relative bg-gradient-to-r from-gray-50 via-blue-50 to-gray-50 dark:from-[#020617] dark:via-blue-900/20 dark:to-[#020617] border-y border-blue-200 dark:border-blue-500/20 py-16 md:py-20 overflow-hidden transition-colors"
         >
           {/* Decorative Glow */}
-          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 bg-blue-500/20 blur-[100px] rounded-full pointer-events-none"></div>
+          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 bg-blue-500/20 blur-[80px] rounded-full pointer-events-none"></div>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative z-10 px-8 md:px-16">
             
@@ -40,7 +40,7 @@ export default function SolutionsCTA() {
             </div>
 
             <div className="hidden md:flex flex-col items-center justify-center relative">
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-500/20 blur-[60px] rounded-full"></div>
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-500/20 blur-[48px] rounded-full"></div>
                <AnimatedLogo className="w-32 h-32 mb-6 drop-shadow-[0_0_20px_rgba(59,130,246,0.3)] dark:drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]" />
                <div className="text-center">
                  <h3 className="text-xl font-bold text-[#111A4A] dark:text-white tracking-wider transition-colors">IT SOFTLAB <span className="text-[#EB3158] dark:text-blue-500">360</span></h3>

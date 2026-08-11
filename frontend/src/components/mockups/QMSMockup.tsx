@@ -8,7 +8,7 @@ import {
 
 export default function QMSMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5 relative overflow-hidden">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5 relative overflow-hidden">
       
       {/* Left Sidebar */}
       <div className="w-64 bg-[#0a1125] border border-white/5 p-5 flex flex-col gap-4 rounded-2xl relative overflow-hidden z-10 shrink-0">
@@ -18,10 +18,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
           </div>
           <h2 className="text-xl font-bold mt-2 leading-tight">QUEUE<br/><span className="text-cyan-400">MANAGEMENT<br/>SYSTEM</span></h2>
         </div>
-        <p className="text-[11px] text-slate-400 mb-2 z-10">Manage audits, compliance, and quality control.</p>
+        <p className="text-[8.8px] text-slate-400 mb-2 z-10">Manage audits, compliance, and quality control.</p>
         
         {/* Navigation Menu */}
-        <div className="flex flex-col gap-1 z-10 text-[10px]">
+        <div className="flex flex-col gap-1 z-10 text-[8px]">
            {[
              { label: "Dashboard", icon: <BarChart3 size={12}/>, active: true },
              { label: "Audits", icon: <ClipboardCheck size={12}/>, active: false },
@@ -44,7 +44,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
         {/* Bottom Graphic */}
         <div className="mt-auto h-32 relative flex items-end justify-center z-10 pt-4">
            {/* Abstract Glow */}
-           <div className="absolute w-32 h-32 bg-cyan-600/20 rounded-full blur-2xl bottom-[-20px]"></div>
+           <div className="absolute w-32 h-32 bg-cyan-600/20 rounded-full blur-2xl bottom-[-16px]"></div>
            <div className="relative w-full h-full flex items-center justify-center z-20">
               <div className="w-16 h-20 bg-blue-900 border border-[#EB3158]/50 rounded flex flex-col p-2 shadow-[0_0_20px_rgba(6,182,212,0.4)] relative overflow-hidden">
                  <div className="absolute top-0 right-0 w-8 h-8 bg-blue-500/20 rounded-bl-full"></div>
@@ -72,7 +72,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
              </div>
              <div>
                <h2 className="text-lg font-bold">Queue Management System</h2>
-               <p className="text-[11px] text-slate-400">Manage audits, compliance, and quality control.</p>
+               <p className="text-[8.8px] text-slate-400">Manage audits, compliance, and quality control.</p>
              </div>
            </div>
            <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                <div className="w-8 h-8 rounded-full flex items-center justify-center overflow-hidden border border-white/10">
                   <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" alt="User" />
                </div>
-               <div className="text-left text-[10px] hidden md:block pr-2">
+               <div className="text-left text-[8px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Admin User</div>
                  <div className="text-[#15172B]/60">System Administrator</div>
                </div>
@@ -109,9 +109,9 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                <div className="flex items-center justify-between mb-1">
                  <div className={`p-1.5 rounded-lg bg-[#0d162f] border border-white/5 ${kpi.c}`}>{kpi.icon}</div>
                </div>
-               <div className="text-[9px] text-slate-400 mb-0.5">{kpi.label}</div>
+               <div className="text-[7.2px] text-slate-400 mb-0.5">{kpi.label}</div>
                <div className="text-lg font-bold text-slate-200 leading-tight">{kpi.val}</div>
-               <div className={`text-[8px] font-semibold mt-1 flex items-center gap-1 ${kpi.up ? 'text-green-400' : 'text-red-400'}`}>
+               <div className={`text-[6.4px] font-semibold mt-1 flex items-center gap-1 ${kpi.up ? 'text-green-400' : 'text-red-400'}`}>
                   {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
@@ -119,12 +119,12 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
         </div>
 
         {/* Row 1: Audit Overview, Compliance Trend, Audit Status, Compliance Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 h-[180px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 h-[144px]">
            {/* Audit Overview Donut */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-1">
-                <h3 className="text-[11px] font-semibold">Audit Overview</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <h3 className="text-[8.8px] font-semibold">Audit Overview</h3>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -135,10 +135,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">245</span>
-                    <span className="text-[7px] text-slate-400">Total Audits</span>
+                    <span className="text-[5.6px] text-slate-400">Total Audits</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[9px] flex-grow pl-3">
+                <div className="flex flex-col gap-1.5 text-[7.2px] flex-grow pl-3">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-purple-500"></div> Internal</span> <span>96 (39.2%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-sky-500"></div> Supplier</span> <span>68 (27.8%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-yellow-500"></div> Process</span> <span>52 (21.2%)</span></div>
@@ -150,7 +150,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* Compliance Trend Line Chart */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="text-[11px] font-semibold">Compliance Trend</h3>
+                <h3 className="text-[8.8px] font-semibold">Compliance Trend</h3>
               </div>
               <div className="flex-grow relative mt-2">
                 <div className="absolute inset-0 z-10">
@@ -160,15 +160,15 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                     <circle cx="60" cy="10" r="2" fill="#fff" stroke="#22c55e" strokeWidth="1" />
                   </svg>
                 </div>
-                <div className="absolute right-0 top-0 bg-[#0d162f]/80 p-1.5 rounded text-[8px] border border-white/10 z-20 text-center backdrop-blur-sm">
-                   <div className="text-slate-400 text-[6px]">May 31, 2025</div>
+                <div className="absolute right-0 top-0 bg-[#0d162f]/80 p-1.5 rounded text-[6.4px] border border-white/10 z-20 text-center backdrop-blur-sm">
+                   <div className="text-slate-400 text-[4.8px]">May 31, 2025</div>
                    <div className="font-bold text-slate-200">92.6%</div>
-                   <div className="text-green-400 text-[6px]">↑ 8.8%</div>
+                   <div className="text-green-400 text-[4.8px]">↑ 8.8%</div>
                 </div>
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[5.6px] text-[#15172B]/60 items-end pr-1">
                   <span>100%</span><span>80%</span><span>60%</span><span>40%</span><span>20%</span><span>0%</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[5.6px] text-[#15172B]/60">
                   <span>May 01</span><span>May 06</span><span>May 11</span><span>May 16</span><span>May 21</span><span>May 26</span><span>May 31</span>
                 </div>
               </div>
@@ -177,8 +177,8 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* Audit Status Donut */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-1">
-                <h3 className="text-[11px] font-semibold">Audit Status</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <h3 className="text-[8.8px] font-semibold">Audit Status</h3>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -191,10 +191,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">245</span>
-                    <span className="text-[7px] text-slate-400">Total Audits</span>
+                    <span className="text-[5.6px] text-slate-400">Total Audits</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[9px] flex-grow pl-3">
+                <div className="flex flex-col gap-1.5 text-[7.2px] flex-grow pl-3">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-green-500"></div> Completed</span> <span>207 (84.5%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-sky-500"></div> In Progress</span> <span>26 (10.6%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-sm bg-orange-500"></div> Planned</span> <span>9 (3.7%)</span></div>
@@ -206,10 +206,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* Compliance Overview Progress Bars */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
-                <h3 className="text-[11px] font-semibold">Compliance Overview</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>All Departments</option></select>
+                <h3 className="text-[8.8px] font-semibold">Compliance Overview</h3>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>All Departments</option></select>
               </div>
-              <div className="flex flex-col gap-2.5 text-[9px]">
+              <div className="flex flex-col gap-2.5 text-[7.2px]">
                  {[
                    { n: "Production", pct: "95.6%", icon: <Package size={10}/>, color: "bg-green-500", txtColor: "text-green-400" },
                    { n: "Quality Assurance", pct: "92.1%", icon: <ShieldCheck size={10}/>, color: "bg-[#EB3158]", txtColor: "text-[#EB3158]" },
@@ -232,10 +232,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
         </div>
 
         {/* Row 2: Issues & Alerts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 h-[180px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 h-[144px]">
            {/* Open Issues by Priority Donut */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
-              <h3 className="text-[11px] font-semibold mb-1">Open Issues by Priority</h3>
+              <h3 className="text-[8.8px] font-semibold mb-1">Open Issues by Priority</h3>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
                   <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
@@ -245,10 +245,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">38</span>
-                    <span className="text-[7px] text-slate-400">Open Issues</span>
+                    <span className="text-[5.6px] text-slate-400">Open Issues</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 text-[9px] flex-grow pl-4">
+                <div className="flex flex-col gap-2 text-[7.2px] flex-grow pl-4">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-sm bg-red-500"></div> High</span> <span>12 (31.6%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-sm bg-yellow-500"></div> Medium</span> <span>16 (42.1%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-sm bg-green-500"></div> Low</span> <span>10 (26.3%)</span></div>
@@ -259,8 +259,8 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* Issue Aging Bar Chart */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-[11px] font-semibold">Issue Aging</h3>
-                <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                <h3 className="text-[8.8px] font-semibold">Issue Aging</h3>
+                <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex items-end justify-between px-2 h-24">
                  {[
@@ -271,11 +271,11 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                    { v: 3, lbl: "> 60\nDays", h: 20, color: "bg-purple-600" },
                  ].map((b, i) => (
                     <div key={i} className="flex flex-col items-center gap-1 w-8 text-center">
-                       <span className="text-[9px] font-bold text-white">{b.v}</span>
+                       <span className="text-[7.2px] font-bold text-white">{b.v}</span>
                        <div className="w-5 bg-slate-800 rounded-t relative h-20">
                           <div className={`absolute bottom-0 w-full ${b.color} rounded-t`} style={{height: `${b.h}%`}}></div>
                        </div>
-                       <span className="text-[7px] text-slate-400 whitespace-pre-line leading-tight">{b.lbl}</span>
+                       <span className="text-[5.6px] text-slate-400 whitespace-pre-line leading-tight">{b.lbl}</span>
                     </div>
                  ))}
               </div>
@@ -284,8 +284,8 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
            {/* CAPA Actions Status */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-1">
-                <h3 className="text-[11px] font-semibold">CAPA Actions Status</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <h3 className="text-[8.8px] font-semibold">CAPA Actions Status</h3>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -296,10 +296,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">156</span>
-                    <span className="text-[7px] text-slate-400">Total Actions</span>
+                    <span className="text-[5.6px] text-slate-400">Total Actions</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 text-[9px] flex-grow pl-4">
+                <div className="flex flex-col gap-2 text-[7.2px] flex-grow pl-4">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-sm bg-green-500"></div> Completed</span> <span>98 (62.8%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-sm bg-orange-500"></div> In Progress</span> <span>42 (26.9%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-sm bg-red-500"></div> Planned</span> <span>16 (10.3%)</span></div>
@@ -312,10 +312,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               {/* Upcoming Audits */}
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex-grow flex flex-col">
                  <div className="flex justify-between items-center mb-2">
-                   <h3 className="text-[10px] font-semibold">Upcoming Audits</h3>
-                   <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                   <h3 className="text-[8px] font-semibold">Upcoming Audits</h3>
+                   <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
                  </div>
-                 <div className="flex flex-col gap-2 text-[8px]">
+                 <div className="flex flex-col gap-2 text-[6.4px]">
                     {[
                       { n: "ISO 9001:2015 Audit", d: "Jun 05, 2025", c: "text-green-400", time: "In 5 Days" },
                       { n: "Supplier Quality Audit", d: "Jun 10, 2025", c: "text-green-400", time: "In 10 Days" },
@@ -326,7 +326,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                              <div className="w-5 h-5 rounded bg-[#0d162f] flex items-center justify-center text-[#EB3158] border border-white/5"><Calendar size={10}/></div>
                              <div className="flex flex-col">
                                 <span className="font-semibold text-slate-200">{audit.n}</span>
-                                <span className="text-[7px] text-[#15172B]/60">{audit.d}</span>
+                                <span className="text-[5.6px] text-[#15172B]/60">{audit.d}</span>
                              </div>
                           </div>
                           <span className={`${audit.c} font-medium`}>{audit.time}</span>
@@ -337,10 +337,10 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               {/* Recent Alerts */}
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex-grow flex flex-col">
                  <div className="flex justify-between items-center mb-2">
-                   <h3 className="text-[10px] font-semibold">Recent Alerts</h3>
-                   <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                   <h3 className="text-[8px] font-semibold">Recent Alerts</h3>
+                   <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
                  </div>
-                 <div className="flex flex-col gap-2 text-[8px]">
+                 <div className="flex flex-col gap-2 text-[6.4px]">
                     {[
                       { n: "3 Overdue CAPA Actions", sub: "Due since May 25, 2025", c: "text-red-400" },
                       { n: "2 High Priority Issues Open", sub: "Requires immediate attention", c: "text-red-400" },
@@ -350,7 +350,7 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                           <div className={`w-5 h-5 rounded bg-[#0d162f] flex items-center justify-center border border-white/5 ${alert.c}`}><AlertTriangle size={10}/></div>
                           <div className="flex flex-col">
                              <span className="font-semibold text-slate-200 truncate w-36">{alert.n}</span>
-                             <span className="text-[7px] text-[#15172B]/60">{alert.sub}</span>
+                             <span className="text-[5.6px] text-[#15172B]/60">{alert.sub}</span>
                           </div>
                        </div>
                     ))}
@@ -360,33 +360,33 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
         </div>
 
         {/* Row 3: Quality Control & Document Control */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[100px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[80px]">
            {/* Quality Control Overview */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col justify-center relative overflow-hidden">
               <div className="flex items-center gap-3 mb-2 relative z-10">
                  <div className="p-1.5 rounded-lg bg-[#EB3158]/20 text-[#EB3158]"><CheckCircle2 size={14}/></div>
-                 <h3 className="text-[11px] font-semibold">Quality Control Overview</h3>
+                 <h3 className="text-[8.8px] font-semibold">Quality Control Overview</h3>
               </div>
-              <div className="flex justify-between text-[10px] relative z-10">
+              <div className="flex justify-between text-[8px] relative z-10">
                  <div>
                     <div className="text-slate-400 mb-0.5">Inspections</div>
                     <div className="text-xl font-bold">320</div>
-                    <div className="text-[8px] text-green-400 mt-1">↑ 15.2% vs Apr 2025</div>
+                    <div className="text-[6.4px] text-green-400 mt-1">↑ 15.2% vs Apr 2025</div>
                  </div>
                  <div>
                     <div className="text-slate-400 mb-0.5 flex items-center gap-1"><XCircle size={10}/> Defects Found</div>
                     <div className="text-xl font-bold text-red-400">48</div>
-                    <div className="text-[8px] text-green-400 mt-1">↓ 8.7% vs Apr 2025</div>
+                    <div className="text-[6.4px] text-green-400 mt-1">↓ 8.7% vs Apr 2025</div>
                  </div>
                  <div>
                     <div className="text-slate-400 mb-0.5 flex items-center gap-1"><TrendingDown size={10}/> Defect Rate</div>
                     <div className="text-xl font-bold">2.35%</div>
-                    <div className="text-[8px] text-green-400 mt-1">↓ 0.6% vs Apr 2025</div>
+                    <div className="text-[6.4px] text-green-400 mt-1">↓ 0.6% vs Apr 2025</div>
                  </div>
                  <div>
                     <div className="text-slate-400 mb-0.5 flex items-center gap-1"><Wrench size={10}/> Rework Cost</div>
                     <div className="text-xl font-bold text-yellow-400">$12,450</div>
-                    <div className="text-[8px] text-green-400 mt-1">↓ 10.3% vs Apr 2025</div>
+                    <div className="text-[6.4px] text-green-400 mt-1">↓ 10.3% vs Apr 2025</div>
                  </div>
               </div>
               {/* Graphic element */}
@@ -401,11 +401,11 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
               <div className="flex justify-between items-center mb-3">
                  <div className="flex items-center gap-3">
                     <div className="p-1.5 rounded-lg bg-indigo-600/20 text-indigo-400"><FolderOpen size={14}/></div>
-                    <h3 className="text-[11px] font-semibold">Document Control</h3>
+                    <h3 className="text-[8.8px] font-semibold">Document Control</h3>
                  </div>
-                 <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                 <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
-              <div className="flex justify-between text-[10px]">
+              <div className="flex justify-between text-[8px]">
                  <div>
                     <div className="text-slate-400 mb-0.5">Total Documents</div>
                     <div className="text-xl font-bold">1,256</div>
@@ -413,17 +413,17 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                  <div>
                     <div className="text-slate-400 mb-0.5 text-green-400">Approved</div>
                     <div className="text-xl font-bold">1,024</div>
-                    <div className="text-[8px] text-green-400 mt-1">81.5%</div>
+                    <div className="text-[6.4px] text-green-400 mt-1">81.5%</div>
                  </div>
                  <div>
                     <div className="text-slate-400 mb-0.5 text-[#EB3158]">Under Review</div>
                     <div className="text-xl font-bold">156</div>
-                    <div className="text-[8px] text-[#EB3158] mt-1">12.4%</div>
+                    <div className="text-[6.4px] text-[#EB3158] mt-1">12.4%</div>
                  </div>
                  <div>
                     <div className="text-slate-400 mb-0.5 text-red-400">Expired</div>
                     <div className="text-xl font-bold">76</div>
-                    <div className="text-[8px] text-red-400 mt-1">6.1%</div>
+                    <div className="text-[6.4px] text-red-400 mt-1">6.1%</div>
                  </div>
               </div>
            </div>
@@ -444,8 +444,8 @@ export default function QMSMockup({ solution }: { solution: { id: string, title:
                       {card.icon}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-[9px] font-bold text-slate-200 leading-tight">{card.label}</span>
-                      <span className="text-[7px] text-[#15172B]/60">{card.sub}</span>
+                      <span className="text-[7.2px] font-bold text-slate-200 leading-tight">{card.label}</span>
+                      <span className="text-[5.6px] text-[#15172B]/60">{card.sub}</span>
                     </div>
                  </div>
                  <div className="text-[#15172B]/80 group-hover:text-[#EB3158] transition">&gt;</div>

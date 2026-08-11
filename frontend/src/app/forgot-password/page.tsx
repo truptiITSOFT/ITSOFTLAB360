@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
             
       <div className="flex-grow flex items-center justify-center p-4 pt-24 relative overflow-hidden">
         {/* Background Effects */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#EB3158]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-[#EB3158]/10 rounded-full blur-[80px] pointer-events-none"></div>
 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

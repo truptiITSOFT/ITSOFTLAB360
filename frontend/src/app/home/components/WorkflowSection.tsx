@@ -307,11 +307,11 @@ export default function WorkflowSection() {
   ];
 
   return (
-    <section className="py-32 bg-[#FBFAF5] dark:bg-[#030816] relative">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+    <section className="min-h-[100vh] flex items-center py-16 md:py-20 bg-white dark:bg-[#030816] transition-colors duration-300 relative">
+      <div className="w-full max-w-[1120px] mx-auto px-6 md:px-10">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-20">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
           <span className="text-xs font-bold tracking-widest text-[#111A4A] dark:text-white uppercase mb-4 block border border-[#111A4A] dark:border-white/10 dark:border-white/10 px-4 py-1.5 rounded-full">
             How the Ecosystem Works
           </span>
@@ -333,9 +333,9 @@ export default function WorkflowSection() {
               key={card.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, delay: card.delay }}
-              className={`group flex flex-col p-8 md:p-10 rounded-[28px] ${card.bg} border border-white/50 shadow-sm dark:shadow-none hover:shadow-[0_20px_40px_rgba(17,26,74,0.05)] hover:-translate-y-2 transition-all duration-500 min-w-[85vw] md:min-w-[calc(50%-16px)] lg:min-w-[calc(33.333%-21.33px)] snap-center md:snap-start`}
+              className={`group flex flex-col p-6 md:p-8 rounded-[22.4px] ${card.bg} border border-white/50 shadow-sm dark:shadow-none hover:shadow-[0_20px_40px_rgba(17,26,74,0.05)] hover:-translate-y-2 transition-all duration-500 min-w-[85vw] md:min-w-[calc(50%-12.8px)] lg:min-w-[calc(33.333%-17.1px)] snap-center md:snap-start`}
             >
               <span className={`text-5xl font-extrabold opacity-20 mb-6 font-mono ${card.accent}`}>
                 {card.id}

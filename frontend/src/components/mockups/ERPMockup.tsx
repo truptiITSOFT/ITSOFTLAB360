@@ -7,7 +7,7 @@ import {
 
 export default function ERPMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
       
       {/* Left Sidebar */}
       <div className="w-64 bg-[#0a1125] border border-white/5 p-5 flex flex-col gap-4 rounded-2xl">
@@ -30,7 +30,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200">{item.title}</div>
-                 <div className="text-[10px] text-[#15172B]/60">{item.desc}</div>
+                 <div className="text-[8px] text-[#15172B]/60">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -70,7 +70,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-red-500"></span>
              </button>
              <div className="flex items-center gap-2 pl-2">
-               <div className="text-right text-[10px] hidden md:block">
+               <div className="text-right text-[8px] hidden md:block">
                  <div className="font-semibold text-slate-200">Alex Kumar</div>
                  <div className="text-[#15172B]/60">Operations Head</div>
                </div>
@@ -91,13 +91,13 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex flex-col justify-center relative overflow-hidden group">
                <div className={`absolute -right-4 -bottom-4 w-16 h-16 rounded-full ${kpi.bg} opacity-10 group-hover:opacity-20 transition blur-xl`}></div>
                <div className="flex items-center justify-between mb-2 z-10">
-                 <div className="text-[10px] text-slate-400">{kpi.label}</div>
+                 <div className="text-[8px] text-slate-400">{kpi.label}</div>
                  <div className={`w-6 h-6 rounded bg-white/5 flex items-center justify-center ${kpi.color}`}>
                    {kpi.icon}
                  </div>
                </div>
                <div className="text-lg font-bold z-10">{kpi.val}</div>
-               <div className={`text-[9px] mt-1 font-medium z-10 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
+               <div className={`text-[7.2px] mt-1 font-medium z-10 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
                   {kpi.up ? '↑ ' : '↓ '}{kpi.trend}
                </div>
              </div>
@@ -105,7 +105,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
         </div>
 
         {/* Row 1 Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[220px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-[176px]">
            {/* Business Overview Connectivity Diagram */}
            <div className="lg:col-span-2 bg-[#0a1125] border border-white/5 rounded-2xl p-5 flex flex-col">
               <h3 className="text-xs font-semibold mb-6">Business Overview</h3>
@@ -129,8 +129,8 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                        <div className={`w-14 h-14 rounded-full ${node.bg} border-2 ${node.b} flex items-center justify-center ${node.c} mb-3 shadow-[0_0_15px_rgba(0,0,0,0.5)]`}>
                          {node.icon}
                        </div>
-                       <div className="text-[11px] font-bold text-slate-200 mb-1">{node.n}</div>
-                       <div className="text-[8px] text-[#15172B]/60 leading-tight">{node.desc}</div>
+                       <div className="text-[8.8px] font-bold text-slate-200 mb-1">{node.n}</div>
+                       <div className="text-[6.4px] text-[#15172B]/60 leading-tight">{node.desc}</div>
                     </div>
                  ))}
               </div>
@@ -140,9 +140,9 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
            <div className="lg:col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Cash Flow</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
-              <div className="flex justify-between text-[10px] mb-2 px-2">
+              <div className="flex justify-between text-[8px] mb-2 px-2">
                  <div>
                    <div className="text-slate-400">Cash Inflow</div>
                    <div className="font-bold text-green-400">$1,85,320</div>
@@ -166,10 +166,10 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                   </svg>
                 </div>
                 {/* Labels */}
-                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
+                <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[5.6px] text-[#15172B]/60 items-end pr-1">
                   <span>150k</span><span>100k</span><span>50k</span><span>0</span>
                 </div>
-                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
+                <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[5.6px] text-[#15172B]/60">
                   <span>May 01</span><span>May 08</span><span>May 15</span><span>May 22</span><span>May 29</span>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Inventory Summary</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>All Warehouses</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>All Warehouses</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -194,11 +194,11 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                     <circle cx="50" cy="50" r="40" fill="transparent" stroke="#ef4444" strokeWidth="12" strokeDasharray="15 251" strokeDashoffset="-220" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[7px] text-slate-400 leading-tight">Total Stock Value</span>
-                    <span className="text-[11px] font-bold">$1,24,580</span>
+                    <span className="text-[5.6px] text-slate-400 leading-tight">Total Stock Value</span>
+                    <span className="text-[8.8px] font-bold">$1,24,580</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[9px] flex-grow pl-4">
+                <div className="flex flex-col gap-1.5 text-[7.2px] flex-grow pl-4">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-green-500"></div> In Stock</span> <span>$78,450</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-yellow-500"></div> Low Stock</span> <span>$18,650</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-red-500"></div> Out of Stock</span> <span>$6,230</span></div>
@@ -211,9 +211,9 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xs font-semibold">Top Selling Items</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
-              <div className="flex flex-col gap-3 text-[10px]">
+              <div className="flex flex-col gap-3 text-[8px]">
                  {[
                    { n: "Laptop", val: "312 Units", pct: "85%", icon: <Settings2 size={12}/>, color: "bg-[#EB3158]" },
                    { n: "Smartphone", val: "287 Units", pct: "75%", icon: <Settings size={12}/>, color: "bg-green-500" },
@@ -239,7 +239,7 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Procurement Overview</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-24 h-24">
@@ -251,11 +251,11 @@ export default function ERPMockup({ solution }: { solution: { id: string, title:
                     <circle cx="50" cy="50" r="40" fill="transparent" stroke="#ef4444" strokeWidth="12" strokeDasharray="20 251" strokeDashoffset="-200" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[11px] font-bold">$1,62,430</span>
-                    <span className="text-[8px] text-slate-400">Total</span>
+                    <span className="text-[8.8px] font-bold">$1,62,430</span>
+                    <span className="text-[6.4px] text-slate-400">Total</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1 text-[9px] flex-grow pl-4">
+                <div className="flex flex-col gap-1 text-[7.2px] flex-grow pl-4">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-sky-500"></div> Purchase</span> <span>42%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-green-500"></div> Operations</span> <span>25%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded bg-purple-500"></div> Salaries</span> <span>15%</span></div>

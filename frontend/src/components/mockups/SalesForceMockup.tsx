@@ -7,7 +7,7 @@ import {
 
 export default function SalesForceMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
       
       {/* Left Sidebar */}
       <div className="w-64 bg-[#0a1125] border border-white/5 p-5 flex flex-col gap-4 rounded-2xl relative overflow-hidden">
@@ -17,7 +17,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
           </div>
           <h2 className="text-xl font-bold mt-2">SALES FORCE<br/><span className="text-[#EB3158]">AUTOMATION</span></h2>
         </div>
-        <p className="text-[11px] text-slate-400 mb-2 z-10">Track leads, opportunities, quotations, field sales activities, customer visits, and sales performance.</p>
+        <p className="text-[8.8px] text-slate-400 mb-2 z-10">Track leads, opportunities, quotations, field sales activities, customer visits, and sales performance.</p>
         
         <div className="flex flex-col gap-3 z-10">
            {[
@@ -31,7 +31,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                <div className={`p-2 rounded-lg ${item.bg} ${item.color}`}>{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200 leading-tight">{item.title}</div>
-                 <div className="text-[9px] text-[#15172B]/60 mt-0.5">{item.desc}</div>
+                 <div className="text-[7.2px] text-[#15172B]/60 mt-0.5">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -40,7 +40,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
         {/* Sales Chart Graphic Area */}
         <div className="mt-auto h-32 relative flex items-end justify-center z-10 pt-4">
            {/* Abstract Glow */}
-           <div className="absolute w-32 h-32 bg-[#EB3158]/20 rounded-full blur-2xl bottom-[-20px]"></div>
+           <div className="absolute w-32 h-32 bg-[#EB3158]/20 rounded-full blur-2xl bottom-[-16px]"></div>
            
            <div className="relative w-full h-full flex items-end justify-center z-20">
               {/* Bar Chart Graphics */}
@@ -74,7 +74,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
              </div>
              <div>
                <h2 className="text-lg font-bold">Sales Force Automation Dashboard</h2>
-               <p className="text-[11px] text-slate-400">Drive sales productivity. Close more deals.</p>
+               <p className="text-[8.8px] text-slate-400">Drive sales productivity. Close more deals.</p>
              </div>
            </div>
            <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
              </button>
              <div className="flex items-center gap-2 pl-2">
                <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-xs font-bold shadow-md">AK</div>
-               <div className="text-left text-[10px] hidden md:block pr-2">
+               <div className="text-left text-[8px] hidden md:block pr-2">
                  <div className="font-semibold text-slate-200">Amit Kumar</div>
                  <div className="text-[#15172B]/60">Regional Sales Manager</div>
                </div>
@@ -107,13 +107,13 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
           ].map((kpi, i) => (
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-2xl p-3 flex flex-col justify-center">
                <div className="flex items-center justify-between mb-2">
-                 <span className="text-[10px] text-slate-400 leading-tight w-20">{kpi.label}</span>
+                 <span className="text-[8px] text-slate-400 leading-tight w-20">{kpi.label}</span>
                  <div className={`p-1.5 rounded-lg ${kpi.bg} ${kpi.color}`}>
                    {kpi.icon}
                  </div>
                </div>
                <div className="text-lg font-bold">{kpi.val}</div>
-               <div className={`text-[9px] mt-1 font-medium flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
+               <div className={`text-[7.2px] mt-1 font-medium flex items-center gap-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
                   {kpi.up ? <TrendingUp size={10}/> : <TrendingDown size={10}/>} {kpi.trend} <span className="text-[#15172B]/60 font-normal">vs Apr 2025</span>
                </div>
              </div>
@@ -121,12 +121,12 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
         </div>
 
         {/* Row 1: Funnel, Stage Donut, Performance Line */}
-        <div className="flex flex-col lg:flex-row gap-4 h-[240px]">
+        <div className="flex flex-col lg:flex-row gap-4 h-[192px]">
            
            {/* Navigation & Funnel */}
            <div className="lg:w-2/5 flex gap-4">
               {/* Inner Sidebar Menu */}
-              <div className="w-28 bg-[#0a1125] rounded-2xl border border-white/5 py-3 flex flex-col gap-1 text-[10px]">
+              <div className="w-28 bg-[#0a1125] rounded-2xl border border-white/5 py-3 flex flex-col gap-1 text-[8px]">
                  {[
                    { label: "Dashboard", active: true },
                    { label: "Leads", active: false },
@@ -150,7 +150,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
               <div className="flex-grow bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex justify-between items-center mb-2">
                    <h3 className="text-xs font-semibold">Sales Funnel</h3>
-                   <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                   <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
                  </div>
                  <div className="flex-grow flex items-center justify-between mt-2">
                     <div className="w-1/2 flex flex-col justify-center gap-1 relative z-10">
@@ -161,7 +161,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                       <div className="h-8 bg-orange-500 rounded-sm w-3/6 mx-auto shadow-md"></div>
                       <div className="h-8 bg-red-500 rounded-sm w-2/6 mx-auto shadow-md"></div>
                     </div>
-                    <div className="w-1/2 flex flex-col justify-between h-full py-1 text-[9px] pl-4">
+                    <div className="w-1/2 flex flex-col justify-between h-full py-1 text-[7.2px] pl-4">
                        <div className="flex justify-between text-slate-300"><span>Leads</span> <span className="font-bold">2,450</span></div>
                        <div className="flex justify-between text-slate-300"><span>Qualified</span> <span className="font-bold">1,650</span></div>
                        <div className="flex justify-between text-slate-300"><span>Proposals</span> <span className="font-bold">1,025</span></div>
@@ -169,7 +169,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                        <div className="flex justify-between text-slate-300"><span>Won</span> <span className="font-bold">336</span></div>
                     </div>
                  </div>
-                 <div className="text-center text-[9px] text-[#EB3158] font-bold mt-2">
+                 <div className="text-center text-[7.2px] text-[#EB3158] font-bold mt-2">
                     Conversion Rate : 13.7%
                  </div>
               </div>
@@ -182,7 +182,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
                  <div className="flex justify-between items-center mb-2">
                    <h3 className="text-xs font-semibold">Opportunities by Stage</h3>
-                   <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                   <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
                  </div>
                  <div className="flex-grow flex items-center justify-between">
                    <div className="relative w-28 h-28">
@@ -194,11 +194,11 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#ef4444" strokeWidth="16" strokeDasharray="15 251" strokeDashoffset="-310" />
                      </svg>
                      <div className="absolute inset-0 flex flex-col items-center justify-center">
-                       <span className="text-[12px] font-bold">1,025</span>
-                       <span className="text-[7px] text-slate-400">Total</span>
+                       <span className="text-[9.6px] font-bold">1,025</span>
+                       <span className="text-[5.6px] text-slate-400">Total</span>
                      </div>
                    </div>
-                   <div className="flex flex-col gap-1.5 text-[9px] flex-grow pl-4">
+                   <div className="flex flex-col gap-1.5 text-[7.2px] flex-grow pl-4">
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-sky-500"></div> Qualification</span> <span className="text-slate-400">35% (359)</span></div>
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-green-500"></div> Proposal</span> <span className="text-slate-400">25% (256)</span></div>
                       <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-2 h-2 rounded-sm bg-purple-500"></div> Negotiation</span> <span className="text-slate-400">20% (205)</span></div>
@@ -212,7 +212,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
               <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col relative">
                  <div className="flex justify-between items-center mb-2">
                    <h3 className="text-xs font-semibold">Sales Performance</h3>
-                   <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                   <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
                  </div>
                  <div className="flex-grow relative mt-2">
                    <div className="absolute inset-0 z-10">
@@ -225,14 +225,14 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                        <circle cx="90" cy="5" r="2" fill="#fff" stroke="#3b82f6" strokeWidth="1" />
                      </svg>
                    </div>
-                   <div className="absolute right-0 top-0 bg-[#0d162f]/80 p-1.5 rounded text-[8px] border border-white/10 z-20 text-center backdrop-blur-sm">
-                      <div className="text-slate-400 text-[6px]">May 29, 2025</div>
+                   <div className="absolute right-0 top-0 bg-[#0d162f]/80 p-1.5 rounded text-[6.4px] border border-white/10 z-20 text-center backdrop-blur-sm">
+                      <div className="text-slate-400 text-[4.8px]">May 29, 2025</div>
                       <div className="font-bold text-slate-200 mt-0.5">$98,420</div>
                    </div>
-                   <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[7px] text-[#15172B]/60 items-end pr-1">
+                   <div className="absolute left-0 top-0 bottom-4 w-6 flex flex-col justify-between text-[5.6px] text-[#15172B]/60 items-end pr-1">
                      <span>125k</span><span>100k</span><span>75k</span><span>50k</span><span>25k</span><span>0</span>
                    </div>
-                   <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[7px] text-[#15172B]/60">
+                   <div className="absolute bottom-0 left-6 right-0 flex justify-between text-[5.6px] text-[#15172B]/60">
                      <span>May 01</span><span>May 08</span><span>May 15</span><span>May 22</span><span>May 29</span>
                    </div>
                  </div>
@@ -242,15 +242,15 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
         </div>
 
         {/* Row 2: Lists & Customer Visits */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[160px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[128px]">
            
            {/* Recent Leads */}
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Recent Leads</h3>
-                <span className="text-[8px] text-[#EB3158] cursor-pointer">View All</span>
+                <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
-              <div className="flex flex-col gap-2.5 text-[9px]">
+              <div className="flex flex-col gap-2.5 text-[7.2px]">
                  {[
                    { n: "Ravi Enterprises", s: "New Lead", t: "2 min ago", bg: "bg-[#EB3158]" },
                    { n: "Global Tech Solutions", s: "New Lead", t: "15 min ago", bg: "bg-teal-600" },
@@ -260,7 +260,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                  ].map((lead, i) => (
                    <div key={i} className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
-                        <div className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-[8px] ${lead.bg}`}>{lead.n[0]}</div>
+                        <div className={`w-5 h-5 rounded-full flex items-center justify-center font-bold text-[6.4px] ${lead.bg}`}>{lead.n[0]}</div>
                         <span className="text-slate-200 truncate w-20">{lead.n}</span>
                       </div>
                       <span className="text-slate-400">{lead.s}</span>
@@ -274,9 +274,9 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Upcoming Activities</h3>
-                <span className="text-[8px] text-[#EB3158] cursor-pointer">View Calendar</span>
+                <span className="text-[6.4px] text-[#EB3158] cursor-pointer">View Calendar</span>
               </div>
-              <div className="flex flex-col gap-2 text-[9px] relative pl-3">
+              <div className="flex flex-col gap-2 text-[7.2px] relative pl-3">
                  <div className="absolute left-1.5 top-2 bottom-2 w-0.5 bg-slate-800"></div>
                  {[
                    { t: "Client Meeting - Acme Corp", d: "Today, 11:00 AM", icon: <Users2 size={8}/>, c: "text-[#EB3158] bg-[#0d162f] border-[#EB3158]/50" },
@@ -289,7 +289,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                         {act.icon}
                       </div>
                       <span className="text-slate-200 font-medium leading-tight">{act.t}</span>
-                      <span className="text-[#15172B]/60 text-[8px]">{act.d}</span>
+                      <span className="text-[#15172B]/60 text-[6.4px]">{act.d}</span>
                    </div>
                  ))}
               </div>
@@ -299,9 +299,9 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Top Sales Representatives</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
-              <div className="flex flex-col gap-2.5 text-[9px]">
+              <div className="flex flex-col gap-2.5 text-[7.2px]">
                  {[
                    { id: "1", n: "Amit Kumar", v: "$24,680", trend: "+18.6%" },
                    { id: "2", n: "Sneha Sharma", v: "$18,450", trend: "+12.4%" },
@@ -311,14 +311,14 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                  ].map((rep, i) => (
                    <div key={i} className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
-                        <span className="text-[8px] text-[#15172B]/60 w-2">{rep.id}</span>
-                        <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-[8px] font-bold text-white overflow-hidden">
+                        <span className="text-[6.4px] text-[#15172B]/60 w-2">{rep.id}</span>
+                        <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center text-[6.4px] font-bold text-white overflow-hidden">
                            <img src={`https://ui-avatars.com/api/?name=${rep.n}&background=random&color=fff&size=20`} alt={rep.n} />
                         </div>
                         <span className="text-slate-200 truncate w-20">{rep.n}</span>
                       </div>
                       <span className="font-semibold">{rep.v}</span>
-                      <span className="text-green-400 text-[8px]">↑ {rep.trend}</span>
+                      <span className="text-green-400 text-[6.4px]">↑ {rep.trend}</span>
                    </div>
                  ))}
               </div>
@@ -328,7 +328,7 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
            <div className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-1">
                 <h3 className="text-xs font-semibold">Customer Visits Overview</h3>
-                <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow flex items-center justify-between">
                 <div className="relative w-20 h-20">
@@ -339,11 +339,11 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                     <circle cx="50" cy="50" r="40" fill="transparent" stroke="#3b82f6" strokeWidth="16" strokeDasharray="150 251" strokeDashoffset="-60" />
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="text-[12px] font-bold">256</span>
-                    <span className="text-[6px] text-slate-400 leading-tight">Total Visits</span>
+                    <span className="text-[9.6px] font-bold">256</span>
+                    <span className="text-[4.8px] text-slate-400 leading-tight">Total Visits</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1.5 text-[8px] flex-grow pl-3">
+                <div className="flex flex-col gap-1.5 text-[6.4px] flex-grow pl-3">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-sm bg-[#EB3158]"></div> Completed</span> <span className="text-slate-400">156 (60.9%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-sm bg-green-500"></div> In Progress</span> <span className="text-slate-400">58 (22.7%)</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-sm bg-orange-500"></div> Planned</span> <span className="text-slate-400">32 (12.5%)</span></div>
@@ -368,8 +368,8 @@ export default function SalesForceMockup({ solution }: { solution: { id: string,
                    {card.icon}
                  </div>
                  <div className="flex flex-col">
-                   <span className="text-[10px] font-bold text-slate-200 leading-tight my-0.5">{card.label}</span>
-                   <span className="text-[8px] text-[#15172B]/60">{card.sub}</span>
+                   <span className="text-[8px] font-bold text-slate-200 leading-tight my-0.5">{card.label}</span>
+                   <span className="text-[6.4px] text-[#15172B]/60">{card.sub}</span>
                  </div>
               </div>
            ))}

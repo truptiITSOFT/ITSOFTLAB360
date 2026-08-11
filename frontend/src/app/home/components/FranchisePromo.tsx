@@ -51,7 +51,7 @@ export default function FranchisePromo() {
         </svg>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 flex flex-col gap-16">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-10 relative z-10 flex flex-col gap-16">
         
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">

@@ -6,7 +6,7 @@ import {
 
 export default function CRMMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5">
       
       {/* Left Sidebar */}
       <div className="w-64 bg-[#0a1125] border border-white/5 p-5 flex flex-col gap-4 rounded-2xl">
@@ -29,7 +29,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                <div className="mt-1 text-purple-500">{item.icon}</div>
                <div>
                  <div className="text-xs font-semibold text-slate-200">{item.title}</div>
-                 <div className="text-[10px] text-[#15172B]/60">{item.desc}</div>
+                 <div className="text-[8px] text-[#15172B]/60">{item.desc}</div>
                </div>
              </div>
            ))}
@@ -38,7 +38,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
         {/* Character Illustration Area */}
         <div className="mt-auto relative h-32 bg-purple-500/5 rounded-xl border border-purple-500/10 flex items-end justify-center overflow-hidden">
            {/* Abstract shapes to represent the illustration */}
-           <div className="absolute w-20 h-20 bg-purple-500/20 rounded-full blur-xl bottom-[-10px]"></div>
+           <div className="absolute w-20 h-20 bg-purple-500/20 rounded-full blur-xl bottom-[-8px]"></div>
            <div className="absolute right-2 top-2 text-[#EB3158]"><Target size={16}/></div>
            <div className="absolute left-2 top-6 text-green-400"><Phone size={14}/></div>
            <div className="absolute right-6 top-8 text-pink-400"><Mail size={16}/></div>
@@ -64,10 +64,10 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-red-500"></span>
              </button>
              <div className="flex items-center gap-2 bg-[#0a1125] border border-white/10 px-2 py-1 rounded-full">
-               <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-[10px] font-bold">JD</div>
-               <div className="text-[10px] hidden sm:block pr-2">
+               <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-[8px] font-bold">JD</div>
+               <div className="text-[8px] hidden sm:block pr-2">
                  <div className="font-semibold">John Doe</div>
-                 <div className="text-[#15172B]/60 text-[8px]">Sales Manager</div>
+                 <div className="text-[#15172B]/60 text-[6.4px]">Sales Manager</div>
                </div>
              </div>
            </div>
@@ -83,9 +83,9 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
           ].map((kpi, i) => (
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex items-center justify-between">
                <div>
-                 <div className="text-[10px] text-slate-400 mb-1">{kpi.label}</div>
+                 <div className="text-[8px] text-slate-400 mb-1">{kpi.label}</div>
                  <div className="text-xl font-bold">{kpi.val}</div>
-                 <div className={`text-[9px] mt-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
+                 <div className={`text-[7.2px] mt-1 ${kpi.up ? 'text-green-500' : 'text-red-500'}`}>
                    {kpi.up ? '↑ ' : '↓ '}{kpi.trend}
                  </div>
                </div>
@@ -110,7 +110,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                    { label: "Won", val: "50", rev: "$68,420", c: "bg-green-500" },
                  ].map((step, i) => (
                     <div key={i} className="flex flex-col items-center flex-1 relative">
-                       <div className="text-[9px] text-slate-400 mb-1">{step.label}</div>
+                       <div className="text-[7.2px] text-slate-400 mb-1">{step.label}</div>
                        <div className="text-sm font-bold mb-2">{step.val}</div>
                        {/* Funnel visual element */}
                        <div className={`w-full h-8 ${step.c} flex items-center justify-center shadow-[0_0_10px_rgba(255,255,255,0.1)]`}
@@ -118,7 +118,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                                                i === 4 ? 'polygon(0% 10%, 100% 20%, 100% 80%, 0% 90%)' : 
                                                'polygon(0% 10%, 100% 10%, 100% 90%, 0% 90%)' }}>
                        </div>
-                       <div className="text-[10px] text-slate-300 mt-2">{step.rev}</div>
+                       <div className="text-[8px] text-slate-300 mt-2">{step.rev}</div>
                     </div>
                  ))}
               </div>
@@ -137,10 +137,10 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                   </svg>
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <span className="text-sm font-bold">1,250</span>
-                    <span className="text-[8px] text-slate-400">Total</span>
+                    <span className="text-[6.4px] text-slate-400">Total</span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-1 text-[9px] flex-grow pl-4">
+                <div className="flex flex-col gap-1 text-[7.2px] flex-grow pl-4">
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-[#EB3158]"></div> Website</span> <span>42%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-purple-500"></div> Referral</span> <span>26%</span></div>
                    <div className="flex justify-between w-full"><span className="flex items-center gap-1.5"><div className="w-2 h-2 rounded-full bg-green-500"></div> Social</span> <span>20%</span></div>
@@ -157,7 +157,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
            <div className="col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xs font-semibold">Lead Overview</h3>
-                <select className="bg-transparent text-[9px] text-slate-400 outline-none"><option>This Month</option></select>
+                <select className="bg-transparent text-[7.2px] text-slate-400 outline-none"><option>This Month</option></select>
               </div>
               <div className="flex-grow relative mt-2">
                 <div className="absolute inset-0 z-10">
@@ -173,7 +173,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                   </svg>
                 </div>
                 {/* Overlay box */}
-                <div className="absolute bottom-2 right-2 bg-[#030816]/80 p-1.5 rounded border border-white/10 z-20 text-[9px] backdrop-blur-sm">
+                <div className="absolute bottom-2 right-2 bg-[#030816]/80 p-1.5 rounded border border-white/10 z-20 text-[7.2px] backdrop-blur-sm">
                    <div className="font-bold text-sm">1,250</div>
                    <div className="text-slate-400">Total Leads</div>
                 </div>
@@ -184,7 +184,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
            <div className="col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Top Deals</h3>
-                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
+                <span className="text-[7.2px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2.5">
                  {[
@@ -193,7 +193,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                    { n: "Innotech Solutions", v: "$15,200", s: "Contacted", bg: "bg-purple-500" },
                    { n: "TechNova Inc.", v: "$12,800", s: "New Lead", bg: "bg-orange-500" },
                  ].map((deal, i) => (
-                   <div key={i} className="flex justify-between items-center text-[10px]">
+                   <div key={i} className="flex justify-between items-center text-[8px]">
                       <div className="flex items-center gap-2">
                         <div className={`w-5 h-5 rounded flex items-center justify-center font-bold ${deal.bg}`}>{deal.n[0]}</div>
                         <span className="text-slate-200 truncate w-24">{deal.n}</span>
@@ -209,7 +209,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
            <div className="col-span-1 bg-[#0a1125] border border-white/5 rounded-2xl p-4 flex flex-col">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-xs font-semibold">Recent Activities</h3>
-                <span className="text-[9px] text-[#EB3158] cursor-pointer">View All</span>
+                <span className="text-[7.2px] text-[#EB3158] cursor-pointer">View All</span>
               </div>
               <div className="flex flex-col gap-2.5">
                  {[
@@ -218,7 +218,7 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
                    { t: "Follow-up call with Acme", time: "30 min ago", icon: <Phone size={10}/>, c: "text-purple-400 bg-purple-500/20" },
                    { t: "Deal won with TechNova", time: "2 hours ago", icon: <CheckCircle size={10}/>, c: "text-green-400 bg-green-500/20" },
                  ].map((act, i) => (
-                   <div key={i} className="flex justify-between items-center text-[9px]">
+                   <div key={i} className="flex justify-between items-center text-[7.2px]">
                       <div className="flex items-center gap-2">
                         <div className={`p-1 rounded ${act.c}`}>{act.icon}</div>
                         <span className="text-slate-200 truncate w-32">{act.t}</span>
@@ -242,12 +242,12 @@ export default function CRMMockup({ solution }: { solution: { id: string, title:
              <div key={i} className="bg-[#0a1125] border border-white/5 rounded-xl p-3 flex items-center gap-3">
                 <div className={`p-2 rounded-lg bg-white/5 ${item.color}`}>{item.icon}</div>
                 <div>
-                   <div className="text-[10px] text-slate-400">{item.label}</div>
+                   <div className="text-[8px] text-slate-400">{item.label}</div>
                    <div className="text-sm font-bold flex items-center gap-2">
                      {item.val}
-                     {item.trend && <span className="text-[8px] text-green-500 font-normal">↑ {item.trend}</span>}
+                     {item.trend && <span className="text-[6.4px] text-green-500 font-normal">↑ {item.trend}</span>}
                    </div>
-                   {item.sub && <div className="text-[8px] text-[#15172B]/60">{item.sub}</div>}
+                   {item.sub && <div className="text-[6.4px] text-[#15172B]/60">{item.sub}</div>}
                 </div>
              </div>
            ))}

@@ -98,7 +98,7 @@ export default function CityLandscapeSection() {
   const repeatedSolutions = [...solutions, ...solutions];
 
   return (
-    <section className="relative w-full overflow-hidden bg-white dark:bg-[#020617] pt-24 pb-0 min-h-[700px] flex flex-col justify-end">
+    <section className="relative w-full overflow-hidden bg-white dark:bg-[#020617] pt-24 pb-0 min-h-[560px] flex flex-col justify-end">
       
       {/* Floating Elements (Background) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
@@ -141,7 +141,7 @@ export default function CityLandscapeSection() {
       </div>
 
       {/* The City Landscape Background */}
-      <div className="absolute bottom-0 left-0 w-full h-[500px] pointer-events-none z-0 overflow-hidden flex items-end">
+      <div className="absolute bottom-0 left-0 w-full h-[400px] pointer-events-none z-0 overflow-hidden flex items-end">
         
         {/* Landscape Layer (Light Blue Silhouettes) */}
         <div 
@@ -149,7 +149,7 @@ export default function CityLandscapeSection() {
           style={{ animationDuration: '60s' }}
         >
           {[1, 2].map((_, i) => (
-             <div key={i} className="flex items-end h-[350px] w-1/2 shrink-0 text-[#a8ddeb] fill-current">
+             <div key={i} className="flex items-end h-[280px] w-1/2 shrink-0 text-[#a8ddeb] fill-current">
                 {/* Opera House / Building */}
                 <svg width="200" height="150" viewBox="0 0 200 150" className="shrink-0 ml-10">
                    <path d="M10,150 Q50,50 100,150 Z" />
@@ -221,15 +221,15 @@ export default function CityLandscapeSection() {
         {/* Foreground Road */}
         <div className="absolute bottom-0 left-0 w-full h-6 bg-[#bdecfa] dark:bg-gray-800">
            {/* Orange Dotted Line */}
-           <div className="absolute top-1/2 left-0 w-[200%] h-[3px] -translate-y-1/2 landscape-animate" style={{ animationDuration: '10s' }}>
-              <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(to right, #f97316 50%, transparent 50%)', backgroundSize: '60px 100%' }}></div>
+           <div className="absolute top-1/2 left-0 w-[200%] h-[2.4px] -translate-y-1/2 landscape-animate" style={{ animationDuration: '10s' }}>
+              <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(to right, #f97316 50%, transparent 50%)', backgroundSize: '48px 100%' }}></div>
            </div>
         </div>
       </div>
 
       {/* Billboards Track */}
       <div 
-        className="relative z-20 w-full mb-[24px] overflow-hidden flex"
+        className="relative z-20 w-full mb-[19.2px] overflow-hidden flex"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -244,15 +244,15 @@ export default function CityLandscapeSection() {
             <div key={`${solution.id}-${index}`} className="relative group shrink-0 flex flex-col items-center">
               
               {/* Billboard Poster */}
-              <div className="w-[290px] h-[410px] bg-white dark:bg-[#1A2235] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] transition-all duration-500 rounded-lg overflow-hidden relative z-10 flex flex-col pt-5 group/card">
+              <div className="w-[232px] h-[328px] bg-white dark:bg-[#1A2235] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] transition-all duration-500 rounded-lg overflow-hidden relative z-10 flex flex-col pt-5 group/card">
                  {/* Top hooks */}
                  <div className="absolute top-0 left-0 w-full flex justify-around p-1 border-b border-gray-100 dark:border-gray-800">
-                    <div className="w-[2px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[2px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[2px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[2px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[2px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[2px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
                  </div>
 
                  <div className="flex items-center justify-center mb-3 px-5 mt-1 h-7">
@@ -275,21 +275,21 @@ export default function CityLandscapeSection() {
                  </div>
                  
                  {/* Image */}
-                 <div className="w-full h-[140px] relative overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+                 <div className="w-full h-[112px] relative overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
                     <img 
                       src={solution.image} 
                       alt={solution.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
                     />
                     {/* Bottom grid/fence visual detail */}
-                    <div className="absolute bottom-0 left-0 w-full h-5 bg-gray-900/10 dark:bg-black/30" style={{ backgroundImage: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '8px 8px', backgroundPosition: '0 0, 4px 4px', opacity: 0.15 }}></div>
+                    <div className="absolute bottom-0 left-0 w-full h-5 bg-gray-900/10 dark:bg-black/30" style={{ backgroundImage: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '6.4px 6.4px', backgroundPosition: '0 0, 3.2px 3.2px', opacity: 0.15 }}></div>
                     <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-900 dark:bg-black"></div>
                  </div>
               </div>
 
               {/* Billboard Poles (connecting to the ground) */}
               <div className="flex flex-col items-center mt-0 z-0">
-                <div className="w-12 h-[120px] bg-gradient-to-r from-[#8bcce0] via-[#a8ddeb] to-[#8bcce0] dark:from-gray-700 dark:via-gray-600 dark:to-gray-800 border-x border-[#8bcce0] opacity-80"></div>
+                <div className="w-12 h-[96px] bg-gradient-to-r from-[#8bcce0] via-[#a8ddeb] to-[#8bcce0] dark:from-gray-700 dark:via-gray-600 dark:to-gray-800 border-x border-[#8bcce0] opacity-80"></div>
                 {/* Base */}
                 <div className="w-20 h-4 bg-[#8bcce0] dark:bg-gray-700 rounded-t-sm"></div>
                 <div className="w-24 h-2 bg-[#7ab9cd] dark:bg-gray-800"></div>

@@ -85,7 +85,7 @@ export function IntroAnimation({ LETTERS }: { LETTERS: string[]; }) {
                                 key={i}
                                 className="font-sans font-bold text-[#111] leading-none select-none"
                                 style={{
-                                    fontSize: `calc((100vw - 64px) / ${LETTERS.length})`,
+                                    fontSize: `calc((100vw - 51.2px) / ${LETTERS.length})`,
                                     letterSpacing: "0.05em",
                                     opacity,
                                     filter: `blur(${blur}px)`,

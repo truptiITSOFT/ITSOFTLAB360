@@ -26,7 +26,7 @@ export default function FranchiseJourney() {
       ref={containerRef}
       className="relative py-32 bg-[#f8fafc] dark:bg-[#0A1125] transition-colors duration-300"
     >
-      <div className="max-w-[1000px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[800px] mx-auto px-6 md:px-10 relative z-10">
         
         <div className="text-center mb-24">
           <motion.h2 
@@ -50,7 +50,7 @@ export default function FranchiseJourney() {
 
         <div className="relative">
           {/* Animated Vertical Line */}
-          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-800 md:-translate-x-1/2 rounded-full overflow-hidden">
+          <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-800 md:-translate-x-1/2 rounded-full overflow-hidden">
             <motion.div 
               className="w-full bg-gradient-to-b from-blue-500 to-[#EB3158]"
               style={{
@@ -71,7 +71,7 @@ export default function FranchiseJourney() {
                     <motion.div 
                       initial={{ opacity: 0, x: isEven ? 50 : -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
+                      viewport={{ once: true, margin: "-80px" }}
                       transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
                       className="bg-white dark:bg-[#0f172a] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl dark:hover:border-blue-500/30 transition-all group"
                     >
@@ -94,7 +94,7 @@ export default function FranchiseJourney() {
                      <motion.div
                        initial={{ scale: 0 }}
                        whileInView={{ scale: 1 }}
-                       viewport={{ once: true, margin: "-100px" }}
+                       viewport={{ once: true, margin: "-80px" }}
                        transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
                        className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-200 dark:border-blue-700/50"
                      >

@@ -25,7 +25,7 @@ export default function IndiaNetwork() {
         <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-transparent to-[#030816] pointer-events-none"></div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-[960px] mx-auto px-6 md:px-10 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Content */}
         <div>
@@ -70,7 +70,7 @@ export default function IndiaNetwork() {
         </div>
 
         {/* Right Map Visual */}
-        <div className="relative w-full aspect-square max-w-[500px] mx-auto">
+        <div className="relative w-full aspect-square max-w-[400px] mx-auto">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -144,7 +144,7 @@ export default function IndiaNetwork() {
                   <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${i % 3 === 0 ? 'bg-[#EB3158]' : 'bg-blue-400'}`}></span>
                   <span className={`relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 ${i % 3 === 0 ? 'bg-[#EB3158]' : 'bg-blue-500'}`}></span>
                 </div>
-                <div className="absolute top-full mt-1 bg-[#030816]/80 backdrop-blur-md px-2 py-1 rounded border border-blue-500/30 text-[10px] md:text-xs font-semibold text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                <div className="absolute top-full mt-1 bg-[#030816]/80 backdrop-blur-md px-2 py-1 rounded border border-blue-500/30 text-[8px] md:text-xs font-semibold text-blue-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                   {city.name}
                 </div>
               </motion.div>

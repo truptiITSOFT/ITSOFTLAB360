@@ -73,7 +73,7 @@ export default function Contact() {
             className="lg:col-span-2 bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/40 dark:to-[#020617] rounded-2xl p-8 border border-blue-200 dark:border-blue-500/20 relative overflow-hidden transition-colors"
           >
              {/* Decorative glow */}
-             <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/30 blur-[80px] rounded-full"></div>
+             <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500/30 blur-[64px] rounded-full"></div>
              
              <h4 className="text-2xl font-bold text-[#15172B] dark:text-white mb-8 transition-colors">Contact Information</h4>
              

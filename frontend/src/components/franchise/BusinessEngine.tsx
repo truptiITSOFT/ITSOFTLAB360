@@ -13,7 +13,7 @@ const STAGES = [
 export default function BusinessEngine() {
   return (
     <section className="relative py-24 bg-[#f8fafc] dark:bg-[#0A1125] transition-colors duration-300 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[960px] mx-auto px-6 md:px-10 relative z-10">
         
         <div className="text-center mb-20">
           <motion.h2 
@@ -32,7 +32,7 @@ export default function BusinessEngine() {
              <motion.div 
                initial={{ width: "0%" }}
                whileInView={{ width: "100%" }}
-               viewport={{ once: true, margin: "-100px" }}
+               viewport={{ once: true, margin: "-80px" }}
                transition={{ duration: 1.5, ease: "easeInOut" }}
                className="h-full bg-gradient-to-r from-blue-500 via-[#EB3158] to-emerald-500"
              />
@@ -44,12 +44,12 @@ export default function BusinessEngine() {
                 key={stage.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="relative flex flex-col items-center text-center group"
               >
                 {/* Stage Icon Node */}
-                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full bg-white dark:bg-[#0f172a] border-[4px] border-white dark:border-[#0f172a] shadow-xl flex items-center justify-center mb-6 relative z-10 group-hover:-translate-y-2 transition-transform duration-300`}>
+                <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full bg-white dark:bg-[#0f172a] border-[3.2px] border-white dark:border-[#0f172a] shadow-xl flex items-center justify-center mb-6 relative z-10 group-hover:-translate-y-2 transition-transform duration-300`}>
                   <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${stage.color} opacity-10 group-hover:opacity-20 transition-opacity`}></div>
                   <stage.icon size={32} className={`text-transparent bg-clip-text bg-gradient-to-br ${stage.color} drop-shadow-sm`} style={{ stroke: 'url(#gradient-' + index + ')' }} />
                   
@@ -63,12 +63,12 @@ export default function BusinessEngine() {
                 </div>
                 
                 {/* Stage Number */}
-                <div className="absolute top-0 right-1/2 translate-x-[20px] md:translate-x-[40px] text-6xl font-black text-gray-100 dark:text-gray-800/50 -z-10 group-hover:text-blue-50 dark:group-hover:text-blue-900/20 transition-colors pointer-events-none select-none">
+                <div className="absolute top-0 right-1/2 translate-x-[16px] md:translate-x-[32px] text-6xl font-black text-gray-100 dark:text-gray-800/50 -z-10 group-hover:text-blue-50 dark:group-hover:text-blue-900/20 transition-colors pointer-events-none select-none">
                   {stage.id}
                 </div>
 
                 <h3 className="text-xl font-bold text-[#111A4A] dark:text-white mb-3">{stage.title}</h3>
-                <p className="text-sm text-[#15172B]/70 dark:text-gray-400 leading-relaxed max-w-[250px]">{stage.desc}</p>
+                <p className="text-sm text-[#15172B]/70 dark:text-gray-400 leading-relaxed max-w-[200px]">{stage.desc}</p>
               </motion.div>
             ))}
           </div>

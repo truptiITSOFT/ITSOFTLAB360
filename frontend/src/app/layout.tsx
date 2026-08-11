@@ -41,13 +41,13 @@ export default function RootLayout({
             {/* Abstract Background Elements (Light Mode Only) */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10 dark:hidden">
               {/* Large abstract coral semicircle */}
-              <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#EB3158]/5 blur-[120px]" />
+              <div className="absolute top-[-20%] left-[-10%] w-[480px] h-[480px] rounded-full bg-[#EB3158]/5 blur-[96px]" />
 
               {/* Large yellow curved line ring */}
-              <div className="absolute top-[10%] right-[-5%] w-[800px] h-[800px] rounded-full border-[2px] border-[#F5C842]/20 blur-[2px]" />
+              <div className="absolute top-[10%] right-[-5%] w-[640px] h-[640px] rounded-full border-[1.6px] border-[#F5C842]/20 blur-[1.6px]" />
 
               {/* Soft emerald rounded rectangle */}
-              <div className="absolute top-[30%] right-[10%] w-[600px] h-[500px] rounded-[100px] bg-[#20B486]/5 blur-[80px] rotate-12" />
+              <div className="absolute top-[30%] right-[10%] w-[480px] h-[400px] rounded-[80px] bg-[#20B486]/5 blur-[64px] rotate-12" />
 
               {/* Subtle grid texture */}
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]" />

@@ -91,7 +91,7 @@ export default function FranchiseModelVisual() {
                   onMouseEnter={() => setActiveIndex(index)}
                   onClick={() => setActiveIndex(index)}
                 >
-                  <div className={`transition-all duration-500 border-l-[4px] pl-6 md:pl-8 ${isActive ? 'border-blue-600 dark:border-blue-500' : 'border-gray-200 dark:border-gray-800'}`}>
+                  <div className={`transition-all duration-500 border-l-[3.2px] pl-6 md:pl-8 ${isActive ? 'border-blue-600 dark:border-blue-500' : 'border-gray-200 dark:border-gray-800'}`}>
                     <h3 className={`text-2xl md:text-3xl font-bold transition-colors duration-500 ${isActive ? 'text-[#111A4A] dark:text-white' : 'text-gray-400 dark:text-gray-600 group-hover:text-gray-600 dark:group-hover:text-gray-400'}`}>
                       {step.title}
                     </h3>
@@ -129,7 +129,7 @@ export default function FranchiseModelVisual() {
           </div>
 
           {/* Right Side: Sticky Visual Cart */}
-          <div className="w-full lg:w-[55%] lg:sticky lg:top-32 h-[450px] md:h-[600px] rounded-[2rem] overflow-hidden relative shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div className="w-full lg:w-[55%] lg:sticky lg:top-32 h-[360px] md:h-[480px] rounded-[2rem] overflow-hidden relative shadow-2xl dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -143,8 +143,8 @@ export default function FranchiseModelVisual() {
                 <div className="w-full h-full bg-white/10 dark:bg-black/20 backdrop-blur-2xl rounded-3xl border border-white/20 flex flex-col items-center justify-center text-white relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
                     
                     {/* Lighting Orbs */}
-                    <div className="absolute top-0 right-0 w-72 h-72 bg-white/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3"></div>
-                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/30 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/3"></div>
+                    <div className="absolute top-0 right-0 w-72 h-72 bg-white/20 rounded-full blur-[64px] -translate-y-1/2 translate-x-1/3"></div>
+                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-black/30 rounded-full blur-[64px] translate-y-1/3 -translate-x-1/3"></div>
 
                     {/* Interactive Animated Component replacing the static icon */}
                     <div className="absolute inset-0 flex items-center justify-center p-8">
@@ -157,7 +157,7 @@ export default function FranchiseModelVisual() {
 
 
                     {/* Interactive background grid pattern */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:40px_40px] opacity-30 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:40px_32px] opacity-30 pointer-events-none"></div>
                 </div>
               </motion.div>
             </AnimatePresence>

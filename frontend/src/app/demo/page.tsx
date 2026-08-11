@@ -101,7 +101,7 @@ export default function DemoPage() {
             className="relative"
           >
             {/* Glow behind form */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#EB3158]/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#EB3158]/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
 
             <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-gray-700/50 p-8 md:p-10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
               {isSubmitted ? (
@@ -204,8 +204,8 @@ export default function DemoPage() {
       
       {/* Global decorative background elements */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-900/10 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-blue-900/10 rounded-full blur-[120px] -translate-x-1/3 translate-y-1/3"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-900/10 rounded-full blur-[96px] translate-x-1/3 -translate-y-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-blue-900/10 rounded-full blur-[96px] -translate-x-1/3 translate-y-1/3"></div>
       </div>
     </main>
   );

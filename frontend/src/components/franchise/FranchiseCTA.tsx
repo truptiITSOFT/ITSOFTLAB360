@@ -11,32 +11,32 @@ export default function FranchiseCTA() {
       {/* Premium Animated Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Moving Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:40px_32px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_20%,transparent_100%)]"></div>
         
         {/* Glowing Orbs */}
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[120px]"
+          className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-blue-600/30 rounded-full blur-[96px]"
         />
         <motion.div 
           animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#EB3158]/20 rounded-full blur-[150px]"
+          className="absolute bottom-0 right-1/4 w-[480px] h-[480px] bg-[#EB3158]/20 rounded-full blur-[120px]"
         />
         
         {/* Subtle Particles */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
       </div>
 
-      <div className="max-w-[1000px] mx-auto px-6 md:px-10 relative z-10 flex flex-col items-center text-center">
+      <div className="max-w-[800px] mx-auto px-6 md:px-10 relative z-10 flex flex-col items-center text-center">
         
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-blue-500 to-[#EB3158] p-[2px] mb-8 shadow-[0_0_50px_rgba(59,130,246,0.4)]"
+          className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-blue-500 to-[#EB3158] p-[1.6px] mb-8 shadow-[0_0_50px_rgba(59,130,246,0.4)]"
         >
           <div className="w-full h-full rounded-full bg-[#030816] flex items-center justify-center">
              <div className="w-10 h-10 md:w-12 md:h-12 border-t-2 border-r-2 border-white rounded-tr-xl"></div>

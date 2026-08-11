@@ -50,12 +50,12 @@ export default function BenefitsSection() {
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-[#0A1125] border-y border-[#111A4A] dark:border-white/5 relative overflow-hidden">
+    <section className="py-24 bg-white dark:bg-[#030816] transition-colors duration-300 border-y border-[#111A4A] dark:border-white/5 relative overflow-hidden">
       
       {/* Decorative Blur */}
-      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] bg-[#EEF0FF]/60 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2 pointer-events-none -z-10" />
+      <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#EEF0FF]/60 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2 pointer-events-none -z-10" />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
           
           {/* Left Column */}

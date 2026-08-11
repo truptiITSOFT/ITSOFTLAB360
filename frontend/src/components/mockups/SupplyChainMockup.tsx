@@ -7,10 +7,10 @@ import {
 
 export default function SupplyChainMockup({ solution }: { solution: { id: string, title: string, short: string, desc: string, icon: React.ReactNode, color: string, bg: string } }) {
   return (
-    <div className="flex h-full min-h-[640px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5 relative overflow-hidden">
+    <div className="flex h-full min-h-[512px] text-white bg-[#030816] rounded-3xl p-5 flex-col lg:flex-row gap-5 relative overflow-hidden">
       
       {/* Background glow effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#EB3158]/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-[#EB3158]/10 rounded-full blur-[80px] pointer-events-none"></div>
 
       {/* Left Floating Panel: Fleet & Transport */}
       <div className="hidden lg:flex w-56 flex-col gap-4 z-10 h-full justify-center">
@@ -19,18 +19,18 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                <Truck size={24} className="text-white" />
             </div>
             <h2 className="text-xl font-bold mb-2">Fleet &<br/>Transport</h2>
-            <p className="text-[10px] text-slate-400 mb-8">Optimize fleet utilization & reduce transportation costs.</p>
+            <p className="text-[8px] text-slate-400 mb-8">Optimize fleet utilization & reduce transportation costs.</p>
             
             <div className="flex justify-between items-end border-b border-white/10 pb-4 mb-4">
                <div>
-                  <div className="text-[10px] text-slate-400">Fleet Utilization</div>
+                  <div className="text-[8px] text-slate-400">Fleet Utilization</div>
                   <div className="text-2xl font-bold">76%</div>
-                  <div className="text-[9px] text-green-400">↑ 6.8%</div>
+                  <div className="text-[7.2px] text-green-400">↑ 6.8%</div>
                </div>
                <div className="text-right">
-                  <div className="text-[10px] text-slate-400">Trips Today</div>
+                  <div className="text-[8px] text-slate-400">Trips Today</div>
                   <div className="text-2xl font-bold">128</div>
-                  <div className="text-[9px] text-green-400">↑ 9.3%</div>
+                  <div className="text-[7.2px] text-green-400">↑ 9.3%</div>
                </div>
             </div>
             
@@ -58,18 +58,18 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
               </div>
               <div>
                 <h2 className="text-lg font-bold">Supply Chain & Logistics</h2>
-                <p className="text-[10px] text-slate-400">Real-time visibility. Smarter decisions. Faster delivery.</p>
+                <p className="text-[8px] text-slate-400">Real-time visibility. Smarter decisions. Faster delivery.</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-3 py-1.5 rounded-full text-[10px] text-green-400 font-bold">
+              <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 px-3 py-1.5 rounded-full text-[8px] text-green-400 font-bold">
                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div> Live Operations
               </div>
             </div>
          </div>
 
          {/* Center Dashboard Map & Data */}
-         <div className="flex-grow flex flex-col lg:flex-row gap-4 h-[300px]">
+         <div className="flex-grow flex flex-col lg:flex-row gap-4 h-[240px]">
             
             {/* Map Area */}
             <div className="flex-grow relative rounded-2xl overflow-hidden border border-white/5 flex items-center justify-center p-4">
@@ -87,7 +87,7 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                {/* Map Nodes and Curves */}
                <div className="relative w-full h-full z-10 flex items-center justify-center mt-8">
                   {/* Glowing Path */}
-                  <svg className="absolute inset-0 w-full h-full" style={{ filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.8))' }}>
+                  <svg className="absolute inset-0 w-full h-full" style={{ filter: 'drop-shadow(0 0 6.4px rgba(59,130,246,0.8))' }}>
                      <path d="M 120 180 Q 250 150 220 80 T 350 140" fill="none" stroke="#3b82f6" strokeWidth="4" strokeDasharray="10 5" className="animate-[dash_1s_linear_infinite]" />
                      <path d="M 120 180 Q 250 150 220 80 T 350 140" fill="none" stroke="#60a5fa" strokeWidth="2" />
                   </svg>
@@ -97,16 +97,16 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                      <div className="w-12 h-8 bg-[#0d162f] border border-[#EB3158]/50 rounded relative shadow-lg flex items-center justify-center">
                         <Package size={14} className="text-[#EB3158]" />
                      </div>
-                     <span className="text-[10px] font-bold mt-1">Bengaluru</span>
-                     <span className="text-[8px] text-green-400 flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> Origin</span>
+                     <span className="text-[8px] font-bold mt-1">Bengaluru</span>
+                     <span className="text-[6.4px] text-green-400 flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-green-500"></div> Origin</span>
                   </div>
 
                   <div className="absolute right-[25%] top-[40%] flex flex-col items-center">
                      <div className="w-12 h-8 bg-[#0d162f] border border-cyan-500 rounded relative shadow-lg flex items-center justify-center">
                         <MapPin size={14} className="text-cyan-400" />
                      </div>
-                     <span className="text-[10px] font-bold mt-1">Mumbai</span>
-                     <span className="text-[8px] text-[#EB3158] flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-[#EB3158]"></div> Destination</span>
+                     <span className="text-[8px] font-bold mt-1">Mumbai</span>
+                     <span className="text-[6.4px] text-[#EB3158] flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-full bg-[#EB3158]"></div> Destination</span>
                   </div>
 
                   {/* Truck moving on path */}
@@ -118,17 +118,17 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                {/* Live Shipment Tracker Floating Window */}
                <div className="absolute top-4 left-4 bg-[#0d162f]/80 backdrop-blur-md p-4 rounded-xl border border-white/10 w-56 z-30">
                   <div className="flex justify-between items-center mb-2">
-                     <h3 className="text-[11px] font-bold">Live Shipment Tracker</h3>
-                     <span className="text-[8px] text-green-400 bg-green-500/10 px-1.5 rounded border border-green-500/20">LIVE</span>
+                     <h3 className="text-[8.8px] font-bold">Live Shipment Tracker</h3>
+                     <span className="text-[6.4px] text-green-400 bg-green-500/10 px-1.5 rounded border border-green-500/20">LIVE</span>
                   </div>
-                  <div className="text-[10px] text-slate-400 mb-1">DLV-98234</div>
-                  <div className="text-[11px] font-bold mb-4">Bengaluru → Mumbai</div>
+                  <div className="text-[8px] text-slate-400 mb-1">DLV-98234</div>
+                  <div className="text-[8.8px] font-bold mb-4">Bengaluru → Mumbai</div>
                   
-                  <div className="flex justify-between text-[10px] mb-1">
+                  <div className="flex justify-between text-[8px] mb-1">
                      <span className="text-slate-400">ETA</span>
                      <span className="font-bold text-green-400">2h 45m</span>
                   </div>
-                  <div className="flex justify-between text-[10px] mb-1">
+                  <div className="flex justify-between text-[8px] mb-1">
                      <span className="text-slate-400">Status</span>
                      <span className="font-bold text-[#EB3158]">In Transit</span>
                   </div>
@@ -136,9 +136,9 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                   <div className="w-full h-1.5 bg-slate-800 rounded-full mt-2 overflow-hidden">
                      <div className="w-[72%] h-full bg-[#EB3158] rounded-full"></div>
                   </div>
-                  <div className="text-[8px] text-slate-400 mt-1 mb-4">72% Completed</div>
+                  <div className="text-[6.4px] text-slate-400 mt-1 mb-4">72% Completed</div>
                   
-                  <button className="w-full py-1.5 bg-[#EB3158]/20 hover:bg-[#EB3158]/40 border border-blue-500/50 rounded-lg text-[10px] text-[#EB3158] flex items-center justify-center gap-1 transition">
+                  <button className="w-full py-1.5 bg-[#EB3158]/20 hover:bg-[#EB3158]/40 border border-blue-500/50 rounded-lg text-[8px] text-[#EB3158] flex items-center justify-center gap-1 transition">
                      Track on Map <Navigation size={10} />
                   </button>
                </div>
@@ -146,8 +146,8 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                {/* Warehouse Inventory Window */}
                <div className="absolute bottom-4 left-4 bg-[#0d162f]/80 backdrop-blur-md p-4 rounded-xl border border-white/10 w-64 z-30">
                   <div className="flex justify-between items-center mb-4">
-                     <h3 className="text-[10px] font-bold">Warehouse Inventory</h3>
-                     <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>All Warehouses</option></select>
+                     <h3 className="text-[8px] font-bold">Warehouse Inventory</h3>
+                     <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>All Warehouses</option></select>
                   </div>
                   <div className="flex items-end justify-between h-16 px-2">
                      {[
@@ -158,11 +158,11 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                        { v: "72%", lbl: "SKU-509", h: 72 },
                      ].map((b, i) => (
                         <div key={i} className="flex flex-col items-center gap-1 w-6">
-                           <span className="text-[8px]">{b.v}</span>
+                           <span className="text-[6.4px]">{b.v}</span>
                            <div className="w-full bg-blue-500/20 rounded-t-sm relative h-12">
                               <div className="absolute bottom-0 w-full bg-[#EB3158] rounded-t-sm shadow-[0_0_5px_rgba(59,130,246,0.5)]" style={{height: `${b.h}%`}}></div>
                            </div>
-                           <span className="text-[6px] text-slate-400">{b.lbl}</span>
+                           <span className="text-[4.8px] text-slate-400">{b.lbl}</span>
                         </div>
                      ))}
                   </div>
@@ -174,7 +174,7 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                
                {/* Delivery Status Donut */}
                <div className="bg-[#0d162f]/80 backdrop-blur-md border border-white/5 rounded-xl p-3 flex flex-col">
-                  <h3 className="text-[10px] font-semibold mb-2">Delivery Status</h3>
+                  <h3 className="text-[8px] font-semibold mb-2">Delivery Status</h3>
                   <div className="flex items-center justify-between">
                      <div className="relative w-16 h-16">
                        <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
@@ -184,11 +184,11 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                          <circle cx="50" cy="50" r="40" fill="transparent" stroke="#ef4444" strokeWidth="16" strokeDasharray="10 251" strokeDashoffset="-225" />
                        </svg>
                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                         <span className="text-[10px] font-bold">1,250</span>
-                         <span className="text-[5px] text-slate-400">Total</span>
+                         <span className="text-[8px] font-bold">1,250</span>
+                         <span className="text-[4px] text-slate-400">Total</span>
                        </div>
                      </div>
-                     <div className="flex flex-col gap-1 text-[7px] flex-grow pl-3">
+                     <div className="flex flex-col gap-1 text-[5.6px] flex-grow pl-3">
                         <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-sm bg-green-500"></div> Delivered</span> <span>72%</span></div>
                         <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-sm bg-[#EB3158]"></div> In Transit</span> <span>18%</span></div>
                         <div className="flex justify-between w-full"><span className="flex items-center gap-1"><div className="w-1.5 h-1.5 rounded-sm bg-orange-500"></div> Pending</span> <span>8%</span></div>
@@ -200,8 +200,8 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                {/* Route Efficiency Line Chart */}
                <div className="bg-[#0d162f]/80 backdrop-blur-md border border-white/5 rounded-xl p-3 flex flex-col relative flex-grow">
                   <div className="flex justify-between items-center mb-1">
-                    <h3 className="text-[10px] font-semibold">Route Efficiency</h3>
-                    <select className="bg-transparent text-[8px] text-slate-400 outline-none"><option>This Week</option></select>
+                    <h3 className="text-[8px] font-semibold">Route Efficiency</h3>
+                    <select className="bg-transparent text-[6.4px] text-slate-400 outline-none"><option>This Week</option></select>
                   </div>
                   <div className="flex-grow relative mt-2">
                     <div className="absolute inset-0 z-10">
@@ -210,14 +210,14 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                         <circle cx="100" cy="10" r="2" fill="#fff" stroke="#3b82f6" strokeWidth="1" />
                       </svg>
                     </div>
-                    <div className="absolute right-0 top-6 bg-[#0a1125] p-1 rounded text-[7px] border border-white/10 z-20 text-center">
+                    <div className="absolute right-0 top-6 bg-[#0a1125] p-1 rounded text-[5.6px] border border-white/10 z-20 text-center">
                        <div className="font-bold text-[#EB3158]">87%</div>
-                       <div className="text-slate-400 text-[5px]">Efficiency</div>
+                       <div className="text-slate-400 text-[4px]">Efficiency</div>
                     </div>
-                    <div className="absolute left-0 top-0 bottom-4 w-5 flex flex-col justify-between text-[6px] text-[#15172B]/60 items-end pr-1">
+                    <div className="absolute left-0 top-0 bottom-4 w-5 flex flex-col justify-between text-[4.8px] text-[#15172B]/60 items-end pr-1">
                       <span>100%</span><span>75%</span><span>50%</span><span>25%</span><span>0%</span>
                     </div>
-                    <div className="absolute bottom-0 left-5 right-0 flex justify-between text-[6px] text-[#15172B]/60">
+                    <div className="absolute bottom-0 left-5 right-0 flex justify-between text-[4.8px] text-[#15172B]/60">
                       <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
                     </div>
                   </div>
@@ -228,8 +228,8 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                   <div className="w-12 h-12 opacity-50 relative">
                      <Map size={48} className="text-[#EB3158] absolute inset-0" strokeWidth={1} />
                   </div>
-                  <div className="flex flex-col text-[8px] gap-1">
-                     <h3 className="text-[10px] font-semibold text-white mb-1">Regional Shipments</h3>
+                  <div className="flex flex-col text-[6.4px] gap-1">
+                     <h3 className="text-[8px] font-semibold text-white mb-1">Regional Shipments</h3>
                      <div className="flex justify-between w-24"><span className="text-slate-400">Top Region</span> <span className="font-bold">West 42%</span></div>
                      <div className="flex items-center gap-1 mt-1">
                         <div className="w-2 h-2 rounded-sm bg-[#EB3158]"></div> High
@@ -244,7 +244,7 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
 
          {/* Order Fulfillment Flow */}
          <div className="bg-[#0d162f]/60 backdrop-blur-md border border-white/5 rounded-2xl p-4 flex flex-col mt-2 relative z-10">
-            <h3 className="text-[11px] font-bold mb-4">Order Fulfillment Flow</h3>
+            <h3 className="text-[8.8px] font-bold mb-4">Order Fulfillment Flow</h3>
             <div className="flex justify-between items-center relative px-4">
                {/* Line */}
                <div className="absolute top-1/2 left-8 right-8 h-0.5 bg-slate-700 -translate-y-1/2 z-0">
@@ -263,8 +263,8 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                     <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center mb-2 ${step.c}`}>
                        {step.icon}
                     </div>
-                    <div className={`text-[9px] font-bold ${i < 4 ? 'text-white' : 'text-slate-400'}`}>{step.n}</div>
-                    <div className="text-[8px] text-[#15172B]/60">{step.t}</div>
+                    <div className={`text-[7.2px] font-bold ${i < 4 ? 'text-white' : 'text-slate-400'}`}>{step.n}</div>
+                    <div className="text-[6.4px] text-[#15172B]/60">{step.t}</div>
                  </div>
                ))}
                
@@ -288,9 +288,9 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                     {kpi.icon}
                   </div>
                   <div>
-                    <div className="text-[9px] text-slate-400 mb-0.5">{kpi.label}</div>
+                    <div className="text-[7.2px] text-slate-400 mb-0.5">{kpi.label}</div>
                     <div className="text-sm font-bold text-slate-200">{kpi.val}</div>
-                    <div className={`text-[8px] ${kpi.trend.includes('↑') ? 'text-green-400' : 'text-red-400'}`}>{kpi.trend}</div>
+                    <div className={`text-[6.4px] ${kpi.trend.includes('↑') ? 'text-green-400' : 'text-red-400'}`}>{kpi.trend}</div>
                   </div>
                </div>
             ))}
@@ -305,7 +305,7 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
                <Store size={20} className="text-cyan-400" />
             </div>
             <h2 className="text-lg font-bold mb-2 text-white">Warehouse<br/>Management</h2>
-            <p className="text-[9px] text-slate-400 mb-6">Real-time inventory visibility & smarter warehouse operations.</p>
+            <p className="text-[7.2px] text-slate-400 mb-6">Real-time inventory visibility & smarter warehouse operations.</p>
             
             <div className="h-28 bg-[#060d20] rounded-xl border border-white/5 mb-6 flex items-center justify-center relative overflow-hidden">
                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
@@ -318,14 +318,14 @@ export default function SupplyChainMockup({ solution }: { solution: { id: string
 
             <div className="flex justify-between items-end border-t border-white/10 pt-4">
                <div>
-                  <div className="text-[9px] text-slate-400">Inventory Accuracy</div>
+                  <div className="text-[7.2px] text-slate-400">Inventory Accuracy</div>
                   <div className="text-xl font-bold">98.2%</div>
-                  <div className="text-[8px] text-green-400">↑ 7.1%</div>
+                  <div className="text-[6.4px] text-green-400">↑ 7.1%</div>
                </div>
                <div className="text-right">
-                  <div className="text-[9px] text-slate-400">Orders Picked</div>
+                  <div className="text-[7.2px] text-slate-400">Orders Picked</div>
                   <div className="text-xl font-bold">3,462</div>
-                  <div className="text-[8px] text-green-400">↑ 11.4%</div>
+                  <div className="text-[6.4px] text-green-400">↑ 11.4%</div>
                </div>
             </div>
          </div>

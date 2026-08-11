@@ -38,12 +38,12 @@ export default function FranchiseHero() {
     >
       {/* Background Gradients & Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/20 dark:bg-blue-600/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-[#EB3158]/20 dark:bg-[#EB3158]/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_19.2px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20 dark:bg-blue-600/20 rounded-full blur-[96px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-[320px] h-[320px] bg-[#EB3158]/20 dark:bg-[#EB3158]/20 rounded-full blur-[80px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 w-full z-10 grid lg:grid-cols-2 gap-16 items-center flex-grow">
+      <div className="max-w-[1120px] mx-auto px-6 md:px-10 w-full z-10 grid lg:grid-cols-2 gap-16 items-center flex-grow">
         
         {/* Left Content */}
         <motion.div 
@@ -104,7 +104,7 @@ export default function FranchiseHero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative w-full aspect-square max-w-[600px] mx-auto hidden lg:flex items-center justify-center"
+          className="relative w-full aspect-square max-w-[480px] mx-auto hidden lg:flex items-center justify-center"
         >
           {/* Orbital Rings */}
           <div className="absolute inset-0 rounded-full border border-[#111A4A]/10 dark:border-white/10 [mask-image:radial-gradient(transparent_40%,black_100%)]"></div>

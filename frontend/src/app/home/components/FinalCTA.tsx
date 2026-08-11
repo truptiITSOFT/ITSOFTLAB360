@@ -10,22 +10,22 @@ export default function FinalCTA() {
 
       {/* Decorative Glows & Circles */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/20 dark:bg-[#060D1E]/20 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] bg-white/20 dark:bg-[#060D1E]/20 rounded-full blur-[80px]" />
 
         <motion.div
           animate={{ y: [0, -30, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-10 left-[10%] w-32 h-32 rounded-full border-[3px] border-white/20"
+          className="absolute top-10 left-[10%] w-32 h-32 rounded-full border-[2.4px] border-white/20"
         />
         <motion.div
           animate={{ y: [0, 40, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 right-[15%] w-48 h-48 rounded-full border-[2px] border-white/10"
+          className="absolute bottom-20 right-[15%] w-48 h-48 rounded-full border-[1.6px] border-white/10"
         />
         <motion.div
           animate={{ x: [0, 20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-[40%] right-[5%] w-16 h-16 rounded-full bg-white/10 dark:bg-[#060D1E]/10 blur-[2px]"
+          className="absolute top-[40%] right-[5%] w-16 h-16 rounded-full bg-white/10 dark:bg-[#060D1E]/10 blur-[1.6px]"
         />
 
         {/* Grain Texture */}

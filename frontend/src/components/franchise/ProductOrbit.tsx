@@ -82,11 +82,11 @@ export default function ProductOrbit() {
       
       {/* Background Gradients & Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000004_1px,transparent_1px),linear-gradient(to_bottom,#00000004_1px,transparent_1px)] bg-[size:40px_32px]"></div>
         {/* Dynamic Light Orbs */}
-        <div className="absolute top-0 right-1/4 w-[600px] h-[500px] bg-blue-400/10 rounded-full blur-[120px] mix-blend-multiply"></div>
-        <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-emerald-400/10 rounded-full blur-[120px] mix-blend-multiply"></div>
-        <div className="absolute bottom-0 right-1/3 w-[600px] h-[500px] bg-rose-400/10 rounded-full blur-[120px] mix-blend-multiply"></div>
+        <div className="absolute top-0 right-1/4 w-[480px] h-[400px] bg-blue-400/10 rounded-full blur-[96px] mix-blend-multiply"></div>
+        <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-emerald-400/10 rounded-full blur-[96px] mix-blend-multiply"></div>
+        <div className="absolute bottom-0 right-1/3 w-[480px] h-[400px] bg-rose-400/10 rounded-full blur-[96px] mix-blend-multiply"></div>
       </div>
 
       <div className="w-[90%] lg:w-[85%] max-w-7xl mx-auto relative z-10">
@@ -132,10 +132,10 @@ export default function ProductOrbit() {
           >
             <div className="relative w-72 h-72 flex items-center justify-center">
                {/* Outer rotating dashed ring */}
-               <div className="absolute inset-[-30px] rounded-full border-[3px] border-dashed border-blue-200/80 animate-[spin_40s_linear_infinite]" style={{ animation: 'spin 40s linear infinite' }}></div>
+               <div className="absolute inset-[-24px] rounded-full border-[2.4px] border-dashed border-blue-200/80 animate-[spin_40s_linear_infinite]" style={{ animation: 'spin 40s linear infinite' }}></div>
                
                {/* Middle solid ring with glow */}
-               <div className="absolute inset-[-10px] rounded-full border-2 border-blue-300 shadow-[0_0_40px_rgba(59,130,246,0.2)] animate-[spin_60s_linear_infinite_reverse]" style={{ animation: 'spin 60s linear infinite reverse' }}></div>
+               <div className="absolute inset-[-8px] rounded-full border-2 border-blue-300 shadow-[0_0_40px_rgba(59,130,246,0.2)] animate-[spin_60s_linear_infinite_reverse]" style={{ animation: 'spin 60s linear infinite reverse' }}></div>
                
                {/* Central Core (Glassy white) */}
                <div className="absolute inset-4 rounded-full bg-white/80 backdrop-blur-2xl border-4 border-white shadow-[0_10px_30px_rgba(59,130,246,0.15)]"></div>
@@ -152,15 +152,15 @@ export default function ProductOrbit() {
                </div>
                
                {/* High Quality Rays connecting to the tiers */}
-               <div className="hidden lg:block absolute top-1/2 -right-[150px] w-[150px] h-[3px] bg-gradient-to-r from-blue-500 to-transparent opacity-80 -translate-y-1/2 shadow-[0_0_12px_rgba(59,130,246,0.6)]">
+               <div className="hidden lg:block absolute top-1/2 -right-[120px] w-[120px] h-[2.4px] bg-gradient-to-r from-blue-500 to-transparent opacity-80 -translate-y-1/2 shadow-[0_0_12px_rgba(59,130,246,0.6)]">
                   {/* Energy pulse on ray */}
-                  <div className="absolute top-0 left-0 w-8 h-full bg-white blur-[2px] animate-pulse"></div>
+                  <div className="absolute top-0 left-0 w-8 h-full bg-white blur-[1.6px] animate-pulse"></div>
                </div>
-               <div className="hidden lg:block absolute top-[25%] -right-[130px] w-[130px] h-[3px] bg-gradient-to-r from-emerald-500 to-transparent opacity-80 -rotate-[22deg] origin-left shadow-[0_0_12px_rgba(16,185,129,0.6)]">
-                  <div className="absolute top-0 left-0 w-8 h-full bg-white blur-[2px] animate-pulse"></div>
+               <div className="hidden lg:block absolute top-[25%] -right-[104px] w-[104px] h-[2.4px] bg-gradient-to-r from-emerald-500 to-transparent opacity-80 -rotate-[22deg] origin-left shadow-[0_0_12px_rgba(16,185,129,0.6)]">
+                  <div className="absolute top-0 left-0 w-8 h-full bg-white blur-[1.6px] animate-pulse"></div>
                </div>
-               <div className="hidden lg:block absolute bottom-[25%] -right-[130px] w-[130px] h-[3px] bg-gradient-to-r from-rose-500 to-transparent opacity-80 rotate-[22deg] origin-left shadow-[0_0_12px_rgba(244,63,94,0.6)]">
-                  <div className="absolute top-0 left-0 w-8 h-full bg-white blur-[2px] animate-pulse"></div>
+               <div className="hidden lg:block absolute bottom-[25%] -right-[104px] w-[104px] h-[2.4px] bg-gradient-to-r from-rose-500 to-transparent opacity-80 rotate-[22deg] origin-left shadow-[0_0_12px_rgba(244,63,94,0.6)]">
+                  <div className="absolute top-0 left-0 w-8 h-full bg-white blur-[1.6px] animate-pulse"></div>
                </div>
             </div>
           </motion.div>

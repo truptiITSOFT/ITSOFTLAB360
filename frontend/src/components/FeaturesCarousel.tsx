@@ -129,9 +129,9 @@ export default function FeaturesCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: Math.min(index * 0.1, 0.5) }}
-                className="snap-start shrink-0 w-[280px] sm:w-[340px] bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group/card border border-gray-100 dark:border-gray-700 flex flex-col"
+                className="snap-start shrink-0 w-[224px] sm:w-[272px] bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group/card border border-gray-100 dark:border-gray-700 flex flex-col"
               >
-                <div className="relative h-[220px] w-full overflow-hidden bg-gray-50 dark:bg-gray-900 p-2">
+                <div className="relative h-[176px] w-full overflow-hidden bg-gray-50 dark:bg-gray-900 p-2">
                   <div className="w-full h-full relative rounded-xl overflow-hidden">
                     <Image
                       src={feature.image}
@@ -143,7 +143,7 @@ export default function FeaturesCarousel() {
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
                   <h4 className="text-[1.35rem] font-semibold text-[#0066CC] dark:text-blue-400 mb-3">{feature.title}</h4>
-                  <p className="text-gray-500 dark:text-gray-400 text-[15px] leading-relaxed flex-grow">
+                  <p className="text-gray-500 dark:text-gray-400 text-[12px] leading-relaxed flex-grow">
                     {feature.description}
                   </p>
                 </div>

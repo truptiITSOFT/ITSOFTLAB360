@@ -52,7 +52,7 @@ export default function SolutionsCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: (index % 12) * 0.05 }}
-                className={`mx-3 min-w-[220px] md:min-w-[240px] max-w-[240px] bg-slate-50 dark:bg-[#0f172a]/60 border border-[#111A4A]/10 dark:border-gray-800 border-t-2 ${item.color} rounded-xl p-6 flex flex-col items-center text-center cursor-pointer group hover:scale-105 hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-500/50 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300`}
+                className={`mx-3 min-w-[176px] md:min-w-[192px] max-w-[192px] bg-slate-50 dark:bg-[#0f172a]/60 border border-[#111A4A]/10 dark:border-gray-800 border-t-2 ${item.color} rounded-xl p-6 flex flex-col items-center text-center cursor-pointer group hover:scale-105 hover:shadow-lg hover:border-blue-300 dark:hover:border-blue-500/50 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300`}
               >
                 <div className={`mb-4 ${item.iconColor} drop-shadow-[0_0_10px_currentColor] group-hover:scale-110 transition-transform`}>
                   {item.icon}
