@@ -87,7 +87,7 @@ export default function FranchiseHero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             className="flex flex-wrap gap-4 mt-4"
           >
-            <Link href="#apply" className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A]   rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)] ">
+            <Link href="/contact" className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A]   rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)] ">
               <span className="relative z-10 flex items-center gap-2">
                 Become a Partner <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
@@ -99,68 +99,20 @@ export default function FranchiseHero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Animated Visual */}
+        {/* Right Visual (Image) */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative w-full aspect-square max-w-[480px] mx-auto hidden lg:flex items-center justify-center"
+          className="relative w-full aspect-auto lg:h-[450px] mx-auto hidden lg:flex items-center justify-center"
         >
-          {/* Orbital Rings */}
-          <div className="absolute inset-0 rounded-full border border-[#111A4A]/10  [mask-image:radial-gradient(transparent_40%,black_100%)]"></div>
-          <div className="absolute inset-[15%] rounded-full border border-dashed border-[#111A4A]/20  animate-[spin_60s_linear_infinite]"></div>
-          <div className="absolute inset-[30%] rounded-full border border-[#EB3158]/20  animate-[spin_40s_linear_infinite_reverse]"></div>
-
-          {/* Center Platform Node */}
-          <div className="relative z-20 w-40 h-40 rounded-full bg-white  shadow-2xl  border border-gray-100  flex items-center justify-center overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-[#EB3158]/10 animate-pulse"></div>
-             <Image 
-                src="/logo.png" 
-                alt="ITSoftLab360" 
-                width={120} 
-                height={40} 
-                className="object-contain  relative z-10"
-             />
-          </div>
-
-          {/* Orbiting Product Nodes */}
-          {PRODUCTS.map((product, i) => {
-            const radius = 240; // distance from center
-            const rad = (product.angle * Math.PI) / 180;
-            const x = Math.cos(rad) * radius;
-            const y = Math.sin(rad) * radius;
-
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 0, y: 0 }}
-                animate={{ opacity: 1, x, y }}
-                transition={{ duration: 1, delay: 0.5 + (i * 0.05), ease: "easeOut" }}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 group"
-              >
-                {/* Connection Line */}
-                <svg className="absolute left-1/2 top-1/2 w-0 h-0 overflow-visible pointer-events-none z-0">
-                  <motion.line 
-                    x1="0" y1="0" x2={-x} y2={-y}
-                    stroke="currentColor" 
-                    className="text-[#111A4A]/10  group-hover:text-blue-500/50 transition-colors duration-300" 
-                    strokeWidth="1.5"
-                    strokeDasharray="4 4"
-                  />
-                </svg>
-
-                <div className="relative flex flex-col items-center justify-center gap-2 cursor-pointer transition-transform hover:scale-110 z-10">
-                  <div className="w-12 h-12 rounded-xl bg-white/80  backdrop-blur-sm border border-gray-200  flex items-center justify-center shadow-lg group-hover:border-blue-500  group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
-                    <product.icon size={20} className="text-[#15172B]  group-hover:text-blue-600  transition-colors" />
-                  </div>
-                  <span className="absolute top-[110%] w-max text-xs font-semibold text-[#15172B]  opacity-0 group-hover:opacity-100 transition-opacity bg-white  px-2 py-1 rounded shadow-sm">
-                    {product.name}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
-
+          <Image 
+            src="/franchise-hero-img.png" 
+            alt="Franchise Opportunity" 
+            width={800}
+            height={600}
+            className="w-full h-full object-contain drop-shadow-xl"
+          />
         </motion.div>
 
       </div>

@@ -81,7 +81,7 @@ export default function HeroSection() {
       <div className="max-w-[1120px] mx-auto px-6 md:px-10 h-full flex flex-col z-20 relative">
 
         {/* Two-Column Content Layout */}
-        <div className="flex-1 flex flex-col lg:flex-row items-center gap-10 lg:gap-8">
+        <div className="flex-1 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-8">
 
           {/* Left Content (approx 45%) */}
           <div className="w-full lg:w-[45%] flex flex-col relative z-10">
@@ -119,10 +119,10 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row items-center gap-4 mb-10"
             >
               <Link
-                href="#solutions"
+                href="/franchise"
                 className="w-full sm:w-auto flex justify-center items-center gap-2 bg-[#EB3158] hover:bg-[#d6274d] text-white px-8 py-4 rounded-full font-bold shadow-[0_8px_25px_rgba(235,49,88,0.3)] hover:shadow-[0_12px_30px_rgba(235,49,88,0.4)] transition-all hover:-translate-y-1"
               >
-                Explore All Solutions <ArrowRight size={18} />
+                For Franchisor <ArrowRight size={18} />
               </Link>
 
               <Link
@@ -160,7 +160,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-[50%] relative h-[240px] sm:h-[320px] lg:h-[384px] flex justify-center items-center"
+            className="w-full lg:w-[50%] relative h-[240px] sm:h-[320px] lg:h-[384px] flex justify-end items-center"
           >
             <div className="relative w-full h-full max-w-[480px] rounded-2xl overflow-hidden shadow-2xl border border-slate-200  bg-white  flex flex-col">
               {/* Browser Header */}

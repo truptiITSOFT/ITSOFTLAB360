@@ -31,7 +31,7 @@ export default function FranchisePromo() {
   ];
 
   return (
-    <section id="franchise" className="py-24 bg-white  relative overflow-hidden transition-colors duration-300">
+    <section id="franchise" className="py-12 lg:py-16 bg-white  relative overflow-hidden transition-colors duration-300">
 
       {/* Background Abstract Waves */}
       <div className="absolute inset-0 opacity-[0.03]  pointer-events-none">
@@ -57,7 +57,7 @@ export default function FranchisePromo() {
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-8">
           
           {/* Left Content */}
-          <div className="w-full lg:w-[45%]">
+          <div className="w-full lg:w-[40%]">
             <span className="text-xs font-bold tracking-widest text-[#20B486] uppercase mb-4 block">
               IT Franchise Opportunity
             </span>
@@ -68,7 +68,7 @@ export default function FranchisePromo() {
               Offer all 12 integrated business products through one scalable platform, backed by training, sales enablement, implementation guidance, and a recurring business opportunity.
             </p>
 
-            <ul className="flex flex-col gap-4 mb-10">
+            <ul className="flex flex-col gap-4 mb-0">
               {points.map((point, i) => (
                 <motion.li
                   key={i}
@@ -86,79 +86,23 @@ export default function FranchisePromo() {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="#"
-                className="flex items-center justify-center gap-2 bg-[#20B486] hover:bg-[#1a936d] text-white px-8 py-3.5 rounded-full font-bold shadow-[0_8px_25px_rgba(32,180,134,0.3)] transition-all hover:-translate-y-1"
-              >
-                Become a Partner <ArrowRight size={18} />
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center justify-center gap-2 bg-transparent border border-[#111A4A]/20  hover:border-[#111A4A]/50  text-[#111A4A]  px-8 py-3.5 rounded-full font-bold transition-all hover:-translate-y-1 hover:bg-[#111A4A]/5 "
-              >
-                <Download size={18} /> Download Overview
-              </Link>
-            </div>
+
           </div>
 
           {/* Right Visual (12-Solution Image) */}
-          <div className="w-full lg:w-[55%] relative flex justify-center items-center">
+          <div className="w-full lg:w-[60%] relative flex justify-center items-center">
             <Image 
               src="/12-it-solutions.png" 
               alt="12 IT Solutions Ecosystem" 
               width={800} 
               height={800} 
-              className="w-full h-auto object-contain drop-shadow-xl"
+              className="w-full h-auto object-contain drop-shadow-xl [clip-path:inset(0_3.5%)] scale-[1.03]"
             />
           </div>
         </div>
 
 
-        {/* Bottom Feature Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-3xl bg-gray-50/50  border border-[#111A4A]/5  backdrop-blur-sm">
-          
-          <div className="flex items-center gap-4 p-4">
-            <div className="w-12 h-12 rounded-full bg-[#20B486]/10 flex items-center justify-center">
-              <Package className="text-[#20B486] w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111A4A]  text-sm">12 Products</h4>
-              <p className="text-xs text-[#15172B]/60 ">Integrated business products on one platform</p>
-            </div>
-          </div>
 
-          <div className="flex items-center gap-4 p-4">
-            <div className="w-12 h-12 rounded-full bg-[#A855F7]/10 flex items-center justify-center">
-              <ShieldCheck className="text-[#A855F7] w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111A4A]  text-sm">360° Support</h4>
-              <p className="text-xs text-[#15172B]/60 ">Training, sales, and implementation guidance</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 p-4">
-            <div className="w-12 h-12 rounded-full bg-[#4AA8D8]/10 flex items-center justify-center">
-              <BarChart className="text-[#4AA8D8] w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111A4A]  text-sm">Recurring Revenue</h4>
-              <p className="text-xs text-[#15172B]/60 ">Build predictable long-term business growth</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-4 p-4">
-            <div className="w-12 h-12 rounded-full bg-[#EB3158]/10 flex items-center justify-center">
-              <Zap className="text-[#EB3158] w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-[#111A4A]  text-sm">Proven Framework</h4>
-              <p className="text-xs text-[#15172B]/60 ">Designed for scalable franchise success</p>
-            </div>
-          </div>
-
-        </div>
 
       </div>
     </section>

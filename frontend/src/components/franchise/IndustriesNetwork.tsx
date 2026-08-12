@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Store, Factory, Stethoscope, GraduationCap, Truck, Hotel, Building2, Briefcase, CheckCircle2, Users } from "lucide-react";
 
 const INDUSTRIES = [
-  { id: "retail", name: "Retail & E-commerce", icon: Store, color: "from-rose-500 to-pink-600", bg: "bg-rose-100", text: "text-rose-600", border: "border-rose-200", products: ["POS Terminal", "E-Commerce Integrations", "Inventory ERP", "Marketing Automation"] },
-  { id: "manufacturing", name: "Manufacturing", icon: Factory, color: "from-blue-600 to-cyan-600", bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", products: ["Production ERP", "Vendor Management", "Supply Chain Tracker", "Staff HRMS"] },
+  { id: "service", name: "Service Businesses", icon: Briefcase, color: "from-indigo-400 to-blue-500", bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", products: ["Service CRM", "Marketing Automation", "Billing POS", "Booking/Queue Mgt"] },
   { id: "healthcare", name: "Healthcare", icon: Stethoscope, color: "from-emerald-500 to-teal-600", bg: "bg-emerald-100", text: "text-emerald-600", border: "border-emerald-200", products: ["Patient Queue Mgt", "Healthcare CRM", "Secure Docs Mgt", "Clinic HRMS"] },
-  { id: "education", name: "Education", icon: GraduationCap, color: "from-violet-500 to-purple-600", bg: "bg-violet-100", text: "text-violet-600", border: "border-violet-200", products: ["Learning Management (LMS)", "Faculty HRMS", "Student CRM", "Digital Docs Mgt"] },
+  { id: "manufacturing", name: "Manufacturing", icon: Factory, color: "from-blue-600 to-cyan-600", bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", products: ["Production ERP", "Vendor Management", "Supply Chain Tracker", "Staff HRMS"] },
   { id: "logistics", name: "Logistics & Transport", icon: Truck, color: "from-amber-500 to-orange-500", bg: "bg-amber-100", text: "text-amber-600", border: "border-amber-200", products: ["Fleet Logistics Tracking", "Operations ERP", "Sales Force App", "Vendor Mgt"] },
   { id: "corporate", name: "Corporate Enterprise", icon: Building2, color: "from-slate-700 to-slate-900", bg: "bg-slate-200", text: "text-slate-800", border: "border-slate-300", products: ["Enterprise ERP", "Corporate HRMS", "Secure Docs Mgt", "Sales Force"] },
-  { id: "service", name: "Service Businesses", icon: Briefcase, color: "from-indigo-400 to-blue-500", bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", products: ["Service CRM", "Marketing Automation", "Billing POS", "Booking/Queue Mgt"] }
+  { id: "education", name: "Education", icon: GraduationCap, color: "from-violet-500 to-purple-600", bg: "bg-violet-100", text: "text-violet-600", border: "border-violet-200", products: ["Learning Management (LMS)", "Faculty HRMS", "Student CRM", "Digital Docs Mgt"] },
+  { id: "retail", name: "Retail & E-commerce", icon: Store, color: "from-rose-500 to-pink-600", bg: "bg-rose-100", text: "text-rose-600", border: "border-rose-200", products: ["POS Terminal", "E-Commerce Integrations", "Inventory ERP", "Marketing Automation"] }
 ];
 
 // --- Enhanced Animations for Each Industry ---

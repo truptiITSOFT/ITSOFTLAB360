@@ -6,7 +6,6 @@ import BusinessEngine from "@/components/franchise/BusinessEngine";
 
 import IndiaNetwork from "@/components/franchise/IndiaNetwork";
 import FranchiseJourney from "@/components/franchise/FranchiseJourney";
-import PartnerBenefits from "@/components/franchise/PartnerBenefits";
 import PlatformShowcase from "@/components/franchise/PlatformShowcase";
 import GrowthVisualization from "@/components/franchise/GrowthVisualization";
 import FranchiseCTA from "@/components/franchise/FranchiseCTA";
@@ -31,7 +30,6 @@ export default function FranchisePage() {
         <IndiaNetwork />
         <GrowthVisualization />
         <FranchiseJourney />
-        <PartnerBenefits />
         <FranchiseCTA />
       </div>
 

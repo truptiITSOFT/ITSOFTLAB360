@@ -54,14 +54,14 @@ export default function FinalCTA() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="#solutions"
+              href="/solutions"
               className="w-full sm:w-auto flex justify-center items-center gap-2 bg-[#111A4A] hover:bg-[#15172B] text-white px-8 py-4 rounded-full font-bold shadow-[0_8px_25px_rgba(17,26,74,0.3)] hover:shadow-[0_12px_30px_rgba(17,26,74,0.4)] transition-all hover:-translate-y-1"
             >
               Explore All 12 Solutions <ArrowRight size={18} />
             </Link>
 
             <Link
-              href="#contact"
+              href="/contact"
               className="w-full sm:w-auto flex justify-center items-center gap-2 bg-white  hover:bg-white/90  text-[#111A4A]  px-8 py-4 rounded-full font-bold shadow-sm  transition-all hover:-translate-y-1"
             >
               <Calendar size={18} /> Schedule a Free Consultation
