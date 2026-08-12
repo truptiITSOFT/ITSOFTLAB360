@@ -10,12 +10,22 @@ type Message = {
   content: string;
 };
 
-const quickActions = [
-  { label: "For Franchise", icon: <Settings size={14} /> },
-  { label: "Request Demo", icon: <ChevronRight size={14} /> },
-  { label: "Pricing", icon: <Briefcase size={14} /> },
-  { label: "Contact Sales", icon: <Phone size={14} /> },
-];
+const PRODUCT_ANSWERS: Record<string, string> = {
+  "HRMS": "Our HRMS handles everything from recruitment and payroll to attendance, leave management, and employee records.",
+  "CRM": "Our CRM helps you manage customers, leads, sales pipelines, and build lasting customer relationships.",
+  "ERP": "Our ERP system integrates finance, inventory, procurement, and all core business operations into one seamless platform.",
+  "Dealer Mgmt": "Our Dealer Management System helps you track dealers, orders, inventory, and optimize distributor performance.",
+  "Vendor Mgmt": "Our Vendor Management System simplifies procurement, contracts, and purchase orders across all your suppliers.",
+  "Marketing": "Our Marketing Automation platform lets you automate campaigns, email sequences, and customer engagement.",
+  "Supply Chain": "Our Supply Chain & Logistics solution tracks inventory, warehouses, shipments, and optimizes logistics operations.",
+  "Sales Force": "Our Sales Force Automation tool manages leads, quotations, field sales visits, and pipeline opportunities.",
+  "LMS": "Our Learning Management System allows you to deliver online training, assessments, and certifications to your team.",
+  "POS": "Our POS system provides fast billing, inventory synchronization, payments, and complete retail management.",
+  "Queue Mgmt": "Our Queue Management System helps you manage audits, compliance, quality control, and inspections seamlessly.",
+  "Document Mgmt": "Our Document Management System securely stores, organizes, and shares all your critical business documents."
+};
+
+const quickActions = Object.keys(PRODUCT_ANSWERS).map(key => ({ label: key }));
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +33,7 @@ export default function ChatWidget() {
     {
       id: "1",
       role: "assistant",
-      content: "Hi there! 👋 I'm your Intelligent Business Solution Advisor for IT SOFTLAB 360. How can I help you transform your business today?",
+      content: "Welcome to IT Softlab 360! Which of our 12 enterprise solutions would you like to explore?",
     },
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -48,6 +58,18 @@ export default function ChatWidget() {
     setMessages(prev => [...prev, userMessage]);
     setInputValue("");
     setIsTyping(true);
+
+    if (PRODUCT_ANSWERS[text]) {
+      setTimeout(() => {
+        setIsTyping(false);
+        setMessages(prev => [...prev, {
+          id: Date.now().toString(),
+          role: "assistant",
+          content: PRODUCT_ANSWERS[text]
+        }]);
+      }, 600);
+      return;
+    }
 
     // Check if the user is asking to contact sales or request demo to show lead form
     if (text.toLowerCase().includes("contact sales") || text.toLowerCase().includes("request demo") || text.toLowerCase().includes("pricing")) {
@@ -122,10 +144,8 @@ export default function ChatWidget() {
             <div className="bg-gradient-to-r from-blue-900 to-indigo-900 p-4 flex items-center justify-between border-b border-blue-500/30 relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-[24px] rounded-full pointer-events-none"></div>
               <div className="flex items-center gap-3 relative z-10">
-                <div className="w-10 h-10 bg-[#020617] rounded-full flex items-center justify-center border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                  <div className="w-6 h-6 bg-[#EB3158] rounded-sm rotate-45 flex items-center justify-center">
-                    <div className="w-3 h-3 bg-white rounded-sm rotate-0"></div>
-                  </div>
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                  <img src="/logo.png" alt="ITSoftlab360 Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 className="text-white font-bold text-sm tracking-wide">IT SOFTLAB Advisor</h3>
@@ -165,7 +185,7 @@ export default function ChatWidget() {
                       onClick={() => handleSend(action.label)}
                       className="flex items-center gap-1.5 text-xs bg-blue-50 hover:bg-blue-100   border border-blue-200  text-[#EB3158] hover:text-blue-700   px-3 py-1.5 rounded-full transition-all"
                     >
-                      {action.icon} {action.label}
+                      {action.label}
                     </button>
                   ))}
                 </div>

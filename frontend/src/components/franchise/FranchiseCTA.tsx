@@ -71,14 +71,14 @@ export default function FranchiseCTA() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full sm:w-auto"
         >
-          <Link href="#apply" className="group relative inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-[#030816] bg-white rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] w-full sm:w-auto">
+          <Link href="/contact" className="group relative inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-[#030816] bg-white rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] w-full sm:w-auto">
             <span className="relative z-10 flex items-center gap-2 text-base md:text-lg">
               Become a Franchise Partner <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </span>
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-transparent via-blue-100 to-transparent transition-transform duration-500 ease-in-out skew-x-12"></div>
           </Link>
           
-          <Link href="#contact" className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-white bg-transparent border-2 border-white/20 rounded-full transition-all hover:border-white hover:bg-white/5 w-full sm:w-auto text-base md:text-lg">
+          <Link href="/demo" className="inline-flex items-center justify-center gap-2 px-10 py-5 font-bold text-white bg-transparent border-2 border-white/20 rounded-full transition-all hover:border-white hover:bg-white/5 w-full sm:w-auto text-base md:text-lg">
             <PhoneCall size={20} /> Talk to Our Team
           </Link>
         </motion.div>

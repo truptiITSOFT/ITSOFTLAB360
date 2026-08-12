@@ -1,13 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Trophy, Users, LayoutDashboard, Settings, BarChart } from "lucide-react";
+import { ArrowRight, Trophy, Users, LayoutDashboard, Settings, BarChart, UserCheck, PieChart, Truck, Box, Megaphone, TrendingUp, GraduationCap, Calculator, Check, FileText } from "lucide-react";
 import Link from "next/link";
 
 export default function SolutionsHero() {
   return (
-    <section className="relative pt-2 pb-2 lg:pt-4 lg:pb-4 overflow-hidden">
-      <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16 grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative pt-16 pb-12 lg:pt-24 lg:pb-24 overflow-hidden bg-white transition-colors duration-300">
+      {/* Background Gradients & Grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_19.2px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-[96px] mix-blend-multiply animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-[320px] h-[320px] bg-[#EB3158]/20 rounded-full blur-[80px] mix-blend-multiply animate-blob animation-delay-2000"></div>
+      </div>
+      
+      <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16 grid lg:grid-cols-2 gap-16 items-center relative z-10">
 
         {/* Left Content */}
         <div className="z-10 relative">
@@ -56,15 +63,30 @@ export default function SolutionsHero() {
                   <span className="text-xs font-bold text-[#15172B] dark:text-white tracking-wider transition-colors">IT SOFTLAB 360</span>
                 </div>
               </div>
-              <div className="flex gap-2 h-full">
-                <div className="w-1/3 bg-gray-200/50 dark:bg-gray-800/50 rounded h-full transition-colors"></div>
-                <div className="w-2/3 flex flex-col gap-2">
-                  <div className="h-1/2 bg-blue-100/50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-500/20 rounded transition-colors"></div>
-                  <div className="h-1/2 bg-gray-200/50 dark:bg-gray-800/50 rounded flex gap-2 transition-colors">
-                    <div className="w-1/2 bg-indigo-100/50 dark:bg-indigo-900/30 border border-indigo-200 dark:border-indigo-500/20 rounded transition-colors"></div>
-                    <div className="w-1/2 bg-purple-100/50 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-500/20 rounded transition-colors"></div>
-                  </div>
-                </div>
+              <div className="grid grid-cols-4 gap-2 h-full w-full">
+                {[
+                  { icon: Users, color: "text-indigo-500", bg: "bg-indigo-100/70" },
+                  { icon: UserCheck, color: "text-emerald-500", bg: "bg-emerald-100/70" },
+                  { icon: PieChart, color: "text-amber-500", bg: "bg-amber-100/70" },
+                  { icon: Truck, color: "text-teal-500", bg: "bg-teal-100/70" },
+                  { icon: Box, color: "text-yellow-500", bg: "bg-yellow-100/70" },
+                  { icon: Megaphone, color: "text-pink-500", bg: "bg-pink-100/70" },
+                  { icon: Truck, color: "text-blue-500", bg: "bg-blue-100/70" },
+                  { icon: TrendingUp, color: "text-green-500", bg: "bg-green-100/70" },
+                  { icon: GraduationCap, color: "text-purple-600", bg: "bg-purple-100/70" },
+                  { icon: Calculator, color: "text-orange-500", bg: "bg-orange-100/70" },
+                  { icon: Check, color: "text-[#EB3158]", bg: "bg-red-100/70" },
+                  { icon: FileText, color: "text-teal-600", bg: "bg-teal-100/70" }
+                ].map((item, i) => (
+                  <motion.div 
+                    key={i} 
+                    animate={{ scale: [1, 1.1, 1] }} 
+                    transition={{ repeat: Infinity, duration: 3, delay: i * 0.15 }}
+                    className={`flex items-center justify-center rounded-lg ${item.bg}`}
+                  >
+                    <item.icon size={16} className={item.color} />
+                  </motion.div>
+                ))}
               </div>
               {/* Glowing Center Core */}
               <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-[#EB3158] shadow-[0_0_20px_rgba(59,130,246,0.4)] dark:shadow-[0_0_30px_rgba(59,130,246,0.8)] rotate-45 rounded flex items-center justify-center">
