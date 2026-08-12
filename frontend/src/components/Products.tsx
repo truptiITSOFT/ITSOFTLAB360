@@ -9,6 +9,7 @@ import {
   Users2, FileText, Lock, BarChart3, Calculator, Box, Check, Star, Play,
   LayoutGrid, Package
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export const products = [
   { 
@@ -296,6 +297,7 @@ const getCategoryForProduct = (id: string) => {
 };
 
 export default function Products() {
+  const router = useRouter();
   const [activeFilter, setActiveFilter] = React.useState("All Solutions");
 
   const filteredProducts = activeFilter === "All Solutions"
@@ -360,6 +362,7 @@ export default function Products() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
+                onClick={() => router.push(`/dashboard/${product.name.toLowerCase().replace(/ & /g, '-').replace(/\s+/g, '-')}`)}
                 className="bg-slate-50  rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-sm  border border-slate-100  hover:shadow-xl  hover:border-blue-100  flex flex-col items-center text-center overflow-hidden cursor-pointer"
               >
                 {/* Highlight Glow in Dark Mode */}
