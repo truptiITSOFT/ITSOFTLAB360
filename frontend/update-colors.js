@@ -78,3 +78,4 @@ allFiles.forEach(file => {
 });
 
 console.log(`Done updating colors in ${modifiedCount} files`);
+
