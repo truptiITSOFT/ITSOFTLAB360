@@ -40,7 +40,7 @@ export default function PartnerBenefits() {
         >
           {/* Card 1: Portfolio (2x2) */}
           <motion.div 
-            variants={itemVariants}
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("portfolio")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-2 md:row-span-2 relative rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
@@ -94,7 +94,7 @@ export default function PartnerBenefits() {
 
           {/* Card 2: Support (1x2) */}
           <motion.div 
-            variants={itemVariants}
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("support")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-1 md:row-span-2 relative rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
@@ -141,7 +141,7 @@ export default function PartnerBenefits() {
 
           {/* Card 3: Sales Enablement (1x1) */}
           <motion.div 
-            variants={itemVariants}
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("sales")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-1 md:row-span-1 relative rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
@@ -174,7 +174,7 @@ export default function PartnerBenefits() {
 
           {/* Card 4: Dashboard (2x1) */}
           <motion.div 
-            variants={itemVariants}
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("dash")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-2 md:row-span-1 relative rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 p-5 shadow-sm hover:shadow-md transition-shadow flex gap-4 items-center overflow-hidden"
@@ -223,7 +223,7 @@ export default function PartnerBenefits() {
 
           {/* Card 5: Demo Env (1x1) */}
           <motion.div 
-            variants={itemVariants}
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("demo")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-1 md:row-span-1 relative rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
@@ -263,7 +263,7 @@ export default function PartnerBenefits() {
 
           {/* Card 6: Implementation (1x1) */}
           <motion.div 
-            variants={itemVariants}
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("impl")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-1 md:row-span-1 relative rounded-2xl bg-[#EB3158] p-5 shadow-md flex flex-col justify-between text-white overflow-hidden"
