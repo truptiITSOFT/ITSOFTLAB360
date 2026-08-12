@@ -6,8 +6,8 @@ import Link from "next/link";
 
 export default function SolutionsHero() {
   return (
-    <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
-      <div className="container mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 items-center">
+    <section className="relative pt-2 pb-2 lg:pt-4 lg:pb-4 overflow-hidden">
+      <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16 grid lg:grid-cols-2 gap-16 items-center">
 
         {/* Left Content */}
         <div className="z-10 relative">
@@ -16,9 +16,11 @@ export default function SolutionsHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-[#EB3158] dark:text-blue-500 font-semibold tracking-wider text-sm uppercase mb-4 transition-colors">
-              SOLUTIONS
-            </h2>
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-500/30 transition-colors mb-6">
+              <Trophy size={18} className="text-[#EB3158] dark:text-blue-400" />
+              <span className="text-sm text-slate-700 dark:text-gray-300 font-medium transition-colors">World&apos;s First Franchise Model Solution Provider <span className="text-[#EB3158] dark:text-blue-400">—</span> All in 1 Place</span>
+            </div>
+            
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6 text-[#111A4A] dark:text-white transition-colors">
               Transform Every <br /> Business Process With <br />
               <span className="text-[#EB3158] dark:text-blue-500 text-glow">One Connected Platform</span>
@@ -34,11 +36,6 @@ export default function SolutionsHero() {
               <Link href="/demo" className="flex items-center gap-2 bg-white/50 dark:bg-transparent border border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 text-[#15172B] dark:text-white px-8 py-4 rounded-full font-medium transition-all">
                 REQUEST DEMO <ArrowRight size={18} />
               </Link>
-            </div>
-
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-500/30 transition-colors">
-              <Trophy size={18} className="text-[#EB3158] dark:text-blue-400" />
-              <span className="text-sm text-slate-700 dark:text-gray-300 font-medium transition-colors">World&apos;s First Franchise Model Solution Provider <span className="text-[#EB3158] dark:text-blue-400">—</span> All in 1 Place</span>
             </div>
           </motion.div>
         </div>

@@ -13,9 +13,9 @@ const stats = [
 
 export default function FranchiseStats() {
   return (
-    <section className="pb-16 pt-8 bg-white dark:bg-[#020617] transition-colors duration-300">
+    <section className="pb-16 pt-8 bg-white  transition-colors duration-300">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="border border-[#111A4A]/10 dark:border-gray-800 bg-slate-50 dark:bg-[#0f172a]/50 rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row flex-wrap justify-between items-center gap-8 shadow-sm dark:shadow-lg transition-colors">
+        <div className="border border-[#111A4A]/10  bg-slate-50  rounded-2xl p-6 lg:p-8 flex flex-col md:flex-row flex-wrap justify-between items-center gap-8 shadow-sm  transition-colors">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -29,13 +29,13 @@ export default function FranchiseStats() {
                 {stat.icon}
               </div>
               <div>
-                <h4 className="text-[#15172B] dark:text-white text-xl font-bold transition-colors">{stat.value}</h4>
-                <p className="text-[10px] text-[#15172B]/60 dark:text-gray-400 uppercase tracking-wider whitespace-pre-line leading-tight mt-1 transition-colors">{stat.label}</p>
+                <h4 className="text-[#15172B]  text-xl font-bold transition-colors">{stat.value}</h4>
+                <p className="text-[10px] text-[#15172B]/60  uppercase tracking-wider whitespace-pre-line leading-tight mt-1 transition-colors">{stat.label}</p>
               </div>
               
               {/* Divider for desktop */}
               {index < stats.length - 1 && (
-                <div className="hidden md:block w-px h-12 bg-gray-300 dark:bg-gray-800 ml-auto transition-colors"></div>
+                <div className="hidden md:block w-px h-12 bg-gray-300  ml-auto transition-colors"></div>
               )}
             </motion.div>
           ))}

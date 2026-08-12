@@ -25,7 +25,7 @@ const VideoCarousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full max-w-2xl ml-auto aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-800 bg-black">
+    <div className="relative w-full max-w-2xl ml-auto aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden shadow-2xl border border-gray-100  bg-black">
       {VIDEOS.map((src, i) => (
         <video
           key={src}
@@ -56,7 +56,7 @@ const VideoCarousel = () => {
 
 export default function EcosystemSection() {
   return (
-    <section className="py-24 bg-white dark:bg-gray-900/50 overflow-hidden relative">
+    <section className="py-24 bg-white  overflow-hidden relative">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
@@ -68,15 +68,15 @@ export default function EcosystemSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-[3.25rem] font-bold leading-[1.1] mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-4xl md:text-[3.25rem] font-bold leading-[1.1] mb-6 text-gray-900 ">
                 Bring your entire <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">business ecosystem</span> <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600  ">business ecosystem</span> <br />
                 together.
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-lg leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600  mb-8 max-w-lg leading-relaxed">
                 Experience unparalleled control with our unified dashboard. Seamlessly manage your HRMS, CRM, ERP, and other critical operations from one intelligent interface.
               </p>
-              <button className="bg-[#111A4A] dark:bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-500 text-white px-8 py-4 rounded-full font-medium transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+              <button className="bg-[#111A4A]  hover:bg-blue-700  text-white px-8 py-4 rounded-full font-medium transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
                 Explore the Dashboard
               </button>
             </motion.div>
@@ -85,7 +85,7 @@ export default function EcosystemSection() {
           {/* Right Content - Video Carousel */}
           <div className="relative z-10 w-full mt-12 lg:mt-0">
             {/* Background decorative blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 dark:bg-blue-900/10 rounded-full blur-[64px] -z-10"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50  rounded-full blur-[64px] -z-10"></div>
             
             <motion.div 
               initial={{ opacity: 0, y: 40 }}

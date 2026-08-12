@@ -16,14 +16,14 @@ export const products = [
     color: "bg-indigo-500",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-16 h-12 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-indigo-100 dark:border-indigo-900 overflow-hidden flex flex-col relative z-10">
+         <div className="w-16 h-12 bg-white  rounded-lg shadow-lg border border-indigo-100  overflow-hidden flex flex-col relative z-10">
             <div className="w-full h-3 bg-indigo-400"></div>
             <div className="flex-grow flex items-center justify-center">
-               <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center text-indigo-500"><Users size={12}/></div>
+               <div className="w-5 h-5 rounded-full bg-indigo-100  flex items-center justify-center text-indigo-500"><Users size={12}/></div>
             </div>
-            <div className="absolute bottom-1 left-2 w-8 h-1 bg-slate-200 dark:bg-slate-700 rounded"></div>
+            <div className="absolute bottom-1 left-2 w-8 h-1 bg-slate-200  rounded"></div>
          </div>
-         <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-indigo-500 rounded-xl shadow-lg border-2 border-white dark:border-slate-900 flex items-center justify-center z-20">
+         <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-indigo-500 rounded-xl shadow-lg border-2 border-white  flex items-center justify-center z-20">
             <Users2 size={16} className="text-white" />
          </div>
       </div>
@@ -34,12 +34,12 @@ export const products = [
     color: "bg-emerald-500",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-16 h-12 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-emerald-100 dark:border-emerald-900 p-2 relative z-10 flex flex-col gap-1">
-            <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900 text-emerald-500 flex items-center justify-center"><UserCheck size={12}/></div>
-            <div className="w-10 h-1 bg-slate-200 dark:bg-slate-700 rounded"></div>
-            <div className="w-6 h-1 bg-slate-200 dark:bg-slate-700 rounded"></div>
+         <div className="w-16 h-12 bg-white  rounded-lg shadow-lg border border-emerald-100  p-2 relative z-10 flex flex-col gap-1">
+            <div className="w-5 h-5 rounded-full bg-emerald-100  text-emerald-500 flex items-center justify-center"><UserCheck size={12}/></div>
+            <div className="w-10 h-1 bg-slate-200  rounded"></div>
+            <div className="w-6 h-1 bg-slate-200  rounded"></div>
          </div>
-         <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-emerald-500 rounded-xl shadow-lg border-2 border-white dark:border-slate-900 flex items-end justify-center gap-1 pb-2 z-20">
+         <div className="absolute -bottom-1 -right-1 w-10 h-10 bg-emerald-500 rounded-xl shadow-lg border-2 border-white  flex items-end justify-center gap-1 pb-2 z-20">
             <div className="w-1.5 h-3 bg-white rounded-t-sm"></div>
             <div className="w-1.5 h-5 bg-white rounded-t-sm"></div>
             <div className="w-1.5 h-4 bg-emerald-200 rounded-t-sm"></div>
@@ -55,13 +55,13 @@ export const products = [
     color: "bg-amber-500",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-14 h-14 bg-white dark:bg-slate-800 rounded-full shadow-lg border-4 border-amber-400 border-dashed flex items-center justify-center z-10">
+         <div className="w-14 h-14 bg-white  rounded-full shadow-lg border-4 border-amber-400 border-dashed flex items-center justify-center z-10">
             <span className="font-bold text-amber-500 text-[8px]">ERP</span>
          </div>
-         <div className="absolute top-2 -left-2 w-7 h-7 bg-white dark:bg-slate-800 rounded-full shadow-lg border border-amber-100 dark:border-amber-900 flex items-center justify-center z-20">
+         <div className="absolute top-2 -left-2 w-7 h-7 bg-white  rounded-full shadow-lg border border-amber-100  flex items-center justify-center z-20">
             <PieChart size={14} className="text-amber-500" />
          </div>
-         <div className="absolute bottom-1 -right-2 w-8 h-10 bg-amber-500 rounded-lg shadow-lg border-2 border-white dark:border-slate-900 flex flex-col p-1 gap-0.5 z-20">
+         <div className="absolute bottom-1 -right-2 w-8 h-10 bg-amber-500 rounded-lg shadow-lg border-2 border-white  flex flex-col p-1 gap-0.5 z-20">
             <div className="w-full h-2.5 bg-white/30 rounded-sm mb-1"></div>
             <div className="flex justify-between"><div className="w-1.5 h-1.5 bg-white rounded-sm"></div><div className="w-1.5 h-1.5 bg-white rounded-sm"></div><div className="w-1.5 h-1.5 bg-white rounded-sm"></div></div>
             <div className="flex justify-between"><div className="w-1.5 h-1.5 bg-white rounded-sm"></div><div className="w-1.5 h-1.5 bg-white rounded-sm"></div><div className="w-1.5 h-1.5 bg-white rounded-sm"></div></div>
@@ -75,7 +75,7 @@ export const products = [
     color: "bg-teal-500",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-16 h-14 bg-white dark:bg-slate-800 rounded-b-lg shadow-lg border border-teal-100 dark:border-teal-900 relative z-10 flex flex-col items-center justify-end pb-1">
+         <div className="w-16 h-14 bg-white  rounded-b-lg shadow-lg border border-teal-100  relative z-10 flex flex-col items-center justify-end pb-1">
             {/* Awning */}
             <div className="absolute -top-1 -left-1 -right-1 h-4 flex z-20">
                <div className="flex-1 bg-teal-500 rounded-b-full shadow-sm"></div>
@@ -84,9 +84,9 @@ export const products = [
                <div className="flex-1 bg-teal-300 rounded-b-full shadow-sm"></div>
             </div>
             {/* Door/Window */}
-            <div className="w-8 h-8 border-2 border-teal-200 dark:border-teal-800 bg-teal-50/50 dark:bg-teal-900/50 rounded-t-md"></div>
+            <div className="w-8 h-8 border-2 border-teal-200  bg-teal-50/50  rounded-t-md"></div>
          </div>
-         <div className="absolute bottom-[-4px] right-2 w-7 h-7 bg-teal-600 rounded-full shadow-lg border-2 border-white dark:border-slate-900 flex items-center justify-center z-20 overflow-hidden">
+         <div className="absolute bottom-[-4px] right-2 w-7 h-7 bg-teal-600 rounded-full shadow-lg border-2 border-white  flex items-center justify-center z-20 overflow-hidden">
             <div className="w-3 h-3 bg-white rounded-full absolute top-1"></div>
             <div className="w-5 h-4 bg-teal-300 rounded-t-lg absolute bottom-0"></div>
          </div>
@@ -98,13 +98,13 @@ export const products = [
     color: "bg-yellow-500",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-14 h-16 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-yellow-100 dark:border-yellow-900 p-2 relative z-10 flex flex-col gap-1.5 items-center pt-4">
-            <div className="absolute -top-2 w-6 h-3 bg-slate-300 dark:bg-slate-600 rounded-sm border-2 border-white dark:border-slate-800"></div>
-            <div className="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded mt-1"></div>
-            <div className="w-3/4 h-1 bg-slate-200 dark:bg-slate-700 rounded"></div>
-            <div className="w-full h-1 bg-slate-200 dark:bg-slate-700 rounded"></div>
+         <div className="w-14 h-16 bg-white  rounded-lg shadow-lg border border-yellow-100  p-2 relative z-10 flex flex-col gap-1.5 items-center pt-4">
+            <div className="absolute -top-2 w-6 h-3 bg-slate-300  rounded-sm border-2 border-white "></div>
+            <div className="w-full h-1 bg-slate-200  rounded mt-1"></div>
+            <div className="w-3/4 h-1 bg-slate-200  rounded"></div>
+            <div className="w-full h-1 bg-slate-200  rounded"></div>
          </div>
-         <div className="absolute bottom-1 -right-1 w-10 h-10 bg-yellow-500 rounded shadow-lg border-2 border-white dark:border-slate-900 flex flex-col items-center justify-center z-20 transform rotate-12">
+         <div className="absolute bottom-1 -right-1 w-10 h-10 bg-yellow-500 rounded shadow-lg border-2 border-white  flex flex-col items-center justify-center z-20 transform rotate-12">
             <Box size={20} className="text-white" />
          </div>
       </div>
@@ -118,7 +118,7 @@ export const products = [
          <div className="w-14 h-14 relative z-10 transform -rotate-12">
             <Megaphone size={56} className="text-pink-500 drop-shadow-lg" strokeWidth={1} fill="#ec4899" />
          </div>
-         <div className="absolute top-0 -right-2 w-8 h-8 bg-white dark:bg-slate-800 rounded-full shadow-lg border-2 border-pink-100 dark:border-pink-900 flex items-center justify-center z-20">
+         <div className="absolute top-0 -right-2 w-8 h-8 bg-white  rounded-full shadow-lg border-2 border-pink-100  flex items-center justify-center z-20">
             <div className="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center">
                <div className="w-2 h-2 rounded-full bg-pink-500"></div>
             </div>
@@ -134,9 +134,9 @@ export const products = [
     color: "bg-[#EB3158]",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/50 rounded-full shadow-inner border border-blue-200 dark:border-blue-800 flex items-center justify-center z-10 relative overflow-hidden">
-            <div className="absolute w-20 h-20 border border-blue-300 dark:border-blue-700 rounded-full transform rotate-45 scale-y-50"></div>
-            <div className="absolute w-20 h-20 border border-blue-300 dark:border-blue-700 rounded-full transform -rotate-45 scale-y-50"></div>
+         <div className="w-14 h-14 bg-blue-100  rounded-full shadow-inner border border-blue-200  flex items-center justify-center z-10 relative overflow-hidden">
+            <div className="absolute w-20 h-20 border border-blue-300  rounded-full transform rotate-45 scale-y-50"></div>
+            <div className="absolute w-20 h-20 border border-blue-300  rounded-full transform -rotate-45 scale-y-50"></div>
             <div className="w-4 h-4 bg-[#EB3158] rounded-full z-20 absolute top-2 right-3 flex items-center justify-center shadow-lg"><div className="w-1.5 h-1.5 bg-white rounded-full"></div></div>
          </div>
          <div className="absolute bottom-2 -right-3 w-12 h-8 bg-[#EB3158] rounded shadow-lg border border-white/20 flex flex-col z-20 rounded-tr-lg">
@@ -154,16 +154,16 @@ export const products = [
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
          <div className="w-14 h-16 bg-transparent relative z-10 flex flex-col items-center justify-end">
-            <div className="w-7 h-7 bg-orange-200 dark:bg-orange-300 rounded-full border-2 border-white dark:border-slate-800 shadow-sm z-20 relative">
+            <div className="w-7 h-7 bg-orange-200  rounded-full border-2 border-white  shadow-sm z-20 relative">
                <div className="w-full h-2.5 bg-slate-800 rounded-t-full absolute top-0"></div>
             </div>
             <div className="w-12 h-8 bg-green-500 rounded-t-lg shadow-md z-10 flex justify-center">
                <div className="w-3 h-full bg-white/20"></div>
             </div>
          </div>
-         <div className="absolute top-1 -right-2 w-10 h-10 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-green-100 dark:border-green-900 flex items-end justify-center gap-1 pb-1 z-0">
-            <div className="w-1.5 h-3 bg-slate-200 dark:bg-slate-700 rounded-t-sm"></div>
-            <div className="w-1.5 h-5 bg-slate-200 dark:bg-slate-700 rounded-t-sm"></div>
+         <div className="absolute top-1 -right-2 w-10 h-10 bg-white  rounded-lg shadow-lg border border-green-100  flex items-end justify-center gap-1 pb-1 z-0">
+            <div className="w-1.5 h-3 bg-slate-200  rounded-t-sm"></div>
+            <div className="w-1.5 h-5 bg-slate-200  rounded-t-sm"></div>
             <div className="w-1.5 h-7 bg-green-500 rounded-t-sm"></div>
             <TrendingUp size={16} className="absolute top-1 left-1 text-green-500" strokeWidth={3} />
          </div>
@@ -175,12 +175,12 @@ export const products = [
     color: "bg-purple-600",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="w-16 h-12 bg-white dark:bg-slate-800 rounded-lg shadow-lg border-2 border-purple-500 p-1 relative z-10 flex flex-col">
-            <div className="w-full flex-grow bg-purple-100 dark:bg-purple-900/50 rounded flex items-center justify-center">
+         <div className="w-16 h-12 bg-white  rounded-lg shadow-lg border-2 border-purple-500 p-1 relative z-10 flex flex-col">
+            <div className="w-full flex-grow bg-purple-100  rounded flex items-center justify-center">
                <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-white pl-0.5"><Play size={10} fill="currentColor"/></div>
             </div>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-6 h-2 bg-slate-300 dark:bg-slate-700 rounded-b"></div>
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-slate-400 dark:bg-slate-600 rounded"></div>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-6 h-2 bg-slate-300  rounded-b"></div>
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-slate-400  rounded"></div>
          </div>
          <div className="absolute -top-3 -right-3 w-10 h-10 z-20 transform rotate-12">
             <GraduationCap size={40} className="text-purple-600 drop-shadow-md" strokeWidth={1} fill="#9333ea" />
@@ -215,7 +215,7 @@ export const products = [
     color: "bg-[#EB3158]",
     graphic: (
       <div className="relative w-full h-full flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-         <div className="absolute top-0 w-10 h-12 bg-white dark:bg-slate-800 rounded shadow-lg border border-blue-100 dark:border-blue-900 flex flex-col items-center z-0 pt-2">
+         <div className="absolute top-0 w-10 h-12 bg-white  rounded shadow-lg border border-blue-100  flex flex-col items-center z-0 pt-2">
             <div className="w-6 h-4 bg-[#EB3158] rounded-sm text-[4.8px] font-bold text-white flex flex-col items-center justify-center leading-none">
                <span>A</span><span>001</span>
             </div>
@@ -245,12 +245,12 @@ export const products = [
             <div className="w-full h-5 bg-teal-600 rounded shadow-inner relative flex justify-center pt-1"><div className="w-4 h-1 bg-teal-800/30 rounded-full"></div></div>
             <div className="w-full h-8 bg-teal-600 rounded shadow-inner relative flex justify-center pt-1"><div className="w-4 h-1 bg-teal-800/30 rounded-full"></div></div>
          </div>
-         <div className="absolute top-2 -left-1 w-12 h-10 bg-white dark:bg-slate-200 rounded shadow border border-slate-300 z-0 transform -rotate-12 flex flex-col p-1.5 gap-1">
+         <div className="absolute top-2 -left-1 w-12 h-10 bg-white  rounded shadow border border-slate-300 z-0 transform -rotate-12 flex flex-col p-1.5 gap-1">
             <div className="w-3/4 h-1 bg-teal-200 rounded"></div>
             <div className="w-full h-1 bg-slate-200 rounded"></div>
             <div className="w-full h-1 bg-slate-200 rounded"></div>
          </div>
-         <div className="absolute bottom-2 -right-1 w-6 h-8 bg-amber-400 rounded-md shadow-lg border-2 border-white dark:border-slate-800 flex items-center justify-center z-20">
+         <div className="absolute bottom-2 -right-1 w-6 h-8 bg-amber-400 rounded-md shadow-lg border-2 border-white  flex items-center justify-center z-20">
             <Lock size={12} className="text-white" />
          </div>
       </div>
@@ -259,11 +259,11 @@ export const products = [
 ];
 
 const features = [
-  { name: "Secure", desc: "Enterprise-grade security", icon: ShieldCheck, color: "text-indigo-500", bgColor: "bg-indigo-50 dark:bg-indigo-500/10" },
-  { name: "Cloud Based", desc: "Access anytime, anywhere", icon: Cloud, color: "text-[#EB3158]", bgColor: "bg-blue-50 dark:bg-blue-500/10" },
-  { name: "Responsive", desc: "Works on desktop, tablet & mobile", icon: Smartphone, color: "text-emerald-500", bgColor: "bg-emerald-50 dark:bg-emerald-500/10" },
-  { name: "Scalable", desc: "Built to grow with your business", icon: PieChart, color: "text-amber-500", bgColor: "bg-amber-50 dark:bg-amber-500/10" },
-  { name: "Support", desc: "Dedicated support when you need it", icon: Headphones, color: "text-pink-500", bgColor: "bg-pink-50 dark:bg-pink-500/10" },
+  { name: "Secure", desc: "Enterprise-grade security", icon: ShieldCheck, color: "text-indigo-500", bgColor: "bg-indigo-50 " },
+  { name: "Cloud Based", desc: "Access anytime, anywhere", icon: Cloud, color: "text-[#EB3158]", bgColor: "bg-blue-50 " },
+  { name: "Responsive", desc: "Works on desktop, tablet & mobile", icon: Smartphone, color: "text-emerald-500", bgColor: "bg-emerald-50 " },
+  { name: "Scalable", desc: "Built to grow with your business", icon: PieChart, color: "text-amber-500", bgColor: "bg-amber-50 " },
+  { name: "Support", desc: "Dedicated support when you need it", icon: Headphones, color: "text-pink-500", bgColor: "bg-pink-50 " },
 ];
 
 const filterCategories = [
@@ -303,7 +303,7 @@ export default function Products() {
     : products.filter(p => getCategoryForProduct(p.id) === activeFilter);
 
   return (
-    <section className="pt-8 pb-24 relative z-10 bg-[#f8fafc] dark:bg-[#030816] transition-colors" id="products">
+    <section className="pt-8 pb-24 relative z-10 bg-[#f8fafc]  transition-colors" id="products">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-[1120px]">
         
         {/* Intro */}
@@ -317,10 +317,10 @@ export default function Products() {
             <span className="text-xs font-bold tracking-widest text-[#EB3158] uppercase mb-4 block">
               One Connected Business Ecosystem
             </span>
-            <h2 className="text-[2.25rem] md:text-5xl font-extrabold text-[#111A4A] dark:text-white tracking-tight mb-6 leading-[1.15]">
+            <h2 className="text-[2.25rem] md:text-5xl font-extrabold text-[#111A4A]  tracking-tight mb-6 leading-[1.15]">
               Explore powerful IT solutions for<br className="hidden sm:block" /> every business team.
             </h2>
-            <p className="text-sm md:text-[12px] text-[#15172B]/70 dark:text-gray-100/70 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-sm md:text-[12px] text-[#15172B]/70  leading-relaxed max-w-3xl mx-auto">
               Connect people, customers, operations, inventory, logistics, documents, sales,<br className="hidden sm:block" /> learning, marketing, vendors, dealers, and retail activities through one centralized platform.
             </p>
           </motion.div>
@@ -339,10 +339,10 @@ export default function Products() {
                   className={`px-3 lg:px-5 py-2.5 rounded-xl text-[10.4px] lg:text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-300 whitespace-nowrap flex-1 ${
                     isActive
                       ? "bg-[#111A4A] text-white shadow-lg shadow-[#111A4A]/20 border border-[#111A4A]"
-                      : "bg-white dark:bg-[#0A1125] text-[#15172B] dark:text-gray-100/70 border border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 hover:shadow-sm"
+                      : "bg-white  text-[#15172B]  border border-gray-200  hover:border-gray-300  hover:shadow-sm"
                   }`}
                 >
-                  <Icon size={16} strokeWidth={2.5} className={isActive ? "text-white" : "text-[#15172B]/50 dark:text-gray-400"} />
+                  <Icon size={16} strokeWidth={2.5} className={isActive ? "text-white" : "text-[#15172B]/50 "} />
                   <span className="hidden sm:inline">{category.name}</span>
                 </button>
               );
@@ -360,10 +360,10 @@ export default function Products() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="bg-slate-50 dark:bg-[#0a1125] rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-slate-100 dark:border-white/5 hover:shadow-xl dark:hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] hover:border-blue-100 dark:hover:border-blue-500/30 flex flex-col items-center text-center overflow-hidden cursor-pointer"
+                className="bg-slate-50  rounded-[1.5rem] p-6 relative group hover:-translate-y-2 transition-all duration-300 shadow-sm  border border-slate-100  hover:shadow-xl  hover:border-blue-100  flex flex-col items-center text-center overflow-hidden cursor-pointer"
               >
                 {/* Highlight Glow in Dark Mode */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent dark:from-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-transparent  opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Number Badge */}
                 <div className={`absolute top-4 left-4 w-7 h-7 rounded-full flex items-center justify-center text-white text-[8.8px] font-bold ${product.color} shadow-md z-20 group-hover:scale-110 transition-transform`}>
@@ -373,15 +373,15 @@ export default function Products() {
                 {/* Custom Graphic */}
                 <div className="w-24 h-24 mt-4 mb-6 relative z-10 flex items-center justify-center">
                    {/* Soft background glow behind graphic */}
-                   <div className={`absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30 dark:group-hover:opacity-20 transition-opacity duration-500 ${product.color}`}></div>
+                   <div className={`absolute inset-0 rounded-full blur-xl opacity-0 group-hover:opacity-30  transition-opacity duration-500 ${product.color}`}></div>
                    {product.graphic}
                 </div>
                 
-                <h4 className="font-bold text-[#15172B] dark:text-slate-100 text-lg mb-2 leading-tight transition-colors z-10 relative">
+                <h4 className="font-bold text-[#15172B]  text-lg mb-2 leading-tight transition-colors z-10 relative">
                   {product.name}
                 </h4>
                 
-                <p className="text-[#15172B]/60 dark:text-slate-400 text-[10.4px] leading-relaxed transition-colors z-10 relative">
+                <p className="text-[#15172B]/60  text-[10.4px] leading-relaxed transition-colors z-10 relative">
                   {product.desc}
                 </p>
               </motion.div>
@@ -395,7 +395,7 @@ export default function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-[#111A4A]/10 dark:border-white/10 flex flex-wrap justify-center gap-6 md:gap-10 lg:gap-14 transition-colors"
+          className="mt-16 pt-8 border-t border-[#111A4A]/10  flex flex-wrap justify-center gap-6 md:gap-10 lg:gap-14 transition-colors"
         >
           {features.map((feature, idx) => (
             <div key={idx} className="flex items-center gap-3 min-w-[144px] group cursor-default">
@@ -403,10 +403,10 @@ export default function Products() {
                 <feature.icon className={`w-4 h-4 ${feature.color}`} strokeWidth={2.5} />
               </div>
               <div className="text-left">
-                <h5 className="font-bold text-[#15172B] dark:text-slate-200 text-sm leading-tight transition-colors">
+                <h5 className="font-bold text-[#15172B]  text-sm leading-tight transition-colors">
                   {feature.name}
                 </h5>
-                <p className="text-[8.8px] text-[#15172B]/60 dark:text-slate-400 transition-colors">
+                <p className="text-[8.8px] text-[#15172B]/60  transition-colors">
                   {feature.desc}
                 </p>
               </div>

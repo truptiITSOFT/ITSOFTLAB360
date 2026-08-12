@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Store, Factory, Stethoscope, GraduationCap, Truck, Hotel, Building2, Briefcase, CheckCircle2, Users } from "lucide-react";
 
 const INDUSTRIES = [
-  { id: "retail", name: "Retail & E-commerce", icon: Store, color: "from-pink-500 to-rose-500", bg: "bg-pink-100", text: "text-pink-600", border: "border-pink-200", products: ["POS Terminal", "E-Commerce Integrations", "Inventory ERP", "Marketing Automation"] },
-  { id: "manufacturing", name: "Manufacturing", icon: Factory, color: "from-slate-500 to-gray-700", bg: "bg-slate-200", text: "text-slate-700", border: "border-slate-300", products: ["Production ERP", "Vendor Management", "Supply Chain Tracker", "Staff HRMS"] },
-  { id: "healthcare", name: "Healthcare", icon: Stethoscope, color: "from-blue-500 to-cyan-500", bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", products: ["Patient Queue Mgt", "Healthcare CRM", "Secure Docs Mgt", "Clinic HRMS"] },
-  { id: "education", name: "Education", icon: GraduationCap, color: "from-amber-500 to-orange-500", bg: "bg-amber-100", text: "text-amber-600", border: "border-amber-200", products: ["Learning Management (LMS)", "Faculty HRMS", "Student CRM", "Digital Docs Mgt"] },
-  { id: "logistics", name: "Logistics & Transport", icon: Truck, color: "from-emerald-500 to-teal-500", bg: "bg-emerald-100", text: "text-emerald-600", border: "border-emerald-200", products: ["Fleet Logistics Tracking", "Operations ERP", "Sales Force App", "Vendor Mgt"] },
-  { id: "corporate", name: "Corporate Enterprise", icon: Building2, color: "from-indigo-500 to-blue-700", bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", products: ["Enterprise ERP", "Corporate HRMS", "Secure Docs Mgt", "Sales Force"] },
-  { id: "service", name: "Service Businesses", icon: Briefcase, color: "from-rose-400 to-red-500", bg: "bg-rose-100", text: "text-rose-600", border: "border-rose-200", products: ["Service CRM", "Marketing Automation", "Billing POS", "Booking/Queue Mgt"] }
+  { id: "retail", name: "Retail & E-commerce", icon: Store, color: "from-rose-500 to-pink-600", bg: "bg-rose-100", text: "text-rose-600", border: "border-rose-200", products: ["POS Terminal", "E-Commerce Integrations", "Inventory ERP", "Marketing Automation"] },
+  { id: "manufacturing", name: "Manufacturing", icon: Factory, color: "from-blue-600 to-cyan-600", bg: "bg-blue-100", text: "text-blue-600", border: "border-blue-200", products: ["Production ERP", "Vendor Management", "Supply Chain Tracker", "Staff HRMS"] },
+  { id: "healthcare", name: "Healthcare", icon: Stethoscope, color: "from-emerald-500 to-teal-600", bg: "bg-emerald-100", text: "text-emerald-600", border: "border-emerald-200", products: ["Patient Queue Mgt", "Healthcare CRM", "Secure Docs Mgt", "Clinic HRMS"] },
+  { id: "education", name: "Education", icon: GraduationCap, color: "from-violet-500 to-purple-600", bg: "bg-violet-100", text: "text-violet-600", border: "border-violet-200", products: ["Learning Management (LMS)", "Faculty HRMS", "Student CRM", "Digital Docs Mgt"] },
+  { id: "logistics", name: "Logistics & Transport", icon: Truck, color: "from-amber-500 to-orange-500", bg: "bg-amber-100", text: "text-amber-600", border: "border-amber-200", products: ["Fleet Logistics Tracking", "Operations ERP", "Sales Force App", "Vendor Mgt"] },
+  { id: "corporate", name: "Corporate Enterprise", icon: Building2, color: "from-slate-700 to-slate-900", bg: "bg-slate-200", text: "text-slate-800", border: "border-slate-300", products: ["Enterprise ERP", "Corporate HRMS", "Secure Docs Mgt", "Sales Force"] },
+  { id: "service", name: "Service Businesses", icon: Briefcase, color: "from-indigo-400 to-blue-500", bg: "bg-indigo-100", text: "text-indigo-600", border: "border-indigo-200", products: ["Service CRM", "Marketing Automation", "Billing POS", "Booking/Queue Mgt"] }
 ];
 
 // --- Enhanced Animations for Each Industry ---
@@ -140,7 +140,7 @@ export default function IndustriesNetwork() {
   const activeIndustry = INDUSTRIES.find(i => i.id === activeId) || INDUSTRIES[0];
 
   return (
-    <section className="relative py-24 bg-[#FAFAFA] dark:bg-[#030816] transition-colors duration-300 overflow-hidden">
+    <section className="relative py-24 bg-[#FAFAFA]  transition-colors duration-300 overflow-hidden">
       <div className="max-w-[1040px] mx-auto px-6 md:px-10 relative z-10">
         
         <div className="text-center mb-16">
@@ -148,7 +148,7 @@ export default function IndustriesNetwork() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight"
+            className="text-4xl md:text-5xl font-black text-slate-900  mb-6 tracking-tight"
           >
             One Platform. <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-blue-600">Multiple Industries.</span>
           </motion.h2>
@@ -157,13 +157,13 @@ export default function IndustriesNetwork() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-slate-600 dark:text-gray-400 max-w-2xl mx-auto font-medium"
+            className="text-lg text-slate-600  max-w-2xl mx-auto font-medium"
           >
             Select an industry below to see how our integrated product suite adapts to provide a tailored operational ecosystem.
           </motion.p>
         </div>
 
-        <div className="w-full flex flex-col lg:flex-row gap-8 items-start">
+        <div className="w-full flex flex-col lg:flex-row gap-8 items-stretch">
             {/* Left side: Interactive List */}
             <div className="w-full lg:w-[35%] flex flex-col gap-2 relative z-20">
                 {INDUSTRIES.map((ind) => {
@@ -173,12 +173,12 @@ export default function IndustriesNetwork() {
                         <button 
                             key={ind.id}
                             onClick={() => setActiveId(ind.id)}
-                            className={`w-full text-left flex items-center gap-4 p-4 rounded-xl transition-all duration-300 relative overflow-hidden group border ${isActive ? 'bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-slate-100 scale-[1.02] z-10' : 'bg-transparent border-transparent hover:bg-white/60'}`}
+                            className={`w-full text-left flex items-center gap-4 p-4 rounded-xl transition-all duration-300 relative overflow-hidden group border ${isActive ? 'bg-white shadow-[0_15px_30px_rgba(0,0,0,0.08)] border-slate-200 scale-[1.02] z-10' : 'bg-transparent border-transparent hover:bg-white hover:border-slate-200 hover:shadow-md hover:-translate-y-0.5'}`}
                         >
-                            {isActive && <motion.div layoutId="activeIndBg" className={`absolute inset-0 opacity-[0.03] bg-gradient-to-r ${ind.color}`} />}
+                            {isActive && <motion.div layoutId="activeIndBg" className={`absolute inset-0 opacity-[0.04] bg-gradient-to-r ${ind.color}`} />}
                             
-                            <div className={`relative z-10 w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${isActive ? ind.bg + ' ' + ind.text + ' ' + ind.border + ' shadow-sm border' : 'bg-slate-200 text-slate-500 group-hover:bg-slate-300'}`}>
-                                <Icon size={22} />
+                            <div className={`relative z-10 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive ? ind.bg + ' ' + ind.text + ' ' + ind.border + ' shadow-sm border' : `bg-slate-100 text-slate-500 border border-transparent group-hover:${ind.bg.split(' ')[0]} group-hover:${ind.text.split(' ')[0]} group-hover:${ind.border.split(' ')[0]} group-hover:scale-110`}`}>
+                                <Icon size={22} className={isActive ? "scale-110 transition-transform" : "group-hover:scale-110 transition-transform"} />
                             </div>
                             <span className={`relative z-10 font-bold transition-colors ${isActive ? 'text-slate-900 text-lg' : 'text-slate-600 group-hover:text-slate-900'}`}>{ind.name}</span>
                         </button>
@@ -187,7 +187,7 @@ export default function IndustriesNetwork() {
             </div>
 
             {/* Right side: Dynamic Showcase Window */}
-            <div className="w-full lg:w-[65%] h-[440px] bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-slate-100 relative flex flex-col z-10 overflow-hidden">
+            <div className="w-full lg:w-[65%] bg-white rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-slate-100 relative flex flex-col z-10 overflow-hidden">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeIndustry.id}
@@ -240,13 +240,23 @@ export default function IndustriesNetwork() {
                             {/* Right: Abstract UI Visualization */}
                             <div className="w-1/2 bg-[#f8fafc] rounded-2xl border border-slate-200 relative overflow-hidden flex flex-col shadow-inner h-full">
                                  {/* Mock Browser/UI Header */}
-                                 <div className="w-full h-10 bg-white border-b border-slate-200 flex items-center px-4 justify-between shadow-sm z-10 shrink-0">
-                                     <div className="flex gap-1.5">
-                                         <div className="w-3 h-3 rounded-full bg-slate-200"/>
-                                         <div className="w-3 h-3 rounded-full bg-slate-200"/>
-                                         <div className="w-3 h-3 rounded-full bg-slate-200"/>
+                                 <div className="w-full h-12 bg-white/80 backdrop-blur-md border-b border-slate-200 flex items-center px-4 justify-between shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] z-10 shrink-0 relative">
+                                     {/* MacOS style window controls */}
+                                     <div className="flex gap-2">
+                                         <div className="w-3 h-3 rounded-full bg-[#FF5F56] hover:scale-110 shadow-sm transition-all cursor-pointer"/>
+                                         <div className="w-3 h-3 rounded-full bg-[#FFBD2E] hover:scale-110 shadow-sm transition-all cursor-pointer"/>
+                                         <div className="w-3 h-3 rounded-full bg-[#27C93F] hover:scale-110 shadow-sm transition-all cursor-pointer"/>
                                      </div>
-                                     <div className={`w-32 h-4 rounded-full ${activeIndustry.bg} opacity-50`}></div>
+                                     
+                                     {/* Mock URL Bar with Logo */}
+                                     <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2.5 bg-slate-50/80 border border-slate-200/60 rounded-full px-5 py-1.5 shadow-[inset_0_1px_4px_rgba(0,0,0,0.02)] group cursor-pointer hover:bg-white hover:border-slate-300 hover:shadow-[0_4px_12px_-4px_rgba(0,0,0,0.08)] transition-all duration-300">
+                                        <img src="/logo.png" alt="ITSoftLab360 Logo" className="h-[14px] w-auto object-contain group-hover:scale-105 transition-transform duration-300" />
+                                     </div>
+
+                                     {/* Right side indicator */}
+                                     <div className={`w-7 h-7 rounded-full flex items-center justify-center transition-all duration-500 ${activeIndustry.bg.split(' ')[0]} ${activeIndustry.text.split(' ')[0]} shadow-[0_2px_8px_-2px_rgba(0,0,0,0.1)] border border-white/50 hover:scale-110 cursor-pointer`}>
+                                         <activeIndustry.icon size={13} strokeWidth={2.5} />
+                                     </div>
                                  </div>
                                  
                                  {/* Central Animation Area */}

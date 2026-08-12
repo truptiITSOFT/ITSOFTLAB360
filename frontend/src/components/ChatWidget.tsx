@@ -116,7 +116,7 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="bg-white/95 dark:bg-[#0f172a]/95 backdrop-blur-xl border border-blue-200 dark:border-blue-500/30 rounded-2xl shadow-[0_0_40px_rgba(37,99,235,0.1)] dark:shadow-[0_0_40px_rgba(37,99,235,0.2)] mb-4 w-[280px] sm:w-[320px] h-[480px] max-h-[80vh] flex flex-col overflow-hidden relative transition-colors"
+            className="bg-white/95  backdrop-blur-xl border border-blue-200  rounded-2xl shadow-[0_0_40px_rgba(37,99,235,0.1)]  mb-4 w-[280px] sm:w-[320px] h-[480px] max-h-[80vh] flex flex-col overflow-hidden relative transition-colors"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-900 to-indigo-900 p-4 flex items-center justify-between border-b border-blue-500/30 relative">
@@ -149,7 +149,7 @@ export default function ChatWidget() {
                 <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] rounded-2xl p-3 text-sm leading-relaxed transition-colors ${msg.role === 'user'
                     ? 'bg-[#EB3158] text-white rounded-tr-sm'
-                    : 'bg-gray-100 dark:bg-[#1e293b] text-[#15172B] dark:text-gray-200 border border-[#111A4A]/10 dark:border-gray-700/50 rounded-tl-sm'
+                    : 'bg-gray-100  text-[#15172B]  border border-[#111A4A]/10  rounded-tl-sm'
                     }`}>
                     {msg.content}
                   </div>
@@ -163,7 +163,7 @@ export default function ChatWidget() {
                     <button
                       key={idx}
                       onClick={() => handleSend(action.label)}
-                      className="flex items-center gap-1.5 text-xs bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-[#EB3158] border border-blue-200 dark:border-blue-500/40 text-[#EB3158] hover:text-blue-700 dark:text-blue-200 dark:hover:text-white px-3 py-1.5 rounded-full transition-all"
+                      className="flex items-center gap-1.5 text-xs bg-blue-50 hover:bg-blue-100   border border-blue-200  text-[#EB3158] hover:text-blue-700   px-3 py-1.5 rounded-full transition-all"
                     >
                       {action.icon} {action.label}
                     </button>
@@ -176,15 +176,15 @@ export default function ChatWidget() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-gray-50 dark:bg-[#1e293b] border border-blue-200 dark:border-blue-500/30 rounded-xl p-4 text-sm transition-colors"
+                  className="bg-gray-50  border border-blue-200  rounded-xl p-4 text-sm transition-colors"
                 >
                   <form onSubmit={handleLeadSubmit} className="space-y-3">
-                    <input required type="text" placeholder="Your Name" value={leadForm.name} onChange={e => setLeadForm({ ...leadForm, name: e.target.value })} className="w-full bg-white dark:bg-[#0f172a] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-lg px-3 py-2 text-[#111A4A] dark:text-white outline-none text-xs transition-colors" />
-                    <input required type="email" placeholder="Work Email" value={leadForm.email} onChange={e => setLeadForm({ ...leadForm, email: e.target.value })} className="w-full bg-white dark:bg-[#0f172a] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-lg px-3 py-2 text-[#111A4A] dark:text-white outline-none text-xs transition-colors" />
-                    <input required type="text" placeholder="Company Name" value={leadForm.company} onChange={e => setLeadForm({ ...leadForm, company: e.target.value })} className="w-full bg-white dark:bg-[#0f172a] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-lg px-3 py-2 text-[#111A4A] dark:text-white outline-none text-xs transition-colors" />
+                    <input required type="text" placeholder="Your Name" value={leadForm.name} onChange={e => setLeadForm({ ...leadForm, name: e.target.value })} className="w-full bg-white  border border-[#111A4A]/10  focus:border-blue-400  rounded-lg px-3 py-2 text-[#111A4A]  outline-none text-xs transition-colors" />
+                    <input required type="email" placeholder="Work Email" value={leadForm.email} onChange={e => setLeadForm({ ...leadForm, email: e.target.value })} className="w-full bg-white  border border-[#111A4A]/10  focus:border-blue-400  rounded-lg px-3 py-2 text-[#111A4A]  outline-none text-xs transition-colors" />
+                    <input required type="text" placeholder="Company Name" value={leadForm.company} onChange={e => setLeadForm({ ...leadForm, company: e.target.value })} className="w-full bg-white  border border-[#111A4A]/10  focus:border-blue-400  rounded-lg px-3 py-2 text-[#111A4A]  outline-none text-xs transition-colors" />
                     <div className="grid grid-cols-2 gap-2">
-                      <input type="text" placeholder="Industry" value={leadForm.industry} onChange={e => setLeadForm({ ...leadForm, industry: e.target.value })} className="w-full bg-white dark:bg-[#0f172a] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-lg px-3 py-2 text-[#111A4A] dark:text-white outline-none text-xs transition-colors" />
-                      <input type="tel" placeholder="Phone" value={leadForm.phone} onChange={e => setLeadForm({ ...leadForm, phone: e.target.value })} className="w-full bg-white dark:bg-[#0f172a] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-lg px-3 py-2 text-[#111A4A] dark:text-white outline-none text-xs transition-colors" />
+                      <input type="text" placeholder="Industry" value={leadForm.industry} onChange={e => setLeadForm({ ...leadForm, industry: e.target.value })} className="w-full bg-white  border border-[#111A4A]/10  focus:border-blue-400  rounded-lg px-3 py-2 text-[#111A4A]  outline-none text-xs transition-colors" />
+                      <input type="tel" placeholder="Phone" value={leadForm.phone} onChange={e => setLeadForm({ ...leadForm, phone: e.target.value })} className="w-full bg-white  border border-[#111A4A]/10  focus:border-blue-400  rounded-lg px-3 py-2 text-[#111A4A]  outline-none text-xs transition-colors" />
                     </div>
                     <button type="submit" className="w-full bg-[#EB3158] hover:bg-[#EB3158] text-white rounded-lg py-2 font-medium transition-colors mt-2 text-xs">
                       Submit Details
@@ -195,7 +195,7 @@ export default function ChatWidget() {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-gray-100 dark:bg-[#1e293b] border border-[#111A4A]/10 dark:border-gray-700/50 rounded-2xl rounded-tl-sm p-3.5 flex gap-1 transition-colors">
+                  <div className="bg-gray-100  border border-[#111A4A]/10  rounded-2xl rounded-tl-sm p-3.5 flex gap-1 transition-colors">
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"></span>
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></span>
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></span>
@@ -207,7 +207,7 @@ export default function ChatWidget() {
 
             {/* Input Area */}
             {!showLeadForm && !leadSubmitted && (
-              <div className="p-3 border-t border-[#111A4A]/10 dark:border-gray-800 bg-gray-50 dark:bg-[#0f172a] transition-colors">
+              <div className="p-3 border-t border-[#111A4A]/10  bg-gray-50  transition-colors">
                 <form
                   onSubmit={(e) => { e.preventDefault(); handleSend(inputValue); }}
                   className="relative flex items-center"
@@ -217,7 +217,7 @@ export default function ChatWidget() {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Type your message..."
-                    className="w-full bg-white dark:bg-[#1e293b] border border-[#111A4A]/10 dark:border-gray-700 focus:border-blue-400 dark:focus:border-[#EB3158]/50 rounded-full pl-4 pr-12 py-2.5 text-sm text-[#111A4A] dark:text-white outline-none transition-colors placeholder:text-gray-400 dark:placeholder:text-[#15172B]/60"
+                    className="w-full bg-white  border border-[#111A4A]/10  focus:border-blue-400  rounded-full pl-4 pr-12 py-2.5 text-sm text-[#111A4A]  outline-none transition-colors placeholder:text-gray-400 "
                   />
                   <button
                     type="submit"
@@ -237,7 +237,7 @@ export default function ChatWidget() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/90 dark:bg-[#0f172a]/90 backdrop-blur-md text-[#15172B] dark:text-white text-xs px-4 py-2 rounded-full mb-3 shadow-[0_0_15px_rgba(59,130,246,0.15)] dark:shadow-[0_0_15px_rgba(59,130,246,0.3)] border border-blue-200 dark:border-blue-500/30 mr-2 flex items-center gap-2 transition-colors"
+          className="bg-white/90  backdrop-blur-md text-[#15172B]  text-xs px-4 py-2 rounded-full mb-3 shadow-[0_0_15px_rgba(59,130,246,0.15)]  border border-blue-200  mr-2 flex items-center gap-2 transition-colors"
         >
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
           Need Help? Chat with us

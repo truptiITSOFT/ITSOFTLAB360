@@ -98,7 +98,7 @@ export default function CityLandscapeSection() {
   const repeatedSolutions = [...solutions, ...solutions];
 
   return (
-    <section className="relative w-full overflow-hidden bg-white dark:bg-[#020617] pt-24 pb-0 min-h-[560px] flex flex-col justify-end">
+    <section className="relative w-full overflow-hidden bg-white  pt-24 pb-0 min-h-[560px] flex flex-col justify-end">
       
       {/* Floating Elements (Background) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
@@ -219,7 +219,7 @@ export default function CityLandscapeSection() {
         </div>
 
         {/* Foreground Road */}
-        <div className="absolute bottom-0 left-0 w-full h-6 bg-[#bdecfa] dark:bg-gray-800">
+        <div className="absolute bottom-0 left-0 w-full h-6 bg-[#bdecfa] ">
            {/* Orange Dotted Line */}
            <div className="absolute top-1/2 left-0 w-[200%] h-[2.4px] -translate-y-1/2 landscape-animate" style={{ animationDuration: '10s' }}>
               <div className="w-full h-full" style={{ backgroundImage: 'linear-gradient(to right, #f97316 50%, transparent 50%)', backgroundSize: '48px 100%' }}></div>
@@ -244,15 +244,15 @@ export default function CityLandscapeSection() {
             <div key={`${solution.id}-${index}`} className="relative group shrink-0 flex flex-col items-center">
               
               {/* Billboard Poster */}
-              <div className="w-[232px] h-[328px] bg-white dark:bg-[#1A2235] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] transition-all duration-500 rounded-lg overflow-hidden relative z-10 flex flex-col pt-5 group/card">
+              <div className="w-[232px] h-[328px] bg-white  shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.2)] transition-all duration-500 rounded-lg overflow-hidden relative z-10 flex flex-col pt-5 group/card">
                  {/* Top hooks */}
-                 <div className="absolute top-0 left-0 w-full flex justify-around p-1 border-b border-gray-100 dark:border-gray-800">
-                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
-                    <div className="w-[1.6px] h-2.5 bg-gray-300 dark:bg-gray-600"></div>
+                 <div className="absolute top-0 left-0 w-full flex justify-around p-1 border-b border-gray-100 ">
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 "></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 "></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 "></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 "></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 "></div>
+                    <div className="w-[1.6px] h-2.5 bg-gray-300 "></div>
                  </div>
 
                  <div className="flex items-center justify-center mb-3 px-5 mt-1 h-7">
@@ -263,36 +263,36 @@ export default function CityLandscapeSection() {
                    <h3 className={`text-xl font-bold mb-2 leading-tight whitespace-pre-line ${solution.theme}`}>
                      {solution.title}
                    </h3>
-                   <p className="text-sm text-gray-600 dark:text-gray-400 font-medium mb-3 line-clamp-2">
+                   <p className="text-sm text-gray-600  font-medium mb-3 line-clamp-2">
                      {solution.desc}
                    </p>
                    
                    <Link href="/demo" className="block">
-                     <button className="border-2 border-gray-200 dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300 font-bold px-6 py-1.5 rounded-full hover:bg-[#0ea5e9] hover:border-[#0ea5e9] hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/30 transform group-hover/card:-translate-y-1">
+                     <button className="border-2 border-gray-200  text-sm text-gray-700  font-bold px-6 py-1.5 rounded-full hover:bg-[#0ea5e9] hover:border-[#0ea5e9] hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-sky-500/30 transform group-hover/card:-translate-y-1">
                        Get a Free Demo
                      </button>
                    </Link>
                  </div>
                  
                  {/* Image */}
-                 <div className="w-full h-[112px] relative overflow-hidden bg-gray-100 dark:bg-gray-800 shrink-0">
+                 <div className="w-full h-[112px] relative overflow-hidden bg-gray-100  shrink-0">
                     <img 
                       src={solution.image} 
                       alt={solution.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110" 
                     />
                     {/* Bottom grid/fence visual detail */}
-                    <div className="absolute bottom-0 left-0 w-full h-5 bg-gray-900/10 dark:bg-black/30" style={{ backgroundImage: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '6.4px 6.4px', backgroundPosition: '0 0, 3.2px 3.2px', opacity: 0.15 }}></div>
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-900 dark:bg-black"></div>
+                    <div className="absolute bottom-0 left-0 w-full h-5 bg-gray-900/10 " style={{ backgroundImage: 'linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)', backgroundSize: '6.4px 6.4px', backgroundPosition: '0 0, 3.2px 3.2px', opacity: 0.15 }}></div>
+                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-900 "></div>
                  </div>
               </div>
 
               {/* Billboard Poles (connecting to the ground) */}
               <div className="flex flex-col items-center mt-0 z-0">
-                <div className="w-12 h-[96px] bg-gradient-to-r from-[#8bcce0] via-[#a8ddeb] to-[#8bcce0] dark:from-gray-700 dark:via-gray-600 dark:to-gray-800 border-x border-[#8bcce0] opacity-80"></div>
+                <div className="w-12 h-[96px] bg-gradient-to-r from-[#8bcce0] via-[#a8ddeb] to-[#8bcce0]    border-x border-[#8bcce0] opacity-80"></div>
                 {/* Base */}
-                <div className="w-20 h-4 bg-[#8bcce0] dark:bg-gray-700 rounded-t-sm"></div>
-                <div className="w-24 h-2 bg-[#7ab9cd] dark:bg-gray-800"></div>
+                <div className="w-20 h-4 bg-[#8bcce0]  rounded-t-sm"></div>
+                <div className="w-24 h-2 bg-[#7ab9cd] "></div>
               </div>
 
             </div>

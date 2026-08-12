@@ -50,7 +50,7 @@ export default function BenefitsSection() {
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-[#030816] transition-colors duration-300 border-y border-[#111A4A] dark:border-white/5 relative overflow-hidden">
+    <section className="py-24 bg-white  transition-colors duration-300 border-y border-[#111A4A]  relative overflow-hidden">
       
       {/* Decorative Blur */}
       <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-[#EEF0FF]/60 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2 pointer-events-none -z-10" />
@@ -63,10 +63,10 @@ export default function BenefitsSection() {
             <span className="text-xs font-bold tracking-widest text-[#EB3158] uppercase mb-4 block">
               Built for Modern Enterprises
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#111A4A] dark:text-white tracking-tight mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#111A4A]  tracking-tight mb-6 leading-tight">
               Everything your business needs to operate, grow, and scale.
             </h2>
-            <p className="text-lg text-[#15172B] dark:text-gray-100/70 leading-relaxed mb-8">
+            <p className="text-lg text-[#15172B]  leading-relaxed mb-8">
               Replace disconnected tools with a secure and scalable software ecosystem designed for growing organizations, enterprises, and franchise partners.
             </p>
           </div>
@@ -87,10 +87,10 @@ export default function BenefitsSection() {
                     <benefit.icon size={24} />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-[#111A4A] dark:text-white mb-1 group-hover:text-[#EB3158] transition-colors">
+                    <h4 className="text-lg font-bold text-[#111A4A]  mb-1 group-hover:text-[#EB3158] transition-colors">
                       {benefit.title}
                     </h4>
-                    <p className="text-sm text-[#15172B] dark:text-gray-100/60 leading-relaxed">
+                    <p className="text-sm text-[#15172B]  leading-relaxed">
                       {benefit.desc}
                     </p>
                   </div>

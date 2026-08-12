@@ -18,7 +18,7 @@ export const metadata = {
 
 export default function FranchisePage() {
   return (
-    <main className="min-h-screen relative flex flex-col selection:bg-[#EB3158]/20 selection:text-[#111A4A] overflow-x-hidden transition-opacity duration-300 bg-white dark:bg-[#030816]">
+    <main className="min-h-screen relative flex flex-col selection:bg-[#EB3158]/20 selection:text-[#111A4A] overflow-x-hidden transition-opacity duration-300 bg-white ">
             
       {/* Page Content */}
       <div className="flex-grow">

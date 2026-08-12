@@ -10,7 +10,7 @@ export default function FinalCTA() {
 
       {/* Decorative Glows & Circles */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] bg-white/20 dark:bg-[#060D1E]/20 rounded-full blur-[80px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] bg-white/20  rounded-full blur-[80px]" />
 
         <motion.div
           animate={{ y: [0, -30, 0], scale: [1, 1.1, 1] }}
@@ -25,7 +25,7 @@ export default function FinalCTA() {
         <motion.div
           animate={{ x: [0, 20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-[40%] right-[5%] w-16 h-16 rounded-full bg-white/10 dark:bg-[#060D1E]/10 blur-[1.6px]"
+          className="absolute top-[40%] right-[5%] w-16 h-16 rounded-full bg-white/10  blur-[1.6px]"
         />
 
         {/* Grain Texture */}
@@ -40,15 +40,15 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/20 dark:bg-[#060D1E]/20 text-[#111A4A] dark:text-white text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-sm border border-white/30 shadow-sm dark:shadow-none">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/20  text-[#111A4A]  text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-sm border border-white/30 shadow-sm ">
             Start Your Digital Transformation
           </span>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111A4A] dark:text-white tracking-tight mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#111A4A]  tracking-tight mb-6 leading-tight">
             Explore the ITSoftLab360 ecosystem with a clearer starting point.
           </h2>
 
-          <p className="text-lg md:text-xl text-[#111A4A] dark:text-white/80 leading-relaxed mb-12 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-[#111A4A]  leading-relaxed mb-12 max-w-2xl mx-auto">
             Discover the right combination of solutions for your industry, team size, workflow, and growth goals.
           </p>
 
@@ -62,7 +62,7 @@ export default function FinalCTA() {
 
             <Link
               href="#contact"
-              className="w-full sm:w-auto flex justify-center items-center gap-2 bg-white dark:bg-[#0A1125] hover:bg-white/90 dark:bg-[#060D1E]/90 text-[#111A4A] dark:text-white px-8 py-4 rounded-full font-bold shadow-sm dark:shadow-none transition-all hover:-translate-y-1"
+              className="w-full sm:w-auto flex justify-center items-center gap-2 bg-white  hover:bg-white/90  text-[#111A4A]  px-8 py-4 rounded-full font-bold shadow-sm  transition-all hover:-translate-y-1"
             >
               <Calendar size={18} /> Schedule a Free Consultation
             </Link>

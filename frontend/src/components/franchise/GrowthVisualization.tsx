@@ -13,14 +13,14 @@ const STAGES = [
 
 export default function GrowthVisualization() {
   return (
-    <section className="relative py-24 bg-white dark:bg-[#030816] overflow-hidden transition-colors duration-300">
+    <section className="relative py-24 bg-white  overflow-hidden transition-colors duration-300">
       <div className="max-w-[960px] mx-auto px-6 md:px-10 relative z-10 text-center">
         
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-[#111A4A] dark:text-white mb-4"
+          className="text-3xl md:text-5xl font-bold text-[#111A4A]  mb-4"
         >
           Start Local. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#EB3158]">Scale Boundlessly.</span>
         </motion.h2>
@@ -28,7 +28,7 @@ export default function GrowthVisualization() {
         <div className="mt-20 relative flex flex-col md:flex-row items-center justify-between w-full max-w-[800px] mx-auto">
           
           {/* Animated Connecting Line */}
-          <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-gray-800 -translate-y-1/2 hidden md:block z-0">
+          <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-100  -translate-y-1/2 hidden md:block z-0">
              <motion.div 
                initial={{ width: "0%" }}
                whileInView={{ width: "100%" }}
@@ -39,7 +39,7 @@ export default function GrowthVisualization() {
           </div>
 
           {/* Vertical line for mobile */}
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-100 dark:bg-gray-800 -translate-x-1/2 md:hidden z-0">
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-100  -translate-x-1/2 md:hidden z-0">
              <motion.div 
                initial={{ height: "0%" }}
                whileInView={{ height: "100%" }}
@@ -73,13 +73,13 @@ export default function GrowthVisualization() {
               {/* Node Icon */}
               <div className={`
                 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl
-                ${i === STAGES.length - 1 ? 'bg-[#111A4A] dark:bg-white text-white dark:text-[#111A4A] scale-110 shadow-[0_0_30px_rgba(17,26,74,0.3)] dark:shadow-[0_0_30px_rgba(255,255,255,0.3)]' : 'bg-white dark:bg-[#0f172a] text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900'}
+                ${i === STAGES.length - 1 ? 'bg-[#111A4A]  text-white  scale-110 shadow-[0_0_30px_rgba(17,26,74,0.3)] ' : 'bg-white  text-blue-600  border border-blue-100 '}
               `}>
                 <stage.icon size={i === STAGES.length - 1 ? 32 : 24} />
               </div>
 
               {/* Node Text */}
-              <div className={`font-bold text-center max-w-[96px] transition-colors ${i === STAGES.length - 1 ? 'text-[#111A4A] dark:text-white text-lg' : 'text-[#15172B]/70 dark:text-gray-400 text-sm'}`}>
+              <div className={`font-bold text-center max-w-[96px] transition-colors ${i === STAGES.length - 1 ? 'text-[#111A4A]  text-lg' : 'text-[#15172B]/70  text-sm'}`}>
                 {stage.title}
               </div>
             </motion.div>

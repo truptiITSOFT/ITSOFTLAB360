@@ -24,7 +24,7 @@ export default function FranchiseJourney() {
   return (
     <section 
       ref={containerRef}
-      className="relative py-32 bg-[#f8fafc] dark:bg-[#0A1125] transition-colors duration-300"
+      className="relative py-32 bg-[#f8fafc]  transition-colors duration-300"
     >
       <div className="max-w-[800px] mx-auto px-6 md:px-10 relative z-10">
         
@@ -33,7 +33,7 @@ export default function FranchiseJourney() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-[#111A4A] dark:text-white mb-4"
+            className="text-3xl md:text-5xl font-bold text-[#111A4A]  mb-4"
           >
             Your Journey to <span className="text-[#EB3158]">Success</span>
           </motion.h2>
@@ -42,7 +42,7 @@ export default function FranchiseJourney() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-[#15172B]/70 dark:text-gray-400 max-w-2xl mx-auto"
+            className="text-lg text-[#15172B]/70  max-w-2xl mx-auto"
           >
             Follow a proven, structured path to launch and scale your IT franchise business.
           </motion.p>
@@ -50,7 +50,7 @@ export default function FranchiseJourney() {
 
         <div className="relative">
           {/* Animated Vertical Line */}
-          <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 dark:bg-gray-800 md:-translate-x-1/2 rounded-full overflow-hidden">
+          <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-1 bg-gray-200  md:-translate-x-1/2 rounded-full overflow-hidden">
             <motion.div 
               className="w-full bg-gradient-to-b from-blue-500 to-[#EB3158]"
               style={{
@@ -73,30 +73,30 @@ export default function FranchiseJourney() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-80px" }}
                       transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
-                      className="bg-white dark:bg-[#0f172a] p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl dark:hover:border-blue-500/30 transition-all group"
+                      className="bg-white  p-6 rounded-2xl shadow-sm border border-gray-100  hover:shadow-xl  transition-all group"
                     >
                       <div className={`flex items-center gap-4 mb-3 ${!isEven && 'md:flex-row-reverse'}`}>
-                         <span className="text-3xl font-black text-gray-200 dark:text-gray-800 group-hover:text-blue-100 dark:group-hover:text-blue-900/30 transition-colors">
+                         <span className="text-3xl font-black text-gray-200  group-hover:text-blue-100  transition-colors">
                            {step.id}
                          </span>
-                         <h3 className="text-xl font-bold text-[#111A4A] dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                         <h3 className="text-xl font-bold text-[#111A4A]  group-hover:text-blue-600  transition-colors">
                            {step.title}
                          </h3>
                       </div>
-                      <p className="text-sm text-[#15172B]/70 dark:text-gray-400">
+                      <p className="text-sm text-[#15172B]/70 ">
                         {step.desc}
                       </p>
                     </motion.div>
                   </div>
 
                   {/* Icon Node centered on the line */}
-                  <div className="absolute left-0 md:left-1/2 w-16 h-16 bg-[#f8fafc] dark:bg-[#0A1125] rounded-full border-4 border-white dark:border-[#0A1125] flex items-center justify-center transform md:-translate-x-1/2 mt-4 md:mt-0 z-20 shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:shadow-none">
+                  <div className="absolute left-0 md:left-1/2 w-16 h-16 bg-[#f8fafc]  rounded-full border-4 border-white  flex items-center justify-center transform md:-translate-x-1/2 mt-4 md:mt-0 z-20 shadow-[0_0_15px_rgba(0,0,0,0.1)] ">
                      <motion.div
                        initial={{ scale: 0 }}
                        whileInView={{ scale: 1 }}
                        viewport={{ once: true, margin: "-80px" }}
                        transition={{ type: "spring", bounce: 0.5, delay: 0.2 }}
-                       className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center border border-blue-200 dark:border-blue-700/50"
+                       className="w-10 h-10 rounded-full bg-blue-100  text-blue-600  flex items-center justify-center border border-blue-200 "
                      >
                        <step.icon size={18} />
                      </motion.div>

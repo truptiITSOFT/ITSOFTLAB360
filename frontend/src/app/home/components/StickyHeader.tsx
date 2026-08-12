@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
+
 
 export default function StickyHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,7 +65,7 @@ export default function StickyHeader() {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-6">
-            <ThemeToggle />
+
             <Link href="/login" className="text-sm font-semibold text-[#111A4A] hover:text-[#EB3158] transition-colors">
               Sign In
             </Link>

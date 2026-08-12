@@ -20,10 +20,10 @@ const features = [
 
 export default function FranchiseFeatures() {
   return (
-    <section className="py-20 relative bg-slate-50 dark:bg-[#020617] border-t border-[#111A4A]/10 dark:border-gray-800 transition-colors duration-300">
+    <section className="py-20 relative bg-slate-50  border-t border-[#111A4A]/10  transition-colors duration-300">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold text-[#111A4A] dark:text-white mb-2 transition-colors">Why Choose Our Franchise Model</h2>
+          <h2 className="text-2xl font-bold text-[#111A4A]  mb-2 transition-colors">Why Choose Our Franchise Model</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -34,19 +34,19 @@ export default function FranchiseFeatures() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={`bg-white dark:bg-[#0f172a]/80 border border-[#111A4A]/10 dark:border-gray-800 border-t-2 ${feature.color} rounded-xl p-5 flex flex-col items-center text-center cursor-pointer group hover:bg-slate-100 dark:hover:bg-[#1e293b] transition-all shadow-sm hover:shadow-md dark:shadow-none`}
+              className={`bg-white  border border-[#111A4A]/10  border-t-2 ${feature.color} rounded-xl p-5 flex flex-col items-center text-center cursor-pointer group hover:bg-slate-100  transition-all shadow-sm hover:shadow-md `}
             >
               <div className={`mb-4 ${feature.iconColor} drop-shadow-[0_0_8px_currentColor] group-hover:scale-110 transition-transform`}>
                 {feature.icon}
               </div>
-              <h3 className="text-[#15172B] dark:text-white text-sm font-semibold mb-2 transition-colors">
+              <h3 className="text-[#15172B]  text-sm font-semibold mb-2 transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-xs text-[#15172B]/60 dark:text-gray-400 mb-4 flex-grow transition-colors">
+              <p className="text-xs text-[#15172B]/60  mb-4 flex-grow transition-colors">
                 {feature.description}
               </p>
               <div className="mt-auto opacity-50 group-hover:opacity-100 transition-opacity">
-                <ArrowRight size={14} className="text-slate-400 dark:text-gray-400" />
+                <ArrowRight size={14} className="text-slate-400 " />
               </div>
             </motion.div>
           ))}

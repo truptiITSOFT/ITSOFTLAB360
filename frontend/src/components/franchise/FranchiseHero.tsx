@@ -34,13 +34,13 @@ export default function FranchiseHero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[100vh] pt-32 pb-20 flex flex-col justify-center overflow-hidden bg-white dark:bg-[#030816] transition-colors duration-300"
+      className="relative min-h-[100vh] pt-32 pb-20 flex flex-col justify-center overflow-hidden bg-white  transition-colors duration-300"
     >
       {/* Background Gradients & Grid */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_19.2px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20 dark:bg-blue-600/20 rounded-full blur-[96px] mix-blend-multiply dark:mix-blend-screen animate-blob"></div>
-        <div className="absolute top-1/3 right-1/4 w-[320px] h-[320px] bg-[#EB3158]/20 dark:bg-[#EB3158]/20 rounded-full blur-[80px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/20  rounded-full blur-[96px] mix-blend-multiply  animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-[320px] h-[320px] bg-[#EB3158]/20  rounded-full blur-[80px] mix-blend-multiply  animate-blob animation-delay-2000"></div>
       </div>
 
       <div className="max-w-[1120px] mx-auto px-6 md:px-10 w-full z-10 grid lg:grid-cols-2 gap-16 items-center flex-grow">
@@ -54,7 +54,7 @@ export default function FranchiseHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800/50 text-blue-600 dark:text-blue-400 text-sm font-medium w-fit shadow-sm"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50  border border-blue-100  text-blue-600  text-sm font-medium w-fit shadow-sm"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -67,16 +67,16 @@ export default function FranchiseHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#111A4A] dark:text-white leading-[1.1]"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#111A4A]  leading-[1.1]"
           >
-            Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#EB3158] dark:from-blue-400 dark:to-[#EB3158]">IT Business</span> with 12 Integrated Products.
+            Build Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-[#EB3158]  ">IT Business</span> with 12 Integrated Products.
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="text-lg md:text-xl text-[#15172B]/70 dark:text-gray-400 leading-relaxed max-w-lg"
+            className="text-lg md:text-xl text-[#15172B]/70  leading-relaxed max-w-lg"
           >
             One Platform. 12 Products. One Scalable Franchise Opportunity. Empower your region with world-class SaaS solutions.
           </motion.p>
@@ -87,13 +87,13 @@ export default function FranchiseHero() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
             className="flex flex-wrap gap-4 mt-4"
           >
-            <Link href="#apply" className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A] dark:bg-white dark:text-[#111A4A] rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)] dark:hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]">
+            <Link href="#apply" className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A]   rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)] ">
               <span className="relative z-10 flex items-center gap-2">
                 Become a Partner <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/20 to-transparent dark:via-black/10 transition-transform duration-500 ease-in-out skew-x-12"></div>
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/20 to-transparent  transition-transform duration-500 ease-in-out skew-x-12"></div>
             </Link>
-            <Link href="#explore" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-[#111A4A] dark:text-white bg-transparent border-2 border-[#111A4A]/20 dark:border-white/20 rounded-full transition-all hover:border-[#111A4A] dark:hover:border-white hover:bg-[#111A4A]/5 dark:hover:bg-white/5">
+            <Link href="#explore" className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-[#111A4A]  bg-transparent border-2 border-[#111A4A]/20  rounded-full transition-all hover:border-[#111A4A]  hover:bg-[#111A4A]/5 ">
               <PlayCircle size={18} /> Explore Model
             </Link>
           </motion.div>
@@ -107,19 +107,19 @@ export default function FranchiseHero() {
           className="relative w-full aspect-square max-w-[480px] mx-auto hidden lg:flex items-center justify-center"
         >
           {/* Orbital Rings */}
-          <div className="absolute inset-0 rounded-full border border-[#111A4A]/10 dark:border-white/10 [mask-image:radial-gradient(transparent_40%,black_100%)]"></div>
-          <div className="absolute inset-[15%] rounded-full border border-dashed border-[#111A4A]/20 dark:border-white/20 animate-[spin_60s_linear_infinite]"></div>
-          <div className="absolute inset-[30%] rounded-full border border-[#EB3158]/20 dark:border-[#EB3158]/30 animate-[spin_40s_linear_infinite_reverse]"></div>
+          <div className="absolute inset-0 rounded-full border border-[#111A4A]/10  [mask-image:radial-gradient(transparent_40%,black_100%)]"></div>
+          <div className="absolute inset-[15%] rounded-full border border-dashed border-[#111A4A]/20  animate-[spin_60s_linear_infinite]"></div>
+          <div className="absolute inset-[30%] rounded-full border border-[#EB3158]/20  animate-[spin_40s_linear_infinite_reverse]"></div>
 
           {/* Center Platform Node */}
-          <div className="relative z-20 w-40 h-40 rounded-full bg-white dark:bg-[#0f172a] shadow-2xl dark:shadow-[0_0_50px_rgba(59,130,246,0.3)] border border-gray-100 dark:border-gray-800 flex items-center justify-center overflow-hidden">
+          <div className="relative z-20 w-40 h-40 rounded-full bg-white  shadow-2xl  border border-gray-100  flex items-center justify-center overflow-hidden">
              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-[#EB3158]/10 animate-pulse"></div>
              <Image 
                 src="/logo.png" 
                 alt="ITSoftLab360" 
                 width={120} 
                 height={40} 
-                className="object-contain dark:invert relative z-10"
+                className="object-contain  relative z-10"
              />
           </div>
 
@@ -143,17 +143,17 @@ export default function FranchiseHero() {
                   <motion.line 
                     x1="0" y1="0" x2={-x} y2={-y}
                     stroke="currentColor" 
-                    className="text-[#111A4A]/10 dark:text-white/10 group-hover:text-blue-500/50 transition-colors duration-300" 
+                    className="text-[#111A4A]/10  group-hover:text-blue-500/50 transition-colors duration-300" 
                     strokeWidth="1.5"
                     strokeDasharray="4 4"
                   />
                 </svg>
 
                 <div className="relative flex flex-col items-center justify-center gap-2 cursor-pointer transition-transform hover:scale-110 z-10">
-                  <div className="w-12 h-12 rounded-xl bg-white/80 dark:bg-[#0f172a]/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800 flex items-center justify-center shadow-lg group-hover:border-blue-500 dark:group-hover:border-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
-                    <product.icon size={20} className="text-[#15172B] dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                  <div className="w-12 h-12 rounded-xl bg-white/80  backdrop-blur-sm border border-gray-200  flex items-center justify-center shadow-lg group-hover:border-blue-500  group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all">
+                    <product.icon size={20} className="text-[#15172B]  group-hover:text-blue-600  transition-colors" />
                   </div>
-                  <span className="absolute top-[110%] w-max text-xs font-semibold text-[#15172B] dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity bg-white dark:bg-gray-800 px-2 py-1 rounded shadow-sm">
+                  <span className="absolute top-[110%] w-max text-xs font-semibold text-[#15172B]  opacity-0 group-hover:opacity-100 transition-opacity bg-white  px-2 py-1 rounded shadow-sm">
                     {product.name}
                   </span>
                 </div>

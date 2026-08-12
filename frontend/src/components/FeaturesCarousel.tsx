@@ -84,7 +84,7 @@ export default function FeaturesCarousel() {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-gray-900/30 overflow-hidden relative">
+    <section className="py-16 md:py-24 bg-white  overflow-hidden relative">
       <div className="container mx-auto px-4 md:px-12 relative">
         <div className="text-center mb-12">
           <motion.div 
@@ -102,7 +102,7 @@ export default function FeaturesCarousel() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-[2.75rem] font-bold text-gray-900 dark:text-white leading-tight"
+            className="text-3xl md:text-[2.75rem] font-bold text-gray-900  leading-tight"
           >
             Your All-in-One Business <br className="hidden md:block" /> Management Solution
           </motion.h2>
@@ -111,7 +111,7 @@ export default function FeaturesCarousel() {
         <div className="relative group mx-auto">
           <button 
             onClick={scrollLeft}
-            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 p-3 md:p-4 rounded-full shadow-lg border border-gray-100 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-[#FF3B30] dark:hover:text-[#FF3B30] hover:scale-110 transition-all focus:outline-none"
+            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10 bg-white  p-3 md:p-4 rounded-full shadow-lg border border-gray-100  text-gray-600  hover:text-[#FF3B30]  hover:scale-110 transition-all focus:outline-none"
             aria-label="Scroll left"
           >
             <ChevronLeft size={24} />
@@ -129,9 +129,9 @@ export default function FeaturesCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: Math.min(index * 0.1, 0.5) }}
-                className="snap-start shrink-0 w-[224px] sm:w-[272px] bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group/card border border-gray-100 dark:border-gray-700 flex flex-col"
+                className="snap-start shrink-0 w-[224px] sm:w-[272px] bg-white  rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group/card border border-gray-100  flex flex-col"
               >
-                <div className="relative h-[176px] w-full overflow-hidden bg-gray-50 dark:bg-gray-900 p-2">
+                <div className="relative h-[176px] w-full overflow-hidden bg-gray-50  p-2">
                   <div className="w-full h-full relative rounded-xl overflow-hidden">
                     <Image
                       src={feature.image}
@@ -142,8 +142,8 @@ export default function FeaturesCarousel() {
                   </div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow text-center">
-                  <h4 className="text-[1.35rem] font-semibold text-[#0066CC] dark:text-blue-400 mb-3">{feature.title}</h4>
-                  <p className="text-gray-500 dark:text-gray-400 text-[12px] leading-relaxed flex-grow">
+                  <h4 className="text-[1.35rem] font-semibold text-[#0066CC]  mb-3">{feature.title}</h4>
+                  <p className="text-gray-500  text-[12px] leading-relaxed flex-grow">
                     {feature.description}
                   </p>
                 </div>
@@ -153,7 +153,7 @@ export default function FeaturesCarousel() {
 
           <button 
             onClick={scrollRight}
-            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 p-3 md:p-4 rounded-full shadow-lg border border-gray-100 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-[#FF3B30] dark:hover:text-[#FF3B30] hover:scale-110 transition-all focus:outline-none"
+            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-10 bg-white  p-3 md:p-4 rounded-full shadow-lg border border-gray-100  text-gray-600  hover:text-[#FF3B30]  hover:scale-110 transition-all focus:outline-none"
             aria-label="Scroll right"
           >
             <ChevronRight size={24} />

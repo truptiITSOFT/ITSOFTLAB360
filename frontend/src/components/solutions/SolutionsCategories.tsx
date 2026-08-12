@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { products } from "@/components/Products";
@@ -162,13 +162,26 @@ function SolutionsCategoriesContent() {
   const searchParams = useSearchParams();
   const selectedId = searchParams.get("id");
 
+
+  useEffect(() => {
+    if (selectedId) {
+      setTimeout(() => {
+        const element = document.getElementById("categories");
+        if (element) {
+          const y = element.getBoundingClientRect().top + window.scrollY - 100;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [selectedId]);
+
   const filteredSolutions = selectedId 
     ? solutions.filter(s => s.id === selectedId)
     : solutions;
 
   return (
     <section className="py-20 relative z-10" id="categories">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

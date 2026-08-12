@@ -26,7 +26,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative pt-24 pb-20 lg:pt-28 lg:pb-28 overflow-hidden bg-white dark:bg-[#020617] transition-colors duration-300">
+    <section className="relative pt-24 pb-20 lg:pt-28 lg:pb-28 overflow-hidden bg-white  transition-colors duration-300">
       {/* Background glow effects */}
       <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] bg-blue-900/20 rounded-full blur-[96px] pointer-events-none"></div>
 
@@ -40,18 +40,18 @@ export default function Hero() {
             transition={{ duration: 0.4 }}
           >
             {/* Badge */}
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-500/30 rounded-full w-fit mb-8 shadow-[0_0_15px_rgba(59,130,246,0.1)] dark:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-colors">
-              <Star size={14} className="text-cyan-500 dark:text-cyan-400 fill-cyan-500 dark:fill-cyan-400" />
-              <span className="text-xs text-blue-700 dark:text-blue-100 font-bold tracking-wider transition-colors">WORLD'S #1 COMPANY</span>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-50  border border-blue-200  rounded-full w-fit mb-8 shadow-[0_0_15px_rgba(59,130,246,0.1)]  transition-colors">
+              <Star size={14} className="text-cyan-500  fill-cyan-500 " />
+              <span className="text-xs text-blue-700  font-bold tracking-wider transition-colors">WORLD'S #1 COMPANY</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-[4rem] font-bold leading-[1.15] mb-6 text-[#111A4A] dark:text-white transition-colors">
+            <h1 className="text-5xl md:text-6xl lg:text-[4rem] font-bold leading-[1.15] mb-6 text-[#111A4A]  transition-colors">
               The World's <span className="text-[#EB3158]">1st</span> Company <br />
               to Provide <br />
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent text-glow">All Solutions</span> in 1
             </h1>
 
-            <p className="text-[#15172B]/80 dark:text-gray-300 text-lg mb-10 max-w-xl leading-relaxed transition-colors">
+            <p className="text-[#15172B]/80  text-lg mb-10 max-w-xl leading-relaxed transition-colors">
               IT Softlab 360 is the World's 1st Integrated Solution Provider <br className="hidden md:block" />
               offering <span className="text-purple-400 font-semibold">12+</span> Powerful Solutions in One Unified Platform.
             </p>
@@ -60,7 +60,7 @@ export default function Hero() {
               <Link href="/franchise" className="flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-400 hover:to-purple-500 text-white px-8 py-4 rounded-full font-medium transition-all shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)]">
                 For Franchise <ArrowRight size={18} />
               </Link>
-              <button className="flex items-center gap-2 bg-transparent border border-gray-300 dark:border-gray-500 hover:border-gray-400 dark:hover:border-gray-300 hover:bg-slate-50 dark:hover:bg-white/5 text-[#15172B] dark:text-white px-8 py-4 rounded-full font-medium transition-all">
+              <button className="flex items-center gap-2 bg-transparent border border-gray-300  hover:border-gray-400  hover:bg-slate-50  text-[#15172B]  px-8 py-4 rounded-full font-medium transition-all">
                 Watch Video <PlayCircle size={18} />
               </button>
             </div>
@@ -73,7 +73,7 @@ export default function Hero() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#EB3158]/20 rounded-full blur-[96px] pointer-events-none"></div>
 
           {/* Video Container */}
-          <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-white dark:bg-[#020617]/50 backdrop-blur-sm z-20 flex items-center justify-center group">
+          <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden border border-blue-500/20 shadow-[0_0_50px_rgba(59,130,246,0.3)] bg-white  backdrop-blur-sm z-20 flex items-center justify-center group">
             
             {/* Corner Accents */}
             <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-cyan-400 rounded-tl-[3rem] opacity-50 z-30 pointer-events-none"></div>
@@ -85,7 +85,7 @@ export default function Hero() {
               loop
               muted
               playsInline
-              className="w-full h-full object-cover invert hue-rotate-180 dark:invert-0 dark:hue-rotate-0 dark:mix-blend-lighten opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+              className="w-full h-full object-cover invert hue-rotate-180    opacity-90 group-hover:opacity-100 transition-opacity duration-500"
             />
           </div>
         </div>

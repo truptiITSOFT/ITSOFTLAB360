@@ -31,10 +31,10 @@ export default function FranchisePromo() {
   ];
 
   return (
-    <section id="franchise" className="py-24 bg-white dark:bg-[#030816] relative overflow-hidden transition-colors duration-300">
+    <section id="franchise" className="py-24 bg-white  relative overflow-hidden transition-colors duration-300">
 
       {/* Background Abstract Waves */}
-      <div className="absolute inset-0 opacity-[0.03] dark:opacity-20 pointer-events-none">
+      <div className="absolute inset-0 opacity-[0.03]  pointer-events-none">
         <svg viewBox="0 0 1440 800" className="w-full h-full object-cover">
           <motion.path
             initial={{ d: "M0,400 C300,500 600,300 900,400 C1200,500 1440,300 1440,300 L1440,800 L0,800 Z" }}
@@ -61,10 +61,10 @@ export default function FranchisePromo() {
             <span className="text-xs font-bold tracking-widest text-[#20B486] uppercase mb-4 block">
               IT Franchise Opportunity
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#111A4A] dark:text-white tracking-tight mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#111A4A]  tracking-tight mb-6 leading-tight">
               Build your technology business with the ITSoftLab360 product ecosystem.
             </h2>
-            <p className="text-lg text-[#15172B]/80 dark:text-white/70 leading-relaxed mb-8">
+            <p className="text-lg text-[#15172B]/80  leading-relaxed mb-8">
               Offer all 12 integrated business products through one scalable platform, backed by training, sales enablement, implementation guidance, and a recurring business opportunity.
             </p>
 
@@ -76,7 +76,7 @@ export default function FranchisePromo() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="flex items-center gap-3 text-[#15172B] dark:text-white/90 font-medium"
+                  className="flex items-center gap-3 text-[#15172B]  font-medium"
                 >
                   <div className="w-5 h-5 rounded-full bg-[#20B486] flex items-center justify-center shadow-[0_0_10px_rgba(32,180,134,0.4)]">
                     <CheckCircle2 className="text-white w-3.5 h-3.5" />
@@ -95,7 +95,7 @@ export default function FranchisePromo() {
               </Link>
               <Link
                 href="#"
-                className="flex items-center justify-center gap-2 bg-transparent border border-[#111A4A]/20 dark:border-white/20 hover:border-[#111A4A]/50 dark:hover:border-white/50 text-[#111A4A] dark:text-white px-8 py-3.5 rounded-full font-bold transition-all hover:-translate-y-1 hover:bg-[#111A4A]/5 dark:hover:bg-white/5"
+                className="flex items-center justify-center gap-2 bg-transparent border border-[#111A4A]/20  hover:border-[#111A4A]/50  text-[#111A4A]  px-8 py-3.5 rounded-full font-bold transition-all hover:-translate-y-1 hover:bg-[#111A4A]/5 "
               >
                 <Download size={18} /> Download Overview
               </Link>
@@ -116,15 +116,15 @@ export default function FranchisePromo() {
 
 
         {/* Bottom Feature Bar */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-3xl bg-gray-50/50 dark:bg-[#060D1E]/50 border border-[#111A4A]/5 dark:border-white/5 backdrop-blur-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4 rounded-3xl bg-gray-50/50  border border-[#111A4A]/5  backdrop-blur-sm">
           
           <div className="flex items-center gap-4 p-4">
             <div className="w-12 h-12 rounded-full bg-[#20B486]/10 flex items-center justify-center">
               <Package className="text-[#20B486] w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-[#111A4A] dark:text-white text-sm">12 Products</h4>
-              <p className="text-xs text-[#15172B]/60 dark:text-gray-400">Integrated business products on one platform</p>
+              <h4 className="font-bold text-[#111A4A]  text-sm">12 Products</h4>
+              <p className="text-xs text-[#15172B]/60 ">Integrated business products on one platform</p>
             </div>
           </div>
 
@@ -133,8 +133,8 @@ export default function FranchisePromo() {
               <ShieldCheck className="text-[#A855F7] w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-[#111A4A] dark:text-white text-sm">360° Support</h4>
-              <p className="text-xs text-[#15172B]/60 dark:text-gray-400">Training, sales, and implementation guidance</p>
+              <h4 className="font-bold text-[#111A4A]  text-sm">360° Support</h4>
+              <p className="text-xs text-[#15172B]/60 ">Training, sales, and implementation guidance</p>
             </div>
           </div>
 
@@ -143,8 +143,8 @@ export default function FranchisePromo() {
               <BarChart className="text-[#4AA8D8] w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-[#111A4A] dark:text-white text-sm">Recurring Revenue</h4>
-              <p className="text-xs text-[#15172B]/60 dark:text-gray-400">Build predictable long-term business growth</p>
+              <h4 className="font-bold text-[#111A4A]  text-sm">Recurring Revenue</h4>
+              <p className="text-xs text-[#15172B]/60 ">Build predictable long-term business growth</p>
             </div>
           </div>
 
@@ -153,8 +153,8 @@ export default function FranchisePromo() {
               <Zap className="text-[#EB3158] w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-[#111A4A] dark:text-white text-sm">Proven Framework</h4>
-              <p className="text-xs text-[#15172B]/60 dark:text-gray-400">Designed for scalable franchise success</p>
+              <h4 className="font-bold text-[#111A4A]  text-sm">Proven Framework</h4>
+              <p className="text-xs text-[#15172B]/60 ">Designed for scalable franchise success</p>
             </div>
           </div>
 

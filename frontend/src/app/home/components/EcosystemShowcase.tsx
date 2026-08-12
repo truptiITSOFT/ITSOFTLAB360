@@ -35,7 +35,7 @@ function CountUp({ end, suffix = "", duration = 2 }: { end: number, suffix?: str
 
 export default function EcosystemShowcase() {
   return (
-    <section className="py-24 bg-white dark:bg-[#030816] transition-colors duration-300 relative overflow-hidden">
+    <section className="py-24 bg-white  transition-colors duration-300 relative overflow-hidden">
       
       {/* Background Soft Pastel Shapes */}
       <div className="absolute inset-0 pointer-events-none -z-10">
@@ -50,10 +50,10 @@ export default function EcosystemShowcase() {
           <span className="text-xs font-bold tracking-widest text-[#EB3158] uppercase mb-4 block">
             The ITSoftLab360 Advantage
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight bg-gradient-to-r from-[#111A4A] via-[#1e2a6b] to-[#EB3158] dark:from-white dark:via-blue-200 dark:to-[#EB3158] bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight bg-gradient-to-r from-[#111A4A] via-[#1e2a6b] to-[#EB3158]    bg-clip-text text-transparent">
             One platform. Twelve solutions. Fully connected data.
           </h2>
-          <p className="text-lg text-[#15172B] dark:text-gray-100/70 leading-relaxed">
+          <p className="text-lg text-[#15172B]  leading-relaxed">
             Every solution communicates through a unified platform, helping teams eliminate repeated work, disconnected tools, and scattered business information.
           </p>
         </div>
@@ -67,19 +67,19 @@ export default function EcosystemShowcase() {
             <motion.div
               animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-64 h-64 bg-[#EB3158]/20 dark:bg-[#EB3158]/30 rounded-full blur-[40px] -z-10 pointer-events-none"
+              className="absolute w-64 h-64 bg-[#EB3158]/20  rounded-full blur-[40px] -z-10 pointer-events-none"
             />
             
             {/* Spinning Rings */}
             <motion.div 
               animate={{ rotate: 360 }}
               transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-              className="absolute w-56 h-56 rounded-full border border-dashed border-[#111A4A]/20 dark:border-white/20 pointer-events-none"
+              className="absolute w-56 h-56 rounded-full border border-dashed border-[#111A4A]/20  pointer-events-none"
             />
             <motion.div 
               animate={{ rotate: -360 }}
               transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="absolute w-64 h-64 rounded-full border border-[#111A4A]/10 dark:border-white/10 pointer-events-none"
+              className="absolute w-64 h-64 rounded-full border border-[#111A4A]/10  pointer-events-none"
             />
 
             <motion.div 
@@ -87,9 +87,9 @@ export default function EcosystemShowcase() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="relative w-48 h-48 bg-white/80 dark:bg-white/90 backdrop-blur-xl rounded-full shadow-[0_0_40px_rgba(17,26,74,0.1)] border border-slate-200 dark:border-white/50 flex flex-col items-center justify-center cursor-pointer p-4 group"
+              className="relative w-48 h-48 bg-white/80  backdrop-blur-xl rounded-full shadow-[0_0_40px_rgba(17,26,74,0.1)] border border-slate-200  flex flex-col items-center justify-center cursor-pointer p-4 group"
             >
-              <div className="relative w-full h-full bg-white dark:bg-white group-hover:bg-slate-50 dark:group-hover:bg-slate-100 transition-all duration-700 rounded-full flex items-center justify-center shadow-inner border border-slate-100 dark:border-slate-300 overflow-hidden">
+              <div className="relative w-full h-full bg-white  group-hover:bg-slate-50  transition-all duration-700 rounded-full flex items-center justify-center shadow-inner border border-slate-100  overflow-hidden">
                 <div className="relative w-[80%] h-[80%] transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
                   <Image src="/logo.png" alt="ITSoftlab360 Logo" fill className="object-contain" />
                 </div>
@@ -116,7 +116,7 @@ export default function EcosystemShowcase() {
               >
                 {/* Connecting Line from Center (Approximate using CSS rotated lines based on position) */}
                 <div 
-                  className="absolute top-1/2 left-1/2 -z-20 h-[1.2px] bg-gradient-to-r from-transparent via-[#111A4A]/20 to-transparent dark:via-white/20 origin-left"
+                  className="absolute top-1/2 left-1/2 -z-20 h-[1.2px] bg-gradient-to-r from-transparent via-[#111A4A]/20 to-transparent  origin-left"
                   style={{
                     width: `${radius}px`,
                     transform: `translateY(-50%) rotate(${angle + 180}deg)`,
@@ -131,9 +131,9 @@ export default function EcosystemShowcase() {
                 </div>
 
                 {/* High-Quality Node Label */}
-                <div className="group relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-white to-gray-50 dark:from-[#111A4A] dark:to-[#0A1125] rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_20px_rgba(0,0,0,0.5)] border border-slate-200 dark:border-white/10 hover:border-blue-400 dark:hover:border-blue-500 hover:scale-110 transition-all duration-300 cursor-pointer">
+                <div className="group relative flex items-center justify-center w-16 h-16 bg-gradient-to-br from-white to-gray-50   rounded-full shadow-[0_10px_20px_rgba(0,0,0,0.1)]  border border-slate-200  hover:border-blue-400  hover:scale-110 transition-all duration-300 cursor-pointer">
                   <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <solution.icon size={24} className="text-blue-600 dark:text-blue-400 drop-shadow-sm group-hover:text-pink-500 transition-colors duration-300 relative z-10" />
+                  <solution.icon size={24} className="text-blue-600  drop-shadow-sm group-hover:text-pink-500 transition-colors duration-300 relative z-10" />
                   
                   {/* Tooltip */}
                   <div className="absolute top-[120%] mt-2 w-max px-4 py-2 bg-[#111A4A]/90 backdrop-blur-sm border border-white/10 text-white text-sm font-bold rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-xl scale-95 group-hover:scale-100 z-50">
@@ -155,8 +155,8 @@ export default function EcosystemShowcase() {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="absolute w-40 h-40 bg-[#EB3158]/20 rounded-full blur-[24px] -z-10 pointer-events-none"
             />
-            <div className="w-36 h-36 bg-white/80 dark:bg-white/90 backdrop-blur-md rounded-full shadow-2xl border border-slate-200 dark:border-white/50 flex flex-col items-center justify-center p-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-white dark:bg-white group-hover:bg-slate-50 dark:group-hover:bg-slate-100 transition-all duration-700 rounded-full flex items-center justify-center shadow-lg border border-slate-100 dark:border-slate-300 overflow-hidden">
+            <div className="w-36 h-36 bg-white/80  backdrop-blur-md rounded-full shadow-2xl border border-slate-200  flex flex-col items-center justify-center p-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
+              <div className="w-full h-full bg-white  group-hover:bg-slate-50  transition-all duration-700 rounded-full flex items-center justify-center shadow-lg border border-slate-100  overflow-hidden">
                 <div className="relative w-[80%] h-[80%] transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
                   <Image src="/logo.png" alt="ITSoftlab360 Logo" fill className="object-contain" />
                 </div>
@@ -166,18 +166,18 @@ export default function EcosystemShowcase() {
 
           <div className="grid grid-cols-2 gap-4 w-full px-4">
             {solutionsData.map((solution, i) => (
-              <div key={solution.id} className="group bg-gradient-to-br from-white to-gray-50 dark:from-[#111A4A] dark:to-[#0A1125] rounded-2xl shadow-sm dark:shadow-md border border-slate-200 dark:border-white/5 p-3 flex items-center gap-3 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 cursor-pointer">
-                <div className="w-10 h-10 rounded-full bg-blue-50/50 dark:bg-black/20 border border-blue-100 dark:border-white/5 flex items-center justify-center shrink-0 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40 transition-colors duration-300">
-                  <solution.icon size={18} className="text-blue-600 dark:text-blue-400 group-hover:text-pink-500 transition-colors duration-300" />
+              <div key={solution.id} className="group bg-gradient-to-br from-white to-gray-50   rounded-2xl shadow-sm  border border-slate-200  p-3 flex items-center gap-3 hover:border-blue-400  transition-all duration-300 cursor-pointer">
+                <div className="w-10 h-10 rounded-full bg-blue-50/50  border border-blue-100  flex items-center justify-center shrink-0 group-hover:bg-blue-100  transition-colors duration-300">
+                  <solution.icon size={18} className="text-blue-600  group-hover:text-pink-500 transition-colors duration-300" />
                 </div>
-                <span className="text-xs font-bold text-slate-800 dark:text-white text-left leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">{solution.name}</span>
+                <span className="text-xs font-bold text-slate-800  text-left leading-tight group-hover:text-blue-600  transition-colors duration-300">{solution.name}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 border-t border-[#111A4A] dark:border-white/10 dark:border-white/10 pt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 border-t border-[#111A4A]   pt-16">
           {[
             { value: 12, label: "Connected Solutions" },
             { value: 1, label: "Unified Platform" },
@@ -185,10 +185,10 @@ export default function EcosystemShowcase() {
             { value: 100, suffix: "%", label: "Multi-Industry Ready" },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col items-center">
-              <span className="text-4xl md:text-5xl font-extrabold text-[#111A4A] dark:text-white mb-2 font-mono">
+              <span className="text-4xl md:text-5xl font-extrabold text-[#111A4A]  mb-2 font-mono">
                 <CountUp end={stat.value} suffix={stat.suffix} />
               </span>
-              <span className="text-sm font-semibold text-[#15172B] dark:text-gray-100/60 uppercase tracking-widest">{stat.label}</span>
+              <span className="text-sm font-semibold text-[#15172B]  uppercase tracking-widest">{stat.label}</span>
             </div>
           ))}
         </div>

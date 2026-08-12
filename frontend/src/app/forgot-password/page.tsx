@@ -52,35 +52,35 @@ export default function ForgotPasswordPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-md bg-white dark:bg-[#0a1125] rounded-[2rem] shadow-2xl border border-gray-100 dark:border-white/10 overflow-hidden relative z-10"
+          className="w-full max-w-md bg-white  rounded-[2rem] shadow-2xl border border-gray-100  overflow-hidden relative z-10"
         >
           <div className="p-8 sm:p-10">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-[#111A4A] dark:text-white mb-2">Forgot Password</h1>
-              <p className="text-[#15172B]/60 dark:text-gray-400 text-sm">
+              <h1 className="text-3xl font-bold text-[#111A4A]  mb-2">Forgot Password</h1>
+              <p className="text-[#15172B]/60  text-sm">
                 Enter your email address to receive a reset link.
               </p>
             </div>
 
             {success ? (
               <div className="text-center space-y-6">
-                <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 text-green-600 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-16 h-16 bg-green-100  text-green-600 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 size={32} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#111A4A] dark:text-white mb-2">Check your email</h3>
-                  <p className="text-sm text-[#15172B]/80 dark:text-gray-400">
+                  <h3 className="text-xl font-bold text-[#111A4A]  mb-2">Check your email</h3>
+                  <p className="text-sm text-[#15172B]/80 ">
                     If an account exists for that email, we have sent instructions to reset your password.
                   </p>
                 </div>
                 
                 {simulatedToken && (
-                  <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700/50 rounded-lg text-left">
-                    <p className="text-xs text-yellow-800 dark:text-yellow-500 font-bold mb-2 uppercase">Development Mode Simulation</p>
-                    <p className="text-sm text-slate-700 dark:text-gray-300 mb-3">Instead of checking your email, use this simulated token to reset your password now:</p>
+                  <div className="mt-6 p-4 bg-yellow-50  border border-yellow-200  rounded-lg text-left">
+                    <p className="text-xs text-yellow-800  font-bold mb-2 uppercase">Development Mode Simulation</p>
+                    <p className="text-sm text-slate-700  mb-3">Instead of checking your email, use this simulated token to reset your password now:</p>
                     <Link 
                       href={`/reset-password?token=${simulatedToken}`}
-                      className="block text-center w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-2 rounded-lg text-sm font-semibold hover:bg-slate-800 dark:hover:bg-gray-200 transition-colors"
+                      className="block text-center w-full bg-slate-900  text-white  py-2 rounded-lg text-sm font-semibold hover:bg-slate-800  transition-colors"
                     >
                       Go to Reset Password
                     </Link>
@@ -88,7 +88,7 @@ export default function ForgotPasswordPage() {
                 )}
 
                 <div className="pt-4">
-                  <Link href="/login" className="text-[#EB3158] dark:text-blue-400 font-semibold hover:underline">
+                  <Link href="/login" className="text-[#EB3158]  font-semibold hover:underline">
                     Back to Login
                   </Link>
                 </div>
@@ -96,7 +96,7 @@ export default function ForgotPasswordPage() {
             ) : (
               <form onSubmit={handleForgot} className="space-y-5">
                 {error && (
-                  <div className="bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-lg text-sm text-center border border-red-100 dark:border-red-900/50">
+                  <div className="bg-red-50  text-red-600  p-3 rounded-lg text-sm text-center border border-red-100 ">
                     {error}
                   </div>
                 )}
@@ -110,7 +110,7 @@ export default function ForgotPasswordPage() {
                     placeholder="Email Address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3.5 bg-slate-50 dark:bg-[#111827] border border-[#111A4A]/10 dark:border-white/10 rounded-xl text-[#111A4A] dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    className="w-full pl-11 pr-4 py-3.5 bg-slate-50  border border-[#111A4A]/10  rounded-xl text-[#111A4A]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                     required
                   />
                 </div>
@@ -126,9 +126,9 @@ export default function ForgotPasswordPage() {
             )}
           </div>
           
-          <div className="bg-slate-50 dark:bg-white/5 py-4 text-center border-t border-slate-100 dark:border-white/5">
-            <p className="text-sm text-[#15172B]/80 dark:text-gray-400">
-              Remember your password? <Link href="/login" className="text-[#EB3158] dark:text-blue-400 font-bold hover:underline">Sign In</Link>
+          <div className="bg-slate-50  py-4 text-center border-t border-slate-100 ">
+            <p className="text-sm text-[#15172B]/80 ">
+              Remember your password? <Link href="/login" className="text-[#EB3158]  font-bold hover:underline">Sign In</Link>
             </p>
           </div>
         </motion.div>

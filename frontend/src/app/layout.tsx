@@ -36,10 +36,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex flex-col" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false}>
           <SmoothScroll>
             {/* Abstract Background Elements (Light Mode Only) */}
-            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10 dark:hidden">
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10 ">
               {/* Large abstract coral semicircle */}
               <div className="absolute top-[-20%] left-[-10%] w-[480px] h-[480px] rounded-full bg-[#EB3158]/5 blur-[96px]" />
 
