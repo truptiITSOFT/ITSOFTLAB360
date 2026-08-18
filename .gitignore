@@ -51,3 +51,7 @@ __pycache__/
 
 
 # temp.txt
+frontend/ffmpeg-bin/
+frontend/ffmpeg.zip
+frontend/public/videos/*.mp4
+frontend/public/videos/*.webm
