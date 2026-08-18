@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight, PlayCircle, Star,
   Users, Megaphone, CreditCard,
@@ -79,13 +80,11 @@ export default function Hero() {
             <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-cyan-400 rounded-tl-[3rem] opacity-50 z-30 pointer-events-none"></div>
             <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#EB3158]/50 rounded-br-[3rem] opacity-50 z-30 pointer-events-none"></div>
 
-            <video
-              src="/videos/mascot.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover invert hue-rotate-180    opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+            <Image
+              src="/mascot.png"
+              alt="ITSoftlab360 Mascot"
+              fill
+              className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
             />
           </div>
         </div>

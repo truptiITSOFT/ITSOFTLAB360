@@ -107,8 +107,8 @@ export default function FranchiseHero() {
           className="relative w-full aspect-auto lg:h-[450px] mx-auto hidden lg:flex items-center justify-center"
         >
           <Image 
-            src="/franchise-hero-img.png" 
-            alt="Franchise Opportunity" 
+            src="/mascot.png" 
+            alt="Franchise Opportunity Mascot" 
             width={800}
             height={600}
             className="w-full h-full object-contain drop-shadow-xl"
