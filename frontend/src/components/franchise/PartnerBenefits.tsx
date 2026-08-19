@@ -94,7 +94,7 @@ export default function PartnerBenefits() {
 
           {/* Card 2: Support (1x2) */}
           <motion.div 
-            //    
+            // variants={itemVariants}
             onMouseEnter={() => setHoveredId("support")}
             onMouseLeave={() => setHoveredId(null)}
             className="md:col-span-1 md:row-span-2 relative rounded-2xl bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"

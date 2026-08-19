@@ -25,7 +25,7 @@
 @REM #to start the Django server "server.bat"
 @echo off
 echo Changing to backend directory...
-cd hrms_backend || exit /b 1
+cd backend || exit /b 1
 
 echo Activating virtual environment...
 call venv\Scripts\activate || exit /b 1

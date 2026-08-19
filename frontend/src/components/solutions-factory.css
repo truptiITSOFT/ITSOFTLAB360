@@ -12,6 +12,7 @@
   border-radius: 25.6px;
 }
 
+
 .solutions-factory::before {
   content: "";
   position: absolute;
