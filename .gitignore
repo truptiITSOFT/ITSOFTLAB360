@@ -55,3 +55,6 @@ frontend/ffmpeg-bin/
 frontend/ffmpeg.zip
 frontend/public/videos/*.mp4
 frontend/public/videos/*.webm
+frontend/ffmpeg-bin/
+frontend/ffmpeg.zip
+frontend/public/videos/franchise-hero.mp4
