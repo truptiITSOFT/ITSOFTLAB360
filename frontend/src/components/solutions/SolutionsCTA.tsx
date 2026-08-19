@@ -1,115 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
-import AnimatedLogo from "../AnimatedLogo";
 
 export default function SolutionsCTA() {
   return (
-    <section className="py-20 relative z-10">
-      <div className="w-full max-w-[1200px] mx-auto px-4 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Abstract Background Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#20B486]/5 rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#EB3158]/5 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_19.2px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative bg-gradient-to-r from-gray-50 via-blue-50/80 to-gray-50 dark:from-[#020617] dark:via-blue-900/20 dark:to-[#020617] rounded-3xl border border-blue-200/60 dark:border-blue-500/20 py-16 overflow-hidden transition-colors shadow-lg hover:shadow-xl duration-500 group"
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto text-center"
         >
-          {/* Decorative Glow */}
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-1/2 right-1/4 -translate-y-1/2 w-64 h-64 bg-blue-500/30 blur-[80px] rounded-full pointer-events-none"
-          />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-medium text-sm mb-8 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#EB3158] animate-pulse" />
+            Ready to scale?
+          </div>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 px-6 md:px-10 lg:px-12">
-            
-            {/* Left Side: Text and Buttons */}
-            <div className="max-w-2xl text-center md:text-left">
-              <motion.h2 
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.15] mb-6 text-[#111A4A] dark:text-white transition-colors"
-              >
-                Ready To Build A <span className="text-[#EB3158] dark:text-blue-500 drop-shadow-[0_0_15px_rgba(235,49,88,0.4)]">Smarter</span> <br />
-                <span className="text-[#EB3158] dark:text-blue-500 drop-shadow-[0_0_15px_rgba(235,49,88,0.4)]">Business?</span>
-              </motion.h2>
-              
-              <motion.p 
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-                className="text-[#15172B]/80 dark:text-gray-300 text-lg mb-8 transition-colors max-w-xl"
-              >
-                Discover how IT SOFTLAB 360 can transform your business operations.
-              </motion.p>
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-                className="flex flex-wrap items-center justify-center md:justify-start gap-4"
-              >
-                <Link href="/demo" className="flex items-center gap-2 bg-[#EB3158] hover:bg-[#d6274d] text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-[0_4px_15px_rgba(235,49,88,0.4)] hover:shadow-[0_8px_25px_rgba(235,49,88,0.5)] hover:-translate-y-1">
-                  REQUEST DEMO <ArrowRight size={18} />
-                </Link>
-                <Link href="/contact" className="flex items-center gap-2 bg-white dark:bg-transparent border border-gray-200 dark:border-gray-600 hover:border-[#111A4A] hover:bg-gray-50 text-[#111A4A] dark:text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1">
-                  TALK TO EXPERT <ArrowRight size={18} />
-                </Link>
-              </motion.div>
-            </div>
+          <h2 className="text-4xl md:text-6xl font-extrabold text-[#111A4A] mb-6 tracking-tight leading-tight">
+            Ready to Transform <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20B486] to-[#EB3158]">
+              Your Business?
+            </span>
+          </h2>
 
-            {/* Right Side: Logo */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="hidden md:flex flex-col items-center justify-center relative shrink-0"
-            >
-               {/* Soft Glow Behind Logo */}
-               <motion.div 
-                 animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/20 blur-[60px] rounded-full mix-blend-multiply"
-               />
-               
-               <motion.div
-                 animate={{ y: [0, -12, 0] }}
-                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                 className="z-10 relative"
-               >
-                 <AnimatedLogo className="w-36 h-36 mb-6 drop-shadow-[0_15px_25px_rgba(59,130,246,0.35)]" />
-               </motion.div>
-               
-               <motion.div 
-                 initial={{ opacity: 0, y: 10 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ duration: 0.5, delay: 0.8 }}
-                 className="text-center z-10 relative"
-               >
-                 <h3 className="text-xl font-extrabold text-[#111A4A] dark:text-white tracking-widest transition-colors">
-                   IT SOFTLAB <span className="text-[#EB3158] dark:text-blue-500">360</span>
-                 </h3>
-                 <p className="text-[10px] text-[#15172B]/60 dark:text-gray-400 mt-1.5 font-bold uppercase tracking-[0.2em] transition-colors">
-                   One Platform. All Solutions.
-                 </p>
-               </motion.div>
-            </motion.div>
+          <p className="text-xl text-[#15172B]/70 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Join hundreds of enterprise clients who trust ITSoftLab360 to streamline operations, drive growth, and lead their industry.
+          </p>
 
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <Link href="/contact" className="group w-full sm:w-auto relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A] rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)]">
+              <span className="relative z-10 flex items-center gap-2">
+                Get Custom Demo <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 ease-in-out skew-x-12"></div>
+            </Link>
+
+            <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-[#111A4A] bg-transparent border-2 border-[#111A4A]/20 rounded-full transition-all hover:border-[#111A4A] hover:bg-[#111A4A]/5">
+              Book Free Consultation <CalendarDays size={20} />
+            </Link>
           </div>
         </motion.div>
       </div>

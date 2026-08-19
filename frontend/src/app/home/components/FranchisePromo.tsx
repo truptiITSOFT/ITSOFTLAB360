@@ -92,7 +92,7 @@ export default function FranchisePromo() {
           {/* Right Visual (12-Solution Image) */}
           <div className="w-full lg:w-[60%] relative flex justify-center items-center">
             <Image 
-              src="/12-it-solutions.png" 
+              src="/franchise-promo.png" 
               alt="12 IT Solutions Ecosystem" 
               width={800} 
               height={800} 
