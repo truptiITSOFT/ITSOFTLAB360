@@ -1,0 +1,10 @@
+
+psycopg2
+asgiref
+Django
+sqlparse
+typing_extensions
+tzdata
+python-dotenv
+python-decouple
+psycopg2-binary
