@@ -8,3 +8,4 @@ tzdata
 python-dotenv
 python-decouple
 psycopg2-binary
+djangorestframework==3.18.0
