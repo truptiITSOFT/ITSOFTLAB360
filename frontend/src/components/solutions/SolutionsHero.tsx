@@ -15,18 +15,18 @@ const floatingIcons = [
 ];
 
 // Animation Variants
-const textReveal = {
-  hidden: { y: "100%", opacity: 0 },
-  visible: (custom: number) => ({
-    y: 0,
-    opacity: 1,
-    transition: {
-      delay: custom * 0.1,
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1], // Dribbble style bouncy/smooth easing
-    },
-  }),
-};
+// const textReveal = {
+//   hidden: { y: "100%", opacity: 0 },
+//   visible: (custom: number) => ({
+//     y: 0,
+//     opacity: 1,
+//     transition: {
+//       delay: custom * 0.1,
+//       duration: 0.8,
+//       ease: [0.16, 1, 0.3, 1], // Dribbble style bouncy/smooth easing
+//     },
+//   }),
+// };
 
 export default function SolutionsHero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -62,7 +62,6 @@ export default function SolutionsHero() {
             style={{ 
               left: item.x, 
               top: item.y,
-              y: useTransform(scrollYProgress, [0, 1], [0, (index % 2 === 0 ? 150 : -150)]) 
             }}
             animate={{
               y: [0, -20, 0],
@@ -90,7 +89,7 @@ export default function SolutionsHero() {
               custom={1}
               initial="hidden"
               animate="visible"
-              variants={textReveal}
+              // variants={textReveal}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-sm font-medium shadow-sm"
             >
               <span className="relative flex h-2 w-2">
@@ -103,12 +102,12 @@ export default function SolutionsHero() {
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#111A4A] leading-[1.1] mb-6 flex flex-col items-center">
             <span className="overflow-hidden pb-2">
-              <motion.span custom={2} initial="hidden" animate="visible" variants={textReveal} className="block">
+              <motion.span custom={2} initial="hidden" animate="visible" className="block">
                 Enterprise Software Solutions
               </motion.span>
             </span>
             <span className="overflow-hidden">
-              <motion.span custom={3} initial="hidden" animate="visible" variants={textReveal} className="block text-transparent bg-clip-text bg-gradient-to-r from-[#20B486] to-[#EB3158]">
+              <motion.span custom={3} initial="hidden" animate="visible" className="block text-transparent bg-clip-text bg-gradient-to-r from-[#20B486] to-[#EB3158]">
                 for Every Industry
               </motion.span>
             </span>
@@ -119,7 +118,7 @@ export default function SolutionsHero() {
               custom={4} 
               initial="hidden" 
               animate="visible" 
-              variants={textReveal}
+              // variants={textReveal}
               className="text-lg md:text-xl text-[#15172B]/70 max-w-3xl mx-auto leading-relaxed"
             >
               Transform your business with intelligent software solutions designed for every department and industry. From HR and Sales to Manufacturing and Healthcare, ITSoftLab360 helps organizations streamline operations, increase productivity, and accelerate growth.
@@ -127,7 +126,7 @@ export default function SolutionsHero() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 overflow-hidden pt-4">
-            <motion.div custom={5} initial="hidden" animate="visible" variants={textReveal}>
+            <motion.div custom={5} initial="hidden" animate="visible">
               <Link href="#solutions-grid" className="group w-full sm:w-auto relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-white bg-[#111A4A] rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(17,26,74,0.5)]">
                 <span className="relative z-10 flex items-center gap-2">
                   Explore Solutions <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -136,7 +135,7 @@ export default function SolutionsHero() {
               </Link>
             </motion.div>
 
-            <motion.div custom={6} initial="hidden" animate="visible" variants={textReveal}>
+            <motion.div custom={6} initial="hidden" animate="visible">
               <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-[#111A4A] bg-transparent border-2 border-[#111A4A]/20 rounded-full transition-all hover:border-[#111A4A] hover:bg-[#111A4A]/5">
                 Book Demo <Calendar size={18} />
               </Link>

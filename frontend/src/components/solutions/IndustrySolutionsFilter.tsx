@@ -41,19 +41,19 @@ export default function IndustrySolutionsFilter() {
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      }
-    },
-  };
+  // const cardVariants = {
+  //   hidden: { opacity: 0, y: 30, scale: 0.95 },
+  //   visible: { 
+  //     opacity: 1, 
+  //     y: 0, 
+  //     scale: 1,
+  //     transition: {
+  //       type: "spring",
+  //       stiffness: 100,
+  //       damping: 15,
+  //     }
+  //   },
+  // };
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
