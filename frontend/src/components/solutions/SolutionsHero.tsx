@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, Calendar, Server, Shield, Zap, Code, Database, Cloud } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
@@ -15,7 +15,7 @@ const floatingIcons = [
 ];
 
 // Animation Variants
-const textReveal = {
+const textReveal: Variants = {
   hidden: { y: "100%", opacity: 0 },
   visible: (custom: number) => ({
     y: 0,
@@ -23,7 +23,7 @@ const textReveal = {
     transition: {
       delay: custom * 0.1,
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1], // Dribbble style bouncy/smooth easing
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number], // Dribbble style bouncy/smooth easing
     },
   }),
 };
