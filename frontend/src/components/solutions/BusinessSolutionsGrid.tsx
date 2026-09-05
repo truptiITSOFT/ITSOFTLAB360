@@ -68,7 +68,7 @@ export default function BusinessSolutionsGrid() {
             return (
               <motion.div
                 key={product.id}
-                variants={cardVariants}
+                // variants={cardVariants}
                 whileHover={{ y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                 className="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
               >
