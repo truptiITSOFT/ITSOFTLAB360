@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight, ArrowRight, CheckCircle2 } from "lucide-react";
-import { FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { Poppins } from 'next/font/google';
 
@@ -129,16 +129,19 @@ export default function Contact() {
             <div className="flex items-center gap-5 pt-8 mt-auto pb-4">
               <span className="text-[13px] font-bold text-[#111A4A] leading-tight tracking-tight">Follow<br/>us on</span>
               <div className="flex gap-3">
-                <a href="#" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <a href="https://www.facebook.com/itsoftlabofficial/directory_personal_details" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <FaFacebookF size={15} />
                 </a>
-                <a href="#" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <a href="https://www.instagram.com/itsoftlab_consultancy/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
+                  <FaInstagram size={15} />
+                </a>
+                <a href="https://www.linkedin.com/company/105841243/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <FaLinkedinIn size={15} />
                 </a>
-                <a href="#" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <a href="https://x.com/Itsoftlab_" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <BsTwitterX size={14} />
                 </a>
-                <a href="#" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
+                <a href="https://www.youtube.com/@ITSoftlab" target="_blank" rel="noopener noreferrer" className="w-11 h-11 rounded-[14px] bg-[#EB3158]/10 flex items-center justify-center text-[#EB3158] hover:bg-[#EB3158] hover:text-white hover:shadow-md hover:-translate-y-0.5 transition-all">
                   <FaYoutube size={15} />
                 </a>
               </div>

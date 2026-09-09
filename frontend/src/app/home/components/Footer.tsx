@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Mail, MapPin, ChevronRight } from "lucide-react";
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:w-[28%] lg:pr-10 lg:border-r border-gray-200  shrink-0">
             <Link href="#" className="flex items-center mb-6 w-fit">
-              <img
+              <Image
                 src="/logo.png"
                 alt="ITSoftLab360 Logo"
                 className="h-8 md:h-10 w-auto object-contain"
@@ -42,15 +43,17 @@ export default function Footer() {
 
             <div className="flex items-center gap-3">
               {[
-                { icon: FaLinkedinIn, href: "#", color: "text-[#0a66c2]" },
-                { icon: FaTwitter, href: "#", color: "text-[#1DA1F2]" },
-                { icon: FaFacebookF, href: "#", color: "text-[#1877F2]" },
-                { icon: FaInstagram, href: "#", color: "text-[#E1306C]" },
-                { icon: FaYoutube, href: "#", color: "text-[#FF0000]" }
+                { icon: FaLinkedinIn, href: "https://www.linkedin.com/company/105841243/admin/dashboard/", color: "text-[#0a66c2]" },
+                { icon: FaTwitter, href: "https://x.com/Itsoftlab_", color: "text-[#1DA1F2]" },
+                { icon: FaFacebookF, href: "https://www.facebook.com/itsoftlabofficial/directory_personal_details", color: "text-[#1877F2]" },
+                { icon: FaInstagram, href: "https://www.instagram.com/itsoftlab_consultancy/", color: "text-[#E1306C]" },
+                { icon: FaYoutube, href: "https://www.youtube.com/@ITSoftlab", color: "text-[#FF0000]" }
               ].map((social, i) => (
                 <a
                   key={i}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`group w-8 h-8 rounded-full bg-white  border border-gray-100  flex items-center justify-center hover:bg-slate-100  transition-all shadow-sm`}
                 >
                   <social.icon size={14} className={`${social.color} transition-transform group-hover:scale-110`} />
