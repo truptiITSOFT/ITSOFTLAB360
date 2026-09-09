@@ -3,10 +3,10 @@ from django.contrib.auth.password_validation import validate_password
 from django.utils import timezone
 from rest_framework import serializers
 
-from .models import Products, Franchise, Invoice, FranchiseRequest
+from .models import Products, Franchise, Invoice, FranchiseRequest, FranchiseUserProfile
 
 # Adjust this import to wherever FranchiseUserProfile actually lives.
-from .franchise_user_models import FranchiseUserProfile
+# from .franchise_user_models import FranchiseUserProfile
 
 User = get_user_model()
 
