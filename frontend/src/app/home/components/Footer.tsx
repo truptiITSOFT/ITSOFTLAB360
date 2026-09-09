@@ -133,17 +133,17 @@ export default function Footer() {
               <h4 className="font-bold text-[#111A4A]  mb-6 pb-2 border-b-2 border-blue-600 inline-block">Company</h4>
               <ul className="flex flex-col gap-4">
                 {[
-                  "About",
-                  "Franchise Model",
-                  "Careers",
-                  "Contact",
-                  "Resources",
-                  "Privacy Policy"
+                  { name: "About", href: "/about" },
+                  { name: "Franchise Model", href: "/franchise-model" },
+                  { name: "Careers", href: "/careers" },
+                  { name: "Contact", href: "/contact" },
+                  { name: "Resources", href: "/resources" },
+                  { name: "Privacy Policy", href: "/privacy-policy" }
                 ].map((link, i) => (
                   <li key={i}>
-                    <Link href="#" className="flex items-center gap-2 text-[10.4px] text-[#15172B]/70  hover:text-blue-600  transition-colors group">
+                    <Link href={link.href} className="flex items-center gap-2 text-[10.4px] text-[#15172B]/70  hover:text-blue-600  transition-colors group">
                       <ChevronRight size={14} className="text-blue-600  group-hover:translate-x-1 transition-transform" />
-                      {link}
+                      {link.name}
                     </Link>
                   </li>
                 ))}
@@ -162,7 +162,7 @@ export default function Footer() {
           <div className="flex items-center text-[10.4px] text-[#15172B]/60 ">
             <Link href="#" className="hover:text-[#111A4A]  transition-colors">Terms and Conditions</Link>
             <span className="mx-4 text-gray-300 ">|</span>
-            <Link href="#" className="hover:text-[#111A4A]  transition-colors">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-[#111A4A]  transition-colors">Privacy Policy</Link>
             <span className="mx-4 text-gray-300 ">|</span>
             <Link href="#" className="hover:text-[#111A4A]  transition-colors">Cookie Policy</Link>
           </div>

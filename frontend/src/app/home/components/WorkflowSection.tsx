@@ -38,8 +38,9 @@ export default function WorkflowSection() {
              
              {[0, 1, 2, 3, 4].map((i) => {
                const angle = (i * 72 * Math.PI) / 180;
-               const x = Math.sin(angle) * 55;
-               const y = -Math.cos(angle) * 55;
+               // Round to 4 decimal places to prevent hydration mismatch with framer-motion SSR
+               const x = Number((Math.sin(angle) * 55).toFixed(4));
+               const y = Number((-Math.cos(angle) * 55).toFixed(4));
                return (
                  <motion.div
                    key={i}

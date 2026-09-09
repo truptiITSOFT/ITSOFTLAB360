@@ -69,12 +69,12 @@ export default function DemoPage() {
             transition={{ duration: 0.6 }}
             className="text-left"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EB3158]/10 border border-[#EB3158]/20 text-[#EB3158] dark:text-blue-400 text-sm font-bold tracking-wider mb-6 transition-colors">
-              <span className="w-2 h-2 rounded-full bg-[#EB3158] dark:bg-blue-500 animate-pulse transition-colors"></span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#EB3158]/10 border border-[#EB3158]/20 text-[#EB3158] text-sm font-bold tracking-wider mb-6 transition-colors">
+              <span className="w-2 h-2 rounded-full bg-[#EB3158] animate-pulse transition-colors"></span>
               LIVE DEMONSTRATION
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-[#111A4A] dark:text-white transition-colors">
-              See <span className="text-[#EB3158] dark:text-blue-500 text-glow">IT Softlab 360</span> in Action
+              See <span className="text-[#EB3158] tracking-tighter">IT Softlab 360</span> in Action
             </h1>
             <p className="text-[#15172B]/80 dark:text-gray-300 text-lg mb-8 leading-relaxed transition-colors">
               Schedule a personalized walkthrough with our experts. Discover how our integrated platform can streamline your operations, boost revenue, and scale with your franchise.
