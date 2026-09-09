@@ -389,11 +389,6 @@ export const industries = [
 
 export const features = [
   {
-    title: "Custom Software Development",
-    description: "Tailor-made solutions designed specifically for your unique business logic and workflows.",
-    icon: Code,
-  },
-  {
     title: "Cloud Deployment",
     description: "Scalable, resilient cloud infrastructure on AWS, Azure, or Google Cloud.",
     icon: Cloud,
@@ -432,6 +427,11 @@ export const features = [
     title: "Analytics Dashboard",
     description: "Real-time insights and customizable reporting for data-driven decisions.",
     icon: LineChart,
+  },
+  {
+    title: "Custom Software Development",
+    description: "Tailor-made solutions designed specifically for your unique business logic and workflows.",
+    icon: Code,
   }
 ];
 
