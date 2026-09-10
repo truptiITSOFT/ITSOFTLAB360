@@ -46,16 +46,34 @@ export default function EcosystemShowcase() {
       <div className="max-w-[1120px] mx-auto px-6 md:px-10 text-center">
         
         {/* Header Content */}
-        <div className="max-w-3xl mx-auto mb-20">
-          <span className="text-xs font-bold tracking-widest text-[#EB3158] uppercase mb-4 block">
+        <div className="max-w-3xl mx-auto mb-16 md:mb-20 px-2 sm:px-0">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-xs sm:text-sm font-bold tracking-widest text-[#EB3158] uppercase mb-3 sm:mb-4 block"
+          >
             The ITSoftLab360 Advantage
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight bg-gradient-to-r from-[#111A4A] via-[#1e2a6b] to-[#EB3158]    bg-clip-text text-transparent">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight bg-gradient-to-r from-[#111A4A] via-[#1e2a6b] to-[#EB3158] bg-clip-text text-transparent"
+          >
             One platform. Twelve solutions. Fully connected data.
-          </h2>
-          <p className="text-lg text-[#15172B]  leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base sm:text-lg text-[#15172B] leading-relaxed"
+          >
             Every solution communicates through a unified platform, helping teams eliminate repeated work, disconnected tools, and scattered business information.
-          </p>
+          </motion.p>
         </div>
 
         {/* Visual Showcase - Desktop (Circular) */}
@@ -164,14 +182,21 @@ export default function EcosystemShowcase() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 w-full px-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full px-2 sm:px-4">
             {solutionsData.map((solution, i) => (
-              <div key={solution.id} className="group bg-gradient-to-br from-white to-gray-50   rounded-2xl shadow-sm  border border-slate-200  p-3 flex items-center gap-3 hover:border-blue-400  transition-all duration-300 cursor-pointer">
-                <div className="w-10 h-10 rounded-full bg-blue-50/50  border border-blue-100  flex items-center justify-center shrink-0 group-hover:bg-blue-100  transition-colors duration-300">
-                  <solution.icon size={18} className="text-blue-600  group-hover:text-pink-500 transition-colors duration-300" />
+              <motion.div 
+                key={solution.id} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="group bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-sm border border-slate-200 p-2.5 sm:p-3 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-3 hover:border-blue-400 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50/50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors duration-300 mb-1 sm:mb-0">
+                  <solution.icon size={20} className="text-blue-600 group-hover:text-pink-500 transition-colors duration-300" />
                 </div>
-                <span className="text-xs font-bold text-slate-800  text-left leading-tight group-hover:text-blue-600  transition-colors duration-300">{solution.name}</span>
-              </div>
+                <span className="text-xs sm:text-sm font-bold text-slate-800 leading-tight sm:leading-normal group-hover:text-blue-600 transition-colors duration-300 self-center">{solution.name}</span>
+              </motion.div>
             ))}
           </div>
         </div>
