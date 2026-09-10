@@ -48,7 +48,7 @@ export default function HeroSection() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const titleLines = ["Bring your entire", "business ecosystem", "together."];
+
 
   return (
     <section className="relative w-full pt-16 pb-12 lg:pt-24 lg:pb-16 overflow-hidden bg-white  transition-colors duration-300">
@@ -86,17 +86,17 @@ export default function HeroSection() {
           {/* Left Content (approx 45%) */}
           <div className="w-full lg:w-[45%] flex flex-col relative z-10">
 
-            {/* Masked Reveal Headline - Hydration Error Fixed by using Span instead of Div inside H1 */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.8rem] font-extrabold text-[#111A4A]  leading-[1.15] tracking-tight mb-5">
-              {titleLines.map((line, index) => (
-                <span key={index} className="overflow-hidden pb-2 block">
+            {/* Masked Reveal Headline - Word by Word for perfect responsive wrapping */}
+            <h1 className="text-[32px] sm:text-4xl lg:text-5xl xl:text-[3.6rem] font-extrabold text-[#111A4A] leading-[1.15] tracking-tight mb-5 flex flex-wrap gap-x-2 sm:gap-x-3 gap-y-1 sm:gap-y-2">
+              {["Bring", "your", "entire", "business", "ecosystem", "together."].map((word, index) => (
+                <span key={index} className="overflow-hidden pb-1 block">
                   <motion.span
                     className="block"
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.1 * index, ease: [0.21, 0.47, 0.32, 0.98] }}
+                    transition={{ duration: 0.7, delay: 0.08 * index, ease: [0.21, 0.47, 0.32, 0.98] }}
                   >
-                    {line}
+                    {word}
                   </motion.span>
                 </span>
               ))}

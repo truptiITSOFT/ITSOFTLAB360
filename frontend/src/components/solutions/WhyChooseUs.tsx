@@ -28,7 +28,7 @@ export default function WhyChooseUs() {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-bold text-[#111A4A] mb-6 tracking-tight"
           >
-            Why ITSoftLab360
+            Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20B486] via-[#3b82f6] to-[#EB3158]">ITSoftLab360</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -42,8 +42,8 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="relative">
-          {/* Timeline Center Line (Desktop) */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 -translate-x-1/2 overflow-hidden rounded-full">
+          {/* Timeline Center Line */}
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 -translate-x-1/2 overflow-hidden rounded-full z-0">
             <motion.div 
               className="w-full bg-gradient-to-b from-[#20B486] via-[#3b82f6] to-[#EB3158]"
               style={{
@@ -60,14 +60,14 @@ export default function WhyChooseUs() {
               return (
                 <div key={index} className="relative flex flex-col md:flex-row items-center w-full">
                   
-                  {/* Timeline Dot (Desktop) */}
-                  <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border-4 border-[#20B486] items-center justify-center z-10 shadow-[0_0_15px_rgba(32,180,134,0.3)]">
-                    <div className="w-3 h-3 bg-[#EB3158] rounded-full animate-ping opacity-75 absolute" />
-                    <div className="w-3 h-3 bg-[#EB3158] rounded-full relative z-10" />
+                  {/* Timeline Dot */}
+                  <div className="flex absolute left-6 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-white border-2 md:border-4 border-[#20B486] items-center justify-center z-10 shadow-[0_0_15px_rgba(32,180,134,0.3)]">
+                    <div className="w-2 h-2 md:w-3 md:h-3 bg-[#EB3158] rounded-full animate-ping opacity-75 absolute" />
+                    <div className="w-2 h-2 md:w-3 md:h-3 bg-[#EB3158] rounded-full relative z-10" />
                   </div>
 
-                  {/* Left Content (Empty on Mobile if Odd) */}
-                  <div className={`w-full md:w-1/2 ${isEven ? 'md:pr-16 lg:pr-24 text-left md:text-right' : 'md:order-last md:pl-16 lg:pl-24 text-left'}`}>
+                  {/* Left Content */}
+                  <div className={`w-full md:w-1/2 pl-14 sm:pl-16 md:pl-0 ${isEven ? 'md:pr-16 lg:pr-24 text-left md:text-right' : 'md:order-last md:pl-16 lg:pl-24 text-left'}`}>
                     <motion.div
                       initial={{ opacity: 0, x: isEven ? -50 : 50 }}
                       whileInView={{ opacity: 1, x: 0 }}

@@ -76,8 +76,8 @@ export default function EcosystemShowcase() {
           </motion.p>
         </div>
 
-        {/* Visual Showcase - Desktop (Circular) */}
-        <div className="hidden md:flex relative w-full h-[480px] justify-center items-center mb-24">
+        {/* Visual Showcase - Circular (Responsive) */}
+        <div className="flex relative w-full h-[320px] md:h-[480px] justify-center items-center mb-12 md:mb-24 scale-[0.65] sm:scale-[0.85] md:scale-100 origin-center">
           
           {/* Core Platform Node */}
           <div className="relative z-20 flex items-center justify-center">
@@ -161,44 +161,6 @@ export default function EcosystemShowcase() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Visual Showcase - Mobile (Vertical) */}
-        <div className="md:hidden flex flex-col items-center gap-6 mb-20 relative">
-          <div className="absolute top-10 bottom-10 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-[#111A4A]/5 to-[#111A4A]/20 -z-10" />
-          
-          <div className="relative z-10 mb-8 flex items-center justify-center">
-             <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-40 h-40 bg-[#EB3158]/20 rounded-full blur-[24px] -z-10 pointer-events-none"
-            />
-            <div className="w-36 h-36 bg-white/80  backdrop-blur-md rounded-full shadow-2xl border border-slate-200  flex flex-col items-center justify-center p-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-white  group-hover:bg-slate-50  transition-all duration-700 rounded-full flex items-center justify-center shadow-lg border border-slate-100  overflow-hidden">
-                <div className="relative w-[80%] h-[80%] transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
-                  <Image src="/logo.png" alt="ITSoftlab360 Logo" fill className="object-contain" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full px-2 sm:px-4">
-            {solutionsData.map((solution, i) => (
-              <motion.div 
-                key={solution.id} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="group bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-sm border border-slate-200 p-2.5 sm:p-3 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-3 hover:border-blue-400 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50/50 border border-blue-100 flex items-center justify-center shrink-0 group-hover:bg-blue-100 transition-colors duration-300 mb-1 sm:mb-0">
-                  <solution.icon size={20} className="text-blue-600 group-hover:text-pink-500 transition-colors duration-300" />
-                </div>
-                <span className="text-xs sm:text-sm font-bold text-slate-800 leading-tight sm:leading-normal group-hover:text-blue-600 transition-colors duration-300 self-center">{solution.name}</span>
-              </motion.div>
-            ))}
-          </div>
         </div>
 
         {/* Stats */}

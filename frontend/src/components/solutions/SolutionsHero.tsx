@@ -43,7 +43,7 @@ export default function SolutionsHero() {
   return (
     <section 
       ref={containerRef}
-      className="relative min-h-[85vh] pt-16 md:pt-24 pb-32 md:pb-40 flex flex-col justify-start overflow-hidden bg-white transition-colors duration-300"
+      className="relative min-h-[60vh] md:min-h-[85vh] pt-16 md:pt-24 pb-12 md:pb-40 flex flex-col justify-start overflow-hidden bg-white transition-colors duration-300"
     >
       {/* Animated Gradient Background */}
       <motion.div style={{ opacity: opacityFade, scale: scaleDown }} className="absolute inset-0 z-0 pointer-events-none">
