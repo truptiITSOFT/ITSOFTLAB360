@@ -12,7 +12,7 @@ from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.db.models import Q, Sum, Count
 from django.utils import timezone
-
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework import status, viewsets, generics, permissions
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -131,7 +131,6 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
         SearchFilter,
         OrderingFilter,
     ]
