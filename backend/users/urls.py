@@ -11,13 +11,14 @@
 #     path("register/", RegisterView.as_view(), name="register"),
 # ]
 
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter,path
 
 from .views import (
     UserViewSet,
     ProductsViewSet,
     FranchiseViewSet,
     InvoiceViewSet,
+    LoginView,
     FranchiseRequestViewSet,
     FranchiseUserProfileViewSet,
 )
@@ -60,4 +61,20 @@ router.register(
     basename="franchise-users",
 )
 
-urlpatterns = router.urls
+# router.register(
+#     "login",
+#     LoginView,
+#     basename="login",
+# )
+
+router.register(
+    "franchise-users",
+    FranchiseUserProfileViewSet,
+    basename="dsa",
+)
+
+urlpatterns = [
+    path("login/", LoginView.as_view(), name="login"),
+]
+
+urlpatterns += router.urls

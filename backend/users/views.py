@@ -4,9 +4,10 @@
 # from rest_framework.permissions import IsAuthenticated
 # from rest_framework import generics, status, permissions, viewsets
 
-# User = get_user_model()``
+# User = get_user_model()
+from rest_framework_simplejwt.tokens import RefreshToken
 from decimal import Decimal
-
+from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.db.models import Q, Sum, Count
@@ -1634,9 +1635,9 @@ class LoginView(generics.GenericAPIView):
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         
         # print(user)
-        employee = Employee.objects.get(user_id=user.id)
+        # employee = Employee.objects.get(user_id=user.id)
         
-        if not employee.is_active:
+        if not user.is_active:
             return Response({'detail': 'Your account is inactive'}, status=status.HTTP_401_UNAUTHORIZED)
         
         if user is not None:

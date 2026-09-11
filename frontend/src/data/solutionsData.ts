@@ -13,77 +13,77 @@ export const softwareProducts = [
     name: "HRMS",
     description: "Manage HR, payroll, attendance, leave, recruitment, employee records and performance.",
     icon: Users,
-    color: "from-[#4AA8D8] to-[#2b88b7]"
+    color: "from-blue-500 to-blue-700"
   },
   {
     id: "crm",
     name: "CRM",
     description: "Manage customers, leads, sales pipeline and customer relationships.",
     icon: UserCheck,
-    color: "from-[#20B486] to-[#128a64]"
+    color: "from-emerald-500 to-emerald-700"
   },
   {
     id: "erp",
     name: "ERP",
     description: "Integrate finance, procurement, inventory and business operations.",
     icon: Briefcase,
-    color: "from-[#EB3158] to-[#b3193c]"
+    color: "from-rose-500 to-rose-700"
   },
   {
     id: "dealer-management",
     name: "Dealer Management System",
     description: "Manage dealers, distributors, orders, inventory and performance.",
     icon: Settings,
-    color: "from-[#4AA8D8] to-[#2b88b7]"
+    color: "from-purple-500 to-purple-700"
   },
   {
     id: "vendor-management",
     name: "Vendor Management System",
     description: "Manage vendors, contracts, procurement and purchase orders.",
     icon: ShoppingCart,
-    color: "from-[#EB3158] to-[#b3193c]"
+    color: "from-orange-500 to-orange-700"
   },
   {
     id: "marketing-automation",
     name: "Marketing Automation",
     description: "Automate campaigns, email marketing, lead nurturing and customer engagement.",
     icon: Megaphone,
-    color: "from-[#20B486] to-[#128a64]"
+    color: "from-pink-500 to-pink-700"
   },
   {
     id: "supply-chain",
     name: "Supply Chain & Logistics",
     description: "Manage warehouses, inventory, shipment tracking and logistics.",
     icon: Truck,
-    color: "from-[#4AA8D8] to-[#2b88b7]"
+    color: "from-amber-500 to-amber-700"
   },
   {
     id: "sales-force",
     name: "Sales Force Automation",
     description: "Manage field sales, quotations, visits, opportunities and reporting.",
     icon: BarChart,
-    color: "from-[#20B486] to-[#128a64]"
+    color: "from-cyan-500 to-cyan-700"
   },
   {
     id: "lms",
     name: "Learning Management System",
     description: "Deliver online training, certifications, employee learning and assessments.",
     icon: GraduationCap,
-    color: "from-[#EB3158] to-[#b3193c]"
+    color: "from-indigo-500 to-indigo-700"
   },
   {
     id: "pos",
     name: "POS",
     description: "Billing, payments, inventory and retail store management.",
     icon: Calculator,
-    color: "from-[#20B486] to-[#128a64]"
+    color: "from-teal-500 to-teal-700"
   },
   {
     id: "queue-management",
     name: "Queue Management System",
     description: "Manage customer queues, appointments, compliance, inspections and service flow.",
     icon: ClipboardList,
-    color: "from-[#4AA8D8] to-[#2b88b7]"
+    color: "from-violet-500 to-violet-700"
   },
   {
     id: "dms",
@@ -389,11 +389,6 @@ export const industries = [
 
 export const features = [
   {
-    title: "Custom Software Development",
-    description: "Tailor-made solutions designed specifically for your unique business logic and workflows.",
-    icon: Code,
-  },
-  {
     title: "Cloud Deployment",
     description: "Scalable, resilient cloud infrastructure on AWS, Azure, or Google Cloud.",
     icon: Cloud,
@@ -432,6 +427,11 @@ export const features = [
     title: "Analytics Dashboard",
     description: "Real-time insights and customizable reporting for data-driven decisions.",
     icon: LineChart,
+  },
+  {
+    title: "Custom Software Development",
+    description: "Tailor-made solutions designed specifically for your unique business logic and workflows.",
+    icon: Code,
   }
 ];
 
@@ -459,40 +459,126 @@ export const metrics = [
 
 export const testimonials = [
   {
-    quote: "ITSoftLab360 completely transformed our supply chain operations. We've seen a 40% reduction in logistical delays.",
+    quote: "ITSoftLab360's HRMS completely transformed our workforce management. Payroll processing that used to take days now happens in hours.",
     author: "Sarah Jenkins",
-    role: "COO",
-    company: "Global Logistics Co."
+    role: "Chief Human Resources Officer",
+    company: "Global Tech Solutions"
   },
   {
-    quote: "The HRMS and Payroll integration is flawless. It saves our HR team over 20 hours a week.",
-    author: "David Chen",
-    role: "HR Director",
-    company: "TechNova Solutions"
-  },
-  {
-    quote: "Their CRM was customized perfectly for our unique sales process. Best enterprise software vendor we've worked with.",
+    quote: "The CRM is absolutely flawless. It was customized perfectly for our unique sales process and increased our lead conversion by 45%.",
     author: "Elena Rodriguez",
     role: "VP of Sales",
     company: "Apex Manufacturing"
+  },
+  {
+    quote: "Implementing the ERP unified our finance, procurement, and inventory into one single source of truth. Highly recommended.",
+    author: "Marcus Chen",
+    role: "Chief Financial Officer",
+    company: "Nexus Enterprises"
+  },
+  {
+    quote: "Our distribution network was chaotic until we adopted the Dealer Management System. Now we track performance across 500+ dealers in real-time.",
+    author: "Ahmed Patel",
+    role: "Head of Distribution",
+    company: "AutoDrive Motors"
+  },
+  {
+    quote: "The Vendor Management System streamlined our procurement. We've eliminated contract bottlenecks and reduced costs by 20%.",
+    author: "Lisa Wang",
+    role: "Procurement Director",
+    company: "Retail Giant Corp"
+  },
+  {
+    quote: "With their Marketing Automation suite, our customer engagement skyrocketed. Abandoned cart recovery improved instantly.",
+    author: "James Mitchell",
+    role: "Chief Marketing Officer",
+    company: "E-Shop Commerce"
+  },
+  {
+    quote: "The Supply Chain & Logistics platform provided unprecedented visibility into our warehouses. A complete game changer for our operations.",
+    author: "Robert Kowalski",
+    role: "VP of Supply Chain",
+    company: "TransGlobal Logistics"
+  },
+  {
+    quote: "Our field reps are closing deals faster than ever using the Sales Force Automation app. The territory management features are phenomenal.",
+    author: "Sophia Martinez",
+    role: "National Sales Director",
+    company: "PharmaCare Inc."
+  },
+  {
+    quote: "We deployed the Learning Management System across 3,000 employees. Compliance training is now 100% automated and trackable.",
+    author: "Daniel O'Connor",
+    role: "Head of L&D",
+    company: "FinTrust Bank"
+  },
+  {
+    quote: "The POS system handles our massive retail volumes without breaking a sweat. Inventory syncs instantly across all our 50 locations.",
+    author: "Olivia Chang",
+    role: "Retail Operations Manager",
+    company: "StyleHub Fashion"
+  },
+  {
+    quote: "Patient wait times dropped significantly after integrating the Queue Management System. The clinic workflows are finally optimized.",
+    author: "Dr. Richard Evans",
+    role: "Medical Director",
+    company: "City Health Clinics"
+  },
+  {
+    quote: "The Document Management System digitized our entire ISO compliance library. It is secure, instantly searchable, and extremely reliable.",
+    author: "Emily Sato",
+    role: "Compliance Officer",
+    company: "AeroSpace Engineering"
   }
 ];
 
 export const faqs = [
   {
-    question: "Do you offer custom development for enterprise needs?",
-    answer: "Yes, we specialize in building tailor-made software solutions designed to integrate seamlessly with your existing infrastructure and address your specific business workflows."
+    question: "How does the HRMS handle multi-location payroll and attendance?",
+    answer: "Our HRMS automatically consolidates attendance data from biometric devices across all your global branches, calculating localized payroll, taxes, and overtime seamlessly."
   },
   {
-    question: "How secure is your cloud deployment?",
-    answer: "We employ enterprise-grade security protocols, including end-to-end encryption, role-based access control, and regular security audits, deployed on top-tier cloud providers like AWS and Azure."
+    question: "Can the CRM integrate with our existing email and telephony systems?",
+    answer: "Yes, our CRM features robust APIs that integrate directly with major email providers and VoIP systems, allowing you to track all customer communications in one unified dashboard."
   },
   {
-    question: "Can your software integrate with our current ERP?",
-    answer: "Absolutely. Our solutions are built with robust, RESTful APIs, allowing for seamless integration with third-party ERPs, payment gateways, and other legacy systems."
+    question: "Is the ERP system scalable for large manufacturing and retail chains?",
+    answer: "Absolutely. Our ERP is built on a scalable cloud architecture designed to process high-volume transactions, multi-currency financials, and complex inventory routing for massive enterprises."
   },
   {
-    question: "What kind of support do you provide post-launch?",
-    answer: "We offer 24/7 dedicated technical support, continuous monitoring, regular updates, and comprehensive training to ensure your team maximizes the value of our software."
+    question: "How does the Dealer Management System track distributor inventory?",
+    answer: "The DMS provides a centralized portal where you can monitor real-time stock levels at every distributor, automate reordering, and track secondary sales performance instantly."
+  },
+  {
+    question: "Does the Vendor Management System support automated contract renewals?",
+    answer: "Yes, the VMS proactively alerts you before contracts expire and can be configured to auto-generate renewal workflows and digital procurement requests."
+  },
+  {
+    question: "Can we run omnichannel campaigns using the Marketing Automation suite?",
+    answer: "Definitely. You can design, schedule, and track synchronized campaigns across email, SMS, WhatsApp, and social media from a single, intuitive drag-and-drop interface."
+  },
+  {
+    question: "Does the Supply Chain solution offer real-time fleet and warehouse tracking?",
+    answer: "Yes, it utilizes IoT and GPS integrations to provide live location tracking of shipments, while giving you precise, bin-level visibility into your warehouse inventory."
+  },
+  {
+    question: "Does the Sales Force app work offline for field agents?",
+    answer: "Yes, our Sales Force Automation app features robust offline capabilities. Agents can capture orders, update visits, and log expenses without internet; everything syncs automatically once reconnected."
+  },
+  {
+    question: "Can the LMS issue certificates for mandatory compliance training?",
+    answer: "Yes, the Learning Management System tracks employee progress through modules, automatically grades assessments, and issues customizable digital certificates upon completion."
+  },
+  {
+    question: "Does the POS sync inventory across multiple physical store locations?",
+    answer: "Yes, our cloud-based POS instantly synchronizes sales and inventory data across all your retail branches and e-commerce platforms in real-time, preventing stockouts."
+  },
+  {
+    question: "Can customers book appointments online through the Queue Management System?",
+    answer: "Yes, it includes a customer-facing portal and mobile app integration, allowing clients to book slots, receive SMS reminders, and monitor live queue wait times remotely."
+  },
+  {
+    question: "How secure is the Document Management System for sensitive enterprise data?",
+    answer: "The DMS utilizes 256-bit AES encryption, granular role-based access control, and complete audit trails to ensure absolute security and compliance for your most sensitive digital records."
   }
 ];

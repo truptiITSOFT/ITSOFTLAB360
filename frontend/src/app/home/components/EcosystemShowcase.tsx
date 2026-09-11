@@ -46,20 +46,38 @@ export default function EcosystemShowcase() {
       <div className="max-w-[1120px] mx-auto px-6 md:px-10 text-center">
         
         {/* Header Content */}
-        <div className="max-w-3xl mx-auto mb-20">
-          <span className="text-xs font-bold tracking-widest text-[#EB3158] uppercase mb-4 block">
+        <div className="max-w-3xl mx-auto mb-16 md:mb-20 px-2 sm:px-0">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-xs sm:text-sm font-bold tracking-widest text-[#EB3158] uppercase mb-3 sm:mb-4 block"
+          >
             The ITSoftLab360 Advantage
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight bg-gradient-to-r from-[#111A4A] via-[#1e2a6b] to-[#EB3158]    bg-clip-text text-transparent">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4 md:mb-6 leading-tight bg-gradient-to-r from-[#111A4A] via-[#1e2a6b] to-[#EB3158] bg-clip-text text-transparent"
+          >
             One platform. Twelve solutions. Fully connected data.
-          </h2>
-          <p className="text-lg text-[#15172B]  leading-relaxed">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-base sm:text-lg text-[#15172B] leading-relaxed"
+          >
             Every solution communicates through a unified platform, helping teams eliminate repeated work, disconnected tools, and scattered business information.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Visual Showcase - Desktop (Circular) */}
-        <div className="hidden md:flex relative w-full h-[480px] justify-center items-center mb-24">
+        {/* Visual Showcase - Circular (Responsive) */}
+        <div className="flex relative w-full h-[320px] md:h-[480px] justify-center items-center mb-12 md:mb-24 scale-[0.65] sm:scale-[0.85] md:scale-100 origin-center">
           
           {/* Core Platform Node */}
           <div className="relative z-20 flex items-center justify-center">
@@ -143,37 +161,6 @@ export default function EcosystemShowcase() {
               </motion.div>
             );
           })}
-        </div>
-
-        {/* Visual Showcase - Mobile (Vertical) */}
-        <div className="md:hidden flex flex-col items-center gap-6 mb-20 relative">
-          <div className="absolute top-10 bottom-10 left-1/2 -translate-x-1/2 w-1 bg-gradient-to-b from-[#111A4A]/5 to-[#111A4A]/20 -z-10" />
-          
-          <div className="relative z-10 mb-8 flex items-center justify-center">
-             <motion.div
-              animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute w-40 h-40 bg-[#EB3158]/20 rounded-full blur-[24px] -z-10 pointer-events-none"
-            />
-            <div className="w-36 h-36 bg-white/80  backdrop-blur-md rounded-full shadow-2xl border border-slate-200  flex flex-col items-center justify-center p-3 group cursor-pointer hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-white  group-hover:bg-slate-50  transition-all duration-700 rounded-full flex items-center justify-center shadow-lg border border-slate-100  overflow-hidden">
-                <div className="relative w-[80%] h-[80%] transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
-                  <Image src="/logo.png" alt="ITSoftlab360 Logo" fill className="object-contain" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 w-full px-4">
-            {solutionsData.map((solution, i) => (
-              <div key={solution.id} className="group bg-gradient-to-br from-white to-gray-50   rounded-2xl shadow-sm  border border-slate-200  p-3 flex items-center gap-3 hover:border-blue-400  transition-all duration-300 cursor-pointer">
-                <div className="w-10 h-10 rounded-full bg-blue-50/50  border border-blue-100  flex items-center justify-center shrink-0 group-hover:bg-blue-100  transition-colors duration-300">
-                  <solution.icon size={18} className="text-blue-600  group-hover:text-pink-500 transition-colors duration-300" />
-                </div>
-                <span className="text-xs font-bold text-slate-800  text-left leading-tight group-hover:text-blue-600  transition-colors duration-300">{solution.name}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Stats */}
