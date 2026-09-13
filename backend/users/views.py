@@ -19,6 +19,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
 from .models import (
@@ -310,7 +311,7 @@ class FranchiseViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]
@@ -454,7 +455,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]
@@ -758,7 +759,7 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]
@@ -1063,7 +1064,6 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         franchise_request = (
             FranchiseRequest.objects
             .select_for_update()
-            .select_related("invoice")
             .get(pk=pk)
         )
 
@@ -1402,7 +1402,7 @@ class FranchiseUserProfileViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]

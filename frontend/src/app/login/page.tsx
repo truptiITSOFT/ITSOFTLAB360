@@ -1,129 +1,102 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/features/authentication/hooks/useAuth";
 import { motion } from "framer-motion";
-import { Lock, User, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Lock, User, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [errorMsg, setErrorMsg] = useState("");
+  const { login, loading } = useAuth();
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
+    setErrorMsg("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        localStorage.setItem("token", data.token);
-        router.push("/products");
-      } else {
-        setError(data.error || "Invalid email or password.");
-        setLoading(false);
-      }
-    } catch (err) {
-      setError("Unable to connect to the server. Please try again.");
-      setLoading(false);
+      await login(username, password);
+    } catch (err: any) {
+      setErrorMsg(err.message || "Invalid credentials. Please verify username & password.");
     }
   };
 
   return (
-    <main className="min-h-screen relative flex flex-col transition-colors">
-            
-      <div className="flex-grow flex items-center justify-center p-4 pt-24 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#EB3158]/10 rounded-full blur-[100px] pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#F5C842]/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <main className="min-h-screen relative flex items-center justify-center p-4 bg-slate-900 overflow-hidden">
+      {/* Visual background lights */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full max-w-md bg-white  rounded-[2rem] shadow-2xl border border-gray-100  overflow-hidden relative z-10"
-        >
-          <div className="p-8 sm:p-10">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-[#111A4A]  mb-2">Welcome Back</h1>
-              <p className="text-[#15172B]/60  text-sm">
-                Sign in to access the 12 Powerful Products
-              </p>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="w-full max-w-md bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden relative z-10"
+      >
+        <div className="p-8 sm:p-10">
+          <div className="text-center mb-8">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 mx-auto flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-500/30 mb-3">
+              360
+            </div>
+            <h1 className="text-2xl font-black text-slate-900">ITSOFTLAB360 Portal</h1>
+            <p className="text-slate-500 text-xs mt-1">Enterprise Platform Authentication & Management</p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {errorMsg && (
+              <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-semibold flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+                <span>{errorMsg}</span>
+              </div>
+            )}
+
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Username *</label>
+              <div className="relative">
+                <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter username (e.g. admin)"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all font-medium"
+                />
+              </div>
             </div>
 
-            <form onSubmit={handleLogin} className="space-y-5">
-              {error && (
-                <div className="bg-red-50  text-red-600  p-3 rounded-lg text-sm text-center border border-red-100 ">
-                  {error}
-                </div>
-              )}
-
+            <div>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Password *</label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <User size={18} className="text-slate-400" />
-                </div>
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3.5 bg-slate-50  border border-[#111A4A]/10  rounded-xl text-[#111A4A]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  required
-                />
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Lock size={18} className="text-slate-400" />
-                </div>
+                <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                 <input
                   type="password"
-                  placeholder="Password (password)"
+                  required
+                  placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3.5 bg-slate-50  border border-[#111A4A]/10  rounded-xl text-[#111A4A]  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  required
+                  className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all font-medium"
                 />
               </div>
+            </div>
 
-              <div className="flex items-center justify-between text-sm">
-                <label className="flex items-center gap-2 cursor-pointer text-[#15172B]/80 ">
-                  <input type="checkbox" className="rounded border-slate-300 text-[#EB3158] focus:ring-blue-500" />
-                  <span>Remember me</span>
-                </label>
-                <Link href="/forgot-password" className="text-[#EB3158]  hover:underline font-medium">
-                  Forgot password?
-                </Link>
-              </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full mt-2 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
+            >
+              <span>{loading ? "Authenticating..." : "Sign In to Portal"}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </form>
+        </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white py-3.5 rounded-xl font-bold shadow-lg shadow-blue-500/30 transition-all hover:shadow-blue-500/50 disabled:opacity-70"
-              >
-                {loading ? "Signing in..." : "Sign In"} <ArrowRight size={18} />
-              </button>
-            </form>
-          </div>
-          
-          <div className="bg-slate-50  py-4 text-center border-t border-slate-100 ">
-            <p className="text-sm text-[#15172B]/80 ">
-              Don&apos;t have an account? <Link href="/contact" className="text-[#EB3158]  font-bold hover:underline">Contact Us</Link>
-            </p>
-          </div>
-        </motion.div>
-      </div>
+        <div className="bg-slate-50 py-3.5 px-8 text-center border-t border-slate-100 flex items-center justify-center space-x-2 text-xs text-slate-500">
+          <ShieldCheck className="w-4 h-4 text-emerald-600" />
+          <span>Connected to ITSOFTLAB360 DRF Backend API</span>
+        </div>
+      </motion.div>
     </main>
   );
 }
