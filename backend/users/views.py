@@ -740,245 +740,471 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 # FRANCHISE REQUEST
 # ============================================================
 
+from decimal import Decimal
+from django.db import transaction
+from django.utils import timezone
+from django.contrib.auth import get_user_model
+
+from rest_framework import viewsets, status, permissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+from .models import (
+    FranchiseRequest,
+    FranchiseRequestProduct,
+    Invoice,
+    InvoiceItem,
+    Franchise,
+    Products,
+)
+
+User = get_user_model()
+
+
 class FranchiseRequestViewSet(viewsets.ModelViewSet):
+    """
+    Franchise onboarding workflow
+
+    SALES
+        ↓
+    Create Franchise Request
+        ↓
+    PENDING
+        ↓
+    ACCOUNTANT
+        ↓
+    Approve + Create Invoice
+        ↓
+    APPROVED
+        ↓
+    Invoice Paid
+        ↓
+    PAID
+        ↓
+    IT
+        ↓
+    Create Franchise
+        ↓
+    COMPLETED
+    """
 
     queryset = (
         FranchiseRequest.objects
         .select_related(
             "requested_by",
             "reviewed_by",
+            "completed_by",
             "invoice",
             "franchise",
-            "completed_by",
         )
-        .order_by("-created_at")
+        .prefetch_related(
+            "requested_products__product",
+        )
+        .all()
     )
 
-    serializer_class = FranchiseRequestSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
-    filter_backends = [
-        filters,
-        SearchFilter,
-        OrderingFilter,
-    ]
-
-    filterset_fields = [
-        "status",
-        "requested_by",
-        "reviewed_by",
-    ]
-
-    search_fields = [
-        "proposed_franchise_name",
-        "client_name",
-        "client_email",
-        "client_phone",
-    ]
-
-    ordering_fields = [
-        "created_at",
-        "updated_at",
-        "quoted_amount",
-    ]
+    # ============================================================
+    # QUERYSET / ROLE ACCESS
+    # ============================================================
 
     def get_queryset(self):
-
         user = self.request.user
 
-        # Admin and IT can see everything
-        if user.role in ["Admin", "IT"]:
-            return self.queryset
+        queryset = self.queryset
 
-        # Sales sees requests raised by themselves
+        # Internal Admin / IT / Accountant can see all requests
+        if user.role in ["IT", "Admin", "Accountant"]:
+            return queryset
+
+        # Sales can see requests created by themselves
         if user.role == "Sales":
-            return self.queryset.filter(
-                requested_by=user
-            )
+            return queryset.filter(requested_by=user)
 
-        # Accountant sees requests waiting for review/payment
-        if user.role == "Accountant":
-            return self.queryset
+        return queryset.none()
 
-        return FranchiseRequest.objects.none()
-
-    # --------------------------------------------------------
-    # SALES CREATES REQUEST
-    # --------------------------------------------------------
+    # ============================================================
+    # CREATE REQUEST
+    # ============================================================
 
     def create(self, request, *args, **kwargs):
+        """
+        Sales creates a franchise request.
 
-        if not is_sales(request.user):
+        Expected payload:
+
+        {
+            "proposed_franchise_name": "ABC Technologies",
+            "proposed_address": "Indore, MP",
+
+            "client_name": "ABC Technologies Pvt Ltd",
+            "client_email": "client@example.com",
+            "client_phone": "9876543210",
+            "client_gstin": "23ABCDE1234F1Z5",
+
+            "billing_address": "ABC Office",
+            "billing_city": "Indore",
+            "billing_state": "Madhya Pradesh",
+            "billing_pincode": "452001",
+            "billing_country": "India",
+
+            "quoted_amount": "150000",
+            "notes": "10 products",
+
+            "product_ids": [1, 2, 3, 4, 5]
+        }
+        """
+
+        user = request.user
+
+        # --------------------------------------------------------
+        # Only Sales can create requests
+        # --------------------------------------------------------
+
+        if user.role != "Sales":
             return Response(
                 {
-                    "error": "Only Sales can create franchise requests."
+                    "detail": "Only Sales users can create franchise requests."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        serializer = self.get_serializer(
-            data=request.data
+        data = request.data
+
+        # --------------------------------------------------------
+        # Required fields
+        # --------------------------------------------------------
+
+        required_fields = [
+            "proposed_franchise_name",
+            "proposed_address",
+            "client_name",
+            "client_email",
+            "client_phone",
+            "billing_address",
+            "billing_city",
+            "billing_state",
+            "billing_pincode",
+        ]
+
+        missing_fields = [
+            field
+            for field in required_fields
+            if not data.get(field)
+        ]
+
+        if missing_fields:
+            return Response(
+                {
+                    "detail": "Required fields are missing.",
+                    "fields": missing_fields,
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # --------------------------------------------------------
+        # Products
+        # --------------------------------------------------------
+
+        product_ids = data.get("product_ids", [])
+
+        if not isinstance(product_ids, list) or not product_ids:
+            return Response(
+                {
+                    "detail": "At least one product must be selected."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        products = Products.objects.filter(
+            id__in=product_ids
         )
 
-        serializer.is_valid(
-            raise_exception=True
-        )
+        if products.count() != len(set(product_ids)):
+            return Response(
+                {
+                    "detail": "One or more selected products are invalid."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
-        franchise_request = serializer.save(
-            requested_by=request.user,
-            status=FranchiseRequest.Status.PENDING,
-        )
+        # --------------------------------------------------------
+        # Create request
+        # --------------------------------------------------------
+
+        with transaction.atomic():
+
+            franchise_request = FranchiseRequest.objects.create(
+                requested_by=user,
+
+                proposed_franchise_name=data[
+                    "proposed_franchise_name"
+                ],
+
+                proposed_address=data[
+                    "proposed_address"
+                ],
+
+                client_name=data[
+                    "client_name"
+                ],
+
+                client_email=data[
+                    "client_email"
+                ],
+
+                client_phone=data[
+                    "client_phone"
+                ],
+
+                client_gstin=data.get(
+                    "client_gstin"
+                ),
+
+                billing_address=data[
+                    "billing_address"
+                ],
+
+                billing_city=data[
+                    "billing_city"
+                ],
+
+                billing_state=data[
+                    "billing_state"
+                ],
+
+                billing_pincode=data[
+                    "billing_pincode"
+                ],
+
+                billing_country=data.get(
+                    "billing_country",
+                    "India",
+                ),
+
+                quoted_amount=data.get(
+                    "quoted_amount"
+                ),
+
+                notes=data.get(
+                    "notes",
+                    "",
+                ),
+
+                status=FranchiseRequest.Status.PENDING,
+            )
+
+            # ----------------------------------------------------
+            # Attach products
+            # ----------------------------------------------------
+
+            FranchiseRequestProduct.objects.bulk_create(
+                [
+                    FranchiseRequestProduct(
+                        franchise_request=franchise_request,
+                        product=product,
+                    )
+                    for product in products
+                ]
+            )
 
         return Response(
-            self.get_serializer(
-                franchise_request
-            ).data,
+            self._serialize_request(franchise_request),
             status=status.HTTP_201_CREATED,
         )
 
-    # --------------------------------------------------------
-    # ACCOUNTANT APPROVES REQUEST
-    # --------------------------------------------------------
+    # ============================================================
+    # DETAIL SERIALIZATION
+    # ============================================================
+
+    def _serialize_request(self, obj):
+
+        products = [
+            {
+                "id": item.product.id,
+                "name": item.product.name,
+                "description": item.product.description,
+                "price": str(item.product.price),
+            }
+            for item in obj.requested_products.all()
+        ]
+
+        return {
+            "id": obj.id,
+
+            "requested_by": (
+                obj.requested_by.id
+                if obj.requested_by
+                else None
+            ),
+
+            "proposed_franchise_name":
+                obj.proposed_franchise_name,
+
+            "proposed_address":
+                obj.proposed_address,
+
+            "client": {
+                "name": obj.client_name,
+                "email": obj.client_email,
+                "phone": obj.client_phone,
+                "gstin": obj.client_gstin,
+            },
+
+            "billing_address": {
+                "address": obj.billing_address,
+                "city": obj.billing_city,
+                "state": obj.billing_state,
+                "pincode": obj.billing_pincode,
+                "country": obj.billing_country,
+            },
+
+            "quoted_amount": (
+                str(obj.quoted_amount)
+                if obj.quoted_amount is not None
+                else None
+            ),
+
+            "products": products,
+
+            "status": obj.status,
+
+            "invoice_id": (
+                obj.invoice.id
+                if obj.invoice
+                else None
+            ),
+
+            "invoice_number": (
+                obj.invoice.invoice_number
+                if obj.invoice
+                else None
+            ),
+
+            "franchise_id": (
+                obj.franchise.id
+                if obj.franchise
+                else None
+            ),
+
+            "reviewed_by": (
+                obj.reviewed_by.id
+                if obj.reviewed_by
+                else None
+            ),
+
+            "reviewed_at": obj.reviewed_at,
+
+            "rejection_reason":
+                obj.rejection_reason,
+
+            "completed_by": (
+                obj.completed_by.id
+                if obj.completed_by
+                else None
+            ),
+
+            "completed_at":
+                obj.completed_at,
+
+            "created_at":
+                obj.created_at,
+
+            "updated_at":
+                obj.updated_at,
+        }
+
+    # ============================================================
+    # RETRIEVE
+    # ============================================================
+
+    def retrieve(self, request, *args, **kwargs):
+
+        obj = self.get_object()
+
+        return Response(
+            self._serialize_request(obj)
+        )
+
+    # ============================================================
+    # ACCOUNTANT APPROVE
+    # ============================================================
 
     @action(
         detail=True,
         methods=["post"],
         url_path="approve",
     )
-    @transaction.atomic
     def approve(self, request, pk=None):
 
-        if not is_accountant(request.user):
+        user = request.user
+
+        if user.role != "Accountant":
             return Response(
                 {
-                    "error": "Only Accountant can approve franchise requests."
+                    "detail":
+                    "Only Accountant users can approve franchise requests."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        franchise_request = (
-            FranchiseRequest.objects
-            .select_for_update()
-            .get(pk=pk)
+        franchise_request = self.get_object()
+
+        if franchise_request.status != FranchiseRequest.Status.PENDING:
+            return Response(
+                {
+                    "detail":
+                    "Only pending requests can be approved."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # --------------------------------------------------------
+        # Check products
+        # --------------------------------------------------------
+
+        request_products = franchise_request.requested_products.select_related(
+            "product"
         )
 
-        if franchise_request.status != (
-            FranchiseRequest.Status.PENDING
-        ):
+        if not request_products.exists():
             return Response(
                 {
-                    "error": (
-                        "Only pending requests can be approved."
-                    )
+                    "detail":
+                    "This request has no products selected."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        quoted_amount = request.data.get(
-            "quoted_amount",
-            franchise_request.quoted_amount,
-        )
+        # --------------------------------------------------------
+        # Approve request
+        # --------------------------------------------------------
 
-        if quoted_amount is None:
-            return Response(
-                {
-                    "error": "quoted_amount is required."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        try:
-            quoted_amount = Decimal(
-                str(quoted_amount)
-            )
-        except Exception:
-            return Response(
-                {
-                    "error": "Invalid quoted amount."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        if quoted_amount <= 0:
-            return Response(
-                {
-                    "error": "Quoted amount must be greater than zero."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        franchise_request.quoted_amount = quoted_amount
-
-        # ----------------------------------------------------
-        # Create invoice
-        # ----------------------------------------------------
-
-        invoice_number = self._generate_invoice_number()
-
-        invoice = Invoice.objects.create(
-            invoice_number=invoice_number,
-
-            # Franchise doesn't exist yet
-            franchise=None,
-
-            customer_name=(
-                franchise_request.client_name
-            ),
-
-            customer_email=(
-                franchise_request.client_email
-            ),
-
-            customer_phone=(
-                franchise_request.client_phone
-            ),
-
-            invoice_date=timezone.localdate(),
-
-            due_date=(
-                timezone.localdate()
-            ),
-
-            subtotal=quoted_amount,
-
-            taxable_amount=quoted_amount,
-
-            total_amount=quoted_amount,
-
-            balance_due=quoted_amount,
-
-            status=Invoice.Status.SENT,
-
-        )
-
-        franchise_request.invoice = invoice
-        franchise_request.reviewed_by = request.user
+        franchise_request.status = FranchiseRequest.Status.APPROVED
+        franchise_request.reviewed_by = user
         franchise_request.reviewed_at = timezone.now()
-        franchise_request.status = (
-            FranchiseRequest.Status.APPROVED
-        )
 
-        franchise_request.save()
+        franchise_request.save(
+            update_fields=[
+                "status",
+                "reviewed_by",
+                "reviewed_at",
+                "updated_at",
+            ]
+        )
 
         return Response(
             {
-                "message": (
-                    "Franchise request approved "
-                    "and invoice created successfully."
-                ),
-                "request": self.get_serializer(
-                    franchise_request
-                ).data,
-                "invoice": InvoiceSerializer(
-                    invoice
-                ).data,
-            },
-            status=status.HTTP_200_OK,
+                "detail": "Franchise request approved.",
+                "request_id": franchise_request.id,
+                "status": franchise_request.status,
+            }
         )
 
-    # --------------------------------------------------------
-    # ACCOUNTANT REJECTS
-    # --------------------------------------------------------
+    # ============================================================
+    # ACCOUNTANT REJECT
+    # ============================================================
 
     @action(
         detail=True,
@@ -987,10 +1213,13 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
     )
     def reject(self, request, pk=None):
 
-        if not is_accountant(request.user):
+        user = request.user
+
+        if user.role != "Accountant":
             return Response(
                 {
-                    "error": "Only Accountant can reject franchise requests."
+                    "detail":
+                    "Only Accountant users can reject franchise requests."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
@@ -1003,358 +1232,352 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         ]:
             return Response(
                 {
-                    "error": "This request cannot be rejected now."
+                    "detail":
+                    "This request cannot be rejected at this stage."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
         reason = request.data.get(
-            "rejection_reason",
-            ""
+            "rejection_reason"
         )
 
         if not reason:
             return Response(
                 {
-                    "error": "Rejection reason is required."
+                    "detail":
+                    "Rejection reason is required."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        franchise_request.status = (
-            FranchiseRequest.Status.REJECTED
-        )
-
-        franchise_request.rejection_reason = reason
-        franchise_request.reviewed_by = request.user
+        franchise_request.status = FranchiseRequest.Status.REJECTED
+        franchise_request.reviewed_by = user
         franchise_request.reviewed_at = timezone.now()
+        franchise_request.rejection_reason = reason
 
         franchise_request.save()
 
         return Response(
             {
-                "message": "Franchise request rejected.",
-                "request": self.get_serializer(
-                    franchise_request
-                ).data,
+                "detail":
+                "Franchise request rejected.",
+                "status":
+                franchise_request.status,
             }
         )
 
-    # --------------------------------------------------------
-    # IT COMPLETES REQUEST
-    # --------------------------------------------------------
+    # ============================================================
+    # CREATE INVOICE FROM REQUEST
+    # ============================================================
 
     @action(
         detail=True,
         methods=["post"],
-        url_path="complete",
+        url_path="create-invoice",
     )
-    @transaction.atomic
-    def complete(self, request, pk=None):
+    def create_invoice(self, request, pk=None):
 
-        if not is_it(request.user):
+        user = request.user
+
+        if user.role != "Accountant":
             return Response(
                 {
-                    "error": "Only IT can complete franchise requests."
+                    "detail":
+                    "Only Accountant users can create invoices."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        franchise_request = (
-            FranchiseRequest.objects
-            .select_for_update()
-            .select_related("invoice")
-            .get(pk=pk)
-        )
+        franchise_request = self.get_object()
 
-        # ----------------------------------------------------
-        # Must be PAID
-        # ----------------------------------------------------
-
-        if franchise_request.status != (
-            FranchiseRequest.Status.PAID
-        ):
+        if franchise_request.status != FranchiseRequest.Status.APPROVED:
             return Response(
                 {
-                    "error": (
-                        "Franchise can only be created "
-                        "after the invoice has been fully paid."
-                    ),
-                    "current_status": franchise_request.status,
+                    "detail":
+                    "Request must be approved before creating an invoice."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        if franchise_request.franchise:
+        if franchise_request.invoice:
             return Response(
                 {
-                    "error": "Franchise has already been created."
+                    "detail":
+                    "Invoice already exists for this request.",
+                    "invoice_id":
+                    franchise_request.invoice.id,
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        invoice = franchise_request.invoice
+        request_products = list(
+            franchise_request.requested_products.select_related(
+                "product"
+            )
+        )
 
-        if not invoice:
+        if not request_products:
             return Response(
                 {
-                    "error": "No invoice is associated with this request."
+                    "detail":
+                    "No products found in this request."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        if invoice.status != Invoice.Status.PAID:
+        # ========================================================
+        # Invoice data
+        # ========================================================
+
+        invoice_number = self._generate_invoice_number()
+
+        subtotal = Decimal("0.00")
+
+        for request_product in request_products:
+            subtotal += request_product.product.price
+
+        # Optional discount supplied by accountant
+        discount_amount = Decimal(
+            str(
+                request.data.get(
+                    "discount_amount",
+                    "0"
+                )
+            )
+        )
+
+        if discount_amount < 0:
+            discount_amount = Decimal("0.00")
+
+        if discount_amount > subtotal:
             return Response(
                 {
-                    "error": "Associated invoice is not marked as paid."
+                    "detail":
+                    "Discount cannot be greater than subtotal."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # ----------------------------------------------------
-        # Create Franchise
-        # ----------------------------------------------------
+        taxable_amount = subtotal - discount_amount
 
-        franchise = Franchise.objects.create(
-            name=franchise_request.proposed_franchise_name,
-            address=franchise_request.proposed_address,
-            created_by=request.user,
-            is_active=True,
+        # --------------------------------------------------------
+        # Tax
+        # --------------------------------------------------------
+
+        tax_percentage = Decimal(
+            str(
+                request.data.get(
+                    "tax_percentage",
+                    "0"
+                )
+            )
         )
 
-        # ----------------------------------------------------
-        # Attach invoice to franchise
-        # ----------------------------------------------------
+        if tax_percentage < 0:
+            tax_percentage = Decimal("0.00")
 
-        invoice.franchise = franchise
-        invoice.save(
-            update_fields=[
-                "franchise",
-                "updated_at",
-            ]
+        tax_amount = (
+            taxable_amount * tax_percentage / Decimal("100")
+        ).quantize(
+            Decimal("0.01")
         )
 
-        # ----------------------------------------------------
-        # Create Franchise User
-        # ----------------------------------------------------
+        total_amount = taxable_amount + tax_amount
 
-        username = request.data.get(
-            "username"
+        # --------------------------------------------------------
+        # GST split
+        # --------------------------------------------------------
+
+        cgst_amount = Decimal("0.00")
+        sgst_amount = Decimal("0.00")
+        igst_amount = Decimal("0.00")
+
+        gst_type = request.data.get(
+            "gst_type",
+            "igst"
         )
 
-        password = request.data.get(
-            "password"
-        )
+        if gst_type == "cgst_sgst":
 
-        first_name = request.data.get(
-            "first_name",
-            franchise_request.client_name,
-        )
-
-        email = request.data.get(
-            "email",
-            franchise_request.client_email,
-        )
-
-        role = request.data.get(
-            "role",
-            "FRANCHISE_ADMIN",
-        )
-
-        allowed_roles = [
-            "FRANCHISE_IT",
-            "FRANCHISE_ADMIN",
-            "FRANCHISE_SALES",
-            "FRANCHISE_ACCOUNTANT",
-        ]
-
-        if not username:
-            transaction.set_rollback(True)
-
-            return Response(
-                {
-                    "error": "username is required."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
+            cgst_amount = (
+                tax_amount / Decimal("2")
+            ).quantize(
+                Decimal("0.01")
             )
 
-        if not password:
-            transaction.set_rollback(True)
+            sgst_amount = tax_amount - cgst_amount
 
-            return Response(
-                {
-                    "error": "password is required."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
+        else:
+
+            igst_amount = tax_amount
+
+        # ========================================================
+        # Create invoice
+        # ========================================================
+
+        with transaction.atomic():
+
+            invoice = Invoice.objects.create(
+
+                invoice_number=invoice_number,
+
+                franchise=None,
+
+                customer_name=franchise_request.client_name,
+
+                customer_email=franchise_request.client_email,
+
+                customer_phone=franchise_request.client_phone,
+
+                customer_gstin=franchise_request.client_gstin,
+
+                billing_address=franchise_request.billing_address,
+
+                billing_city=franchise_request.billing_city,
+
+                billing_state=franchise_request.billing_state,
+
+                billing_pincode=franchise_request.billing_pincode,
+
+                billing_country=franchise_request.billing_country,
+
+                invoice_date=timezone.now().date(),
+
+                due_date=request.data.get(
+                    "due_date"
+                ),
+
+                subtotal=subtotal,
+
+                discount_amount=discount_amount,
+
+                taxable_amount=taxable_amount,
+
+                tax_amount=tax_amount,
+
+                total_amount=total_amount,
+
+                amount_paid=Decimal("0.00"),
+
+                balance_due=total_amount,
+
+                cgst_amount=cgst_amount,
+
+                sgst_amount=sgst_amount,
+
+                igst_amount=igst_amount,
+
+                status=Invoice.Status.SENT,
+
+                notes=franchise_request.notes,
+
+                terms_and_conditions=request.data.get(
+                    "terms_and_conditions",
+                    "",
+                ),
             )
 
-        if role not in allowed_roles:
-            transaction.set_rollback(True)
+            # ----------------------------------------------------
+            # Invoice items
+            # ----------------------------------------------------
 
-            return Response(
-                {
-                    "error": "Invalid franchise role.",
-                    "allowed_roles": allowed_roles,
-                },
-                status=status.HTTP_400_BAD_REQUEST,
+            invoice_items = []
+
+            for request_product in request_products:
+
+                product = request_product.product
+
+                unit_price = product.price
+
+                item_taxable_amount = unit_price
+
+                item_tax_amount = (
+                    item_taxable_amount
+                    * tax_percentage
+                    / Decimal("100")
+                ).quantize(
+                    Decimal("0.01")
+                )
+
+                item_total = (
+                    item_taxable_amount
+                    + item_tax_amount
+                )
+
+                invoice_items.append(
+                    InvoiceItem(
+                        invoice=invoice,
+                        product=product,
+                        description=product.description,
+                        unit_price=unit_price,
+                        discount_amount=Decimal("0.00"),
+                        taxable_amount=item_taxable_amount,
+                        tax_percentage=tax_percentage,
+                        tax_amount=item_tax_amount,
+                        total_amount=item_total,
+                    )
+                )
+
+            InvoiceItem.objects.bulk_create(
+                invoice_items
             )
 
-        if User.objects.filter(
-            username=username
-        ).exists():
+            # ----------------------------------------------------
+            # Connect invoice to request
+            # ----------------------------------------------------
 
-            transaction.set_rollback(True)
-
-            return Response(
-                {
-                    "error": "Username already exists."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
+            franchise_request.invoice = invoice
+            franchise_request.save(
+                update_fields=[
+                    "invoice",
+                    "updated_at",
+                ]
             )
-
-        # ----------------------------------------------------
-        # Create Django User
-        # ----------------------------------------------------
-
-        franchise_user = User.objects.create_user(
-            username=username,
-            email=email,
-            password=password,
-            first_name=first_name,
-            role="",  # Generic User has no internal role
-        )
-
-        # ----------------------------------------------------
-        # Create FranchiseUserProfile
-        # ----------------------------------------------------
-
-        franchise_profile = FranchiseUserProfile.objects.create(
-            user=franchise_user,
-            franchise=franchise,
-            role=role,
-        )
-
-        # ----------------------------------------------------
-        # Complete Request
-        # ----------------------------------------------------
-
-        franchise_request.franchise = franchise
-        franchise_request.completed_by = request.user
-        franchise_request.completed_at = timezone.now()
-        franchise_request.status = (
-            FranchiseRequest.Status.COMPLETED
-        )
-
-        franchise_request.save()
 
         return Response(
             {
-                "message": (
-                    "Franchise and franchise user "
-                    "created successfully."
-                ),
+                "detail":
+                "Invoice created successfully.",
 
-                "franchise": FranchiseSerializer(
-                    franchise
-                ).data,
+                "invoice_id":
+                invoice.id,
 
-                "user": UserSerializer(
-                    franchise_user
-                ).data,
+                "invoice_number":
+                invoice.invoice_number,
 
-                "franchise_user": FranchiseUserProfileSerializer(
-                    franchise_profile
-                ).data,
+                "subtotal":
+                str(invoice.subtotal),
 
-                "request": self.get_serializer(
-                    franchise_request
-                ).data,
+                "discount":
+                str(invoice.discount_amount),
+
+                "taxable_amount":
+                str(invoice.taxable_amount),
+
+                "tax":
+                str(invoice.tax_amount),
+
+                "total":
+                str(invoice.total_amount),
+
+                "status":
+                invoice.status,
+
+                "request_status":
+                franchise_request.status,
             },
             status=status.HTTP_201_CREATED,
         )
 
-    # --------------------------------------------------------
-    # CANCEL / REOPEN ETC. SHOULD NOT BE DIRECT STATUS EDITS
-    # --------------------------------------------------------
+    # ============================================================
+    # GENERATE INVOICE NUMBER
+    # ============================================================
 
-    def update(self, request, *args, **kwargs):
-
-        franchise_request = self.get_object()
-
-        # Prevent clients from manually changing workflow state
-        protected_fields = {
-            "status",
-            "invoice",
-            "franchise",
-            "reviewed_by",
-            "reviewed_at",
-            "completed_by",
-            "completed_at",
-        }
-
-        attempted = (
-            set(request.data.keys())
-            & protected_fields
-        )
-
-        if attempted:
-            return Response(
-                {
-                    "error": (
-                        "Workflow fields cannot be changed directly."
-                    ),
-                    "protected_fields": list(attempted),
-                    "message": (
-                        "Use approve, reject, "
-                        "mark-paid, or complete actions."
-                    ),
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        # Sales can update their own pending request
-        if (
-            request.user.role == "Sales"
-            and franchise_request.requested_by_id
-            != request.user.id
-        ):
-            return Response(
-                {
-                    "error": "You can only modify your own requests."
-                },
-                status=status.HTTP_403_FORBIDDEN,
-            )
-
-        if franchise_request.status not in [
-            FranchiseRequest.Status.PENDING,
-        ]:
-            return Response(
-                {
-                    "error": (
-                        "Only pending requests can be edited."
-                    )
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        return super().update(
-            request,
-            *args,
-            **kwargs,
-        )
-
-    @staticmethod
-    def _generate_invoice_number():
-
-        year = timezone.now().year
-
-        prefix = f"ITS-{year}-"
+    def _generate_invoice_number(self):
 
         last_invoice = (
             Invoice.objects
-            .filter(
-                invoice_number__startswith=prefix
-            )
             .order_by("-id")
             .first()
         )
@@ -1362,27 +1585,205 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         if not last_invoice:
             number = 1
         else:
-            try:
-                number = (
-                    int(
-                        last_invoice.invoice_number
-                        .split("-")[-1]
-                    )
-                    + 1
-                )
-            except (ValueError, IndexError):
-                number = (
-                    Invoice.objects
-                    .filter(
-                        invoice_number__startswith=prefix
-                    )
-                    .count()
-                    + 1
-                )
+            number = last_invoice.id + 1
 
-        return f"{prefix}{number:05d}"
+        return f"INV-{timezone.now().year}-{number:05d}"
 
+    # ============================================================
+    # MARK REQUEST AS PAID
+    # ============================================================
+    #
+    # Normally you should NOT call this manually.
+    #
+    # Your InvoiceViewSet.mark_paid() should call this logic
+    # automatically after the invoice is paid.
+    #
+    # This endpoint is provided only if you need it.
+    # ============================================================
 
+    @action(
+        detail=True,
+        methods=["post"],
+        url_path="mark-paid",
+    )
+    def mark_paid(self, request, pk=None):
+
+        user = request.user
+
+        if user.role not in [
+            "Accountant",
+            "Admin",
+        ]:
+            return Response(
+                {
+                    "detail":
+                    "You do not have permission to mark this request as paid."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        franchise_request = self.get_object()
+
+        if not franchise_request.invoice:
+            return Response(
+                {
+                    "detail":
+                    "This request does not have an invoice."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        invoice = franchise_request.invoice
+
+        if invoice.status != Invoice.Status.PAID:
+            return Response(
+                {
+                    "detail":
+                    "The invoice must be paid first."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        franchise_request.status = FranchiseRequest.Status.PAID
+
+        franchise_request.save(
+            update_fields=[
+                "status",
+                "updated_at",
+            ]
+        )
+
+        return Response(
+            {
+                "detail":
+                "Franchise request marked as paid.",
+                "status":
+                franchise_request.status,
+            }
+        )
+
+    # ============================================================
+    # IT COMPLETES FRANCHISE
+    # ============================================================
+
+    @action(
+        detail=True,
+        methods=["post"],
+        url_path="complete",
+    )
+    def complete(self, request, pk=None):
+
+        user = request.user
+
+        if user.role != "IT":
+            return Response(
+                {
+                    "detail":
+                    "Only IT users can complete franchise requests."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        franchise_request = self.get_object()
+
+        if franchise_request.status != FranchiseRequest.Status.PAID:
+            return Response(
+                {
+                    "detail":
+                    "Franchise can only be created after payment is completed."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        if franchise_request.franchise:
+            return Response(
+                {
+                    "detail":
+                    "Franchise has already been created.",
+                    "franchise_id":
+                    franchise_request.franchise.id,
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # ========================================================
+        # Create Franchise
+        # ========================================================
+
+        with transaction.atomic():
+
+            franchise = Franchise.objects.create(
+
+                name=franchise_request.proposed_franchise_name,
+
+                address=franchise_request.proposed_address,
+
+                is_active=True,
+
+                created_by=user,
+            )
+
+            # ----------------------------------------------------
+            # Attach purchased products
+            # ----------------------------------------------------
+
+            products = Products.objects.filter(
+                franchiserequestproduct__franchise_request=franchise_request
+            )
+
+            franchise.products.set(
+                products
+            )
+
+            # ----------------------------------------------------
+            # Connect franchise to request
+            # ----------------------------------------------------
+
+            franchise_request.franchise = franchise
+
+            franchise_request.status = (
+                FranchiseRequest.Status.COMPLETED
+            )
+
+            franchise_request.completed_by = user
+
+            franchise_request.completed_at = timezone.now()
+
+            franchise_request.save(
+                update_fields=[
+                    "franchise",
+                    "status",
+                    "completed_by",
+                    "completed_at",
+                    "updated_at",
+                ]
+            )
+
+        return Response(
+            {
+                "detail":
+                "Franchise created successfully.",
+
+                "franchise_id":
+                franchise.id,
+
+                "franchise_name":
+                franchise.name,
+
+                "products":
+                [
+                    {
+                        "id": product.id,
+                        "name": product.name,
+                    }
+                    for product in franchise.products.all()
+                ],
+
+                "request_status":
+                franchise_request.status,
+            },
+            status=status.HTTP_201_CREATED,
+        )
 # ============================================================
 # FRANCHISE USER MANAGEMENT
 # ============================================================

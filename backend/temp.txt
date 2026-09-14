@@ -1,0 +1,33 @@
+                    ITSOFTLAB360
+                         │
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+          Internal Team         Franchise
+              │                     │
+       ┌──────┼──────┐              │
+       │      │      │              │
+      IT    Sales   Acc.          ADMIN
+       │      │      │              │
+       │      │      │              │
+       │      │      └──── Invoice  │
+       │      │                     │
+       │      └── Demo              │
+       │                            │
+       └── Product/Franchise        │
+                                    │
+                           creates franchise users
+                                    │
+                 ┌──────────────────┼──────────────────┐
+                 │                  │                  │
+            FRANCHISE_IT      FRANCHISE_SALES   FRANCHISE_ACCOUNTANT
+                 │                  │                  │
+                 └──────────────────┼──────────────────┘
+                                    │
+                                    ▼
+                              Sell SaaS
+                                    │
+                                    ▼
+                              Organization
+                                    │
+                         subscribes to Product

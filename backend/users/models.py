@@ -130,91 +130,20 @@ class Invoice(models.Model):
             self.balance_due = self.total_amount - (self.amount_paid or 0)
         super().save(*args, **kwargs)
 
+from django.db import models
+from django.conf import settings
 
-# ---------------------------------------------------------------------------
-# Franchise onboarding workflow
-# ---------------------------------------------------------------------------
 
-class FranchiseRequest(models.Model):
-    """
-    Drives the full onboarding lifecycle:
+User = settings.AUTH_USER_MODEL
 
-      Sales raises this request (wants credentials issued to a new client)
-        -> PENDING
-      Accountant reviews it, raises an Invoice for the client
-        -> APPROVED
-      Accountant marks that Invoice as paid (via InvoiceViewSet.mark_paid)
-        -> PAID   (this flips automatically, sales/accountant don't set it directly)
-      IT creates the Franchise + its login (FranchiseUserProfile) — only
-      allowed once status == PAID
-        -> COMPLETED
-
-    IT can never create a Franchise directly through the API; it can only
-    happen through this request once it reaches PAID.
-    """
-
-    class Status(models.TextChoices):
-        PENDING = "pending", "Pending Accountant Review"
-        APPROVED = "approved", "Approved — Invoice Raised"
-        PAID = "paid", "Paid — Ready for IT"
-        COMPLETED = "completed", "Completed — Franchise Created"
-        REJECTED = "rejected", "Rejected"
-
-    requested_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, related_name="franchise_requests_raised",
-        help_text="The sales person who raised this request.",
-    )
-
-    proposed_franchise_name = models.CharField(max_length=100)
-    proposed_address = models.TextField(blank=True)
-
-    client_name = models.CharField(max_length=255)
-    client_email = models.EmailField(blank=True, null=True)
-    client_phone = models.CharField(max_length=20, blank=True, null=True)
-
-    quoted_amount = models.DecimalField(
-        max_digits=12, decimal_places=2, null=True, blank=True,
-        help_text="Optional — prefills the invoice total when the accountant approves.",
-    )
-    notes = models.TextField(blank=True)
-
-    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
-
-    invoice = models.OneToOneField(
-        Invoice, on_delete=models.SET_NULL, null=True, blank=True, related_name="franchise_request",
-    )
-    reviewed_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="franchise_requests_reviewed",
-        help_text="The accountant who approved/rejected this request.",
-    )
-    reviewed_at = models.DateTimeField(null=True, blank=True)
-    rejection_reason = models.TextField(blank=True)
-
-    franchise = models.OneToOneField(
-        Franchise, on_delete=models.SET_NULL, null=True, blank=True, related_name="onboarding_request",
-    )
-    completed_by = models.ForeignKey(
-        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="franchise_requests_completed",
-        help_text="The IT person who created the franchise + login.",
-    )
-    completed_at = models.DateTimeField(null=True, blank=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ["-created_at"]
-
-    def __str__(self):
-        return f"Request for {self.proposed_franchise_name} ({self.status})"
 
 class FranchiseUserProfile(models.Model):
 
     ROLE_CHOICES = [
-        ("FRANCHISE_IT", "Franchise IT"),
-        ("FRANCHISE_ADMIN", "Franchise Admin"),
-        ("FRANCHISE_SALES", "Franchise Sales"),
-        ("FRANCHISE_ACCOUNTANT", "Franchise Accountant"),
+        ("FRANCHISE_IT", "IT"),
+        ("FRANCHISE_ADMIN", "Admin"),
+        ("FRANCHISE_SALES", "Sales"),
+        ("FRANCHISE_ACCOUNTANT", "Accountant"),
     ]
 
     user = models.OneToOneField(
