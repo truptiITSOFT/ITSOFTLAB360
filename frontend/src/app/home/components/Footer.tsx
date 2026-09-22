@@ -19,6 +19,8 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="ITSoftLab360 Logo"
+                width={160}
+                height={40}
                 className="h-8 md:h-10 w-auto object-contain"
               />
             </Link>

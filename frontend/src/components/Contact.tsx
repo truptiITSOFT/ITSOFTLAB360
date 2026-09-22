@@ -5,13 +5,6 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight, ArrowRight, CheckCircle2 } from "lucide-react";
 import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap',
-});
 
 const COUNTRY_CODES = [
   { code: '+1', country: 'USA', flag: 'us' },
@@ -43,7 +36,7 @@ export default function Contact() {
   };
 
   return (
-    <section className={`relative min-h-screen pt-10 pb-20 overflow-hidden bg-white ${poppins.className}`} id="contact">
+    <section className="relative min-h-screen pt-10 pb-20 overflow-hidden bg-white font-sans" id="contact">
       {/* Background Gradients & Grid (matching Home theme) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_19.2px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]"></div>

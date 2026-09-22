@@ -53,7 +53,11 @@ class ProductsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = ["id", "name", "description", "price", "created_by", "created_by_name", "created_at", "updated_at"]
+        fields = [
+            "id", "name", "code", "route", "description", "price",
+            "subscription_price_per_user", "billing_cycle",
+            "created_by", "created_by_name", "created_at", "updated_at"
+        ]
         read_only_fields = ["id", "created_by", "created_at", "updated_at"]
 
     def get_created_by_name(self, obj):
@@ -91,13 +95,77 @@ class FranchiseSerializer(serializers.ModelSerializer):
 # ---------------------------------------------------------------------------
 
 class FranchiseUserProfileSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(source="user.username", read_only=True)
+    username = serializers.CharField(required=False)
+    password = serializers.CharField(write_only=True, required=False)
+    email = serializers.EmailField(write_only=True, required=False, allow_blank=True)
+    first_name = serializers.CharField(write_only=True, required=False, allow_blank=True)
+    last_name = serializers.CharField(write_only=True, required=False, allow_blank=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    user_username = serializers.CharField(source="user.username", read_only=True)
     franchise_name = serializers.CharField(source="franchise.name", read_only=True)
 
     class Meta:
         model = FranchiseUserProfile
-        fields = ["id", "user", "username", "franchise", "franchise_name", "role", "created_at", "updated_at"]
-        read_only_fields = fields
+        fields = [
+            "id",
+            "user",
+            "username",
+            "user_username",
+            "password",
+            "email",
+            "first_name",
+            "last_name",
+            "franchise",
+            "franchise_name",
+            "role",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = ["id", "created_at", "updated_at"]
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        if instance.user:
+            ret["username"] = instance.user.username
+            ret["user"] = instance.user.id
+        return ret
+
+    def create(self, validated_data):
+        import uuid
+        from django.db import transaction
+        username = validated_data.pop("username", None)
+        password = validated_data.pop("password", None)
+        email = validated_data.pop("email", "")
+        first_name = validated_data.pop("first_name", "")
+        last_name = validated_data.pop("last_name", "")
+
+        if not username:
+            raise serializers.ValidationError({"username": "Username is required."})
+
+        with transaction.atomic():
+            user = User.objects.filter(username=username).first()
+            if not user:
+                user = User.objects.create_user(
+                    username=username,
+                    password=password or f"P@{uuid.uuid4().hex[:10]}",
+                    email=email,
+                    first_name=first_name,
+                    last_name=last_name,
+                    role="",
+                )
+            elif password:
+                user.set_password(password)
+                if email and not user.email:
+                    user.email = email
+                if first_name and not user.first_name:
+                    user.first_name = first_name
+                user.save()
+
+            profile, created = FranchiseUserProfile.objects.update_or_create(
+                user=user,
+                defaults=validated_data,
+            )
+        return profile
 
 
 # ---------------------------------------------------------------------------

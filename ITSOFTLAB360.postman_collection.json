@@ -1,0 +1,4932 @@
+{
+  "info": {
+    "_postman_id": "itsoftlab360-full-suite-collection-v1",
+    "name": "ITSOFTLAB360 - Complete API Testing Collection",
+    "description": "Comprehensive Postman collection for testing every endpoint of the ITSOFTLAB360 ecosystem.\n\nIncludes:\n- Authentication & Portal Routing Guard\n- SuperAdmin & Franchise Dashboards\n- SaaS Products Management\n- Internal Users (IT, Admin, Sales, Accountant)\n- Franchise Onboarding Workflow (Sales -> Accountant -> IT Provisioning)\n- Active Franchises & Profiles Management\n- Franchise Team Management (Franchise Admin, Sales, IT, Accountant)\n- Client Sales & Onboarding (ClientLicenseRequest -> ClientInvoice -> IT Fulfill)\n- Client Invoices & Payment Recording\n- Client Organizations & SaaS Subscriptions (HRMSM, CRM, LMS, etc.)\n- Organization Users, Remote Provisioning, Multi-Product Linking & SSO Launch Tokens\n- External Software License Verification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "refreshToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "productId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "franchiseRequestId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "franchiseId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "invoiceId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "franchiseUserId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "teamMemberId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "organizationId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "subscriptionId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "licenseKey",
+      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "type": "string"
+    },
+    {
+      "key": "orgUserId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "clientRequestId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "clientInvoiceId",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "01. Authentication & System Dashboards",
+      "description": "Multi-portal authentication (Internal, Franchise, Organization, SaaS) and high-level analytical dashboards.",
+      "item": [
+        {
+          "name": "1.1 Login - Internal SuperAdmin / IT / Sales / Accountant",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.access) {",
+                  "        pm.collectionVariables.set('token', res.access);",
+                  "        pm.collectionVariables.set('refreshToken', res.refresh);",
+                  "        console.log('Access token saved for Internal User:', res.user.username);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"AdminPassword123!\",\n  \"portal_type\": \"INTERNAL\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/login/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            },
+            "description": "Authenticate an internal staff member (Role: IT, Admin, Sales, or Accountant). Automatically captures Bearer token in {{token}} collection variable."
+          },
+          "response": [
+            {
+              "name": "200 OK - Internal Staff Authenticated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"AdminPassword123!\",\n  \"portal_type\": \"INTERNAL\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/login/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "login"
+                  ]
+                },
+                "description": "Authenticate an internal staff member (Role: IT, Admin, Sales, or Accountant). Automatically captures Bearer token in {{token}} collection variable."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"user\": {\n    \"id\": 1,\n    \"username\": \"admin\",\n    \"email\": \"admin@itsoftlab360.com\",\n    \"first_name\": \"ITSOFTLAB\",\n    \"last_name\": \"Admin\",\n    \"portal_type\": \"INTERNAL\",\n    \"role\": \"Admin\",\n    \"franchise_id\": null,\n    \"franchise_name\": null,\n    \"organization_id\": null,\n    \"organization_name\": null\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "1.2 Login - Franchise Admin / Team Member",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.access) {",
+                  "        pm.collectionVariables.set('token', res.access);",
+                  "        if (res.user.franchise_id) {",
+                  "            pm.collectionVariables.set('franchiseId', res.user.franchise_id);",
+                  "        }",
+                  "        console.log('Access token saved for Franchise User:', res.user.username);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"franchise_admin_mumbai\",\n  \"password\": \"Password123!\",\n  \"portal_type\": \"FRANCHISE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/login/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            },
+            "description": "Authenticate a Franchise member (FRANCHISE_ADMIN, FRANCHISE_SALES, FRANCHISE_IT, FRANCHISE_ACCOUNTANT). Saves {{franchiseId}} and {{token}}."
+          },
+          "response": [
+            {
+              "name": "200 OK - Franchise Member Authenticated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"franchise_admin_mumbai\",\n  \"password\": \"Password123!\",\n  \"portal_type\": \"FRANCHISE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/login/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "login"
+                  ]
+                },
+                "description": "Authenticate a Franchise member (FRANCHISE_ADMIN, FRANCHISE_SALES, FRANCHISE_IT, FRANCHISE_ACCOUNTANT). Saves {{franchiseId}} and {{token}}."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"user\": {\n    \"id\": 12,\n    \"username\": \"franchise_admin_mumbai\",\n    \"email\": \"admin@mumbaifranchise.com\",\n    \"first_name\": \"Rohan\",\n    \"last_name\": \"Gupta\",\n    \"portal_type\": \"FRANCHISE\",\n    \"role\": \"FRANCHISE_ADMIN\",\n    \"franchise_id\": 4,\n    \"franchise_name\": \"Metro Tech Mumbai Franchise\",\n    \"organization_id\": null,\n    \"organization_name\": null\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "1.3 Login - Organization Administrator",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.access) {",
+                  "        pm.collectionVariables.set('token', res.access);",
+                  "        if (res.user.organization_id) {",
+                  "            pm.collectionVariables.set('organizationId', res.user.organization_id);",
+                  "        }",
+                  "        console.log('Access token saved for Org Admin:', res.user.username);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"apollo_hospital_admin\",\n  \"password\": \"Password123!\",\n  \"portal_type\": \"ORGANIZATION\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/login/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            },
+            "description": "Authenticate an Organization Admin (role ORG_ADMIN). Captures organization_id into {{organizationId}}."
+          },
+          "response": [
+            {
+              "name": "200 OK - Org Admin Authenticated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"apollo_hospital_admin\",\n  \"password\": \"Password123!\",\n  \"portal_type\": \"ORGANIZATION\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/login/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "login"
+                  ]
+                },
+                "description": "Authenticate an Organization Admin (role ORG_ADMIN). Captures organization_id into {{organizationId}}."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"user\": {\n    \"id\": 25,\n    \"username\": \"apollo_hospital_admin\",\n    \"email\": \"director@apollohospital.com\",\n    \"first_name\": \"Rajesh\",\n    \"last_name\": \"Sharma\",\n    \"portal_type\": \"ORGANIZATION\",\n    \"role\": \"ORG_ADMIN\",\n    \"franchise_id\": null,\n    \"franchise_name\": null,\n    \"organization_id\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "1.4 SuperAdmin Executive Dashboard Metrics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/dashboard/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "dashboard"
+              ]
+            },
+            "description": "Aggregated metrics for IT & Admin roles: Products count, active/inactive franchises, onboarding requests pipeline, invoices, and total revenue."
+          },
+          "response": [
+            {
+              "name": "200 OK - Dashboard Data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/dashboard/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "dashboard"
+                  ]
+                },
+                "description": "Aggregated metrics for IT & Admin roles: Products count, active/inactive franchises, onboarding requests pipeline, invoices, and total revenue."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"date\": \"2026-09-18\",\n  \"products\": {\n    \"total\": 12\n  },\n  \"franchises\": {\n    \"total\": 5,\n    \"active\": 4,\n    \"inactive\": 1\n  },\n  \"franchise_requests\": {\n    \"total\": 10,\n    \"pending\": 2,\n    \"approved\": 2,\n    \"paid\": 1,\n    \"completed\": 4,\n    \"rejected\": 1\n  },\n  \"invoices\": {\n    \"total\": 8,\n    \"paid\": 6,\n    \"overdue\": 1\n  },\n  \"revenue\": {\n    \"total_invoiced\": \"590000.00\",\n    \"total_received\": \"472000.00\",\n    \"pending\": \"118000.00\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "1.5 Franchise Workspace Dashboard Metrics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/dashboard/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "dashboard"
+              ]
+            },
+            "description": "Workspace metrics for Franchise team: Total organizations, SaaS subscriptions, allotted vs used licenses, team member counts, and product breakdowns."
+          },
+          "response": [
+            {
+              "name": "200 OK - Franchise Metrics",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/dashboard/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "dashboard"
+                  ]
+                },
+                "description": "Workspace metrics for Franchise team: Total organizations, SaaS subscriptions, allotted vs used licenses, team member counts, and product breakdowns."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"franchise_id\": 4,\n  \"franchise_name\": \"Metro Tech Mumbai Franchise\",\n  \"total_organizations\": 6,\n  \"total_subscriptions\": 14,\n  \"total_licenses_allotted\": 125,\n  \"total_licenses_used\": 68,\n  \"total_licenses_available\": 57,\n  \"franchise_team_count\": 4,\n  \"products_breakdown\": [\n    {\n      \"organization_id\": 8,\n      \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n      \"product_id\": 1,\n      \"product_name\": \"HRMSM\",\n      \"license_count\": 25,\n      \"used_licenses\": 14,\n      \"available_licenses\": 11,\n      \"status\": \"active\",\n      \"subscription_end\": \"2027-09-18\"\n    },\n    {\n      \"organization_id\": 8,\n      \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n      \"product_id\": 2,\n      \"product_name\": \"CRM\",\n      \"license_count\": 10,\n      \"used_licenses\": 8,\n      \"available_licenses\": 2,\n      \"status\": \"active\",\n      \"subscription_end\": \"2027-09-18\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02. SaaS Products Catalog",
+      "description": "Manage the central catalog of software products sold by ITSOFTLAB360 (HRMSM, CRM, ERP, DMS, LMS, etc.) and their remote provisioning endpoints.",
+      "item": [
+        {
+          "name": "2.1 List All Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/products/?search=&ordering=-created_at",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": ""
+                },
+                {
+                  "key": "ordering",
+                  "value": "-created_at"
+                }
+              ]
+            },
+            "description": "List all software solutions available in the platform catalog."
+          },
+          "response": [
+            {
+              "name": "200 OK - Products List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/products/?search=&ordering=-created_at",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": ""
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "-created_at"
+                    }
+                  ]
+                },
+                "description": "List all software solutions available in the platform catalog."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"HRMSM\",\n    \"description\": \"Human Resource Management Suite with Biometric & Payroll\",\n    \"price\": \"9999.00\",\n    \"created_by\": 1,\n    \"created_by_name\": \"ITSOFTLAB Admin\",\n    \"created_at\": \"2026-09-10T10:00:00Z\",\n    \"updated_at\": \"2026-09-10T10:00:00Z\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"CRM\",\n    \"description\": \"Customer Relationship Management & Sales Automation\",\n    \"price\": \"7999.00\",\n    \"created_by\": 1,\n    \"created_by_name\": \"ITSOFTLAB Admin\",\n    \"created_at\": \"2026-09-10T10:05:00Z\",\n    \"updated_at\": \"2026-09-10T10:05:00Z\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "2.2 Create Product (IT / Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('productId', res.id);",
+                  "    console.log('Created product ID:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"ERP Suite Pro\",\n  \"description\": \"Enterprise Resource Planning & Supply Chain Management\",\n  \"price\": \"14999.00\",\n  \"remote_api_url\": \"https://erp.itsoftlab360.com/api/v1/users\",\n  \"api_key\": \"erp_prod_secret_token_key_998877\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/products/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "products"
+              ]
+            },
+            "description": "Create a new software product in catalog. (Role: IT or Admin only). Saves returned ID into {{productId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Product Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"ERP Suite Pro\",\n  \"description\": \"Enterprise Resource Planning & Supply Chain Management\",\n  \"price\": \"14999.00\",\n  \"remote_api_url\": \"https://erp.itsoftlab360.com/api/v1/users\",\n  \"api_key\": \"erp_prod_secret_token_key_998877\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/products/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "products"
+                  ]
+                },
+                "description": "Create a new software product in catalog. (Role: IT or Admin only). Saves returned ID into {{productId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 3,\n  \"name\": \"ERP Suite Pro\",\n  \"description\": \"Enterprise Resource Planning & Supply Chain Management\",\n  \"price\": \"14999.00\",\n  \"created_by\": 1,\n  \"created_by_name\": \"ITSOFTLAB Admin\",\n  \"created_at\": \"2026-09-18T06:00:00Z\",\n  \"updated_at\": \"2026-09-18T06:00:00Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "2.3 Retrieve Product Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/products/{{productId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "Get detailed information about a product by its ID."
+          },
+          "response": [
+            {
+              "name": "200 OK - Product Details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/products/{{productId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "products",
+                    "{{productId}}"
+                  ]
+                },
+                "description": "Get detailed information about a product by its ID."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"name\": \"HRMSM\",\n  \"description\": \"Human Resource Management Suite with Biometric & Payroll\",\n  \"price\": \"9999.00\",\n  \"created_by\": 1,\n  \"created_by_name\": \"ITSOFTLAB Admin\",\n  \"created_at\": \"2026-09-10T10:00:00Z\",\n  \"updated_at\": \"2026-09-10T10:00:00Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "2.4 Update Product (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"HRMSM Enterprise\",\n  \"description\": \"Comprehensive HRMS with AI Attendance & Multi-Company Payroll\",\n  \"price\": \"11999.00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/products/{{productId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "Full update of a product (Role: IT or Admin)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Product Updated",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"HRMSM Enterprise\",\n  \"description\": \"Comprehensive HRMS with AI Attendance & Multi-Company Payroll\",\n  \"price\": \"11999.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/products/{{productId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "products",
+                    "{{productId}}"
+                  ]
+                },
+                "description": "Full update of a product (Role: IT or Admin)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"name\": \"HRMSM Enterprise\",\n  \"description\": \"Comprehensive HRMS with AI Attendance & Multi-Company Payroll\",\n  \"price\": \"11999.00\",\n  \"created_by\": 1,\n  \"created_by_name\": \"ITSOFTLAB Admin\",\n  \"created_at\": \"2026-09-10T10:00:00Z\",\n  \"updated_at\": \"2026-09-18T06:10:00Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "2.5 Delete Product (IT only)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/products/{{productId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "products",
+                "{{productId}}"
+              ]
+            },
+            "description": "Deletes product from catalog. Restricted strictly to IT role."
+          },
+          "response": [
+            {
+              "name": "204 No Content - Deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/products/{{productId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "products",
+                    "{{productId}}"
+                  ]
+                },
+                "description": "Deletes product from catalog. Restricted strictly to IT role."
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03. Internal Users (IT, Admin, Sales, Accountant)",
+      "description": "Manage internal staff members of ITSOFTLAB360 with role-based access control.",
+      "item": [
+        {
+          "name": "3.1 List Internal Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/users/?role=Sales&search=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "role",
+                  "value": "Sales"
+                },
+                {
+                  "key": "search",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "List internal staff members. IT and Admin can view all; other roles only see themselves."
+          },
+          "response": [
+            {
+              "name": "200 OK - Users List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/users/?role=Sales&search=",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "role",
+                      "value": "Sales"
+                    },
+                    {
+                      "key": "search",
+                      "value": ""
+                    }
+                  ]
+                },
+                "description": "List internal staff members. IT and Admin can view all; other roles only see themselves."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 2,\n    \"username\": \"sales_lead_amit\",\n    \"email\": \"amit@itsoftlab360.com\",\n    \"first_name\": \"Amit\",\n    \"last_name\": \"Kumar\",\n    \"role\": \"Sales\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "3.2 Create Internal User (IT / Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('userId', res.id);",
+                  "    console.log('Created user ID:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"accountant_priya\",\n  \"password\": \"Password123!\",\n  \"email\": \"priya.acc@itsoftlab360.com\",\n  \"first_name\": \"Priya\",\n  \"last_name\": \"Verma\",\n  \"role\": \"Accountant\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "users"
+              ]
+            },
+            "description": "Create an internal staff member (Role: IT, Admin, Sales, or Accountant). Saves returned ID into {{userId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Internal User Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"accountant_priya\",\n  \"password\": \"Password123!\",\n  \"email\": \"priya.acc@itsoftlab360.com\",\n  \"first_name\": \"Priya\",\n  \"last_name\": \"Verma\",\n  \"role\": \"Accountant\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/users/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "users"
+                  ]
+                },
+                "description": "Create an internal staff member (Role: IT, Admin, Sales, or Accountant). Saves returned ID into {{userId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 5,\n  \"username\": \"accountant_priya\",\n  \"email\": \"priya.acc@itsoftlab360.com\",\n  \"first_name\": \"Priya\",\n  \"last_name\": \"Verma\",\n  \"role\": \"Accountant\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "3.3 Retrieve Internal User Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/users/{{userId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "users",
+                "{{userId}}"
+              ]
+            },
+            "description": "Retrieve user profile details by ID."
+          },
+          "response": [
+            {
+              "name": "200 OK - User Details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/users/{{userId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "users",
+                    "{{userId}}"
+                  ]
+                },
+                "description": "Retrieve user profile details by ID."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 5,\n  \"username\": \"accountant_priya\",\n  \"email\": \"priya.acc@itsoftlab360.com\",\n  \"first_name\": \"Priya\",\n  \"last_name\": \"Verma\",\n  \"role\": \"Accountant\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "3.4 Delete Internal User (IT only)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/users/{{userId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "users",
+                "{{userId}}"
+              ]
+            },
+            "description": "Deletes an internal staff member. Restricted strictly to IT role."
+          },
+          "response": [
+            {
+              "name": "204 No Content - User Deleted",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/users/{{userId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "users",
+                    "{{userId}}"
+                  ]
+                },
+                "description": "Deletes an internal staff member. Restricted strictly to IT role."
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "04. Franchise Onboarding Workflow",
+      "description": "End-to-end lifecycle for selling and provisioning a new Franchise partner:\n1. Sales creates FranchiseRequest (PENDING)\n2. Accountant reviews and Approves or Rejects\n3. Accountant generates Invoice (APPROVED -> INVOICE_GENERATED)\n4. Invoice is marked as Paid (PAID)\n5. IT completes onboarding and creates the Franchise instance & catalog (COMPLETED)",
+      "item": [
+        {
+          "name": "4.1 [Sales] Create Franchise Onboarding Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('franchiseRequestId', res.id);",
+                  "    console.log('Created franchiseRequestId:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"proposed_franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"proposed_address\": \"Suite 404, Electronic City Phase 1\",\n  \"proposed_city\": \"Bangalore\",\n  \"proposed_state\": \"Karnataka\",\n  \"client_name\": \"Rohan Deshmukh\",\n  \"client_email\": \"rohan.deshmukh@metrotech.in\",\n  \"client_phone\": \"9876501234\",\n  \"client_gstin\": \"29AAAAA0000A1Z5\",\n  \"billing_address\": \"404 Tech Tower, Hosur Road\",\n  \"billing_city\": \"Bangalore\",\n  \"billing_state\": \"Karnataka\",\n  \"billing_pincode\": \"560100\",\n  \"billing_country\": \"India\",\n  \"quoted_amount\": \"250000.00\",\n  \"notes\": \"Premium franchise tier including HRMS and CRM rights\",\n  \"product_ids\": [\n    1,\n    2\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests"
+              ]
+            },
+            "description": "Sales creates a franchise onboarding request with selected products. (Status: PENDING). Captures ID into {{franchiseRequestId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Franchise Request Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"proposed_franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"proposed_address\": \"Suite 404, Electronic City Phase 1\",\n  \"proposed_city\": \"Bangalore\",\n  \"proposed_state\": \"Karnataka\",\n  \"client_name\": \"Rohan Deshmukh\",\n  \"client_email\": \"rohan.deshmukh@metrotech.in\",\n  \"client_phone\": \"9876501234\",\n  \"client_gstin\": \"29AAAAA0000A1Z5\",\n  \"billing_address\": \"404 Tech Tower, Hosur Road\",\n  \"billing_city\": \"Bangalore\",\n  \"billing_state\": \"Karnataka\",\n  \"billing_pincode\": \"560100\",\n  \"billing_country\": \"India\",\n  \"quoted_amount\": \"250000.00\",\n  \"notes\": \"Premium franchise tier including HRMS and CRM rights\",\n  \"product_ids\": [\n    1,\n    2\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests"
+                  ]
+                },
+                "description": "Sales creates a franchise onboarding request with selected products. (Status: PENDING). Captures ID into {{franchiseRequestId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"requested_by\": 2,\n  \"requested_by_name\": \"Amit Kumar\",\n  \"proposed_franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"proposed_address\": \"Suite 404, Electronic City Phase 1\",\n  \"client_name\": \"Rohan Deshmukh\",\n  \"client_email\": \"rohan.deshmukh@metrotech.in\",\n  \"client_phone\": \"9876501234\",\n  \"quoted_amount\": \"250000.00\",\n  \"status\": \"pending\",\n  \"status_display\": \"Pending\",\n  \"products\": [\n    {\n      \"id\": 1,\n      \"name\": \"HRMSM\",\n      \"price\": \"9999.00\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"CRM\",\n      \"price\": \"7999.00\"\n    }\n  ],\n  \"created_at\": \"2026-09-18T06:15:00Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "4.2 List Franchise Requests (Filtered by Status)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/?status=pending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            },
+            "description": "Accountant and IT can review pending requests in the onboarding pipeline."
+          },
+          "response": [
+            {
+              "name": "200 OK - Pending Requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/?status=pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "pending"
+                    }
+                  ]
+                },
+                "description": "Accountant and IT can review pending requests in the onboarding pipeline."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"proposed_franchise_name\": \"Metro Tech Bangalore Franchise\",\n    \"client_name\": \"Rohan Deshmukh\",\n    \"client_email\": \"rohan.deshmukh@metrotech.in\",\n    \"quoted_amount\": \"250000.00\",\n    \"status\": \"pending\",\n    \"status_display\": \"Pending\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "4.3 [Accountant] Approve Franchise Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/approve/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests",
+                "{{franchiseRequestId}}",
+                "approve"
+              ]
+            },
+            "description": "Accountant approves the commercial terms of the request. (Role: Accountant only. Transitions status from PENDING to APPROVED)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Request Approved",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/approve/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests",
+                    "{{franchiseRequestId}}",
+                    "approve"
+                  ]
+                },
+                "description": "Accountant approves the commercial terms of the request. (Role: Accountant only. Transitions status from PENDING to APPROVED)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"detail\": \"Franchise request approved.\",\n  \"request_id\": 1,\n  \"status\": \"approved\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "4.4 [Accountant] Reject Franchise Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rejection_reason\": \"Incomplete GST verification documents provided by applicant.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/reject/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests",
+                "{{franchiseRequestId}}",
+                "reject"
+              ]
+            },
+            "description": "Accountant rejects request with mandatory reason. (Role: Accountant only)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Request Rejected",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rejection_reason\": \"Incomplete GST verification documents provided by applicant.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/reject/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests",
+                    "{{franchiseRequestId}}",
+                    "reject"
+                  ]
+                },
+                "description": "Accountant rejects request with mandatory reason. (Role: Accountant only)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"detail\": \"Franchise request rejected.\",\n  \"status\": \"rejected\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "4.5 [Accountant] Create Invoice from Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201 || pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.invoice_id) {",
+                  "        pm.collectionVariables.set('invoiceId', res.invoice_id);",
+                  "        console.log('Created invoice ID:', res.invoice_id);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tax_percentage\": \"18.00\",\n  \"discount_amount\": \"10000.00\",\n  \"due_days\": 15,\n  \"notes\": \"Franchise onboarding license fee for Bangalore region\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/create-invoice/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests",
+                "{{franchiseRequestId}}",
+                "create-invoice"
+              ]
+            },
+            "description": "Accountant generates GST invoice for approved request. Saves {{invoiceId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Invoice Generated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tax_percentage\": \"18.00\",\n  \"discount_amount\": \"10000.00\",\n  \"due_days\": 15,\n  \"notes\": \"Franchise onboarding license fee for Bangalore region\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/create-invoice/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests",
+                    "{{franchiseRequestId}}",
+                    "create-invoice"
+                  ]
+                },
+                "description": "Accountant generates GST invoice for approved request. Saves {{invoiceId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"detail\": \"Invoice created successfully.\",\n  \"invoice_id\": 1,\n  \"invoice_number\": \"INV-2026-0001\",\n  \"total_amount\": \"283200.00\",\n  \"balance_due\": \"283200.00\",\n  \"status\": \"sent\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "4.6 [Accountant/Admin] Mark Request as Paid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/mark-paid/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests",
+                "{{franchiseRequestId}}",
+                "mark-paid"
+              ]
+            },
+            "description": "Verifies payment received on the linked invoice and marks request status as PAID (queued for IT completion)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Request Marked Paid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/mark-paid/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests",
+                    "{{franchiseRequestId}}",
+                    "mark-paid"
+                  ]
+                },
+                "description": "Verifies payment received on the linked invoice and marks request status as PAID (queued for IT completion)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"detail\": \"Franchise request marked as paid.\",\n  \"status\": \"paid\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "4.7 [IT] Complete & Provision Franchise",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201 || pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.franchise_id) {",
+                  "        pm.collectionVariables.set('franchiseId', res.franchise_id);",
+                  "        console.log('Created Franchise ID:', res.franchise_id);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/complete/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-requests",
+                "{{franchiseRequestId}}",
+                "complete"
+              ]
+            },
+            "description": "IT fulfills the paid request. Creates Franchise model record, assigns purchased product inventory, and marks request as COMPLETED. (Role: IT only). Saves {{franchiseId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Franchise Provisioned",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-requests/{{franchiseRequestId}}/complete/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-requests",
+                    "{{franchiseRequestId}}",
+                    "complete"
+                  ]
+                },
+                "description": "IT fulfills the paid request. Creates Franchise model record, assigns purchased product inventory, and marks request as COMPLETED. (Role: IT only). Saves {{franchiseId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"detail\": \"Franchise created successfully.\",\n  \"franchise_id\": 4,\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"products\": [\n    {\n      \"id\": 1,\n      \"name\": \"HRMSM\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"CRM\"\n    }\n  ],\n  \"request_status\": \"completed\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "05. Active Franchises & Franchise Staff",
+      "description": "View, activate, deactivate, or delete franchises and manage franchise admin logins.",
+      "item": [
+        {
+          "name": "5.1 List All Franchises",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchises/?is_active=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchises"
+              ],
+              "query": [
+                {
+                  "key": "is_active",
+                  "value": "true"
+                }
+              ]
+            },
+            "description": "List all active franchises with purchased product catalogs."
+          },
+          "response": [
+            {
+              "name": "200 OK - Franchises List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchises/?is_active=true",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchises"
+                  ],
+                  "query": [
+                    {
+                      "key": "is_active",
+                      "value": "true"
+                    }
+                  ]
+                },
+                "description": "List all active franchises with purchased product catalogs."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 4,\n    \"name\": \"Metro Tech Bangalore Franchise\",\n    \"address\": \"Suite 404, Electronic City Phase 1\",\n    \"is_active\": true,\n    \"products\": [\n      1,\n      2\n    ],\n    \"product_names\": [\n      \"HRMSM\",\n      \"CRM\"\n    ],\n    \"created_by_name\": \"ITSOFTLAB Admin\",\n    \"created_at\": \"2026-09-18T06:30:00Z\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "5.2 Retrieve Franchise Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchises/{{franchiseId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchises",
+                "{{franchiseId}}"
+              ]
+            },
+            "description": "Get franchise information and licensed product catalog."
+          },
+          "response": [
+            {
+              "name": "200 OK - Franchise Details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchises/{{franchiseId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchises",
+                    "{{franchiseId}}"
+                  ]
+                },
+                "description": "Get franchise information and licensed product catalog."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 4,\n  \"name\": \"Metro Tech Bangalore Franchise\",\n  \"address\": \"Suite 404, Electronic City Phase 1\",\n  \"is_active\": true,\n  \"products\": [\n    1,\n    2\n  ],\n  \"product_names\": [\n    \"HRMSM\",\n    \"CRM\"\n  ],\n  \"created_by_name\": \"ITSOFTLAB Admin\",\n  \"created_at\": \"2026-09-18T06:30:00Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "5.3 Activate Franchise (IT / Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchises/{{franchiseId}}/activate/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchises",
+                "{{franchiseId}}",
+                "activate"
+              ]
+            },
+            "description": "Activates a franchise. (Role: IT or Admin only)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Activated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchises/{{franchiseId}}/activate/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchises",
+                    "{{franchiseId}}",
+                    "activate"
+                  ]
+                },
+                "description": "Activates a franchise. (Role: IT or Admin only)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Franchise activated successfully.\",\n  \"id\": 4,\n  \"is_active\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "5.4 Deactivate Franchise (IT / Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchises/{{franchiseId}}/deactivate/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchises",
+                "{{franchiseId}}",
+                "deactivate"
+              ]
+            },
+            "description": "Deactivates a franchise. (Role: IT or Admin only)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Deactivated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchises/{{franchiseId}}/deactivate/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchises",
+                    "{{franchiseId}}",
+                    "deactivate"
+                  ]
+                },
+                "description": "Deactivates a franchise. (Role: IT or Admin only)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Franchise deactivated successfully.\",\n  \"id\": 4,\n  \"is_active\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "5.5 List Franchise Staff Profiles",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-users/?franchise={{franchiseId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-users"
+              ],
+              "query": [
+                {
+                  "key": "franchise",
+                  "value": "{{franchiseId}}"
+                }
+              ]
+            },
+            "description": "List profiles of users tied to franchises."
+          },
+          "response": [
+            {
+              "name": "200 OK - Franchise Users List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-users/?franchise={{franchiseId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-users"
+                  ],
+                  "query": [
+                    {
+                      "key": "franchise",
+                      "value": "{{franchiseId}}"
+                    }
+                  ]
+                },
+                "description": "List profiles of users tied to franchises."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"user\": 12,\n    \"username\": \"franchise_admin_mumbai\",\n    \"franchise\": 4,\n    \"franchise_name\": \"Metro Tech Mumbai Franchise\",\n    \"role\": \"FRANCHISE_ADMIN\",\n    \"created_at\": \"2026-09-18T06:35:00Z\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "5.6 Create Franchise Admin Login (IT / Admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('franchiseUserId', res.id);",
+                  "    console.log('Created FranchiseUserProfile ID:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user\": 15,\n  \"franchise\": 4,\n  \"role\": \"FRANCHISE_ADMIN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/franchise-users/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "franchise-users"
+              ]
+            },
+            "description": "Links a User account to a Franchise with role FRANCHISE_ADMIN. Saves {{franchiseUserId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Profile Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user\": 15,\n  \"franchise\": 4,\n  \"role\": \"FRANCHISE_ADMIN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/franchise-users/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "franchise-users"
+                  ]
+                },
+                "description": "Links a User account to a Franchise with role FRANCHISE_ADMIN. Saves {{franchiseUserId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 2,\n  \"user\": 15,\n  \"username\": \"fadmin_bangalore\",\n  \"franchise\": 4,\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"role\": \"FRANCHISE_ADMIN\",\n  \"created_at\": \"2026-09-18T06:40:00Z\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "06. Franchise Invoices Directory (HQ to Franchise)",
+      "description": "HQ-to-Franchise Invoices generated during the franchise onboarding and licensing lifecycle.",
+      "item": [
+        {
+          "name": "6.1 List Invoices (Filtered by Status)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/invoices/?status=sent&ordering=-invoice_date",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "sent"
+                },
+                {
+                  "key": "ordering",
+                  "value": "-invoice_date"
+                }
+              ]
+            },
+            "description": "List invoices generated by HQ for franchise onboarding."
+          },
+          "response": [
+            {
+              "name": "200 OK - Invoices List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/invoices/?status=sent&ordering=-invoice_date",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "sent"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "-invoice_date"
+                    }
+                  ]
+                },
+                "description": "List invoices generated by HQ for franchise onboarding."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"invoice_number\": \"INV-2026-0001\",\n    \"franchise\": 4,\n    \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n    \"customer_name\": \"Rohan Deshmukh\",\n    \"customer_email\": \"rohan.deshmukh@metrotech.in\",\n    \"total_amount\": \"283200.00\",\n    \"amount_paid\": \"0.00\",\n    \"balance_due\": \"283200.00\",\n    \"status\": \"sent\",\n    \"status_display\": \"Sent\",\n    \"invoice_date\": \"2026-09-18\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "6.2 Retrieve Invoice Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/invoices/{{invoiceId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "invoices",
+                "{{invoiceId}}"
+              ]
+            },
+            "description": "Get breakdown of an invoice including line items and balance due."
+          },
+          "response": [
+            {
+              "name": "200 OK - Invoice Details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/invoices/{{invoiceId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "invoices",
+                    "{{invoiceId}}"
+                  ]
+                },
+                "description": "Get breakdown of an invoice including line items and balance due."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"invoice_number\": \"INV-2026-0001\",\n  \"franchise\": 4,\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"customer_name\": \"Rohan Deshmukh\",\n  \"customer_email\": \"rohan.deshmukh@metrotech.in\",\n  \"subtotal\": \"250000.00\",\n  \"discount_amount\": \"10000.00\",\n  \"taxable_amount\": \"240000.00\",\n  \"tax_amount\": \"43200.00\",\n  \"total_amount\": \"283200.00\",\n  \"amount_paid\": \"0.00\",\n  \"balance_due\": \"283200.00\",\n  \"status\": \"sent\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "6.3 [Accountant] Mark Invoice as Paid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"283200.00\",\n  \"payment_method\": \"Bank Transfer\",\n  \"transaction_id\": \"NEFT-AXIS-20260918-998811\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/invoices/{{invoiceId}}/mark-paid/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "invoices",
+                "{{invoiceId}}",
+                "mark-paid"
+              ]
+            },
+            "description": "Records payment for the invoice. (Role: Accountant or Admin). Automatically synchronizes franchise request to PAID."
+          },
+          "response": [
+            {
+              "name": "200 OK - Invoice Paid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"283200.00\",\n  \"payment_method\": \"Bank Transfer\",\n  \"transaction_id\": \"NEFT-AXIS-20260918-998811\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users/invoices/{{invoiceId}}/mark-paid/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users",
+                    "invoices",
+                    "{{invoiceId}}",
+                    "mark-paid"
+                  ]
+                },
+                "description": "Records payment for the invoice. (Role: Accountant or Admin). Automatically synchronizes franchise request to PAID."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Invoice marked as paid successfully.\",\n  \"invoice\": {\n    \"id\": 1,\n    \"invoice_number\": \"INV-2026-0001\",\n    \"status\": \"paid\",\n    \"amount_paid\": \"283200.00\",\n    \"balance_due\": \"0.00\",\n    \"payment_method\": \"Bank Transfer\",\n    \"transaction_id\": \"NEFT-AXIS-20260918-998811\"\n  }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "07. Franchise Team Management (Franchise Admin)",
+      "description": "Franchise Admin creates and manages their regional team:\n- FRANCHISE_SALES (sells SaaS to client organizations)\n- FRANCHISE_ACCOUNTANT (issues invoices & tracks client payment)\n- FRANCHISE_IT (fulfills requests & provisions organizations)",
+      "item": [
+        {
+          "name": "7.1 List Franchise Team Members",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/team/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "team"
+              ]
+            },
+            "description": "List all members of the requesting user's franchise team."
+          },
+          "response": [
+            {
+              "name": "200 OK - Team Members",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/team/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "team"
+                  ]
+                },
+                "description": "List all members of the requesting user's franchise team."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"user_id\": 20,\n    \"user_username\": \"fsales_sam\",\n    \"user_email\": \"sam.sales@metrotech.in\",\n    \"user_first_name\": \"Sam\",\n    \"user_last_name\": \"Sales\",\n    \"role\": \"FRANCHISE_SALES\",\n    \"franchise_name\": \"Metro Tech Bangalore Franchise\"\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "7.2 [Franchise Admin] Create Franchise Sales Member",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('teamMemberId', res.id);",
+                  "    console.log('Created team member ID:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"fsales_vikram\",\n  \"password\": \"Password123!\",\n  \"email\": \"vikram.sales@metrotech.in\",\n  \"first_name\": \"Vikram\",\n  \"last_name\": \"Sales\",\n  \"role\": \"FRANCHISE_SALES\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/team/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "team"
+              ]
+            },
+            "description": "Franchise Admin provisions a Franchise Sales user. Saves {{teamMemberId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Sales Member Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"fsales_vikram\",\n  \"password\": \"Password123!\",\n  \"email\": \"vikram.sales@metrotech.in\",\n  \"first_name\": \"Vikram\",\n  \"last_name\": \"Sales\",\n  \"role\": \"FRANCHISE_SALES\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/team/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "team"
+                  ]
+                },
+                "description": "Franchise Admin provisions a Franchise Sales user. Saves {{teamMemberId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 3,\n  \"user_id\": 22,\n  \"user_username\": \"fsales_vikram\",\n  \"user_email\": \"vikram.sales@metrotech.in\",\n  \"user_first_name\": \"Vikram\",\n  \"user_last_name\": \"Sales\",\n  \"role\": \"FRANCHISE_SALES\",\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "7.3 [Franchise Admin] Create Franchise Accountant Member",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"facc_deepa\",\n  \"password\": \"Password123!\",\n  \"email\": \"deepa.acc@metrotech.in\",\n  \"first_name\": \"Deepa\",\n  \"last_name\": \"Accountant\",\n  \"role\": \"FRANCHISE_ACCOUNTANT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/team/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "team"
+              ]
+            },
+            "description": "Franchise Admin provisions a Franchise Accountant user."
+          },
+          "response": [
+            {
+              "name": "201 Created - Accountant Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"facc_deepa\",\n  \"password\": \"Password123!\",\n  \"email\": \"deepa.acc@metrotech.in\",\n  \"first_name\": \"Deepa\",\n  \"last_name\": \"Accountant\",\n  \"role\": \"FRANCHISE_ACCOUNTANT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/team/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "team"
+                  ]
+                },
+                "description": "Franchise Admin provisions a Franchise Accountant user."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 4,\n  \"user_id\": 23,\n  \"user_username\": \"facc_deepa\",\n  \"user_email\": \"deepa.acc@metrotech.in\",\n  \"user_first_name\": \"Deepa\",\n  \"user_last_name\": \"Accountant\",\n  \"role\": \"FRANCHISE_ACCOUNTANT\",\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "7.4 [Franchise Admin] Create Franchise IT Member",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"fit_karan\",\n  \"password\": \"Password123!\",\n  \"email\": \"karan.it@metrotech.in\",\n  \"first_name\": \"Karan\",\n  \"last_name\": \"Engineer\",\n  \"role\": \"FRANCHISE_IT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/team/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "team"
+              ]
+            },
+            "description": "Franchise Admin provisions a Franchise IT user."
+          },
+          "response": [
+            {
+              "name": "201 Created - IT Member Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"fit_karan\",\n  \"password\": \"Password123!\",\n  \"email\": \"karan.it@metrotech.in\",\n  \"first_name\": \"Karan\",\n  \"last_name\": \"Engineer\",\n  \"role\": \"FRANCHISE_IT\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/team/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "team"
+                  ]
+                },
+                "description": "Franchise Admin provisions a Franchise IT user."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 5,\n  \"user_id\": 24,\n  \"user_username\": \"fit_karan\",\n  \"user_email\": \"karan.it@metrotech.in\",\n  \"user_first_name\": \"Karan\",\n  \"user_last_name\": \"Engineer\",\n  \"role\": \"FRANCHISE_IT\",\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "08. Franchise Client Sales, Billing & IT Provisioning",
+      "description": "The complete Franchise-to-Client Onboarding Pipeline:\n1. Franchise Sales raises ClientLicenseRequest\n2. Guard: Cannot sell products not held in franchise catalog\n3. Franchise Accountant generates ClientInvoice\n4. Client payment clears (Mark Paid -> status='paid')\n5. Franchise IT fulfills request: Provisions Organization, Subscriptions, and Organization Administrator with 0 license seat consumption!",
+      "item": [
+        {
+          "name": "8.1 [Franchise Sales] Raise Client License Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('clientRequestId', res.id);",
+                  "    console.log('Created ClientLicenseRequest ID:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_name\": \"Dr. Rajesh Sharma\",\n  \"client_email\": \"rajesh.sharma@apollohospital.com\",\n  \"client_phone\": \"9876543210\",\n  \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n  \"billing_address\": \"Sarita Vihar, Mathura Road\",\n  \"city\": \"New Delhi\",\n  \"state\": \"Delhi\",\n  \"pincode\": \"110076\",\n  \"country\": \"India\",\n  \"customer_gstin\": \"07AAAAA0000A1Z5\",\n  \"notes\": \"Enterprise hospital onboarding for HRMS and CRM\",\n  \"items\": [\n    {\n      \"product\": 1,\n      \"license_count\": 10,\n      \"duration_months\": 12,\n      \"quoted_price\": \"1000.00\"\n    },\n    {\n      \"product\": 2,\n      \"license_count\": 5,\n      \"duration_months\": 12,\n      \"quoted_price\": \"800.00\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/license-requests/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "license-requests"
+              ]
+            },
+            "description": "Franchise Sales team raises request for prospective enterprise client. Validates that products belong to Franchise inventory. Saves {{clientRequestId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Request Raised",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_name\": \"Dr. Rajesh Sharma\",\n  \"client_email\": \"rajesh.sharma@apollohospital.com\",\n  \"client_phone\": \"9876543210\",\n  \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n  \"billing_address\": \"Sarita Vihar, Mathura Road\",\n  \"city\": \"New Delhi\",\n  \"state\": \"Delhi\",\n  \"pincode\": \"110076\",\n  \"country\": \"India\",\n  \"customer_gstin\": \"07AAAAA0000A1Z5\",\n  \"notes\": \"Enterprise hospital onboarding for HRMS and CRM\",\n  \"items\": [\n    {\n      \"product\": 1,\n      \"license_count\": 10,\n      \"duration_months\": 12,\n      \"quoted_price\": \"1000.00\"\n    },\n    {\n      \"product\": 2,\n      \"license_count\": 5,\n      \"duration_months\": 12,\n      \"quoted_price\": \"800.00\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/license-requests/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "license-requests"
+                  ]
+                },
+                "description": "Franchise Sales team raises request for prospective enterprise client. Validates that products belong to Franchise inventory. Saves {{clientRequestId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"franchise\": 4,\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"client_name\": \"Dr. Rajesh Sharma\",\n  \"client_email\": \"rajesh.sharma@apollohospital.com\",\n  \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n  \"status\": \"pending\",\n  \"items\": [\n    {\n      \"id\": 1,\n      \"product\": 1,\n      \"product_name\": \"HRMSM\",\n      \"license_count\": 10,\n      \"duration_months\": 12,\n      \"quoted_price\": \"1000.00\"\n    },\n    {\n      \"id\": 2,\n      \"product\": 2,\n      \"product_name\": \"CRM\",\n      \"license_count\": 5,\n      \"duration_months\": 12,\n      \"quoted_price\": \"800.00\"\n    }\n  ],\n  \"created_at\": \"2026-09-18T07:00:00Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "8.2 List Client License Requests (IT & Accountant Queue)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/license-requests/?status=pending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "license-requests"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            },
+            "description": "List client license requests filtered by status ('pending', 'invoice_generated', 'paid', 'provisioned')."
+          },
+          "response": [
+            {
+              "name": "200 OK - Requests List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/license-requests/?status=pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "license-requests"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "pending"
+                    }
+                  ]
+                },
+                "description": "List client license requests filtered by status ('pending', 'invoice_generated', 'paid', 'provisioned')."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"client_name\": \"Dr. Rajesh Sharma\",\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"status\": \"pending\",\n    \"invoice_number\": null\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "8.3 [Franchise Accountant] Generate Client Invoice",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('clientInvoiceId', res.invoice.id);",
+                  "    console.log('Created ClientInvoice ID:', res.invoice.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tax_percentage\": \"18.00\",\n  \"discount_amount\": \"0.00\",\n  \"due_days\": 15,\n  \"send_email\": true,\n  \"notes\": \"Annual package for HRMS and CRM suite. Payment terms: net 15 days.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/license-requests/{{clientRequestId}}/generate-invoice/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "license-requests",
+                "{{clientRequestId}}",
+                "generate-invoice"
+              ]
+            },
+            "description": "Franchise Accountant creates ClientInvoice, computes 18% GST, dispatches email to client, and links invoice to request. Saves {{clientInvoiceId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Client Invoice Generated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tax_percentage\": \"18.00\",\n  \"discount_amount\": \"0.00\",\n  \"due_days\": 15,\n  \"send_email\": true,\n  \"notes\": \"Annual package for HRMS and CRM suite. Payment terms: net 15 days.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/license-requests/{{clientRequestId}}/generate-invoice/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "license-requests",
+                    "{{clientRequestId}}",
+                    "generate-invoice"
+                  ]
+                },
+                "description": "Franchise Accountant creates ClientInvoice, computes 18% GST, dispatches email to client, and links invoice to request. Saves {{clientInvoiceId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"ClientInvoice INV-FR-4-ABCD12 generated successfully.\",\n  \"invoice\": {\n    \"id\": 1,\n    \"invoice_number\": \"INV-FR-4-ABCD12\",\n    \"customer_name\": \"Dr. Rajesh Sharma\",\n    \"customer_email\": \"rajesh.sharma@apollohospital.com\",\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"subtotal\": \"14000.00\",\n    \"tax_amount\": \"2520.00\",\n    \"total_amount\": \"16520.00\",\n    \"status\": \"sent\",\n    \"email_sent\": true\n  },\n  \"request_status\": \"invoice_generated\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "8.4 [Franchise Accountant] Mark Client Invoice as Paid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_method\": \"upi\",\n  \"transaction_id\": \"UPI-HDFC-20260918-SUCCESS\",\n  \"amount\": \"16520.00\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/invoices/{{clientInvoiceId}}/mark-paid/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "invoices",
+                "{{clientInvoiceId}}",
+                "mark-paid"
+              ]
+            },
+            "description": "Records full payment from client. Automatically advances linked ClientLicenseRequest status to 'paid' (queued in IT fulfillment queue)."
+          },
+          "response": [
+            {
+              "name": "200 OK - Invoice Paid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_method\": \"upi\",\n  \"transaction_id\": \"UPI-HDFC-20260918-SUCCESS\",\n  \"amount\": \"16520.00\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/invoices/{{clientInvoiceId}}/mark-paid/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "invoices",
+                    "{{clientInvoiceId}}",
+                    "mark-paid"
+                  ]
+                },
+                "description": "Records full payment from client. Automatically advances linked ClientLicenseRequest status to 'paid' (queued in IT fulfillment queue)."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Invoice INV-FR-4-ABCD12 marked as paid.\",\n  \"invoice\": {\n    \"id\": 1,\n    \"invoice_number\": \"INV-FR-4-ABCD12\",\n    \"status\": \"paid\",\n    \"total_amount\": \"16520.00\",\n    \"amount_paid\": \"16520.00\",\n    \"balance_due\": \"0.00\",\n    \"payment_method\": \"upi\",\n    \"transaction_id\": \"UPI-HDFC-20260918-SUCCESS\"\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "8.5 [Franchise IT] Fulfill Request & Provision Organization",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.result && res.result.organization_id) {",
+                  "        pm.collectionVariables.set('organizationId', res.result.organization_id);",
+                  "        console.log('Provisioned Organization ID:', res.result.organization_id);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"org_admin_username\": \"apollo_admin\",\n  \"org_admin_email\": \"admin@apollohospital.com\",\n  \"org_admin_password\": \"OrgAdminPassword123!\",\n  \"org_admin_first_name\": \"Rajesh\",\n  \"org_admin_last_name\": \"Sharma\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/license-requests/{{clientRequestId}}/fulfill/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "license-requests",
+                "{{clientRequestId}}",
+                "fulfill"
+              ]
+            },
+            "description": "IT fulfills paid request: Provisions Organization, Subscriptions, and Organization Admin user. Guarantees 0 license seats are consumed by the admin user! Saves {{organizationId}}."
+          },
+          "response": [
+            {
+              "name": "200 OK - Organization Provisioned",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"org_admin_username\": \"apollo_admin\",\n  \"org_admin_email\": \"admin@apollohospital.com\",\n  \"org_admin_password\": \"OrgAdminPassword123!\",\n  \"org_admin_first_name\": \"Rajesh\",\n  \"org_admin_last_name\": \"Sharma\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/license-requests/{{clientRequestId}}/fulfill/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "license-requests",
+                    "{{clientRequestId}}",
+                    "fulfill"
+                  ]
+                },
+                "description": "IT fulfills paid request: Provisions Organization, Subscriptions, and Organization Admin user. Guarantees 0 license seats are consumed by the admin user! Saves {{organizationId}}."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Organization provisioned successfully by IT team.\",\n  \"result\": {\n    \"organization_id\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"org_admin_username\": \"apollo_admin\",\n    \"subscriptions_count\": 2,\n    \"subscriptions\": [\n      {\n        \"product_id\": 1,\n        \"product_name\": \"HRMSM\",\n        \"license_count\": 10,\n        \"available_licenses\": 10,\n        \"license_key\": \"9a8b7c6d-5e4f-3a2b-1c0d-ef9876543210\",\n        \"status\": \"active\"\n      },\n      {\n        \"product_id\": 2,\n        \"product_name\": \"CRM\",\n        \"license_count\": 5,\n        \"available_licenses\": 5,\n        \"license_key\": \"1a2b3c4d-5e6f-7a8b-9c0d-ef1234567890\",\n        \"status\": \"active\"\n      }\n    ]\n  },\n  \"request_status\": \"provisioned\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "09. Franchise Client Invoices & Dispatch",
+      "description": "Franchise-to-Client Invoices directory, resending invoice emails, and manual invoice management.",
+      "item": [
+        {
+          "name": "9.1 List Franchise Client Invoices",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/invoices/?status=paid",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "invoices"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "paid"
+                }
+              ]
+            },
+            "description": "List all invoices issued by this franchise to client organizations."
+          },
+          "response": [
+            {
+              "name": "200 OK - Client Invoices List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/invoices/?status=paid",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "paid"
+                    }
+                  ]
+                },
+                "description": "List all invoices issued by this franchise to client organizations."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"invoice_number\": \"INV-FR-4-ABCD12\",\n    \"customer_name\": \"Dr. Rajesh Sharma\",\n    \"customer_email\": \"rajesh.sharma@apollohospital.com\",\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"total_amount\": \"16520.00\",\n    \"amount_paid\": \"16520.00\",\n    \"balance_due\": \"0.00\",\n    \"status\": \"paid\",\n    \"payment_method\": \"upi\",\n    \"email_sent\": true\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "9.2 [Franchise Accountant] Resend Invoice Email to Client",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"finance@apollohospital.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/invoices/{{clientInvoiceId}}/send-email/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "invoices",
+                "{{clientInvoiceId}}",
+                "send-email"
+              ]
+            },
+            "description": "Sends or resends the digital PDF invoice to client's finance contact."
+          },
+          "response": [
+            {
+              "name": "200 OK - Email Dispatched",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"finance@apollohospital.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/invoices/{{clientInvoiceId}}/send-email/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "invoices",
+                    "{{clientInvoiceId}}",
+                    "send-email"
+                  ]
+                },
+                "description": "Sends or resends the digital PDF invoice to client's finance contact."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Invoice INV-FR-4-ABCD12 sent to finance@apollohospital.com.\",\n  \"invoice\": {\n    \"id\": 1,\n    \"invoice_number\": \"INV-FR-4-ABCD12\",\n    \"email_sent\": true,\n    \"email_recipient\": \"finance@apollohospital.com\"\n  }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "10. Client Organizations Directory",
+      "description": "Create and manage customer organizations (Hospitals, Enterprises, Schools) that license software from the franchise.",
+      "item": [
+        {
+          "name": "10.1 List Client Organizations",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organizations/?city=New Delhi",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organizations"
+              ],
+              "query": [
+                {
+                  "key": "city",
+                  "value": "New Delhi"
+                }
+              ]
+            },
+            "description": "List client organizations belonging to this franchise."
+          },
+          "response": [
+            {
+              "name": "200 OK - Organizations List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organizations/?city=New Delhi",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organizations"
+                  ],
+                  "query": [
+                    {
+                      "key": "city",
+                      "value": "New Delhi"
+                    }
+                  ]
+                },
+                "description": "List client organizations belonging to this franchise."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 8,\n    \"name\": \"Apollo Multi-Speciality Hospital\",\n    \"email\": \"admin@apollohospital.com\",\n    \"phone\": \"9876543210\",\n    \"city\": \"New Delhi\",\n    \"state\": \"Delhi\",\n    \"country\": \"India\",\n    \"franchise\": 4,\n    \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n    \"subscriptions_count\": 2,\n    \"active_licenses_count\": 15\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "10.2 Create Client Organization Directly",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('organizationId', res.id);",
+                  "    console.log('Created Organization ID:', res.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Fortis Healthcare South\",\n  \"email\": \"contact@fortishealthcare.com\",\n  \"phone\": \"9811223344\",\n  \"gstin\": \"29BBBBB1111B2Z6\",\n  \"address\": \"Bannerghatta Main Road\",\n  \"city\": \"Bangalore\",\n  \"state\": \"Karnataka\",\n  \"pincode\": \"560076\",\n  \"country\": \"India\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organizations/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organizations"
+              ]
+            },
+            "description": "Directly create an organization profile under the requesting franchise. Saves {{organizationId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Organization Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Fortis Healthcare South\",\n  \"email\": \"contact@fortishealthcare.com\",\n  \"phone\": \"9811223344\",\n  \"gstin\": \"29BBBBB1111B2Z6\",\n  \"address\": \"Bannerghatta Main Road\",\n  \"city\": \"Bangalore\",\n  \"state\": \"Karnataka\",\n  \"pincode\": \"560076\",\n  \"country\": \"India\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organizations/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organizations"
+                  ]
+                },
+                "description": "Directly create an organization profile under the requesting franchise. Saves {{organizationId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 9,\n  \"name\": \"Fortis Healthcare South\",\n  \"email\": \"contact@fortishealthcare.com\",\n  \"phone\": \"9811223344\",\n  \"city\": \"Bangalore\",\n  \"state\": \"Karnataka\",\n  \"franchise\": 4,\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"subscriptions_count\": 0,\n  \"active_licenses_count\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "10.3 Retrieve Organization Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organizations/{{organizationId}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organizations",
+                "{{organizationId}}"
+              ]
+            },
+            "description": "Retrieve organization data and total active license capacity."
+          },
+          "response": [
+            {
+              "name": "200 OK - Organization Details",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organizations/{{organizationId}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organizations",
+                    "{{organizationId}}"
+                  ]
+                },
+                "description": "Retrieve organization data and total active license capacity."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 8,\n  \"name\": \"Apollo Multi-Speciality Hospital\",\n  \"email\": \"admin@apollohospital.com\",\n  \"phone\": \"9876543210\",\n  \"city\": \"New Delhi\",\n  \"state\": \"Delhi\",\n  \"franchise\": 4,\n  \"franchise_name\": \"Metro Tech Bangalore Franchise\",\n  \"subscriptions_count\": 2,\n  \"active_licenses_count\": 15\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "11. Organization SaaS Subscriptions & Verification API",
+      "description": "Manage organization subscriptions, license seat counts, validity dates, unique license keys, and the public external verification API for the 12 industry portals.",
+      "item": [
+        {
+          "name": "11.1 List Organization Subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/subscriptions/?organization={{organizationId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "subscriptions"
+              ],
+              "query": [
+                {
+                  "key": "organization",
+                  "value": "{{organizationId}}"
+                }
+              ]
+            },
+            "description": "List subscriptions showing product name, license_count, used_licenses, available_licenses, and validity."
+          },
+          "response": [
+            {
+              "name": "200 OK - Subscriptions List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/subscriptions/?organization={{organizationId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "{{organizationId}}"
+                    }
+                  ]
+                },
+                "description": "List subscriptions showing product name, license_count, used_licenses, available_licenses, and validity."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"organization\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"product\": 1,\n    \"product_name\": \"HRMSM\",\n    \"product_price\": \"9999.00\",\n    \"license_count\": 10,\n    \"used_licenses\": 2,\n    \"available_licenses\": 8,\n    \"license_key\": \"9a8b7c6d-5e4f-3a2b-1c0d-ef9876543210\",\n    \"subscription_start\": \"2026-09-18\",\n    \"subscription_end\": \"2027-09-18\",\n    \"status\": \"active\",\n    \"is_active\": true,\n    \"is_valid\": true\n  },\n  {\n    \"id\": 2,\n    \"organization\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"product\": 2,\n    \"product_name\": \"CRM\",\n    \"product_price\": \"7999.00\",\n    \"license_count\": 5,\n    \"used_licenses\": 1,\n    \"available_licenses\": 4,\n    \"license_key\": \"1a2b3c4d-5e6f-7a8b-9c0d-ef1234567890\",\n    \"subscription_start\": \"2026-09-18\",\n    \"subscription_end\": \"2027-09-18\",\n    \"status\": \"active\",\n    \"is_active\": true,\n    \"is_valid\": true\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "11.2 Create Product Subscription for Organization",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    pm.collectionVariables.set('subscriptionId', res.id);",
+                  "    pm.collectionVariables.set('licenseKey', res.license_key);",
+                  "    console.log('Created Subscription ID:', res.id, 'License Key:', res.license_key);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"organization\": 8,\n  \"product\": 1,\n  \"license_count\": 15,\n  \"subscription_start\": \"2026-09-18\",\n  \"subscription_end\": \"2027-09-18\",\n  \"status\": \"active\",\n  \"notes\": \"Custom package with 15 user seats\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/subscriptions/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "subscriptions"
+              ]
+            },
+            "description": "Allot product licenses directly to an organization. Saves {{subscriptionId}} and {{licenseKey}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - Subscription Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"organization\": 8,\n  \"product\": 1,\n  \"license_count\": 15,\n  \"subscription_start\": \"2026-09-18\",\n  \"subscription_end\": \"2027-09-18\",\n  \"status\": \"active\",\n  \"notes\": \"Custom package with 15 user seats\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/subscriptions/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "subscriptions"
+                  ]
+                },
+                "description": "Allot product licenses directly to an organization. Saves {{subscriptionId}} and {{licenseKey}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 5,\n  \"organization\": 8,\n  \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n  \"product\": 1,\n  \"product_name\": \"HRMSM\",\n  \"license_count\": 15,\n  \"used_licenses\": 0,\n  \"available_licenses\": 15,\n  \"license_key\": \"3f8e1a2b-4c5d-6e7f-8a9b-0c1d2e3f4a5b\",\n  \"subscription_start\": \"2026-09-18\",\n  \"subscription_end\": \"2027-09-18\",\n  \"status\": \"active\",\n  \"is_valid\": true\n}"
+            }
+          ]
+        },
+        {
+          "name": "11.3 [External Software API] Verify Subscription & User Access (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/subscriptions/verify/?license_key={{licenseKey}}&user_identifier=dr_rahul",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "subscriptions",
+                "verify"
+              ],
+              "query": [
+                {
+                  "key": "license_key",
+                  "value": "{{licenseKey}}"
+                },
+                {
+                  "key": "user_identifier",
+                  "value": "dr_rahul"
+                }
+              ]
+            },
+            "description": "Public / Token API called by external software apps (HRMS, CRM, etc.) to verify license validity and user seat access."
+          },
+          "response": [
+            {
+              "name": "200 OK - License Valid & User Access Granted",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/subscriptions/verify/?license_key={{licenseKey}}&user_identifier=dr_rahul",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "subscriptions",
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "key": "license_key",
+                      "value": "{{licenseKey}}"
+                    },
+                    {
+                      "key": "user_identifier",
+                      "value": "dr_rahul"
+                    }
+                  ]
+                },
+                "description": "Public / Token API called by external software apps (HRMS, CRM, etc.) to verify license validity and user seat access."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"is_valid\": true,\n  \"status\": \"active\",\n  \"organization_id\": 8,\n  \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n  \"product_id\": 1,\n  \"product_name\": \"HRMSM\",\n  \"license_count\": 10,\n  \"used_licenses\": 2,\n  \"available_licenses\": 8,\n  \"subscription_start\": \"2026-09-18\",\n  \"subscription_end\": \"2027-09-18\",\n  \"user_access_granted\": true,\n  \"external_user_id\": \"hrmsm_usr_a1b2c3d4e5\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "11.4 [External Software API] Verify Subscription (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_key\": \"9a8b7c6d-5e4f-3a2b-1c0d-ef9876543210\",\n  \"user_identifier\": \"dr_rahul\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/subscriptions/verify/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "subscriptions",
+                "verify"
+              ]
+            },
+            "description": "POST version of the subscription verification API for microservices & webhooks."
+          },
+          "response": [
+            {
+              "name": "200 OK - Verification Result",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"license_key\": \"9a8b7c6d-5e4f-3a2b-1c0d-ef9876543210\",\n  \"user_identifier\": \"dr_rahul\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/subscriptions/verify/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "subscriptions",
+                    "verify"
+                  ]
+                },
+                "description": "POST version of the subscription verification API for microservices & webhooks."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"is_valid\": true,\n  \"status\": \"active\",\n  \"organization_id\": 8,\n  \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n  \"product_id\": 1,\n  \"product_name\": \"HRMSM\",\n  \"license_count\": 10,\n  \"used_licenses\": 2,\n  \"available_licenses\": 8,\n  \"user_access_granted\": true,\n  \"external_user_id\": \"hrmsm_usr_a1b2c3d4e5\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "12. Organization Users, Provisioning & SSO Launch",
+      "description": "Complete user provisioning, seat limits, multi-product linking, and SSO launch token generation:\n- Streamlined Provisioning: calls remote API, maps user into central database, decrements 1 seat\n- Multi-Product Linking: Assign same user to CRM/ERP without duplicating central record\n- License Limit Enforcement: Prevents seat over-allocation with 400 Bad Request\n- Revoke Product: Frees up 1 license seat immediately\n- SSO Token: Generates HMAC-SHA256 signed JWT token for seamless 1-click product launch",
+      "item": [
+        {
+          "name": "12.1 List Organization Users & Active Products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organization-users/?organization={{organizationId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organization-users"
+              ],
+              "query": [
+                {
+                  "key": "organization",
+                  "value": "{{organizationId}}"
+                }
+              ]
+            },
+            "description": "List all staff members of the organization, showing active product tags and external software IDs."
+          },
+          "response": [
+            {
+              "name": "200 OK - Organization Users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organization-users/?organization={{organizationId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organization-users"
+                  ],
+                  "query": [
+                    {
+                      "key": "organization",
+                      "value": "{{organizationId}}"
+                    }
+                  ]
+                },
+                "description": "List all staff members of the organization, showing active product tags and external software IDs."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 10,\n    \"organization\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"user_id\": 30,\n    \"user_username\": \"dr_rahul\",\n    \"user_email\": \"rahul.verma@apollohospital.com\",\n    \"user_first_name\": \"Rahul\",\n    \"user_last_name\": \"Verma\",\n    \"role\": \"ORG_EMPLOYEE\",\n    \"designation\": \"Chief Surgeon\",\n    \"department\": \"Cardiology\",\n    \"is_active\": true,\n    \"external_product_ids\": {\n      \"HRMSM\": \"hrmsm_usr_9988a1b2\",\n      \"CRM\": \"crm_usr_4455c3d4\"\n    },\n    \"active_products\": [\n      \"HRMSM\",\n      \"CRM\"\n    ]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "12.2 [Streamlined Provisioning] Provision User into HRMSM",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const res = pm.response.json();",
+                  "    if (res.user && res.user.id) {",
+                  "        pm.collectionVariables.set('orgUserId', res.user.id);",
+                  "        console.log('Provisioned orgUserId:', res.user.id);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"dr_ananya\",\n  \"email\": \"ananya.sen@apollohospital.com\",\n  \"first_name\": \"Ananya\",\n  \"last_name\": \"Sen\",\n  \"product_name\": \"HRMSM\",\n  \"role\": \"ORG_EMPLOYEE\",\n  \"designation\": \"Senior Neurologist\",\n  \"department\": \"Neurology\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organization-users/provision/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organization-users",
+                "provision"
+              ]
+            },
+            "description": "One-click provisioning endpoint: Calls remote HRMS software API, creates central user & organization membership, links external ID, and deducts 1 HRMS seat. Saves {{orgUserId}}."
+          },
+          "response": [
+            {
+              "name": "201 Created - User Provisioned into HRMSM",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"dr_ananya\",\n  \"email\": \"ananya.sen@apollohospital.com\",\n  \"first_name\": \"Ananya\",\n  \"last_name\": \"Sen\",\n  \"product_name\": \"HRMSM\",\n  \"role\": \"ORG_EMPLOYEE\",\n  \"designation\": \"Senior Neurologist\",\n  \"department\": \"Neurology\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organization-users/provision/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organization-users",
+                    "provision"
+                  ]
+                },
+                "description": "One-click provisioning endpoint: Calls remote HRMS software API, creates central user & organization membership, links external ID, and deducts 1 HRMS seat. Saves {{orgUserId}}."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"User 'dr_ananya' successfully provisioned and linked to 'HRMSM'.\",\n  \"user\": {\n    \"id\": 11,\n    \"username\": \"dr_ananya\",\n    \"email\": \"ananya.sen@apollohospital.com\",\n    \"organization_id\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"role\": \"ORG_EMPLOYEE\",\n    \"designation\": \"Senior Neurologist\",\n    \"department\": \"Neurology\",\n    \"external_product_ids\": {\n      \"HRMSM\": \"hrmsm_usr_sen_1002\"\n    },\n    \"active_products\": [\n      \"HRMSM\"\n    ]\n  },\n  \"provisioned_product\": {\n    \"product_name\": \"HRMSM\",\n    \"external_user_id\": \"hrmsm_usr_sen_1002\",\n    \"is_simulated\": true\n  },\n  \"subscription_status\": {\n    \"used_licenses\": 3,\n    \"available_licenses_remaining\": 7\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "12.3 [Multi-Product Linking] Link SAME User into CRM",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"dr_ananya\",\n  \"email\": \"ananya.sen@apollohospital.com\",\n  \"product_name\": \"CRM\",\n  \"role\": \"ORG_EMPLOYEE\",\n  \"designation\": \"Senior Neurologist\",\n  \"department\": \"Neurology\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organization-users/provision/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organization-users",
+                "provision"
+              ]
+            },
+            "description": "Multi-Product Linking: When provision is called with existing username/email for another product (CRM), NO duplicate user is created; user is seamlessly granted access to both products."
+          },
+          "response": [
+            {
+              "name": "201 Created - Multi-Product Linked",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"dr_ananya\",\n  \"email\": \"ananya.sen@apollohospital.com\",\n  \"product_name\": \"CRM\",\n  \"role\": \"ORG_EMPLOYEE\",\n  \"designation\": \"Senior Neurologist\",\n  \"department\": \"Neurology\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organization-users/provision/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organization-users",
+                    "provision"
+                  ]
+                },
+                "description": "Multi-Product Linking: When provision is called with existing username/email for another product (CRM), NO duplicate user is created; user is seamlessly granted access to both products."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"User 'dr_ananya' successfully provisioned and linked to 'CRM'.\",\n  \"user\": {\n    \"id\": 11,\n    \"username\": \"dr_ananya\",\n    \"email\": \"ananya.sen@apollohospital.com\",\n    \"organization_id\": 8,\n    \"organization_name\": \"Apollo Multi-Speciality Hospital\",\n    \"role\": \"ORG_EMPLOYEE\",\n    \"external_product_ids\": {\n      \"HRMSM\": \"hrmsm_usr_sen_1002\",\n      \"CRM\": \"crm_usr_sen_5544\"\n    },\n    \"active_products\": [\n      \"HRMSM\",\n      \"CRM\"\n    ]\n  },\n  \"provisioned_product\": {\n    \"product_name\": \"CRM\",\n    \"external_user_id\": \"crm_usr_sen_5544\",\n    \"is_simulated\": true\n  },\n  \"subscription_status\": {\n    \"used_licenses\": 2,\n    \"available_licenses_remaining\": 3\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "12.4 [SSO Launch] Generate Single Sign-On Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_name\": \"HRMSM\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organization-users/{{orgUserId}}/sso-token/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organization-users",
+                "{{orgUserId}}",
+                "sso-token"
+              ]
+            },
+            "description": "Generates a signed SSO JWT token and redirect launch URL for 1-click authentication into the target web portal without credentials."
+          },
+          "response": [
+            {
+              "name": "200 OK - SSO Token Generated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product_name\": \"HRMSM\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organization-users/{{orgUserId}}/sso-token/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organization-users",
+                    "{{orgUserId}}",
+                    "sso-token"
+                  ]
+                },
+                "description": "Generates a signed SSO JWT token and redirect launch URL for 1-click authentication into the target web portal without credentials."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"sso_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"launch_url\": \"https://hrms.itsoftlab360.com/auth/sso?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n  \"product_name\": \"HRMSM\",\n  \"external_user_id\": \"hrmsm_usr_sen_1002\",\n  \"expires_in_seconds\": 300\n}"
+            }
+          ]
+        },
+        {
+          "name": "12.5 Revoke Product Access (Frees 1 License Seat)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscription_id\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organization-users/{{orgUserId}}/revoke-product/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organization-users",
+                "{{orgUserId}}",
+                "revoke-product"
+              ]
+            },
+            "description": "Revokes user's access to a subscribed product (CRM), immediately incrementing available licenses by 1."
+          },
+          "response": [
+            {
+              "name": "200 OK - License Seat Freed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_id\": 2\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organization-users/{{orgUserId}}/revoke-product/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organization-users",
+                    "{{orgUserId}}",
+                    "revoke-product"
+                  ]
+                },
+                "description": "Revokes user's access to a subscribed product (CRM), immediately incrementing available licenses by 1."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Access revoked for CRM. 1 license freed up.\",\n  \"available_licenses_now\": 4\n}"
+            }
+          ]
+        },
+        {
+          "name": "12.6 Assign Product License Directly",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscription_id\": 1,\n  \"external_user_id\": \"custom_hrms_ext_9999\",\n  \"permissions\": {\n    \"can_view_payroll\": true,\n    \"can_mark_attendance\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/organization-users/{{orgUserId}}/assign-product/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "organization-users",
+                "{{orgUserId}}",
+                "assign-product"
+              ]
+            },
+            "description": "Directly assigns a seat of an existing subscription to the specified OrganizationUser. Enforces available license limits."
+          },
+          "response": [
+            {
+              "name": "201 Created - License Allocated",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscription_id\": 1,\n  \"external_user_id\": \"custom_hrms_ext_9999\",\n  \"permissions\": {\n    \"can_view_payroll\": true,\n    \"can_mark_attendance\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/organization-users/{{orgUserId}}/assign-product/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "organization-users",
+                    "{{orgUserId}}",
+                    "assign-product"
+                  ]
+                },
+                "description": "Directly assigns a seat of an existing subscription to the specified OrganizationUser. Enforces available license limits."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"License successfully allocated for HRMSM.\",\n  \"data\": {\n    \"id\": 14,\n    \"organization_user\": 11,\n    \"subscription\": 1,\n    \"product_name\": \"HRMSM\",\n    \"external_user_id\": \"custom_hrms_ext_9999\",\n    \"is_active\": true\n  },\n  \"available_licenses_remaining\": 7\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

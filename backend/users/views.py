@@ -19,6 +19,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.filters import SearchFilter, OrderingFilter
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
 from .models import (
@@ -26,6 +27,7 @@ from .models import (
     Franchise,
     Invoice,
     FranchiseRequest,
+    FranchiseProductAllocation,
 )
 
 from .serializers import (
@@ -38,6 +40,7 @@ from .serializers import (
 )
 
 from .models import FranchiseUserProfile
+from .email_service import send_invoice_email_notification
 
 
 User = get_user_model()
@@ -51,64 +54,52 @@ def is_internal_user(user):
     """
     Internal ITSOFTLAB360 users.
     """
-    return (
-        user.is_authenticated
-        and user.role in [
-            "IT",
-            "Admin",
-            "Sales",
-            "Accountant",
-        ]
-    )
+    if not user or not user.is_authenticated:
+        return False
+    if user.is_superuser:
+        return True
+    role = getattr(user, "role", "") or ""
+    return role.lower() in ["it", "admin", "sales", "accountant"]
 
 
 def is_it(user):
-    return (
-        user.is_authenticated
-        and user.role == "IT"
-    )
+    if not user or not user.is_authenticated:
+        return False
+    role = getattr(user, "role", "") or ""
+    return user.is_superuser or role.lower() in ["it", "admin"]
 
 
 def is_admin(user):
-    return (
-        user.is_authenticated
-        and user.role == "Admin"
-    )
+    if not user or not user.is_authenticated:
+        return False
+    role = getattr(user, "role", "") or ""
+    return user.is_superuser or role.lower() == "admin"
 
 
 def is_sales(user):
-    return (
-        user.is_authenticated
-        and user.role == "Sales"
-    )
+    if not user or not user.is_authenticated:
+        return False
+    role = getattr(user, "role", "") or ""
+    return user.is_superuser or role.lower() in ["sales", "admin"]
 
 
 def is_accountant(user):
-    return (
-        user.is_authenticated
-        and user.role == "Accountant"
-    )
+    if not user or not user.is_authenticated:
+        return False
+    role = getattr(user, "role", "") or ""
+    return user.is_superuser or role.lower() in ["accountant", "admin"]
 
 
 def can_manage_products(user):
-    return (
-        is_it(user)
-        or is_admin(user)
-    )
+    return is_it(user) or is_admin(user)
 
 
 def can_manage_franchises(user):
-    return (
-        is_it(user)
-        or is_admin(user)
-    )
+    return is_it(user) or is_admin(user)
 
 
 def can_manage_invoices(user):
-    return (
-        is_accountant(user)
-        or is_admin(user)
-    )
+    return is_accountant(user) or is_admin(user)
 
 
 # ============================================================
@@ -233,7 +224,37 @@ class ProductsViewSet(viewsets.ModelViewSet):
         "created_at",
     ]
 
+    def get_queryset(self):
+        user = self.request.user
+        if not user or not user.is_authenticated:
+            return Products.objects.none()
+
+        franchise_profile = getattr(user, "franchise_profile", None)
+        if franchise_profile and franchise_profile.franchise:
+            # Franchise users ONLY see products allocated to their franchise
+            return Products.objects.filter(
+                Q(franchise_allocations__franchise=franchise_profile.franchise) |
+                Q(franchises=franchise_profile.franchise)
+            ).distinct().order_by("-created_at")
+
+        org_profile = getattr(user, "org_profile", None)
+        if org_profile and org_profile.organization:
+            # Organization members see products subscribed by their organization
+            return Products.objects.filter(
+                organizationproduct__organization=org_profile.organization,
+                organizationproduct__is_active=True
+            ).distinct().order_by("-created_at")
+
+        return Products.objects.all().order_by("-created_at")
+
     def create(self, request, *args, **kwargs):
+        if hasattr(request.user, "franchise_profile") and request.user.franchise_profile:
+            return Response(
+                {
+                    "error": "Franchise users cannot create, edit, or delete products. Products and pricing are centrally controlled by ITSOFTLAB360."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
 
         if not can_manage_products(request.user):
             return Response(
@@ -261,6 +282,13 @@ class ProductsViewSet(viewsets.ModelViewSet):
         )
 
     def update(self, request, *args, **kwargs):
+        if hasattr(request.user, "franchise_profile") and request.user.franchise_profile:
+            return Response(
+                {
+                    "error": "Franchise users cannot create, edit, or delete products. Products and pricing are centrally controlled by ITSOFTLAB360."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
 
         if not can_manage_products(request.user):
             return Response(
@@ -276,7 +304,37 @@ class ProductsViewSet(viewsets.ModelViewSet):
             **kwargs,
         )
 
+    def partial_update(self, request, *args, **kwargs):
+        if hasattr(request.user, "franchise_profile") and request.user.franchise_profile:
+            return Response(
+                {
+                    "error": "Franchise users cannot create, edit, or delete products. Products and pricing are centrally controlled by ITSOFTLAB360."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        if not can_manage_products(request.user):
+            return Response(
+                {
+                    "error": "Only IT or Admin can update products."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        return super().partial_update(
+            request,
+            *args,
+            **kwargs,
+        )
+
     def destroy(self, request, *args, **kwargs):
+        if hasattr(request.user, "franchise_profile") and request.user.franchise_profile:
+            return Response(
+                {
+                    "error": "Franchise users cannot create, edit, or delete products. Products and pricing are centrally controlled by ITSOFTLAB360."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
 
         if request.user.role != "IT":
             return Response(
@@ -310,7 +368,7 @@ class FranchiseViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]
@@ -454,7 +512,7 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]
@@ -574,17 +632,13 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 
         invoice = self.get_object()
 
-        if invoice.status not in [
-            Invoice.Status.DRAFT,
-        ]:
-            return Response(
-                {
-                    "error": (
-                        f"Invoice cannot be sent from "
-                        f"'{invoice.status}' status."
-                    )
-                },
-                status=status.HTTP_400_BAD_REQUEST,
+        recipient = request.data.get("email") or invoice.customer_email
+        email_result = None
+        if recipient:
+            email_result = send_invoice_email_notification(
+                invoice,
+                recipient_email=recipient,
+                custom_notes=request.data.get("notes"),
             )
 
         invoice.status = Invoice.Status.SENT
@@ -600,7 +654,48 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             {
                 "message": "Invoice sent successfully.",
                 "invoice": self.get_serializer(invoice).data,
+                "email_dispatched": bool(email_result and email_result.get("success")),
             }
+        )
+
+    @action(
+        detail=True,
+        methods=["post"],
+        url_path="send-email",
+    )
+    def send_email(self, request, pk=None):
+
+        if not can_manage_invoices(request.user):
+            return Response(
+                {
+                    "error": "Only Accountant or Admin can send invoice emails."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        invoice = self.get_object()
+        recipient = request.data.get("email") or invoice.customer_email
+        if not recipient:
+            return Response(
+                {"error": "Customer email is required to send invoice."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        notes = request.data.get("notes")
+        result = send_invoice_email_notification(invoice, recipient_email=recipient, custom_notes=notes)
+        if not result.get("success"):
+            return Response(
+                {"error": result.get("error", "Failed to dispatch email.")},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        return Response(
+            {
+                "message": result["message"],
+                "recipient": recipient,
+                "invoice": self.get_serializer(invoice).data,
+            },
+            status=status.HTTP_200_OK,
         )
 
     # --------------------------------------------------------
@@ -787,7 +882,7 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         ↓
     COMPLETED
     """
-
+    serializer_class = FranchiseRequestSerializer
     queryset = (
         FranchiseRequest.objects
         .select_related(
@@ -806,8 +901,32 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     # ============================================================
-    # QUERYSET / ROLE ACCESS
+    # QUERYSET / ROLE ACCESS & FILTERING
     # ============================================================
+    filter_backends = [
+        DjangoFilterBackend,
+        SearchFilter,
+        OrderingFilter,
+    ]
+
+    filterset_fields = [
+        "status",
+        "requested_by",
+        "reviewed_by",
+    ]
+
+    search_fields = [
+        "proposed_franchise_name",
+        "client_name",
+        "client_email",
+        "client_phone",
+    ]
+
+    ordering_fields = [
+        "created_at",
+        "updated_at",
+        "quoted_amount",
+    ]
 
     def get_queryset(self):
         user = self.request.user
@@ -1140,11 +1259,11 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
 
         user = request.user
 
-        if user.role != "Accountant":
+        if not can_manage_invoices(user):
             return Response(
                 {
                     "detail":
-                    "Only Accountant users can approve franchise requests."
+                    "Only Accountant or Admin users can approve franchise requests."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
@@ -1160,26 +1279,12 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # --------------------------------------------------------
-        # Check products
-        # --------------------------------------------------------
-
-        request_products = franchise_request.requested_products.select_related(
-            "product"
-        )
-
-        if not request_products.exists():
-            return Response(
-                {
-                    "detail":
-                    "This request has no products selected."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        # --------------------------------------------------------
-        # Approve request
-        # --------------------------------------------------------
+        quoted_amt = request.data.get("quoted_amount")
+        if quoted_amt is not None:
+            try:
+                franchise_request.quoted_amount = Decimal(str(quoted_amt))
+            except Exception:
+                pass
 
         franchise_request.status = FranchiseRequest.Status.APPROVED
         franchise_request.reviewed_by = user
@@ -1188,6 +1293,7 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         franchise_request.save(
             update_fields=[
                 "status",
+                "quoted_amount",
                 "reviewed_by",
                 "reviewed_at",
                 "updated_at",
@@ -1215,11 +1321,11 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
 
         user = request.user
 
-        if user.role != "Accountant":
+        if not can_manage_invoices(user):
             return Response(
                 {
                     "detail":
-                    "Only Accountant users can reject franchise requests."
+                    "Only Accountant or Admin users can reject franchise requests."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
@@ -1276,29 +1382,25 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         methods=["post"],
         url_path="create-invoice",
     )
+    @transaction.atomic
     def create_invoice(self, request, pk=None):
 
         user = request.user
 
-        if user.role != "Accountant":
+        if not can_manage_invoices(user):
             return Response(
                 {
                     "detail":
-                    "Only Accountant users can create invoices."
+                    "Only Accountant or Admin users can create invoices."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
 
-        franchise_request = self.get_object()
-
-        if franchise_request.status != FranchiseRequest.Status.APPROVED:
-            return Response(
-                {
-                    "detail":
-                    "Request must be approved before creating an invoice."
-                },
-                status=status.HTTP_400_BAD_REQUEST,
-            )
+        franchise_request = (
+            FranchiseRequest.objects
+            .select_for_update()
+            .get(pk=pk)
+        )
 
         if franchise_request.invoice:
             return Response(
@@ -1311,31 +1413,48 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        # If request was still PENDING, auto-approve upon invoice creation
+        if franchise_request.status == FranchiseRequest.Status.PENDING:
+            franchise_request.status = FranchiseRequest.Status.APPROVED
+            franchise_request.reviewed_by = user
+            franchise_request.reviewed_at = timezone.now()
+            franchise_request.save(
+                update_fields=[
+                    "status",
+                    "reviewed_by",
+                    "reviewed_at",
+                    "updated_at",
+                ]
+            )
+        elif franchise_request.status != FranchiseRequest.Status.APPROVED:
+            return Response(
+                {
+                    "detail":
+                    "Request must be pending or approved before creating an invoice."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         request_products = list(
             franchise_request.requested_products.select_related(
                 "product"
             )
         )
 
-        if not request_products:
+        subtotal = Decimal("0.00")
+        if request_products:
+            for request_product in request_products:
+                subtotal += request_product.product.price
+        elif franchise_request.quoted_amount:
+            subtotal = Decimal(str(franchise_request.quoted_amount))
+        else:
             return Response(
                 {
                     "detail":
-                    "No products found in this request."
+                    "No products or quoted amount found in this request."
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
-
-        # ========================================================
-        # Invoice data
-        # ========================================================
-
-        invoice_number = self._generate_invoice_number()
-
-        subtotal = Decimal("0.00")
-
-        for request_product in request_products:
-            subtotal += request_product.product.price
 
         # Optional discount supplied by accountant
         discount_amount = Decimal(
@@ -1369,7 +1488,7 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
             str(
                 request.data.get(
                     "tax_percentage",
-                    "0"
+                    "18.00"
                 )
             )
         )
@@ -1399,134 +1518,98 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         )
 
         if gst_type == "cgst_sgst":
-
             cgst_amount = (
                 tax_amount / Decimal("2")
             ).quantize(
                 Decimal("0.01")
             )
-
             sgst_amount = tax_amount - cgst_amount
-
         else:
-
             igst_amount = tax_amount
+
+        # Compute due date
+        due_date = request.data.get("due_date")
+        if not due_date and request.data.get("due_days"):
+            try:
+                days = int(request.data.get("due_days"))
+                due_date = (timezone.now() + timezone.timedelta(days=days)).date()
+            except Exception:
+                due_date = None
+
+        invoice_number = self._generate_invoice_number()
 
         # ========================================================
         # Create invoice
         # ========================================================
 
         with transaction.atomic():
-
             invoice = Invoice.objects.create(
-
                 invoice_number=invoice_number,
-
                 franchise=None,
-
                 customer_name=franchise_request.client_name,
-
                 customer_email=franchise_request.client_email,
-
                 customer_phone=franchise_request.client_phone,
-
                 customer_gstin=franchise_request.client_gstin,
-
                 billing_address=franchise_request.billing_address,
-
                 billing_city=franchise_request.billing_city,
-
                 billing_state=franchise_request.billing_state,
-
                 billing_pincode=franchise_request.billing_pincode,
-
-                billing_country=franchise_request.billing_country,
-
+                billing_country=franchise_request.billing_country or "India",
                 invoice_date=timezone.now().date(),
-
-                due_date=request.data.get(
-                    "due_date"
-                ),
-
+                due_date=due_date,
                 subtotal=subtotal,
-
                 discount_amount=discount_amount,
-
                 taxable_amount=taxable_amount,
-
                 tax_amount=tax_amount,
-
                 total_amount=total_amount,
-
                 amount_paid=Decimal("0.00"),
-
                 balance_due=total_amount,
-
                 cgst_amount=cgst_amount,
-
                 sgst_amount=sgst_amount,
-
                 igst_amount=igst_amount,
-
                 status=Invoice.Status.SENT,
-
-                notes=franchise_request.notes,
-
+                notes=request.data.get("notes") or franchise_request.notes,
                 terms_and_conditions=request.data.get(
                     "terms_and_conditions",
-                    "",
+                    "Payment due within agreed timeframe.",
                 ),
             )
 
             # ----------------------------------------------------
             # Invoice items
             # ----------------------------------------------------
-
             invoice_items = []
-
-            for request_product in request_products:
-
-                product = request_product.product
-
-                unit_price = product.price
-
-                item_taxable_amount = unit_price
-
-                item_tax_amount = (
-                    item_taxable_amount
-                    * tax_percentage
-                    / Decimal("100")
-                ).quantize(
-                    Decimal("0.01")
-                )
-
-                item_total = (
-                    item_taxable_amount
-                    + item_tax_amount
-                )
-
-                invoice_items.append(
-                    InvoiceItem(
-                        invoice=invoice,
-                        product=product,
-                        description=product.description,
-                        unit_price=unit_price,
-                        discount_amount=Decimal("0.00"),
-                        taxable_amount=item_taxable_amount,
-                        tax_percentage=tax_percentage,
-                        tax_amount=item_tax_amount,
-                        total_amount=item_total,
+            if request_products:
+                for request_product in request_products:
+                    product = request_product.product
+                    unit_price = product.price
+                    item_taxable_amount = unit_price
+                    item_tax_amount = (
+                        item_taxable_amount
+                        * tax_percentage
+                        / Decimal("100")
+                    ).quantize(
+                        Decimal("0.01")
                     )
-                )
-
-            InvoiceItem.objects.bulk_create(
-                invoice_items
-            )
+                    item_total = item_taxable_amount + item_tax_amount
+                    invoice_items.append(
+                        InvoiceItem(
+                            invoice=invoice,
+                            product=product,
+                            description=product.description or "",
+                            unit_price=unit_price,
+                            discount_amount=Decimal("0.00"),
+                            taxable_amount=item_taxable_amount,
+                            tax_percentage=tax_percentage,
+                            tax_amount=item_tax_amount,
+                            total_amount=item_total,
+                        )
+                    )
+                InvoiceItem.objects.bulk_create(invoice_items)
 
             # ----------------------------------------------------
             # Connect invoice to request
             # ----------------------------------------------------
-
             franchise_request.invoice = invoice
             franchise_request.save(
                 update_fields=[
@@ -1535,39 +1618,103 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
                 ]
             )
 
+        # Optional send email right on generation
+        email_sent = False
+        email_message = ""
+        should_send = request.data.get("send_email")
+        if should_send in [True, "true", "True", 1, "1"]:
+            recipient = request.data.get("email") or franchise_request.client_email or invoice.customer_email
+            if recipient:
+                res_email = send_invoice_email_notification(
+                    invoice,
+                    recipient_email=recipient,
+                    custom_notes=invoice.notes,
+                )
+                email_sent = res_email.get("success", False)
+                email_message = res_email.get("message") or res_email.get("error", "")
+
         return Response(
             {
-                "detail":
-                "Invoice created successfully.",
-
-                "invoice_id":
-                invoice.id,
-
-                "invoice_number":
-                invoice.invoice_number,
-
-                "subtotal":
-                str(invoice.subtotal),
-
-                "discount":
-                str(invoice.discount_amount),
-
-                "taxable_amount":
-                str(invoice.taxable_amount),
-
-                "tax":
-                str(invoice.tax_amount),
-
-                "total":
-                str(invoice.total_amount),
-
-                "status":
-                invoice.status,
-
-                "request_status":
-                franchise_request.status,
+                "detail": "Invoice created successfully.",
+                "invoice_id": invoice.id,
+                "invoice_number": invoice.invoice_number,
+                "subtotal": str(invoice.subtotal),
+                "discount": str(invoice.discount_amount),
+                "taxable_amount": str(invoice.taxable_amount),
+                "tax": str(invoice.tax_amount),
+                "total": str(invoice.total_amount),
+                "status": invoice.status,
+                "request_status": franchise_request.status,
+                "email_sent": email_sent,
+                "email_message": email_message,
             },
             status=status.HTTP_201_CREATED,
+        )
+
+    # ============================================================
+    # SEND INVOICE EMAIL TO CLIENT
+    # ============================================================
+
+    @action(
+        detail=True,
+        methods=["post"],
+        url_path="send-invoice-email",
+    )
+    def send_invoice_email(self, request, pk=None):
+
+        user = request.user
+
+        if not can_manage_invoices(user):
+            return Response(
+                {
+                    "detail": "Only Accountant or Admin users can send invoice emails."
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        franchise_request = self.get_object()
+
+        if not franchise_request.invoice:
+            return Response(
+                {
+                    "detail": "No invoice has been created for this request yet."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        recipient = request.data.get("email") or franchise_request.client_email or franchise_request.invoice.customer_email
+        if not recipient:
+            return Response(
+                {
+                    "detail": "Client email is required to send the invoice."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        notes = request.data.get("notes")
+        result = send_invoice_email_notification(
+            franchise_request.invoice,
+            recipient_email=recipient,
+            custom_notes=notes,
+        )
+
+        if not result.get("success"):
+            return Response(
+                {
+                    "detail": result.get("error", "Failed to send invoice email."),
+                    "recipient": recipient,
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        return Response(
+            {
+                "detail": result["message"],
+                "recipient": recipient,
+                "invoice_number": franchise_request.invoice.invoice_number,
+                "invoice_id": franchise_request.invoice.id,
+            },
+            status=status.HTTP_200_OK,
         )
 
     # ============================================================
@@ -1675,11 +1822,11 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
 
         user = request.user
 
-        if user.role != "IT":
+        if user.role != "IT" and not user.is_superuser and user.role != "Admin":
             return Response(
                 {
                     "detail":
-                    "Only IT users can complete franchise requests."
+                    "Only IT or Admin users can complete franchise requests."
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
@@ -1706,8 +1853,23 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        username = request.data.get("username")
+        password = request.data.get("password")
+        admin_email = request.data.get("email") or franchise_request.client_email or ""
+        admin_first_name = request.data.get("first_name") or franchise_request.client_name or ""
+        admin_last_name = request.data.get("last_name") or ""
+        role = request.data.get("role") or "FRANCHISE_ADMIN"
+
+        if not username or not password:
+            return Response(
+                {
+                    "detail": "Username and password are required to create the Franchise Admin login."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         # ========================================================
-        # Create Franchise
+        # Create Franchise and Franchise Admin User
         # ========================================================
 
         with transaction.atomic():
@@ -1727,12 +1889,51 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
             # Attach purchased products
             # ----------------------------------------------------
 
+            product_ids = franchise_request.requested_products.values_list(
+                "product_id", flat=True
+            )
             products = Products.objects.filter(
-                franchiserequestproduct__franchise_request=franchise_request
+                id__in=product_ids
             )
 
             franchise.products.set(
                 products
+            )
+            for p in products:
+                FranchiseProductAllocation.objects.get_or_create(
+                    franchise=franchise,
+                    product=p,
+                    defaults={"total_licenses": 50},
+                )
+
+            # ----------------------------------------------------
+            # Create or update Franchise Partner User
+            # ----------------------------------------------------
+            admin_user = User.objects.filter(username=username).first()
+            if admin_user:
+                admin_user.set_password(password)
+                if admin_email and not admin_user.email:
+                    admin_user.email = admin_email
+                if admin_first_name and not admin_user.first_name:
+                    admin_user.first_name = admin_first_name
+                admin_user.save()
+            else:
+                admin_user = User.objects.create_user(
+                    username=username,
+                    password=password,
+                    email=admin_email,
+                    first_name=admin_first_name,
+                    last_name=admin_last_name,
+                    role="",
+                )
+
+            # Link FranchiseUserProfile
+            FranchiseUserProfile.objects.update_or_create(
+                user=admin_user,
+                defaults={
+                    "franchise": franchise,
+                    "role": role,
+                },
             )
 
             # ----------------------------------------------------
@@ -1762,13 +1963,20 @@ class FranchiseRequestViewSet(viewsets.ModelViewSet):
         return Response(
             {
                 "detail":
-                "Franchise created successfully.",
+                "Franchise and Franchise Admin credentials created successfully.",
 
                 "franchise_id":
                 franchise.id,
 
                 "franchise_name":
                 franchise.name,
+
+                "admin_credentials": {
+                    "username": admin_user.username,
+                    "role": role,
+                    "portal": "FRANCHISE",
+                    "login_url": "/franchise/login",
+                },
 
                 "products":
                 [
@@ -1803,7 +2011,7 @@ class FranchiseUserProfileViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     filter_backends = [
-        filters,
+        DjangoFilterBackend,
         SearchFilter,
         OrderingFilter,
     ]
@@ -1846,24 +2054,33 @@ class FranchiseUserProfileViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
 
-        # Only IT can create during onboarding
-        # Admin could be allowed if you want.
-        if request.user.role not in [
-            "IT",
-            "Admin",
-        ]:
+        is_franchise_admin = (
+            hasattr(request.user, "franchise_profile")
+            and request.user.franchise_profile is not None
+            and request.user.franchise_profile.role == "FRANCHISE_ADMIN"
+        )
+
+        if (
+            request.user.role not in ["IT", "Admin"]
+            and not request.user.is_superuser
+            and not is_franchise_admin
+        ):
             return Response(
                 {
                     "error": (
-                        "Only IT or Admin can create "
+                        "Only IT, Admin, or Franchise Admin can create "
                         "franchise users."
                     )
                 },
                 status=status.HTTP_403_FORBIDDEN,
             )
 
+        data = request.data.copy() if hasattr(request.data, "copy") else dict(request.data)
+        if is_franchise_admin and not request.user.is_superuser and request.user.role not in ["IT", "Admin"]:
+            data["franchise"] = request.user.franchise_profile.franchise_id
+
         serializer = self.get_serializer(
-            data=request.data
+            data=data
         )
 
         serializer.is_valid(
@@ -2030,20 +2247,122 @@ class LoginView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         username = request.data.get('username')
         password = request.data.get('password')
-        user = authenticate(username=username, password=password)  #return user object if username exist & password matches
+        requested_portal = request.data.get('portal_type')  # INTERNAL, FRANCHISE, ORGANIZATION, SAAS
+
+        user = authenticate(username=username, password=password)
         if user is None:
             return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-        
-        # print(user)
-        # employee = Employee.objects.get(user_id=user.id)
-        
+
         if not user.is_active:
             return Response({'detail': 'Your account is inactive'}, status=status.HTTP_401_UNAUTHORIZED)
-        
-        if user is not None:
-            refresh = RefreshToken.for_user(user)
-            return Response({
-                'refresh': str(refresh),
-                'access': str(refresh.access_token),
-            })
-        return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Determine user portal type and role
+        portal_type = "SAAS"
+        role = getattr(user, 'role', '') or 'User'
+        franchise_id = None
+        franchise_name = None
+        organization_id = None
+        organization_name = None
+        active_products = []
+
+        # 1. Check Franchise User
+        from .models import FranchiseUserProfile
+        franchise_profile = FranchiseUserProfile.objects.filter(user=user).select_related('franchise').first()
+        if franchise_profile:
+            portal_type = "FRANCHISE"
+            role = franchise_profile.role
+            franchise_id = franchise_profile.franchise_id
+            franchise_name = franchise_profile.franchise.name
+
+        # 2. Check Organization User / Admin
+        from franchise.models import OrganizationUser
+        org_membership = OrganizationUser.objects.filter(user=user).select_related('organization').first()
+        if org_membership:
+            if org_membership.role == "ORG_ADMIN":
+                portal_type = "ORGANIZATION"
+                role = "ORG_ADMIN"
+            else:
+                portal_type = "SAAS"
+                role = org_membership.role
+            organization_id = org_membership.organization_id
+            organization_name = org_membership.organization.name
+
+            # Attach active SaaS product access
+            from franchise.models import UserProductAccess
+            accesses = UserProductAccess.objects.filter(
+                organization_user=org_membership,
+                is_active=True
+            ).select_related('subscription__product')
+            active_products = [
+                {
+                    "id": a.subscription.product.id,
+                    "name": a.subscription.product.name,
+                    "external_user_id": a.external_user_id,
+                }
+                for a in accesses
+            ]
+
+        # 3. Check Internal Staff (IT, Sales, Accountant, Admin, or Superuser)
+        if not franchise_profile and not org_membership and (user.is_superuser or user.role in ["Admin", "IT", "Sales", "Accountant"]):
+            portal_type = "INTERNAL"
+            role = user.role or "Admin"
+
+        # Superuser Universal Access: If superuser logs in with requested portal, allow it
+        if user.is_superuser and requested_portal:
+            req_clean = requested_portal.upper()
+            if req_clean in ["FRANCHISE", "ORGANIZATION", "SAAS", "INTERNAL"]:
+                portal_type = req_clean
+
+        # Portal Security / Routing Guard (if portal_type was explicitly requested)
+        if requested_portal and not user.is_superuser:
+            req_clean = requested_portal.upper()
+            if req_clean == "INTERNAL" and portal_type != "INTERNAL":
+                target = "/org/login" if portal_type == "ORGANIZATION" else ("/franchise/login" if portal_type == "FRANCHISE" else "/login")
+                return Response(
+                    {
+                        'detail': f'This account belongs to the {portal_type.title()} portal. Please log in at {target}.',
+                        'correct_portal': portal_type,
+                        'redirect_url': target,
+                    },
+                    status=status.HTTP_403_FORBIDDEN
+                )
+            elif req_clean == "FRANCHISE" and portal_type != "FRANCHISE":
+                target = "/admin/login" if portal_type == "INTERNAL" else ("/org/login" if portal_type == "ORGANIZATION" else "/login")
+                return Response(
+                    {
+                        'detail': f'This account is not a Franchise member. Please log in at {target}.',
+                        'correct_portal': portal_type,
+                        'redirect_url': target,
+                    },
+                    status=status.HTTP_403_FORBIDDEN
+                )
+            elif req_clean == "ORGANIZATION" and portal_type != "ORGANIZATION":
+                target = "/admin/login" if portal_type == "INTERNAL" else ("/franchise/login" if portal_type == "FRANCHISE" else "/login")
+                return Response(
+                    {
+                        'detail': f'This account is not an Organization Admin. Please log in at {target}.',
+                        'correct_portal': portal_type,
+                        'redirect_url': target,
+                    },
+                    status=status.HTTP_403_FORBIDDEN
+                )
+
+        refresh = RefreshToken.for_user(user)
+        return Response({
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': {
+                'id': user.id,
+                'username': user.username,
+                'email': user.email,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'portal_type': portal_type,
+                'role': role,
+                'franchise_id': franchise_id,
+                'franchise_name': franchise_name,
+                'organization_id': organization_id,
+                'organization_name': organization_name,
+                'active_products': active_products,
+            }
+        })

@@ -1,0 +1,151 @@
+Intenal Team["Admin", "Finance", "Sales", "IT"]-- > Franchise - Team["FRANHCISE_Admin", "FRANHCISE_Finance", "FRANHCISE_Sales", "FRANHCISE_IT"]-- > Organisation Admin["ORANISATION_ADMIN"]-- > USER(the persons who uses product)
+
+Internal team create itsoft360 named product contains 12 diffrent softwares are: [
+    {
+        id: "hrms",
+        name: "HRMSM",
+        shortName: "HR",
+        description: "Human Resource Management",
+        icon: Users,
+        color: "#2563EB",
+        background: "#EFF6FF",
+        route: "hrmsm.itsoftlab360.com",
+    },
+    {
+        id: "erp",
+        name: "ERP",
+        shortName: "ERP",
+        description: "Enterprise Resource Planning",
+        icon: Database,
+        color: "#7C3AED",
+        background: "#F5F3FF",
+        route: "erp.itsoftlab360.com",
+    },
+    {
+        id: "crm",
+        name: "CRM",
+        shortName: "CRM",
+        description: "Customer Relationship Management",
+        icon: Users,
+        color: "#0891B2",
+        background: "#ECFEFF",
+        route: "crm.itsoftlab360.com",
+    },
+    {
+        id: "pos",
+        name: "POS",
+        shortName: "POS",
+        description: "Point of Sale",
+        icon: ShoppingCart,
+        color: "#EA580C",
+        background: "#FFF7ED",
+        route: "pos.itsoftlab360.com",
+    },
+    {
+        id: "qms",
+        name: "QMS",
+        shortName: "QMS",
+        description: "Queue Management System",
+        icon: ClipboardCheck,
+        color: "#059669",
+        background: "#ECFDF5",
+        route: "qms.itsoftlab360.com",
+    },
+    {
+        id: "ai",
+        name: "AI Automation",
+        shortName: "AI",
+        description: "AI Automation",
+        icon: Bot,
+        color: "#9333EA",
+        background: "#FAF5FF",
+        route: "ai.itsoftlab360.com",
+    },
+    {
+        id: "sfa",
+        name: "SFA",
+        shortName: "SFA",
+        description: "Sales Force Automation",
+        icon: BarChart3,
+        color: "#DC2626",
+        background: "#FEF2F2",
+        route: "sfa.itsoftlab360.com",
+    },
+    {
+        id: "supply-chain",
+        name: "Supply Chain",
+        shortName: "SC",
+        description: "Supply Chain & Logistics",
+        icon: Truck,
+        color: "#CA8A04",
+        background: "#FEFCE8",
+        route: "supplychain.itsoftlab360.com",
+    },
+    {
+        id: "vms",
+        name: "VMS",
+        shortName: "VMS",
+        description: "Vendor Management System",
+        icon: BriefcaseBusiness,
+        color: "#4F46E5",
+        background: "#EEF2FF",
+        route: "vms.itsoftlab360.com",
+    },
+    {
+        id: "lms",
+        name: "LMS",
+        shortName: "LMS",
+        description: "Learning Management System",
+        icon: GraduationCap,
+        color: "#0284C7",
+        background: "#F0F9FF",
+        route: "lms.itsoftlab360.com",
+    },
+    {
+        id: "doms",
+        name: "DoMS",
+        shortName: "DoMS",
+        description: "Document Management System",
+        icon: FileText,
+        color: "#BE123C",
+        background: "#FFF1F2",
+        route: "doms.itsoftlab360.com",
+
+    },
+    {
+        id: "dms",
+        name: "DMS",
+        shortName: "DMS",
+        description: "Dealer Management System",
+        icon: Package,
+        color: "#475569",
+        background: "#F8FAFC",
+        route: "dms.itsoftlab360.com",
+    },
+]
+
+
+now these are the 12 predefined products we have now what we do is, we'll sell our franchise to some businessmans called franchise admins these businessmans will sell our 12 prducts as subscription plans to the normal person as like selling hrmsm to the startups for uttandance purposes, they will earn money but selling the products on subscription and we'll earn money by branding of our compony and by selling fanhchisees now these all applicaitons are intigrated they can share their data internally beetween temselves now i want to create a common login for them also although they have diffrent 12 databases and the 13th is of itsoftlab360 own nwo from itsoftlab3560 porttal i want to login all the users directly which are called saas users. now the franchise admin or businessman having his team to pitch the client and to do it work and accountant team although ohk that's why we given the role of ["FRANHCISE_Admin", "FRANHCISE_Finance", "FRANHCISE_Sales", "FRANHCISE_IT"] so now they will sell poduct subscription which they pechansed from us they can purcahse all of 12 products and a single product too, and they can provide subscription if the purchsed product only not wwhat they will do they will provide subscription to the organisatin admin and in no. of licences and the licences are given to per products liek if organisation admin prchased hrmsm-15 licaneces and sfa 10 licaences they canuse it ad 25 users totally ok, now itnernal team given 12 product to a franchise and franchise is giving the products are giving subscription to organisation admin organisation admin creating user into softwares and the users are using the products as of they are created this is their own lookout now, what we need to do the complex thing is common login for all softwares what i was thinking is we can create a user in our db and in the create user api what we'lldo we'll firstly create the user in product db ans the in the return json their is a ID if created user that we'll save in our saas user table by which we can access that user adn no need to logi on the eac and every product and in the create user form we'll provide aselect our db user option so that if same user is using hrmsm and sfa we can intigrate his data if ne needed but still we cnsume two licenses for two diffrent softwares ohk. if you have any of better approach for this common login you can disscuss with me
+
+
+Internal Team [Admin, Finance, Sales, IT]
+       │
+       ▼ (Sells Franchise License)
+Franchise Team [FRANCHISE_Admin, FRANCHISE_Finance, FRANCHISE_Sales, FRANCHISE_IT]
+       │
+       ▼ (Sells Product Subscriptions & Quotas, e.g. HRMSM-15, SFA-10)
+Organisation Admin [ORGANISATION_ADMIN]
+       │
+       ▼ (Provisions Users within License Quotas)
+SaaS End Users (Employees, Staff, Doctors, Agents using the 12 products)
+
+
+
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+user = User.objects.get(username="aakash.dehriya")
+user.set_password("aakash.dehriya")
+user.save()

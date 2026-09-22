@@ -1,0 +1,28 @@
+frontend/src/features/organization-users/
+├── components/
+│   ├── dialog/
+│   │   ├── ProvisionUserDialog.tsx        # Dialog container for adding/linking users
+│   │   └── SsoLaunchDialog.tsx            # Dialog displaying SSO tokens & launch actions
+│   │
+│   ├── form/
+│   │   └── ProvisionUserForm.tsx          # Form with Zod validation & product selector
+│   │
+│   ├── skeleton/
+│   │   └── UserTableSkeleton.tsx          # Animated loading skeletons for cards & tables
+│   │
+│   └── UI/
+│       ├── SubscribedProductsUI.tsx       # Live cards with license capacity progress meters
+│       ├── OrganizationUsersTableUI.tsx   # Provisioned users table with product tags & actions
+│       ├── UserCardUI.tsx                 # Responsive card UI for users
+│       └── OrganizationUsersView.tsx      # Master dashboard view combining all components
+│
+├── hooks/
+│   ├── useGetOrganizationUsers.ts         # Query: GET /api/franchise/organization-users/
+│   ├── useGetSubscribedProducts.ts        # Query: GET /api/franchise/subscriptions/
+│   ├── useProvisionUser.ts                # Mutation: POST .../provision/ (invalidates cache)
+│   ├── useRevokeProductAccess.ts          # Mutation: POST .../revoke-product/ (frees seat)
+│   ├── useSsoLaunch.ts                    # Mutation: POST .../sso-token/
+│   ├── useProvisionUserDialog.ts          # Dialog open/close & selected user state hook
+│   └── useProvisionUserForm.ts            # Form handling & Zod safeParse validation hook
+│
+└── types.ts                               # Zod request schemas & API response types

@@ -31,3 +31,188 @@
                               Organization
                                     │
                          subscribes to Product
+
+
+                         # Implementation Plan - Franchise Team Backend & Multi-Product License Management
+
+Build the backend for the **Franchise Team** according to the hierarchy diagram, enabling Franchise Admins to manage staff, sell SaaS subscriptions to Organizations with per-product license tracking, allow Organization Admins to provision users within license limits, synchronize users across project databases, and provide cross-project GET APIs (e.g., retrieving HRMS attendance inside CRM).
+
+---
+
+## Hierarchy Overview
+
+```mermaid
+graph TD
+    ITSoftlab[ITSOFTLAB360 Central Platform] --> Internal[Internal Team users app]
+    ITSoftlab --> Franchise[Franchise franchise app]
+
+    Internal --> IT[IT - Product & Franchise Mgmt]
+    Internal --> Sales[Sales - Demo & Onboarding Requests]
+    Internal --> Acc[Accountant - Invoices & Payments]
+
+    Franchise --> FAdmin[FRANCHISE_ADMIN]
+    FAdmin --> FTeam[Franchise Team Users]
+    FTeam --> FIT[FRANCHISE_IT]
+    FTeam --> FSales[FRANCHISE_SALES]
+    FTeam --> FAcc[FRANCHISE_ACCOUNTANT]
+
+    FTeam --> SellSaaS[Sell SaaS / Onboard]
+    SellSaaS --> Org[Organization e.g. Hospital, School, Enterprise]
+
+    Org --> Sub[Product Subscriptions with License Count]
+    Sub --> P1[HRMSM - 15 Licenses]
+    Sub --> P2[CRM - 10 Licenses]
+    Sub --> P12[...12 Industry Portals]
+
+    Org --> OrgUsers[User Provisioning within License Limit]
+    OrgUsers --> CentralUser[ITSOFTLAB360 Central Database]
+    CentralUser --> ExtDB[Project Database Sync / Mapping]
+    CentralUser --> CrossAPI[Cross-Project GET API e.g. HRMS Attendance in CRM]
+```
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Key Architecture Decisions:**
+> 1. **Franchise Team Roles**: Franchise Admins create `FRANCHISE_IT`, `FRANCHISE_SALES`, and `FRANCHISE_ACCOUNTANT`. These staff members manage customer Organizations and assign Product Subscriptions.
+> 2. **Product Subscriptions & License Allocation**: When an Organization subscribes to a product (e.g. HRMSM), a `license_count` is assigned (e.g. 15 licenses).
+> 3. **License Limit Enforcement**: When an Organization provisions access to an employee/user, the system checks `used_licenses < license_count`. If the limit is exceeded, access assignment is blocked with an explicit error.
+> 4. **Multi-Project Sync & Cross-Project GET API**: Central `UserProductAccess` maintains mapping (`external_user_id`, `sync_status`, product credentials). A unified GET API endpoint allows connected applications (e.g. CRM) to fetch data (e.g. HRMS attendance status) using the shared central user identity.
+
+---
+
+## Proposed Changes
+
+### 1. Database Models (`backend/franchise/models.py`)
+
+#### [MODIFY] [backend/franchise/models.py](file:///f:/projects/ITSOFTLAB360/backend/franchise/models.py)
+Update and complete the franchise models:
+- **`Organization`**: Use existing `users.Organization` or extend with franchise relation, active status, and metadata.
+- **`OrganizationProduct` (Subscription)**:
+  - `organization`: ForeignKey to `Organization`
+  - `product`: ForeignKey to `users.Products`
+  - `license_count`: PositiveIntegerField (default 1, e.g., 15 licenses)
+  - `license_key` / `api_key`: UUID / unique key for external app verification
+  - `subscription_start`, `subscription_end`: DateField
+  - `status`: Choices (`active`, `pending`, `expired`, `cancelled`)
+  - `assigned_by`: ForeignKey to `User`
+  - Computed properties: `used_licenses` (count of assigned users) and `available_licenses`
+- **`OrganizationUser`**:
+  - `organization`: ForeignKey to `Organization`
+  - `user`: OneToOneField to `User` (or ForeignKey)
+  - `role`: Choices (`ORG_ADMIN`, `ORG_MANAGER`, `ORG_EMPLOYEE`)
+  - `is_active`: Boolean
+- **`UserProductAccess` (License assignment & Project DB mapping)**:
+  - `organization_user`: ForeignKey to `OrganizationUser`
+  - `subscription`: ForeignKey to `OrganizationProduct`
+  - `product`: ForeignKey to `users.Products`
+  - `external_user_id`: CharField (ID in external project DB like HRMS or CRM)
+  - `sync_status`: Choices (`SYNCED`, `PENDING`, `FAILED`)
+  - `last_synced_at`: DateTimeField
+  - `is_active`: Boolean
+  - Unique constraint on `(organization_user, subscription)` to ensure 1 license per user per product.
+- **`CrossProjectDataLog` / `AttendanceRecord`**:
+  - Store or cache user attendance status / activity records for fast GET API retrieval across connected apps.
+
+---
+
+### 2. Core Project Configuration (`backend/core/`)
+
+#### [MODIFY] [backend/core/settings.py](file:///f:/projects/ITSOFTLAB360/backend/core/settings.py)
+- Register `'franchise'` in `INSTALLED_APPS`.
+
+#### [MODIFY] [backend/core/urls.py](file:///f:/projects/ITSOFTLAB360/backend/core/urls.py)
+- Include `path('api/franchise/', include('franchise.urls'))`.
+
+---
+
+### 3. Franchise Permissions (`backend/franchise/permissions.py`)
+
+#### [NEW] [backend/franchise/permissions.py](file:///f:/projects/ITSOFTLAB360/backend/franchise/permissions.py)
+- `IsFranchiseAdmin`: Only users with role `FRANCHISE_ADMIN` or superadmin.
+- `IsFranchiseTeam`: Any franchise role (`FRANCHISE_ADMIN`, `FRANCHISE_IT`, `FRANCHISE_SALES`, `FRANCHISE_ACCOUNTANT`).
+- `IsOrganizationAdmin`: Admin of the organization.
+- `HasValidLicenseKeyOrToken`: Authentication for the 12 external apps verifying subscriptions via API.
+
+---
+
+### 4. Serializers (`backend/franchise/serializers.py`)
+
+#### [NEW] [backend/franchise/serializers.py](file:///f:/projects/ITSOFTLAB360/backend/franchise/serializers.py)
+- **`FranchiseTeamMemberSerializer`**: For Franchise Admins to create & manage `FRANCHISE_IT`, `FRANCHISE_SALES`, `FRANCHISE_ACCOUNTANT`.
+- **`OrganizationSerializer`**: CRUD on organizations.
+- **`OrganizationProductSerializer`**: Subscriptions with `license_count`, `used_licenses`, `available_licenses`, and status.
+- **`OrganizationUserSerializer`**: Organization staff and profile.
+- **`UserProductAccessSerializer`**: Assigns user to product subscription, performs license availability check.
+- **`SubscriptionVerifySerializer`**: Response serializer for external apps checking license and validity.
+- **`CrossProjectAttendanceSerializer`**: Serializer for returning cross-project attendance data.
+
+---
+
+### 5. Views & API Endpoints (`backend/franchise/views.py`)
+
+#### [NEW] [backend/franchise/views.py](file:///f:/projects/ITSOFTLAB360/backend/franchise/views.py)
+1. **`FranchiseTeamViewSet`**:
+   - `GET /api/franchise/team/`: List team members of current franchise.
+   - `POST /api/franchise/team/`: Create `FRANCHISE_IT`, `FRANCHISE_SALES`, or `FRANCHISE_ACCOUNTANT`.
+2. **`OrganizationViewSet`**:
+   - CRUD on Organizations belonging to the franchise.
+3. **`OrganizationSubscriptionViewSet`**:
+   - Manage product subscriptions and license counts for an organization.
+   - `action: verify`: Endpoint (`GET/POST /api/franchise/subscriptions/verify/`) allowing any of the 12 applications to verify if an organization/user has an active subscription and valid license.
+4. **`OrganizationUserViewSet`**:
+   - Provision users for an organization.
+   - `action: assign_product`: Allocates a product license to a user:
+     - Validates `used_licenses < license_count`.
+     - Creates/links user in central ITSOFTLAB360 database.
+     - Creates project database mapping (`external_user_id`, `sync_status`).
+   - `action: revoke_product`: Frees up the license for another user.
+5. **`CrossProjectDataView`**:
+   - `GET /api/franchise/cross-project/attendance/`:
+     - Allows CRM or any authorized portal to query a user's attendance status from HRMSM via central user mapping.
+   - `POST /api/franchise/cross-project/report-attendance/`:
+     - Allows HRMSM to post/sync attendance updates to central ITSOFTLAB360.
+6. **`FranchiseDashboardView`**:
+   - Analytics for Franchise Admin: total organizations, active subscriptions, total licenses allotted, used vs available licenses.
+
+---
+
+### 6. URLs Routing (`backend/franchise/urls.py`)
+
+#### [NEW] [backend/franchise/urls.py](file:///f:/projects/ITSOFTLAB360/backend/franchise/urls.py)
+Register router and endpoint paths for:
+- `team/`
+- `organizations/`
+- `subscriptions/`
+- `organization-users/`
+- `verify-subscription/`
+- `cross-project/attendance/`
+- `cross-project/report-attendance/`
+- `dashboard/`
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- Run Django check:
+  `.\venv\Scripts\python.exe manage.py check`
+- Generate and run migrations:
+  `.\venv\Scripts\python.exe manage.py makemigrations franchise`
+  `.\venv\Scripts\python.exe manage.py migrate`
+- Write comprehensive test script `test_franchise_flow.py`:
+  1. Authenticate as Franchise Admin.
+  2. Create a Franchise Team user (`FRANCHISE_SALES`).
+  3. Create an Organization under the Franchise.
+  4. Create a Product Subscription with `license_count = 2`.
+  5. Provision 2 Organization Users and allocate product licenses -> verify success.
+  6. Attempt to allocate a 3rd user -> verify license limit exceeded error (HTTP 400).
+  7. Test Subscription Verification API using `api_key` / `license_key`.
+  8. Test Cross-Project GET API (fetching HRMS attendance status inside CRM for a linked user).
+  Run test script via `.\venv\Scripts\python.exe test_franchise_flow.py`.
+
+### Manual / Integration Verification
+- Verify that Django Admin and REST API browsable endpoints function smoothly.
+- Verify that the frontend API client can communicate with the new endpoints without CORS or route conflicts.

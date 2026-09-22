@@ -21,6 +21,7 @@ from .views import (
     LoginView,
     FranchiseRequestViewSet,
     FranchiseUserProfileViewSet,
+    SuperAdminDashboardView,
 )
 
 router = DefaultRouter()
@@ -67,14 +68,17 @@ router.register(
 #     basename="login",
 # )
 
+from franchise.views import OrganizationViewSet
+
 router.register(
-    "franchise-users",
-    FranchiseUserProfileViewSet,
-    basename="dsa",
+    "organizations",
+    OrganizationViewSet,
+    basename="organizations",
 )
 
 urlpatterns = [
     path("login/", LoginView.as_view(), name="login"),
+    path("dashboard/", SuperAdminDashboardView.as_view(), name="superadmin-dashboard"),
 ]
 
 urlpatterns += router.urls
