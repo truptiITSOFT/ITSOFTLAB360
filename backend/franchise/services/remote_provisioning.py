@@ -35,21 +35,39 @@ class RemoteProductService:
         remote_url = getattr(product, "remote_api_url", None)
         api_key = getattr(product, "api_key", None) or ""
 
-        # Prepare standardized provisioning payload
-        payload = {
-            "username": user_data.get("username"),
-            "email": user_data.get("email"),
-            "first_name": user_data.get("first_name", ""),
-            "last_name": user_data.get("last_name", ""),
-            "role": user_data.get("role", "ORG_EMPLOYEE"),
-            "designation": user_data.get("designation", ""),
-            "department": user_data.get("department", ""),
+        from .product_adapters import ProductAdapterRegistry
+
+        adapter = ProductAdapterRegistry.get_adapter(getattr(product, "code", None) or getattr(product, "name", None))
+        context_data = {
             "organization_id": subscription.organization.id,
-            "organization_name": subscription.organization.name,
-            "license_key": str(subscription.license_key),
-            "permissions": user_data.get("permissions", {}),
-            "timestamp": timezone.now().isoformat(),
+            "office": subscription.organization.id,
+            "companyName": subscription.organization.name,
+            "companyEmail": subscription.organization.email,
+            "companyPhone": subscription.organization.phone,
+            "licenseAllocation": subscription.license_count,
         }
+        merged_data = {**context_data, **user_data}
+        try:
+            payload = adapter.format_remote_payload(merged_data)
+        except Exception:
+            # Prepare standardized provisioning payload as fallback
+            payload = {
+                "username": user_data.get("username"),
+                "email": user_data.get("email"),
+                "first_name": user_data.get("first_name", ""),
+                "last_name": user_data.get("last_name", ""),
+                "role": user_data.get("role", "ORG_EMPLOYEE"),
+                "designation": user_data.get("designation", ""),
+                "department": user_data.get("department", ""),
+                "organization_id": subscription.organization.id,
+                "organization_name": subscription.organization.name,
+                "license_key": str(subscription.license_key),
+                "permissions": user_data.get("permissions", {}),
+                "timestamp": timezone.now().isoformat(),
+            }
+
+        if not remote_url and getattr(adapter, "default_api_url", None):
+            remote_url = adapter.default_api_url
 
         # Offline / Mock simulation mode
         if not remote_url or remote_url.startswith("mock://"):

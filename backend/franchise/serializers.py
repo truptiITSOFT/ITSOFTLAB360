@@ -1195,3 +1195,124 @@ class ITFulfillRequestSerializer(serializers.Serializer):
                 for s in subscriptions_created
             ],
         }
+
+
+# ===========================================================================
+# Dedicated Multi-Product User Provisioning Serializers (Supply Chain, HRMSM, 12 Products)
+# ===========================================================================
+
+from .services.product_adapters import ProductAdapterRegistry, RemoteSoftwareAPIError
+
+
+class SupplyChainCreateUserSerializer(serializers.Serializer):
+    """
+    Direct endpoint serializer for creating a user/admin in Supply Chain:
+    1. Validates Supply Chain super-admin registration schema
+    2. Calls external endpoint: POST https://supplychain.itsoftlab360.com/api/v1/super-admin/admins
+    3. Synchronizes local ITSOFTLAB360 records (User, Organization, Subscription, OrganizationUser, UserProductAccess)
+    """
+    name = serializers.CharField(required=True, max_length=255)
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=False, default="Password123!")
+    confirmPassword = serializers.CharField(required=False, allow_blank=True, default="")
+    assignedRole = serializers.CharField(required=False, default="ADMIN")
+    companyName = serializers.CharField(required=False, default="Acme Logistics Ltd")
+    companyEmail = serializers.EmailField(required=False, allow_blank=True, default="")
+    phone = serializers.CharField(required=False, default="+1234567890")
+    companyPhone = serializers.CharField(required=False, default="+1234567890")
+    licenseAllocation = serializers.IntegerField(required=False, default=25, min_value=1)
+    subscriptionPlan = serializers.CharField(required=False, default="BASIC")
+    status = serializers.CharField(required=False, default="ACTIVE")
+
+    # Optional local linking hints
+    organization_id = serializers.IntegerField(required=False, allow_null=True)
+    franchise_id = serializers.IntegerField(required=False, allow_null=True)
+
+    def validate(self, attrs):
+        if not attrs.get("confirmPassword"):
+            attrs["confirmPassword"] = attrs.get("password")
+        if not attrs.get("companyEmail"):
+            attrs["companyEmail"] = attrs.get("email")
+        return attrs
+
+    def save(self):
+        adapter = ProductAdapterRegistry.get_adapter("supply-chain")
+        try:
+            result = adapter.provision_user(self.validated_data, context=self.context)
+            return result
+        except RemoteSoftwareAPIError as err:
+            raise serializers.ValidationError({"external_api_error": str(err)})
+
+
+class HRMSMCreateUserSerializer(serializers.Serializer):
+    """
+    Direct endpoint serializer for creating a user/admin in HRMSM:
+    1. Validates HRMSM accounts register schema
+    2. Calls external endpoint: POST https://hrmsm.com/api/accounts/register/
+    3. Synchronizes local ITSOFTLAB360 records
+    """
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=True)
+    first_name = serializers.CharField(required=True)
+    last_name = serializers.CharField(required=False, allow_blank=True, default="")
+    username = serializers.CharField(required=False, allow_blank=True, default="")
+    role = serializers.CharField(required=False, default="Admin")
+    office = serializers.CharField(required=False, default="1", help_text="organisation_id created while giving subscription")
+
+    # Optional local linking hints
+    organization_id = serializers.IntegerField(required=False, allow_null=True)
+    companyName = serializers.CharField(required=False, allow_blank=True, default="")
+    franchise_id = serializers.IntegerField(required=False, allow_null=True)
+
+    def validate(self, attrs):
+        if not attrs.get("username"):
+            attrs["username"] = attrs.get("email", "").split("@")[0]
+        if attrs.get("organization_id") and not attrs.get("office"):
+            attrs["office"] = str(attrs["organization_id"])
+        return attrs
+
+    def save(self):
+        adapter = ProductAdapterRegistry.get_adapter("hrmsm")
+        try:
+            result = adapter.provision_user(self.validated_data, context=self.context)
+            return result
+        except RemoteSoftwareAPIError as err:
+            raise serializers.ValidationError({"external_api_error": str(err)})
+
+
+class UnifiedProductUserCreateSerializer(serializers.Serializer):
+    """
+    Unified endpoint serializer to provision users across any of the 12 SaaS products.
+    Accepts product name/code and delegates dynamically to the corresponding adapter.
+    """
+    product = serializers.CharField(required=True, help_text="Product slug or name, e.g. 'supply-chain' or 'hrmsm'")
+    email = serializers.EmailField(required=True)
+    password = serializers.CharField(required=False, default="Password123!")
+    username = serializers.CharField(required=False, allow_blank=True, default="")
+    name = serializers.CharField(required=False, allow_blank=True, default="")
+    first_name = serializers.CharField(required=False, allow_blank=True, default="")
+    last_name = serializers.CharField(required=False, allow_blank=True, default="")
+    role = serializers.CharField(required=False, default="ADMIN")
+    companyName = serializers.CharField(required=False, allow_blank=True, default="")
+    phone = serializers.CharField(required=False, allow_blank=True, default="")
+    licenseAllocation = serializers.IntegerField(required=False, default=25)
+    office = serializers.CharField(required=False, allow_blank=True, default="")
+    organization_id = serializers.IntegerField(required=False, allow_null=True)
+    franchise_id = serializers.IntegerField(required=False, allow_null=True)
+
+    def to_internal_value(self, data):
+        # Keep all additional raw fields passed by caller
+        ret = super().to_internal_value(data)
+        for k, v in data.items():
+            if k not in ret:
+                ret[k] = v
+        return ret
+
+    def save(self):
+        product_key = self.validated_data.get("product")
+        adapter = ProductAdapterRegistry.get_adapter(product_key)
+        try:
+            result = adapter.provision_user(self.validated_data, context=self.context)
+            return result
+        except RemoteSoftwareAPIError as err:
+            raise serializers.ValidationError({"external_api_error": str(err)})

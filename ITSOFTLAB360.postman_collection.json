@@ -4927,6 +4927,383 @@
           ]
         }
       ]
+    },
+    {
+      "name": "13. Multi-Product User Provisioning & Health APIs",
+      "description": "Dedicated user creation and remote software provisioning APIs for Supply Chain, HRMSM, and remaining 10 SaaS products, plus system HEAD health checks.",
+      "item": [
+        {
+          "name": "13.1 System Health Check (HEAD Method)",
+          "request": {
+            "method": "HEAD",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/health/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health"
+              ]
+            },
+            "description": "Lightweight health probe responding with HTTP 200 OK and X-Health-Status header. No body payload returned."
+          },
+          "response": [
+            {
+              "name": "200 OK - Backend Healthy",
+              "originalRequest": {
+                "method": "HEAD",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/health/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "health"
+                  ]
+                },
+                "description": "Lightweight health probe responding with HTTP 200 OK and X-Health-Status header. No body payload returned."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{}"
+            }
+          ]
+        },
+        {
+          "name": "13.2 System Health Check (GET Method)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/health/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "health"
+              ]
+            },
+            "description": "Returns JSON status of the ITSOFTLAB360 backend service."
+          },
+          "response": [
+            {
+              "name": "200 OK - Health Info",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/health/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "health"
+                  ]
+                },
+                "description": "Returns JSON status of the ITSOFTLAB360 backend service."
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"status\": \"healthy\",\n  \"service\": \"itsoftlab360-backend\",\n  \"timestamp\": \"2026-09-22T12:00:00.000Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "13.3 Supply Chain - Create User & Sync",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane.doe@example.com\",\n  \"password\": \"Password123!\",\n  \"confirmPassword\": \"Password123!\",\n  \"assignedRole\": \"ADMIN\",\n  \"companyName\": \"Acme Logistics Ltd\",\n  \"companyEmail\": \"contact@acmelogistics.com\",\n  \"phone\": \"+1234567890\",\n  \"companyPhone\": \"+1234567890\",\n  \"licenseAllocation\": 25,\n  \"subscriptionPlan\": \"BASIC\",\n  \"status\": \"ACTIVE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/supplychain/create-user/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "supplychain",
+                "create-user"
+              ]
+            },
+            "description": "Provisions an admin user in Supply Chain software via remote API (https://supplychain.itsoftlab360.com/api/v1/super-admin/admins) and synchronizes ITSOFTLAB360 central User, Organization, and 25-license subscription."
+          },
+          "response": [
+            {
+              "name": "201 Created - Supply Chain User Provisioned",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane.doe@example.com\",\n  \"password\": \"Password123!\",\n  \"confirmPassword\": \"Password123!\",\n  \"assignedRole\": \"ADMIN\",\n  \"companyName\": \"Acme Logistics Ltd\",\n  \"companyEmail\": \"contact@acmelogistics.com\",\n  \"phone\": \"+1234567890\",\n  \"companyPhone\": \"+1234567890\",\n  \"licenseAllocation\": 25,\n  \"subscriptionPlan\": \"BASIC\",\n  \"status\": \"ACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/supplychain/create-user/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "supplychain",
+                    "create-user"
+                  ]
+                },
+                "description": "Provisions an admin user in Supply Chain software via remote API (https://supplychain.itsoftlab360.com/api/v1/super-admin/admins) and synchronizes ITSOFTLAB360 central User, Organization, and 25-license subscription."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Supply Chain user 'jane.doe' successfully created and synchronized.\",\n  \"product\": \"Supply Chain\",\n  \"product_code\": \"supply-chain\",\n  \"data\": {\n    \"user\": {\n      \"id\": 15,\n      \"username\": \"jane.doe\",\n      \"email\": \"jane.doe@example.com\",\n      \"first_name\": \"Jane\",\n      \"last_name\": \"Doe\"\n    },\n    \"organization\": {\n      \"id\": 8,\n      \"name\": \"Acme Logistics Ltd\"\n    },\n    \"product\": {\n      \"id\": 8,\n      \"code\": \"supply-chain\",\n      \"name\": \"Supply Chain\"\n    },\n    \"subscription\": {\n      \"id\": 9,\n      \"license_count\": 25,\n      \"used_licenses\": 0,\n      \"available_licenses\": 25,\n      \"license_key\": \"c4b8e1f0-91a2-4a7b-8910-123456abcdef\"\n    },\n    \"product_access\": {\n      \"id\": 12,\n      \"external_user_id\": \"supply-chain_usr_9f81a7b2\",\n      \"sync_status\": \"synced\"\n    }\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "13.4 HRMSM - Create User & Sync",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"nikhil49@example.com\",\n  \"password\": \"yourpassword\",\n  \"first_name\": \"Nikhil\",\n  \"last_name\": \"Basrani\",\n  \"username\": \"nikhil\",\n  \"role\": \"Admin\",\n  \"office\": \"1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/hrmsm/create-user/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "hrmsm",
+                "create-user"
+              ]
+            },
+            "description": "Provisions an admin user in HRMSM software via remote API (https://hrmsm.com/api/accounts/register/) and synchronizes ITSOFTLAB360 central records."
+          },
+          "response": [
+            {
+              "name": "201 Created - HRMSM User Provisioned",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"nikhil49@example.com\",\n  \"password\": \"yourpassword\",\n  \"first_name\": \"Nikhil\",\n  \"last_name\": \"Basrani\",\n  \"username\": \"nikhil\",\n  \"role\": \"Admin\",\n  \"office\": \"1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/hrmsm/create-user/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "hrmsm",
+                    "create-user"
+                  ]
+                },
+                "description": "Provisions an admin user in HRMSM software via remote API (https://hrmsm.com/api/accounts/register/) and synchronizes ITSOFTLAB360 central records."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"HRMSM user 'nikhil' successfully created and synchronized.\",\n  \"product\": \"HRMSM\",\n  \"product_code\": \"hrms\",\n  \"data\": {\n    \"user\": {\n      \"id\": 16,\n      \"username\": \"nikhil\",\n      \"email\": \"nikhil49@example.com\",\n      \"first_name\": \"Nikhil\",\n      \"last_name\": \"Basrani\"\n    },\n    \"product_access\": {\n      \"id\": 13,\n      \"external_user_id\": \"hrms_usr_4b1a82f3\",\n      \"sync_status\": \"synced\"\n    }\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "13.5 Unified SaaS Product - Create User & Sync",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"supply-chain\",\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane.doe@example.com\",\n  \"password\": \"Password123!\",\n  \"companyName\": \"Acme Logistics Ltd\",\n  \"assignedRole\": \"ADMIN\",\n  \"licenseAllocation\": 25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/franchise/products/create-user/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "franchise",
+                "products",
+                "create-user"
+              ]
+            },
+            "description": "Unified entry point for provisioning users across any of the 12 SaaS products. Automatically selects the registered product adapter."
+          },
+          "response": [
+            {
+              "name": "201 Created - Unified Provisioning Complete",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"product\": \"supply-chain\",\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane.doe@example.com\",\n  \"password\": \"Password123!\",\n  \"companyName\": \"Acme Logistics Ltd\",\n  \"assignedRole\": \"ADMIN\",\n  \"licenseAllocation\": 25\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/franchise/products/create-user/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "franchise",
+                    "products",
+                    "create-user"
+                  ]
+                },
+                "description": "Unified entry point for provisioning users across any of the 12 SaaS products. Automatically selects the registered product adapter."
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"User 'jane.doe' successfully provisioned in 'Supply Chain'.\",\n  \"product\": \"Supply Chain\",\n  \"product_code\": \"supply-chain\"\n}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

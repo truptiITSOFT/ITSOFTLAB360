@@ -808,3 +808,139 @@ class ClientInvoiceViewSet(viewsets.ModelViewSet):
             status=status.HTTP_200_OK,
         )
 
+
+# ===========================================================================
+# 7. MULTI-PRODUCT USER PROVISIONING VIEWS (Supply Chain, HRMSM, 12 Products)
+# ===========================================================================
+
+from .serializers import (
+    SupplyChainCreateUserSerializer,
+    HRMSMCreateUserSerializer,
+    UnifiedProductUserCreateSerializer,
+)
+
+
+class SupplyChainCreateUserView(APIView):
+    """
+    Dedicated endpoint for Supply Chain User/Admin Provisioning:
+    POST /api/franchise/supplychain/create-user/
+    POST /api/franchise/products/supplychain/create-user/
+
+    1. Calls external Supply Chain super-admin API:
+       POST https://supplychain.itsoftlab360.com/api/v1/super-admin/admins
+       Authorization: allow any
+       Content-Type: application/json
+    2. Synchronizes central ITSOFTLAB360 records (User, Org, Subscription, Membership, Product Access).
+    """
+    authentication_classes = []
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = SupplyChainCreateUserSerializer(data=request.data, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        result = serializer.save()
+
+        return Response(
+            {
+                "success": True,
+                "message": f"Supply Chain user '{result['user']['username']}' successfully created and synchronized.",
+                "product": "Supply Chain",
+                "product_code": "supply-chain",
+                "data": result,
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class HRMSMCreateUserView(APIView):
+    """
+    Dedicated endpoint for HRMSM User Provisioning:
+    POST /api/franchise/hrmsm/create-user/
+    POST /api/franchise/products/hrmsm/create-user/
+
+    1. Calls external HRMSM registration API:
+       POST https://hrmsm.com/api/accounts/register/
+       Authorization: allowany
+       Content-Type: application/json
+    2. Synchronizes central ITSOFTLAB360 records.
+    """
+    authentication_classes = []
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = HRMSMCreateUserSerializer(data=request.data, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        result = serializer.save()
+
+        return Response(
+            {
+                "success": True,
+                "message": f"HRMSM user '{result['user']['username']}' successfully created and synchronized.",
+                "product": "HRMSM",
+                "product_code": "hrms",
+                "data": result,
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class ProductUserProvisionView(APIView):
+    """
+    Unified endpoint for provisioning users across any of the 12 SaaS products:
+    POST /api/franchise/products/create-user/
+    POST /api/franchise/products/<product_slug>/create-user/
+    """
+    authentication_classes = []
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request, product_slug=None):
+        payload = request.data.copy() if hasattr(request.data, "copy") else dict(request.data)
+        if product_slug and "product" not in payload:
+            payload["product"] = product_slug
+
+        serializer = UnifiedProductUserCreateSerializer(data=payload, context={"request": request})
+        serializer.is_valid(raise_exception=True)
+        result = serializer.save()
+
+        product_info = result.get("product", {})
+        return Response(
+            {
+                "success": True,
+                "message": f"User '{result['user']['username']}' successfully provisioned in '{product_info.get('name')}'.",
+                "product": product_info.get("name"),
+                "product_code": product_info.get("code"),
+                "data": result,
+            },
+            status=status.HTTP_201_CREATED,
+        )
+
+
+# ===========================================================================
+# 8. HEALTH CHECK VIEW (Supports HEAD and GET methods)
+# ===========================================================================
+
+class HealthCheckView(APIView):
+    """
+    Lightweight health check endpoint responding to HEAD and GET HTTP methods.
+    Returns HTTP 200 OK with X-Health-Status header.
+    """
+    authentication_classes = []
+    permission_classes = [permissions.AllowAny]
+
+    def head(self, request, *args, **kwargs):
+        res = Response(status=status.HTTP_200_OK)
+        res["X-Health-Status"] = "OK"
+        res["Content-Type"] = "application/json"
+        return res
+
+    def get(self, request, *args, **kwargs):
+        return Response(
+            {
+                "status": "healthy",
+                "service": "itsoftlab360-backend",
+                "timestamp": timezone.now().isoformat(),
+            },
+            status=status.HTTP_200_OK,
+        )
+
+

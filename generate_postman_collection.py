@@ -2373,6 +2373,219 @@ def build_postman_collection():
     folder_org_users["item"].append(req_assign_prod)
     collection["item"].append(folder_org_users)
 
+    # =========================================================================
+    # FOLDER 13: Multi-Product User Provisioning & System Health
+    # =========================================================================
+    folder_product_prov = {
+        "name": "13. Multi-Product User Provisioning & Health APIs",
+        "description": "Dedicated user creation and remote software provisioning APIs for Supply Chain, HRMSM, and remaining 10 SaaS products, plus system HEAD health checks.",
+        "item": []
+    }
+
+    # 13.1 Health Check HEAD
+    req_health_head = {
+        "name": "13.1 System Health Check (HEAD Method)",
+        "request": {
+            "method": "HEAD",
+            "header": make_header(auth=False),
+            "url": make_url("api/health"),
+            "description": "Lightweight health probe responding with HTTP 200 OK and X-Health-Status header. No body payload returned."
+        },
+        "response": []
+    }
+    req_health_head["response"].append(make_response_example(
+        "200 OK - Backend Healthy",
+        200, "OK",
+        {},
+        req_health_head["request"]
+    ))
+    folder_product_prov["item"].append(req_health_head)
+
+    # 13.2 Health Check GET
+    req_health_get = {
+        "name": "13.2 System Health Check (GET Method)",
+        "request": {
+            "method": "GET",
+            "header": make_header(auth=False),
+            "url": make_url("api/health"),
+            "description": "Returns JSON status of the ITSOFTLAB360 backend service."
+        },
+        "response": []
+    }
+    req_health_get["response"].append(make_response_example(
+        "200 OK - Health Info",
+        200, "OK",
+        {
+            "status": "healthy",
+            "service": "itsoftlab360-backend",
+            "timestamp": "2026-09-22T12:00:00.000Z"
+        },
+        req_health_get["request"]
+    ))
+    folder_product_prov["item"].append(req_health_get)
+
+    # 13.3 Supply Chain Create User
+    req_sc_user = {
+        "name": "13.3 Supply Chain - Create User & Sync",
+        "request": {
+            "method": "POST",
+            "header": make_header(auth=False),
+            "body": {
+                "mode": "raw",
+                "raw": json.dumps({
+                    "name": "Jane Doe",
+                    "email": "jane.doe@example.com",
+                    "password": "Password123!",
+                    "confirmPassword": "Password123!",
+                    "assignedRole": "ADMIN",
+                    "companyName": "Acme Logistics Ltd",
+                    "companyEmail": "contact@acmelogistics.com",
+                    "phone": "+1234567890",
+                    "companyPhone": "+1234567890",
+                    "licenseAllocation": 25,
+                    "subscriptionPlan": "BASIC",
+                    "status": "ACTIVE"
+                }, indent=2),
+                "options": {"raw": {"language": "json"}}
+            },
+            "url": make_url("api/franchise/supplychain/create-user"),
+            "description": "Provisions an admin user in Supply Chain software via remote API (https://supplychain.itsoftlab360.com/api/v1/super-admin/admins) and synchronizes ITSOFTLAB360 central User, Organization, and 25-license subscription."
+        },
+        "response": []
+    }
+    req_sc_user["response"].append(make_response_example(
+        "201 Created - Supply Chain User Provisioned",
+        201, "Created",
+        {
+            "success": True,
+            "message": "Supply Chain user 'jane.doe' successfully created and synchronized.",
+            "product": "Supply Chain",
+            "product_code": "supply-chain",
+            "data": {
+                "user": {
+                    "id": 15,
+                    "username": "jane.doe",
+                    "email": "jane.doe@example.com",
+                    "first_name": "Jane",
+                    "last_name": "Doe"
+                },
+                "organization": {
+                    "id": 8,
+                    "name": "Acme Logistics Ltd"
+                },
+                "product": {
+                    "id": 8,
+                    "code": "supply-chain",
+                    "name": "Supply Chain"
+                },
+                "subscription": {
+                    "id": 9,
+                    "license_count": 25,
+                    "used_licenses": 0,
+                    "available_licenses": 25,
+                    "license_key": "c4b8e1f0-91a2-4a7b-8910-123456abcdef"
+                },
+                "product_access": {
+                    "id": 12,
+                    "external_user_id": "supply-chain_usr_9f81a7b2",
+                    "sync_status": "synced"
+                }
+            }
+        },
+        req_sc_user["request"]
+    ))
+    folder_product_prov["item"].append(req_sc_user)
+
+    # 13.4 HRMSM Create User
+    req_hrms_user = {
+        "name": "13.4 HRMSM - Create User & Sync",
+        "request": {
+            "method": "POST",
+            "header": make_header(auth=False),
+            "body": {
+                "mode": "raw",
+                "raw": json.dumps({
+                    "email": "nikhil49@example.com",
+                    "password": "yourpassword",
+                    "first_name": "Nikhil",
+                    "last_name": "Basrani",
+                    "username": "nikhil",
+                    "role": "Admin",
+                    "office": "1"
+                }, indent=2),
+                "options": {"raw": {"language": "json"}}
+            },
+            "url": make_url("api/franchise/hrmsm/create-user"),
+            "description": "Provisions an admin user in HRMSM software via remote API (https://hrmsm.com/api/accounts/register/) and synchronizes ITSOFTLAB360 central records."
+        },
+        "response": []
+    }
+    req_hrms_user["response"].append(make_response_example(
+        "201 Created - HRMSM User Provisioned",
+        201, "Created",
+        {
+            "success": True,
+            "message": "HRMSM user 'nikhil' successfully created and synchronized.",
+            "product": "HRMSM",
+            "product_code": "hrms",
+            "data": {
+                "user": {
+                    "id": 16,
+                    "username": "nikhil",
+                    "email": "nikhil49@example.com",
+                    "first_name": "Nikhil",
+                    "last_name": "Basrani"
+                },
+                "product_access": {
+                    "id": 13,
+                    "external_user_id": "hrms_usr_4b1a82f3",
+                    "sync_status": "synced"
+                }
+            }
+        },
+        req_hrms_user["request"]
+    ))
+    folder_product_prov["item"].append(req_hrms_user)
+
+    # 13.5 Unified SaaS Product Create User
+    req_unified_user = {
+        "name": "13.5 Unified SaaS Product - Create User & Sync",
+        "request": {
+            "method": "POST",
+            "header": make_header(auth=False),
+            "body": {
+                "mode": "raw",
+                "raw": json.dumps({
+                    "product": "supply-chain",
+                    "name": "Jane Doe",
+                    "email": "jane.doe@example.com",
+                    "password": "Password123!",
+                    "companyName": "Acme Logistics Ltd",
+                    "assignedRole": "ADMIN",
+                    "licenseAllocation": 25
+                }, indent=2),
+                "options": {"raw": {"language": "json"}}
+            },
+            "url": make_url("api/franchise/products/create-user"),
+            "description": "Unified entry point for provisioning users across any of the 12 SaaS products. Automatically selects the registered product adapter."
+        },
+        "response": []
+    }
+    req_unified_user["response"].append(make_response_example(
+        "201 Created - Unified Provisioning Complete",
+        201, "Created",
+        {
+            "success": True,
+            "message": "User 'jane.doe' successfully provisioned in 'Supply Chain'.",
+            "product": "Supply Chain",
+            "product_code": "supply-chain"
+        },
+        req_unified_user["request"]
+    ))
+    folder_product_prov["item"].append(req_unified_user)
+
+    collection["item"].append(folder_product_prov)
+
     return collection
 
 if __name__ == "__main__":
