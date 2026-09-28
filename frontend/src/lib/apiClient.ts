@@ -1,6 +1,6 @@
 import { authStorage } from "./authStorage";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000/api/users/";
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://backend-itsoftlab360-lb-1426004176.ap-south-1.elb.amazonaws.com/api/users/----";
 
 export interface ApiErrorResponse {
   error?: string;
